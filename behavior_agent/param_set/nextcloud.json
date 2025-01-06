@@ -1,0 +1,83 @@
+{
+    "API1": {
+        "func_info": "已登录的用户请求访问主面板页面（用户首页）",
+        "role": "已登录用户",
+        "path": "/dashboard",
+        "method": "GET"
+    },
+    "API2": {
+        "func_info": "已登录的用户在创建空间的页面中，请求提交所创建的空间的基本信息",
+        "role": "已登录用户",
+        "path": "/space/create/create",
+        "method": "POST",
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "_csrf",
+                    "field_type": "string",
+                    "required": true,
+                    "description": "用户的身份认证码，可以从用户登录请求的返回信息中获得"
+                },
+                {
+                    "field_name": "Space",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "用户请求创建的空间的信息",
+                    "sub_fields": [
+                        {
+                            "field_name": "color",
+                            "field_type": "string",
+                            "required": true,
+                            "description": "空间图标颜色"
+                        },
+                        {
+                            "field_name": "name",
+                            "field_type": "string",
+                            "required": true,
+                            "description": "空间名称"
+                        },
+                        {
+                            "field_name": "description",
+                            "field_type": "string",
+                            "required": true,
+                            "description": "空间描述信息"
+                        },
+                        {
+                            "field_name": "visibility",
+                            "field_type": "string",
+                            "required": true,
+                            "description": "空间可见性"
+                        },
+                        {
+                            "field_name": "join_policy",
+                            "field_type": "string",
+                            "required": true,
+                            "description": "空间加入策略"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "API3": {
+        "func_info": "未登录的用户在登录页面，以用户名、密码、是否记住密码的信息，提交登录请求",
+        "role": "未登录用户",
+        "path": "/user/auth/login/{username}",
+        "method": "GET",
+        "path_variables": [
+            {
+                "name": "username",
+                "description": "登录用户名",
+                "required": true
+            }
+        ],
+        "request_params": [
+            {
+                "name": "pwd",
+                "description": "登录密码",
+                "required": true
+            }
+        ]
+    }
+}

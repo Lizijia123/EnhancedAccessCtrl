@@ -1,5 +1,5 @@
-from access_ctrl_model.feature.basic_feature import *
-from access_ctrl_model.feature.app_feature.humhub import *
+from privilege_escalation_detection_model.feature.basic_feature import *
+from privilege_escalation_detection_model.feature.app_feature.humhub import *
 
 """
 通用特征基线

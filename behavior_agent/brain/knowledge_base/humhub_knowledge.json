@@ -1,12 +1,12 @@
 {
-  "func_description": "",
+  "func_description": "目标应用的功能描述",
   "normal_seqs": [
-    "",
+    "正常行为序列的文字描述",
     "",
     ""
   ],
   "malicious_seqs": [
-    "",
+    "恶意行为序列的文字描述",
     "",
     ""
   ],

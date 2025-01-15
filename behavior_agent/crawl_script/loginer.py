@@ -4,14 +4,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-root_url = 'http://8.130.20.137:8081'
+from config.basic import ROOT_URL, CURR_APP_NAME
+
 login_wait_time = 5
 page_elements = {
     'humhub': {
-        'to_login_btn': {
-            'by': By.XPATH,
-            'value': '/html[1]/body[1]/div[1]/div[1]/div[2]/button[1]',
-        },
         'uname_input': {
             'by': By.ID,
             'value': 'login_username',
@@ -22,7 +19,7 @@ page_elements = {
         },
         'login_btn': {
             'by': By.XPATH,
-            'value': '/html[1]/body[1]/div[10]/div[1]/div[1]/div[2]/div[2]/div[1]/form[1]/div[4]/div[1]/button[1]',
+            'value': '/html[1]/body[1]/div[1]/div[1]/div[1]/div[2]/form[1]/div[4]/div[1]/button[1]',
         }
     },
     'memos': {
@@ -67,7 +64,7 @@ class Loginer:
     """
     def login(self, uname, pwd):
         self.driver.delete_all_cookies()
-        self.driver.get(root_url)
+        self.driver.get(ROOT_URL[CURR_APP_NAME])
 
         self._wait_for('to_login_btn')
         self._element('to_login_btn').click()
@@ -87,7 +84,22 @@ class HumhubLoginer(Loginer):
     def __init__(self, driver):
         Loginer.__init__(self, driver, app_name='humhub')
 
+    def login(self, uname, pwd):
+        self.driver.delete_all_cookies()
+        self.driver.get(ROOT_URL[CURR_APP_NAME])
+
+        self._wait_for('uname_input')
+        self._wait_for('pwd_input')
+        self._wait_for('login_btn')
+        self._element('uname_input').send_keys(uname)
+        self._element('pwd_input').send_keys(pwd)
+        self._element('login_btn').click()
+
+        time.sleep(login_wait_time)
+        return self.driver.get_cookies()
+
 
 class MemosLoginer(Loginer):
     def __init__(self, driver):
         Loginer.__init__(self, driver, app_name='memos')
+

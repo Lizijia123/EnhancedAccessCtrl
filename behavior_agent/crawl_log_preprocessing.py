@@ -1,18 +1,80 @@
-from pandas import DataFrame
-
-def extract_app_log():
-    """
-    TODO
-    从craw_log中分离出目标应用相关的记录
-    """
-    path = ''
-    return DataFrame()
+from os.path import dirname
+import pandas as pd
+from config.api_log_filtering import NON_API_KEYS
+from config.basic import CURR_APP_NAME, ROOT_URL
+from urllib.parse import unquote
 
 
-def extract_api_log():
-    """
-    TODO
-    从craw_log中提取目标应用的API调用记录（过滤静态资源相关）
-    """
-    app_log = extract_app_log()
-    return DataFrame(app_log)
+def preprocess_url(url):
+    if '/index.php?r=' not in url:
+        return url
+    r_value = url.split('/index.php?r=')[1].split('&')[0]
+    query_params = '&'.join(url.split('&')[1:]) if '&' in url else ''
+    res = unquote(f"{ROOT_URL[CURR_APP_NAME]}/{r_value}")
+    if query_params:
+        res += f"?{query_params}"
+    return res
+
+
+def not_matches_static(url):
+    for key in NON_API_KEYS[CURR_APP_NAME]:
+        if key in url:
+            return False
+    return True
+
+
+def convert_to_dict(header_str):
+    import ast
+    if pd.isnull(header_str):
+        return {}
+    try:
+        header_list = ast.literal_eval(header_str)
+        result_dict = {}
+        for item in header_list:
+            if 'name' in item and 'value' in item:
+                result_dict[item['name']] = item['value']
+        return result_dict
+    except (ValueError, SyntaxError):
+        return {}
+
+
+def extract_api_log_to_csv():
+    url_log_path = f"{dirname(__file__)}\\crawl_script\\crawl_log\\{CURR_APP_NAME}_url_crawl_log.csv"
+    web_element_log_element_path = f"{dirname(__file__)}\\crawl_script\\crawl_log\\{CURR_APP_NAME}_web_element_crawl_log.csv"
+
+    url_log = pd.read_csv(url_log_path)
+    web_element_log = pd.read_csv(web_element_log_element_path)
+
+    url_log = url_log[url_log['URL'].str.contains(ROOT_URL[CURR_APP_NAME])]
+    web_element_log = web_element_log[web_element_log['url'].str.contains(ROOT_URL[CURR_APP_NAME])]
+
+    url_log['URL'] = url_log['URL'].apply(preprocess_url)
+    web_element_log['url'] = web_element_log['url'].apply(preprocess_url)
+
+    # 确保 matches_static 函数正确使用，它将返回一个布尔型的 Series
+    url_log = url_log[url_log['URL'].apply(not_matches_static)]
+    web_element_log = web_element_log[web_element_log['url'].apply(not_matches_static)]
+
+    url_log['method'] = url_log['Method'].apply(lambda x: x[0].upper() + x[1:].lower() if pd.notnull(x) else x)
+    url_log['url'] = url_log['URL']
+    url_log['header'] = url_log['Headers']
+    url_log['data'] = None
+    url_log['time'] = 0
+    url_log['type'] = 0
+    url_log = url_log[['method', 'url', 'header', 'data', 'time', 'type']]
+
+    web_element_log['method'] = web_element_log['method'].apply(lambda x: x[0].upper() + x[1:].lower() if pd.notnull(x) else x)
+    web_element_log['header'] = web_element_log['header'].apply(convert_to_dict)
+    web_element_log['time'] = 0
+    web_element_log['type'] = 0
+    web_element_log = web_element_log[['method', 'url', 'header', 'data', 'time', 'type']]
+
+    api_log = pd.concat([url_log, web_element_log], ignore_index=True)
+
+    index_list = list(range(len(api_log)))
+    # 在位置 0 插入行号列
+    api_log.insert(0, 'Unnamed: 0', index_list)
+
+    api_log.to_csv(f'{dirname(__file__)}\\crawl_script\\crawl_log\\{CURR_APP_NAME}_API_crawl_log.csv', index=False)
+    return api_log
+

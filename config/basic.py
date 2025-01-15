@@ -2,15 +2,15 @@
 CURR_APP_NAME = 'humhub'
 
 URL_PREFIX = {
-    'humhub': 'http://8.130.20.137:8081',
+    'humhub': 'http://111.229.33.190:8081',
     'memos': 'http://47.97.114.24:5230',
     'nextcloud': 'http://47.97.114.24'
 }
 
 ROOT_URL = {
-    'humhub': 'http://8.130.20.137:8081/',
-    'memos': 'http://47.97.114.24:5230/',
-    'nextcloud': 'http://47.97.114.24:80/'
+    'humhub': 'http://111.229.33.190:8081',
+    'memos': 'http://47.97.114.24:5230',
+    'nextcloud': 'http://47.97.114.24:80'
 }
 
 

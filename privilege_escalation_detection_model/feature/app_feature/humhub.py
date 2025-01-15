@@ -1,4 +1,4 @@
-from access_ctrl_model.feature.basic_feature import Feature
+from privilege_escalation_detection_model.feature.basic_feature import Feature
 
 # TODO humhub特征维度中的各个特征
 class Feature1(Feature):

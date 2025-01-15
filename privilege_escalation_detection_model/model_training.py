@@ -8,7 +8,7 @@ from xgboost import XGBClassifier
 import warnings
 import os
 
-from access_ctrl_model.feature_extraction import extract_features
+from privilege_escalation_detection_model.feature_extraction import extract_features
 
 warnings.filterwarnings("ignore")
 PROJ_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

@@ -1,25 +1,37 @@
+import random
+
 from behavior_agent.crawl_script.url_crawler import BasicURLScraper
 from config.basic import *
-from config.crawling import AUTH
+from config.crawling import AUTH, WEB_ELEMENT_CRAWLING_MAX_TIME_PER_URL, URL_SAMPLE
 from behavior_agent.crawl_script.loginer import *
 from selenium import webdriver
 
 from behavior_agent.crawl_script.web_element_crawler import WebElementCrawler
 
-
 if __name__ == '__main__':
     driver = webdriver.Edge()
-    # TODO 目标项目的爬虫用户&登录器
-    users = [AUTH['humhub']['admins'][0], AUTH['humhub']['normal_users'][0], AUTH['humhub']['normal_users'][1]]
+    users = []
+    for role, auth_list in AUTH[CURR_APP_NAME].items():
+        for auth in auth_list:
+            users.append(auth)
+    # TODO 目标项目的登录器
     loginer = HumhubLoginer(driver)
 
+    print("Fetching user cookies...")
     cookies = [loginer.login(user['uname'], user['pwd']) for user in users]
-    urls = BasicURLScraper(ROOT_URL[CURR_APP_NAME]).crawl()
     driver.quit()
 
-    print(cookies)
+    print("Fetching urls...")
+    url_set = []
+    for cookie_list in cookies:
+        url_set.append(BasicURLScraper(ROOT_URL[CURR_APP_NAME], cookie_list).crawl())
 
-    for url in urls:
-        for cookie in cookies:
+    print("Crawling web elements...")
+    # TODO 实时进度
+    for i in range(1, len(url_set)):
+        urls = random.sample(list(url_set[i]), min(len(url_set[i]), URL_SAMPLE))
+        cookie_list = cookies[i]
+        for url in urls:
             crawler = WebElementCrawler()
-            crawler.crawl_from(url, cookie, time_out=3600)
+            crawler.crawl_from(url, cookie_list, uname=users[i]['uname'],
+                               time_out=WEB_ELEMENT_CRAWLING_MAX_TIME_PER_URL)

@@ -1,6 +1,8 @@
+import random
+
 from behavior_agent.brain.brain import Brain
-from config.basic import CURR_APP_NAME, NORMAL, VERTICAL_AUTH_OVERREACH, HORIZONTAL_AUTH_OVERREACH
-from config.role import APIS_OF_USER_ROLES
+from config.basic import *
+from config.role import APIS_OF_USER_ROLES, USER_INFO_UNAME
 from entity.api import API
 
 
@@ -8,13 +10,13 @@ class Agent:
     """
     项目行为智能体
     """
-    _brain = Brain()
-    _apis = []
+    brain = None
+    apis = []
 
     @classmethod
     def cinit(cls):
-        cls._brain = None # TODO
-        cls._apis = API.from_api_doc()
+        cls.brain = Brain()
+        cls.apis = API.from_api_doc()
 
     def __init__(self, role, action_step, malicious=False):
         self.role = role
@@ -23,15 +25,17 @@ class Agent:
 
         self.api_sequence = []
         self.malicious_api_indexes = []
-        self.action_type_seq = [] # 0为正常，1为水平越权，2为垂直越权
-
+        self.action_type_seq = []  # 0为正常，1为水平越权，2为垂直越权
 
     def _gen_api_seq(self):
-        self.api_sequence, self.malicious_api_indexes = Agent._brain.gen_api_seq(
+        # role_user_index表示brain生成的API seq对应的用户是哪个身份下的哪种类型
+        self.api_sequence, self.malicious_api_indexes, role_user_index = Agent.brain.gen_api_seq(
             malicious=self.malicious,
             role=self.role,
             action_step=self.action_step,
         )
+        # 选取当前用户的用户名，后续基于此用户名的cookie进行参数填充并生成具体流量
+        self.uname = random.choice(USER_INFO_UNAME[CURR_APP_NAME][self.role][role_user_index])
 
     def exec(self):
         self.api_sequence.clear()

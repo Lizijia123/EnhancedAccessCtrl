@@ -1,6 +1,19 @@
+import json
+from os.path import dirname
 from urllib.parse import urlparse, parse_qs, quote
 
 import pandas as pd
+
+from config.basic import CURR_APP_NAME
+from config.log import LOGGER
+
+
+def param_set_to_file():
+    json_path = f'{dirname(__file__)}/param_set/{CURR_APP_NAME}.json'
+    global param_set
+    with open(json_path, 'w') as json_file:
+        json.dump(param_set, json_file, indent=2)
+    LOGGER.info(f'已将{CURR_APP_NAME}的可取参数集合记录至.\\param_set\\{CURR_APP_NAME}.json')
 
 
 def collect_param_set(api_log, api_list):
@@ -8,10 +21,9 @@ def collect_param_set(api_log, api_list):
     从爬虫记录中收集API列表中API的可取参数集合
     """
     api_log['api'] = api_log.apply(recognize_api, args=(api_list,), axis=1)
-    api_log['api'].to_csv('index.csv', index=False)
+    # api_log['api'].to_csv('index.csv', index=False)
     api_log.apply(collect_param, args=(api_list,), axis=1)
-
-    print(param_set)
+    param_set_to_file()
     pass
 
 
@@ -30,11 +42,12 @@ param_set = {}
 
 def collect_param(record, api_list):
     """
-    收集可取参数集合并记录到文件
+    从一条API流量中收集可取参数集合
     """
     if record['api'] is None or pd.isnull(record['api']):
         return
 
+    # print(record['api'])
     global param_set
 
     api = api_list[int(record['api'])]
@@ -74,7 +87,7 @@ def collect_param(record, api_list):
     if record['data'] is not None and not pd.isnull(record['data']):
         record['data'] = eval(str(record['data']))
         # TODO
-        print(record['data'])
+        # print(record['data'])
         for field in record['data']:
             if field not in param_set[api_title]['request_data']:
                 param_set[api_title]['request_data'][field] = [record['data'][field]]
@@ -86,12 +99,3 @@ def collect_param(record, api_list):
         'data': None if record['data'] is None or pd.isnull(record['data']) else record['data']
     })
 
-    # TODO: param_set to file
-
-
-def collect_user_tokens():
-    """
-    TODO
-    从爬虫记录中收集各用户的鉴权字段值
-    """
-    pass

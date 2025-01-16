@@ -11,6 +11,7 @@ from selenium import webdriver
 from selenium.webdriver.edge.service import Service
 from selenium.webdriver.edge.options import Options
 from config.basic import BROWSERMOB_PROXY_PATH, EDGE_DRIVER_PATH, CURR_APP_NAME
+from config.log import LOGGER
 
 scanned_elements = set()
 visited_elements = set()
@@ -93,7 +94,7 @@ class WebElementCrawler(object):
         log_file_path = f'./crawl_log/{CURR_APP_NAME}_web_element_crawl_log.csv'
         with_header = not os.path.exists(log_file_path)
         df.to_csv(log_file_path, mode='a', header=with_header, index=False)
-        print(f"记录{len(df)}条流量数据")
+        LOGGER.info(f"记录{len(df)}条流量数据")
 
         self.proxy.new_har("selenium_traffic", options={"captureHeaders": True, "captureContent": True})
 
@@ -175,7 +176,7 @@ class WebElementCrawler(object):
         """
         以某个用户的身份，从url开始，探测式爬虫一段时间，并记录流量
         """
-        print(f'Crawling from {url}, user: {uname}')
+        LOGGER.info(f'Crawling from {url}, user: {uname}')
 
         server = Server(BROWSERMOB_PROXY_PATH)
         server.start()

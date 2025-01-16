@@ -1,13 +1,13 @@
 # TODO 爬虫配置
 AUTH = {
     'humhub': {
-        'admins': [
+        'admin': [
             {
                 'uname': 'admin',
                 'pwd': '202501'
             }
         ],
-        'normal_users': [
+        'ordinary_user': [
             {
                 'uname': 'userA',
                 'pwd': '202501'
@@ -67,13 +67,13 @@ AUTH = {
         ]
     },
     'memos': {
-        'admins': [
+        'admin': [
             {
                 'uname': 'hanke11',
                 'pwd': 'hanke2350'
             }
         ],
-        'normal_users': [
+        'ordinary_user': [
             {
                 'uname': 'user1',
                 'pwd': 'user1'

@@ -1,4 +1,9 @@
+import json
+import os
+from msilib.text import dirname
 from urllib.parse import urlparse
+
+from config.basic import CURR_APP_NAME
 
 
 class API:
@@ -8,25 +13,46 @@ class API:
         self.path = info['path']
         self.variable_indexes = info['variable_indexes']
         self.query_params = info['query_params']
+        self.sample_body = info['sample_body']
         self.sample_headers = info['sample_headers']
 
     def matches(self, method, url):
         return method == self.method and urlparse(url).path == self.path
 
-    # TODO 从一条API调用记录中，提取API信息
-    @classmethod
-    def from_record(cls, record):
-        return API({})
+    #
+    # @classmethod
+    # def from_record(cls, record):
+    #     return API({})
 
     def set_index(self, index):
         self.index = index
 
     def to_dict(self):
-        return {'index': self.index, 'description': '', 'method': self.method, 'path': self.path,
-                'variable_indexes': self.variable_indexes,
-                'query_params': self.query_params, 'sample_headers': self.sample_headers}
+        return {
+            'title': f'API_{int(self.index)}',
+            'description': '',
+            'method': self.method,
+            'path': self.path,
+            'variable_indexes': self.variable_indexes,
+            'query_params': self.query_params,
+            'sample_body': self.sample_body,
+            'sample_headers': self.sample_headers
+        }
 
     # TODO 从目标应用的API文档中读取所有API信息
     @classmethod
     def from_api_doc(cls):
-        return [API({})]
+        api_list = []
+        proj_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        with open(f'{proj_path}\\behavior_agent\\api_doc\\{CURR_APP_NAME}.json', 'r', encoding='utf-8') as f:
+            api_json = json.load(f, ensure_ascii=False)
+            for api_title in api_json:
+                api_list.append(API({
+                    'method': api_json[api_title]['method'],
+                    'path': api_json[api_title]['path'],
+                    'variable_indexes': api_json[api_title]['variable_indexes'],
+                    'query_params': api_json[api_title]['query_params'],
+                    'sample_body': api_json[api_title]['sample_body'],
+                    'sample_headers': api_json[api_title]['sample_headers']
+                }, index=int(api_title[4:])))
+        return api_list

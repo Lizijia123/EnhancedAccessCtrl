@@ -1,83 +1,4561 @@
 {
-    "API1": {
-        "func_info": "已登录的用户请求访问主面板页面（用户首页）",
-        "role": "已登录用户",
-        "path": "/dashboard",
-        "method": "GET"
-    },
-    "API2": {
-        "func_info": "已登录的用户在创建空间的页面中，请求提交所创建的空间的基本信息",
-        "role": "已登录用户",
-        "path": "/space/create/create",
-        "method": "POST",
+    "API_0": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/dashboard/dashboard",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
         "request_body": {
             "type": "object",
             "fields": [
                 {
-                    "field_name": "_csrf",
-                    "field_type": "string",
-                    "required": true,
-                    "description": "用户的身份认证码，可以从用户登录请求的返回信息中获得"
-                },
-                {
-                    "field_name": "Space",
+                    "field_name": "请填充请求体字段名",
                     "field_type": "object",
                     "required": true,
-                    "description": "用户请求创建的空间的信息",
+                    "description": "请填充请求体字段描述信息",
                     "sub_fields": [
-                        {
-                            "field_name": "color",
-                            "field_type": "string",
-                            "required": true,
-                            "description": "空间图标颜色"
-                        },
-                        {
-                            "field_name": "name",
-                            "field_type": "string",
-                            "required": true,
-                            "description": "空间名称"
-                        },
-                        {
-                            "field_name": "description",
-                            "field_type": "string",
-                            "required": true,
-                            "description": "空间描述信息"
-                        },
-                        {
-                            "field_name": "visibility",
-                            "field_type": "string",
-                            "required": true,
-                            "description": "空间可见性"
-                        },
-                        {
-                            "field_name": "join_policy",
-                            "field_type": "string",
-                            "required": true,
-                            "description": "空间加入策略"
-                        }
+                        "请填充请求体子字段信息"
                     ]
                 }
             ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D"
         }
     },
-    "API3": {
-        "func_info": "未登录的用户在登录页面，以用户名、密码、是否记住密码的信息，提交登录请求",
-        "role": "未登录用户",
-        "path": "/user/auth/login/{username}",
-        "method": "GET",
+    "API_1": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/user/profile/home",
+        "method": "Get",
         "path_variables": [
+            "请填充各个路径变量的信息，例如：",
             {
-                "name": "username",
-                "description": "登录用户名",
+                "name": "需要在path中用<>标识",
+                "description": "",
                 "required": true
             }
         ],
-        "request_params": [
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
             {
-                "name": "pwd",
-                "description": "登录密码",
+                "name": "",
+                "description": "",
                 "required": true
             }
-        ]
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "cguid"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_2": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/user/account/edit",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_3": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/admin/user/list",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D"
+        }
+    },
+    "API_4": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/notification/overview",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_5": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/space/spaces",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_6": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/user/people",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_7": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/search/search/index",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_8": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/space/space",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "tour",
+            "cguid"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D"
+        }
+    },
+    "API_9": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/marketplace/browse",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "tour"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_10": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/user/profile/about",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "cguid"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_11": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/activity/user",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_12": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/notification/user",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_13": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/user/account/edit-settings",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_14": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/user/account/change-username",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_15": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/user/account/change-email",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_16": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/user/account/change-password",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_17": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/user/account/delete",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_18": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/admin/space",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_19": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/admin/module/list",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D"
+        }
+    },
+    "API_20": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/admin/setting/basic",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D"
+        }
+    },
+    "API_21": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/admin/information",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_22": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/admin/authentication",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_23": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/admin/user-profile",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_24": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/admin/group",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_25": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/admin/user-people",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_26": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/admin/user/add",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_27": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/admin/user/export",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "format"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_28": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/user/profile",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "cguid"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_29": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/admin/user/edit",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "id"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_30": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/admin/user/delete",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "id"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_31": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/admin/pending-registrations",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_32": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/space/membership/request-membership-form",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "options",
+            "cguid"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_34": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/space/manage",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "cguid"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_35": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/space/manage/security",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "cguid"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_36": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/space/manage/member",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "cguid"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_37": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/space/manage/module",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "cguid"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_38": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/space/space/home",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "cguid"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_39": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/space/space/about",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "cguid"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_40": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/marketplace/purchase",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_41": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/marketplace/update",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_42": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/marketplace/browse/thirdparty-disclaimer",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_43": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/topic/manage",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "cguid"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_44": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/admin/space/index",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_45": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/admin/space/settings",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_46": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/admin/space/permissions",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_47": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/space/manage/member/change-owner",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "cguid"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D"
+        }
+    },
+    "API_48": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/space/manage/default/delete",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "cguid"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D"
+        }
+    },
+    "API_49": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/admin/setting/design",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_50": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/activity/admin/defaults",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_51": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/notification/admin/defaults",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_52": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/admin/setting/caching",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D"
+        }
+    },
+    "API_53": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/admin/information/about",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_54": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/admin/information/prerequisites",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_55": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/admin/information/database",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_56": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/admin/information/background-jobs",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_57": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/admin/logging",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_58": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/marketplace/licence",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_59": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/ldap/admin",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_60": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/admin/user-permissions",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_62": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/space/manage/default/index",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "cguid"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=90085d651dd1860cba2310c85b93f343eac0beaf74af5687149861615877051fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PxxNophU9z10Es_c0k6o6PgZ0b7FgE2P%22%3B%7D; _identity=90c4d590c8f2fcde7fd8bf0c43b3573c6ddd2bd910fb2f901caeb6f2f0bfbf7ba%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B5%2C%22b92568e9-c3d5-4d87-b045-c39b1aa18901%22%2C2592000%5D%22%3B%7D; PHPSESSID=pabum5km2ijj18rjcpjoup0d6o"
+        }
+    },
+    "API_63": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/space/manage/default/advanced",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "cguid"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=90085d651dd1860cba2310c85b93f343eac0beaf74af5687149861615877051fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PxxNophU9z10Es_c0k6o6PgZ0b7FgE2P%22%3B%7D; _identity=90c4d590c8f2fcde7fd8bf0c43b3573c6ddd2bd910fb2f901caeb6f2f0bfbf7ba%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B5%2C%22b92568e9-c3d5-4d87-b045-c39b1aa18901%22%2C2592000%5D%22%3B%7D; PHPSESSID=pabum5km2ijj18rjcpjoup0d6o"
+        }
+    },
+    "API_64": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/space/manage/security/permissions",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "cguid"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=90085d651dd1860cba2310c85b93f343eac0beaf74af5687149861615877051fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PxxNophU9z10Es_c0k6o6PgZ0b7FgE2P%22%3B%7D; _identity=90c4d590c8f2fcde7fd8bf0c43b3573c6ddd2bd910fb2f901caeb6f2f0bfbf7ba%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B5%2C%22b92568e9-c3d5-4d87-b045-c39b1aa18901%22%2C2592000%5D%22%3B%7D; PHPSESSID=pabum5km2ijj18rjcpjoup0d6o"
+        }
+    },
+    "API_65": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/space/manage/member/index",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "cguid"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=90085d651dd1860cba2310c85b93f343eac0beaf74af5687149861615877051fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PxxNophU9z10Es_c0k6o6PgZ0b7FgE2P%22%3B%7D; _identity=90c4d590c8f2fcde7fd8bf0c43b3573c6ddd2bd910fb2f901caeb6f2f0bfbf7ba%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B5%2C%22b92568e9-c3d5-4d87-b045-c39b1aa18901%22%2C2592000%5D%22%3B%7D; PHPSESSID=pabum5km2ijj18rjcpjoup0d6o"
+        }
+    },
+    "API_66": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/topic/manage/index",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "cguid",
+            "sort"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=90085d651dd1860cba2310c85b93f343eac0beaf74af5687149861615877051fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22PxxNophU9z10Es_c0k6o6PgZ0b7FgE2P%22%3B%7D; _identity=90c4d590c8f2fcde7fd8bf0c43b3573c6ddd2bd910fb2f901caeb6f2f0bfbf7ba%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B5%2C%22b92568e9-c3d5-4d87-b045-c39b1aa18901%22%2C2592000%5D%22%3B%7D; PHPSESSID=pabum5km2ijj18rjcpjoup0d6o"
+        }
+    },
+    "API_67": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/user/must-change-password",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "_csrf=84c957b4888e04a5302e8d29181a8552646a44825d47938a1bf3bcde53df21e7a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22I89xnz2yOfyzZv9603IWXHj5yKr1Kq3K%22%3B%7D; _identity=ca4c83d8780aed8e706e37d2fe852d98d8b7c408021f79bbae978aeaae8a8ab4a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A51%3A%22%5B18%2C%224c8f8773-623e-482e-94f7-bb0dd7d36e5e%22%2C2592000%5D%22%3B%7D; PHPSESSID=7moidf49j0vlj3iuu2p3f6f02v; _identity=ca4c83d8780aed8e706e37d2fe852d98d8b7c408021f79bbae978aeaae8a8ab4a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A51%3A%22%5B18%2C%224c8f8773-623e-482e-94f7-bb0dd7d36e5e%22%2C2592000%5D%22%3B%7D"
+        }
+    },
+    "API_69": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/user/auth/login",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "111.229.33.190:8081",
+            "Proxy-Connection": "keep-alive",
+            "Upgrade-Insecure-Requests": "1",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "PHPSESSID=5kto0qu1e4vcu33fn9difo03ct"
+        }
+    },
+    "API_70": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/user/auth/captcha",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "v"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "111.229.33.190:8081",
+            "Proxy-Connection": "keep-alive",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+            "Accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
+            "Referer": "http://111.229.33.190:8081/index.php?r=user%2Fauth%2Flogin",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "PHPSESSID=5kto0qu1e4vcu33fn9difo03ct; _csrf=284fd176c39bd4d3836d9fbe2ae9ea08f341c56f7b57943f50663ee676e14edaa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22wcpZPtqylY0sB8AOTARlaXRTHt9sl8c3%22%3B%7D"
+        }
+    },
+    "API_71": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "111.229.33.190:8081",
+            "Proxy-Connection": "keep-alive",
+            "Cache-Control": "max-age=0",
+            "Upgrade-Insecure-Requests": "1",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "_csrf=f6b6f236654f4ccb03fe367bad63216cac95249d1be7bde857879842d11adceba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22oSlPdX8eptsuQMBClI9SsZFyLR8BvGSl%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=6ep24hmcadl4sle47m4e3aq1mr"
+        }
+    },
+    "API_72": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/dashboard/dashboard/stream",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "StreamQuery[from]",
+            "StreamQuery[limit]"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "111.229.33.190:8081",
+            "Proxy-Connection": "keep-alive",
+            "X-CSRF-Token": "PHqJIRUNlGPwIJDPeVM6t9OLQKBrL2Hgia2IgRDnmAZTKeVxcVWsBoBU47ooHnj0v8J58xh1J5nF_7DDZqDLag==",
+            "X-Requested-With": "XMLHttpRequest",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+            "Accept": "*/*",
+            "HUMHUB-VIEW-CONTEXT": "dashboard",
+            "Referer": "http://111.229.33.190:8081/index.php?r=dashboard%2Fdashboard",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "_csrf=f6b6f236654f4ccb03fe367bad63216cac95249d1be7bde857879842d11adceba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22oSlPdX8eptsuQMBClI9SsZFyLR8BvGSl%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=6ep24hmcadl4sle47m4e3aq1mr"
+        }
+    },
+    "API_73": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/dashboard/dashboard/activity-stream",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "StreamQuery[from]",
+            "StreamQuery[limit]"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "111.229.33.190:8081",
+            "Proxy-Connection": "keep-alive",
+            "X-CSRF-Token": "PHqJIRUNlGPwIJDPeVM6t9OLQKBrL2Hgia2IgRDnmAZTKeVxcVWsBoBU47ooHnj0v8J58xh1J5nF_7DDZqDLag==",
+            "X-Requested-With": "XMLHttpRequest",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+            "Accept": "*/*",
+            "HUMHUB-VIEW-CONTEXT": "dashboard",
+            "Referer": "http://111.229.33.190:8081/index.php?r=dashboard%2Fdashboard",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "_csrf=f6b6f236654f4ccb03fe367bad63216cac95249d1be7bde857879842d11adceba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22oSlPdX8eptsuQMBClI9SsZFyLR8BvGSl%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=6ep24hmcadl4sle47m4e3aq1mr"
+        }
+    },
+    "API_74": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/live/poll",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "last"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "111.229.33.190:8081",
+            "Proxy-Connection": "keep-alive",
+            "X-CSRF-Token": "PHqJIRUNlGPwIJDPeVM6t9OLQKBrL2Hgia2IgRDnmAZTKeVxcVWsBoBU47ooHnj0v8J58xh1J5nF_7DDZqDLag==",
+            "X-Requested-With": "XMLHttpRequest",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+            "Accept": "*/*",
+            "HUMHUB-VIEW-CONTEXT": "dashboard",
+            "Referer": "http://111.229.33.190:8081/index.php?r=dashboard%2Fdashboard",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "_csrf=f6b6f236654f4ccb03fe367bad63216cac95249d1be7bde857879842d11adceba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22oSlPdX8eptsuQMBClI9SsZFyLR8BvGSl%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=6ep24hmcadl4sle47m4e3aq1mr"
+        }
+    },
+    "API_75": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/admin/space/open",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "id"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "111.229.33.190:8081",
+            "Proxy-Connection": "keep-alive",
+            "Upgrade-Insecure-Requests": "1",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6"
+        }
+    },
+    "API_76": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/content/perma",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "id",
+            "_pjax",
+            "_"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "111.229.33.190:8081",
+            "Proxy-Connection": "keep-alive",
+            "X-PJAX-Container": "#layout-content",
+            "X-PJAX": "true",
+            "X-CSRF-Token": "qQOuM8e6qAUvscDeqlpd2BVjKaj2JJ4suUSrn88A8pjxVPhhts-fVB31mpueNRWZbSBfkb0U1RrQLN3Unl-rqg==",
+            "X-Requested-With": "XMLHttpRequest",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+            "Accept": "text/html, */*; q=0.01",
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+            "Referer": "http://111.229.33.190:8081/index.php?r=dashboard%2Fdashboard",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_77": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/space/space/stream",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "cguid",
+            "viewContext",
+            "StreamQuery[contentId]",
+            "StreamQuery[sort]"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "111.229.33.190:8081",
+            "Proxy-Connection": "keep-alive",
+            "X-CSRF-Token": "qQOuM8e6qAUvscDeqlpd2BVjKaj2JJ4suUSrn88A8pjxVPhhts-fVB31mpueNRWZbSBfkb0U1RrQLN3Unl-rqg==",
+            "X-Requested-With": "XMLHttpRequest",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+            "Accept": "*/*",
+            "Referer": "http://111.229.33.190:8081/index.php?r=space%2Fspace&contentId=133&cguid=b177d8bb-b88c-40d3-967a-cdf4e3609035",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_78": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/activity/stream/stream",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "cguid",
+            "StreamQuery[from]",
+            "StreamQuery[limit]"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "111.229.33.190:8081",
+            "Proxy-Connection": "keep-alive",
+            "X-CSRF-Token": "qQOuM8e6qAUvscDeqlpd2BVjKaj2JJ4suUSrn88A8pjxVPhhts-fVB31mpueNRWZbSBfkb0U1RrQLN3Unl-rqg==",
+            "X-Requested-With": "XMLHttpRequest",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+            "Accept": "*/*",
+            "Referer": "http://111.229.33.190:8081/index.php?r=space%2Fspace&contentId=133&cguid=b177d8bb-b88c-40d3-967a-cdf4e3609035",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_79": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/user/profile/stream",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "cguid",
+            "StreamQuery[sort]",
+            "StreamQuery[from]",
+            "StreamQuery[limit]",
+            "StreamQuery[scope]"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "111.229.33.190:8081",
+            "Proxy-Connection": "keep-alive",
+            "X-CSRF-Token": "qQOuM8e6qAUvscDeqlpd2BVjKaj2JJ4suUSrn88A8pjxVPhhts-fVB31mpueNRWZbSBfkb0U1RrQLN3Unl-rqg==",
+            "X-Requested-With": "XMLHttpRequest",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+            "Accept": "*/*",
+            "Referer": "http://111.229.33.190:8081/index.php?r=user%2Fprofile&cguid=98cb7660-54d3-4fbc-a874-8e0f7b8f5882",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_80": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/like/like/user-list",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "contentModel",
+            "contentId"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "111.229.33.190:8081",
+            "Proxy-Connection": "keep-alive",
+            "X-CSRF-Token": "tOn9g7rz--poCVs58aDjoxH72WyJYcZPq35iLffLgpDsvqvRy4bMu1pNAXzFz6viabivVcJRjXnCFhRmppTbog==",
+            "X-Requested-With": "XMLHttpRequest",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+            "Accept": "text/html, */*; q=0.01",
+            "Referer": "http://111.229.33.190:8081/index.php?r=user%2Fprofile&cguid=98cb7660-54d3-4fbc-a874-8e0f7b8f5882",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_81": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/space/browse/search-lazy",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "111.229.33.190:8081",
+            "Proxy-Connection": "keep-alive",
+            "X-CSRF-Token": "Q2Nyc-OOzvW5f76-rf_6ViyX-0EkOZUEgBNhpL6DJ-kbNCQhkvv5pIs75PuZkLIXVNSNeG8J3jLpexfv79x-2w==",
+            "X-Requested-With": "XMLHttpRequest",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+            "Accept": "*/*",
+            "Referer": "http://111.229.33.190:8081/index.php?r=user%2Fprofile%2Fhome&cguid=96eb3a6a-fd83-4c8e-b37e-5aa84c57a2aa",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_82": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/like/like/like",
+        "method": "Post",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "contentModel",
+            "contentId"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "111.229.33.190:8081",
+            "Proxy-Connection": "keep-alive",
+            "Content-Length": "0",
+            "X-CSRF-Token": "qQOuM8e6qAUvscDeqlpd2BVjKaj2JJ4suUSrn88A8pjxVPhhts-fVB31mpueNRWZbSBfkb0U1RrQLN3Unl-rqg==",
+            "X-Requested-With": "XMLHttpRequest",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+            "Accept": "*/*",
+            "HUMHUB-VIEW-CONTEXT": "dashboard",
+            "Origin": "http://111.229.33.190:8081",
+            "Referer": "http://111.229.33.190:8081/index.php?r=dashboard%2Fdashboard",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_83": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/space/membership/revoke-notifications",
+        "method": "Post",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "cguid"
+        ],
+        "sample_body": {
+            "mimeType": "application/x-www-form-urlencoded",
+            "params": [
+                {
+                    "name": "_csrf",
+                    "value": "Q2Nyc-OOzvW5f76-rf_6ViyX-0EkOZUEgBNhpL6DJ-kbNCQhkvv5pIs75PuZkLIXVNSNeG8J3jLpexfv79x-2w==",
+                    "comment": ""
+                }
+            ],
+            "comment": ""
+        },
+        "sample_headers": {
+            "Host": "111.229.33.190:8081",
+            "Proxy-Connection": "keep-alive",
+            "Content-Length": "98",
+            "Cache-Control": "max-age=0",
+            "Origin": "http://111.229.33.190:8081",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Upgrade-Insecure-Requests": "1",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Referer": "http://111.229.33.190:8081/index.php?r=space%2Fspace&cguid=1a14826b-23b7-4def-a7da-0cc5053a5ede",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_84": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/space/membership/receive-notifications",
+        "method": "Post",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "cguid"
+        ],
+        "sample_body": {
+            "mimeType": "application/x-www-form-urlencoded",
+            "params": [
+                {
+                    "name": "_csrf",
+                    "value": "8kusac7I9lwA5NngKrQBwWVj3w0dL8r73W777b9ttbCqHPo7v73BDTKgg6Ue20mAHSCpNFYfgc20Bo2m7jLsgg==",
+                    "comment": ""
+                }
+            ],
+            "comment": ""
+        },
+        "sample_headers": {
+            "Host": "111.229.33.190:8081",
+            "Proxy-Connection": "keep-alive",
+            "Content-Length": "98",
+            "Cache-Control": "max-age=0",
+            "Origin": "http://111.229.33.190:8081",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Upgrade-Insecure-Requests": "1",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Referer": "http://111.229.33.190:8081/index.php?r=space%2Fspace&cguid=1a14826b-23b7-4def-a7da-0cc5053a5ede",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_85": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/like/like/unlike",
+        "method": "Post",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "contentModel",
+            "contentId"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "111.229.33.190:8081",
+            "Proxy-Connection": "keep-alive",
+            "Content-Length": "0",
+            "X-CSRF-Token": "WDYKu9xDm58KqGXqqr6od32K5-vlNRoZQxHFJ_8t3sMAYVzprTaszjjsP6-e0eA2BcmR0q4FUS8qebNsrnKH8Q==",
+            "X-Requested-With": "XMLHttpRequest",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+            "Accept": "*/*",
+            "HUMHUB-VIEW-CONTEXT": "dashboard",
+            "Origin": "http://111.229.33.190:8081",
+            "Referer": "http://111.229.33.190:8081/index.php?r=dashboard%2Fdashboard",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "_csrf=d2f26ceefec150d29574003eaa0b01dbb40b5351ae0d5be5d7a75d55b99729f6a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22XWVRqu7Q2DZE4oHAxCv9K0K6ihvKQ_Y2%22%3B%7D; _identity=e079f2bf2d4b97125bc804af14e5ed68298584d846ec07a27b117a6b2cbbab2aa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B1%2C%22d9c8125d-8857-4ae2-8885-e01f51231df3%22%2C2592000%5D%22%3B%7D; PHPSESSID=j1kp2hk9i37g4933c6n7khehn9"
+        }
+    },
+    "API_86": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/space/space/follow",
+        "method": "Post",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "cguid"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "111.229.33.190:8081",
+            "Proxy-Connection": "keep-alive",
+            "Content-Length": "0",
+            "X-CSRF-Token": "DDzssSTeccGgnY-PYavpLhYh_-9rz5m6fUmUEIQpr_NdcZXZd4QLiNPa_bwRxNoDI3aJgyKf4PhKZN55ygSahw==",
+            "X-Requested-With": "XMLHttpRequest",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+            "Accept": "*/*",
+            "Origin": "http://111.229.33.190:8081",
+            "Referer": "http://111.229.33.190:8081/index.php?r=space%2Fspaces",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "_csrf=26c363e4bc40a0a8c940f0e36c2109996378e17b05560f29438004beda7d8a82a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22QMyhSZzIsGr3po3-5WvlIPyB7-JiN-5t%22%3B%7D; _identity=90c4d590c8f2fcde7fd8bf0c43b3573c6ddd2bd910fb2f901caeb6f2f0bfbf7ba%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B5%2C%22b92568e9-c3d5-4d87-b045-c39b1aa18901%22%2C2592000%5D%22%3B%7D; PHPSESSID=plg8v61orp962p2ti6kvvo4igi"
+        }
+    },
+    "API_87": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/user/profile/follow",
+        "method": "Post",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "cguid"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "111.229.33.190:8081",
+            "Proxy-Connection": "keep-alive",
+            "Content-Length": "0",
+            "X-CSRF-Token": "1E8CMukl1CmXvPl_d5WckSRXMAv5HnUqYmrX-X7hNa2FAntaun-uYOT7i0wH-q-8EQBGZ7BODGhVR52QMMwA2Q==",
+            "X-Requested-With": "XMLHttpRequest",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+            "Accept": "*/*",
+            "Origin": "http://111.229.33.190:8081",
+            "Referer": "http://111.229.33.190:8081/index.php?r=user%2Fprofile&cguid=d9c8125d-8857-4ae2-8885-e01f51231df3",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "_csrf=26c363e4bc40a0a8c940f0e36c2109996378e17b05560f29438004beda7d8a82a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22QMyhSZzIsGr3po3-5WvlIPyB7-JiN-5t%22%3B%7D; _identity=90c4d590c8f2fcde7fd8bf0c43b3573c6ddd2bd910fb2f901caeb6f2f0bfbf7ba%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B5%2C%22b92568e9-c3d5-4d87-b045-c39b1aa18901%22%2C2592000%5D%22%3B%7D; PHPSESSID=plg8v61orp962p2ti6kvvo4igi"
+        }
+    },
+    "API_88": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/user/profile/unfollow",
+        "method": "Post",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "cguid"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "111.229.33.190:8081",
+            "Proxy-Connection": "keep-alive",
+            "Content-Length": "0",
+            "X-CSRF-Token": "1E8CMukl1CmXvPl_d5WckSRXMAv5HnUqYmrX-X7hNa2FAntaun-uYOT7i0wH-q-8EQBGZ7BODGhVR52QMMwA2Q==",
+            "X-Requested-With": "XMLHttpRequest",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+            "Accept": "*/*",
+            "Origin": "http://111.229.33.190:8081",
+            "Referer": "http://111.229.33.190:8081/index.php?r=user%2Fprofile&cguid=d9c8125d-8857-4ae2-8885-e01f51231df3",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "_csrf=26c363e4bc40a0a8c940f0e36c2109996378e17b05560f29438004beda7d8a82a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22QMyhSZzIsGr3po3-5WvlIPyB7-JiN-5t%22%3B%7D; _identity=90c4d590c8f2fcde7fd8bf0c43b3573c6ddd2bd910fb2f901caeb6f2f0bfbf7ba%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B5%2C%22b92568e9-c3d5-4d87-b045-c39b1aa18901%22%2C2592000%5D%22%3B%7D; PHPSESSID=plg8v61orp962p2ti6kvvo4igi"
+        }
+    },
+    "API_89": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/comment/comment/post",
+        "method": "Post",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [],
+        "sample_body": {
+            "mimeType": "application/x-www-form-urlencoded; charset=UTF-8",
+            "params": [
+                {
+                    "name": "_csrf",
+                    "value": "GLS6CcefITb--67jkpWS33j5BVehx3nREvZ31H-yDpxJ-cNhlMVbf4283NDi-qHyTa5zO-iXAJMl2z29MZ876A==",
+                    "comment": ""
+                },
+                {
+                    "name": "objectModel",
+                    "value": "humhub\\modules\\post\\models\\Post",
+                    "comment": ""
+                },
+                {
+                    "name": "objectId",
+                    "value": "2",
+                    "comment": ""
+                },
+                {
+                    "name": "Comment[message]",
+                    "value": "",
+                    "comment": ""
+                }
+            ],
+            "comment": ""
+        },
+        "sample_headers": {
+            "Host": "111.229.33.190:8081",
+            "Proxy-Connection": "keep-alive",
+            "Content-Length": "183",
+            "X-CSRF-Token": "CQYBnd767rEX5RCQQgxxuy9d2a3aaToQbcdWcoWqpMZYS3j1jaCU-GSiYqMyY0KWGgqvwZM5Q1Ja6hwby4eRsg==",
+            "X-Requested-With": "XMLHttpRequest",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+            "Accept": "text/html, */*; q=0.01",
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+            "Origin": "http://111.229.33.190:8081",
+            "Referer": "http://111.229.33.190:8081/index.php?r=user%2Fprofile&cguid=d9c8125d-8857-4ae2-8885-e01f51231df3",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "_csrf=26c363e4bc40a0a8c940f0e36c2109996378e17b05560f29438004beda7d8a82a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22QMyhSZzIsGr3po3-5WvlIPyB7-JiN-5t%22%3B%7D; _identity=90c4d590c8f2fcde7fd8bf0c43b3573c6ddd2bd910fb2f901caeb6f2f0bfbf7ba%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B5%2C%22b92568e9-c3d5-4d87-b045-c39b1aa18901%22%2C2592000%5D%22%3B%7D; PHPSESSID=plg8v61orp962p2ti6kvvo4igi"
+        }
+    },
+    "API_90": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/content/content/pin",
+        "method": "Post",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "id"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "111.229.33.190:8081",
+            "Proxy-Connection": "keep-alive",
+            "Content-Length": "0",
+            "X-CSRF-Token": "8NbcFI4hIe00II45ib9ksXOGu6Iy5hQ8GAcef-Vteuihm6V83XtbpEdn_Ar50FecRtHNznu2bX4vKlQWq0BPnA==",
+            "X-Requested-With": "XMLHttpRequest",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+            "Accept": "*/*",
+            "Origin": "http://111.229.33.190:8081",
+            "Referer": "http://111.229.33.190:8081/index.php?r=user%2Fprofile&cguid=98cb7660-54d3-4fbc-a874-8e0f7b8f5882",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "_csrf=26c363e4bc40a0a8c940f0e36c2109996378e17b05560f29438004beda7d8a82a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22QMyhSZzIsGr3po3-5WvlIPyB7-JiN-5t%22%3B%7D; _identity=90c4d590c8f2fcde7fd8bf0c43b3573c6ddd2bd910fb2f901caeb6f2f0bfbf7ba%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B5%2C%22b92568e9-c3d5-4d87-b045-c39b1aa18901%22%2C2592000%5D%22%3B%7D; PHPSESSID=plg8v61orp962p2ti6kvvo4igi"
+        }
+    },
+    "API_91": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/comment/comment/show",
+        "method": "Post",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            "请填充所有路径变量的索引"
+        ],
+        "identified_request_params": [
+            "objectModel",
+            "objectId"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "111.229.33.190:8081",
+            "Proxy-Connection": "keep-alive",
+            "Content-Length": "0",
+            "X-CSRF-Token": "8NbcFI4hIe00II45ib9ksXOGu6Iy5hQ8GAcef-Vteuihm6V83XtbpEdn_Ar50FecRtHNznu2bX4vKlQWq0BPnA==",
+            "X-Requested-With": "XMLHttpRequest",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+            "Accept": "text/html, */*; q=0.01",
+            "Origin": "http://111.229.33.190:8081",
+            "Referer": "http://111.229.33.190:8081/index.php?r=user%2Fprofile&cguid=98cb7660-54d3-4fbc-a874-8e0f7b8f5882",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "_csrf=26c363e4bc40a0a8c940f0e36c2109996378e17b05560f29438004beda7d8a82a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22QMyhSZzIsGr3po3-5WvlIPyB7-JiN-5t%22%3B%7D; _identity=90c4d590c8f2fcde7fd8bf0c43b3573c6ddd2bd910fb2f901caeb6f2f0bfbf7ba%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A50%3A%22%5B5%2C%22b92568e9-c3d5-4d87-b045-c39b1aa18901%22%2C2592000%5D%22%3B%7D; PHPSESSID=plg8v61orp962p2ti6kvvo4igi"
+        }
     }
 }

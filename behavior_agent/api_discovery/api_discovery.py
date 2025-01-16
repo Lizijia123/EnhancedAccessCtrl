@@ -23,8 +23,6 @@ import fasttext.util
 
 
 def init_drain3():
-    logger = logging.getLogger(__name__)
-    logging.basicConfig(stream=sys.stdout, level=logging.FATAL, format='%(message)s')
 
     config = TemplateMinerConfig()
     config.load(f"{dirname(__file__)}\\api_discovery.ini")

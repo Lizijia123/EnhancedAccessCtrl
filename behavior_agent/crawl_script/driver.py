@@ -7,6 +7,7 @@ from behavior_agent.crawl_script.loginer import *
 from selenium import webdriver
 
 from behavior_agent.crawl_script.web_element_crawler import WebElementCrawler
+from config.log import LOGGER
 
 if __name__ == '__main__':
     driver = webdriver.Edge()
@@ -17,18 +18,18 @@ if __name__ == '__main__':
     # TODO 目标项目的登录器
     loginer = HumhubLoginer(driver)
 
-    print("Fetching user cookies...")
+    LOGGER.info("Fetching user cookies...")
     cookies = [loginer.login(user['uname'], user['pwd']) for user in users]
     driver.quit()
 
-    print("Fetching urls...")
+    LOGGER.info("Fetching urls...")
     url_set = []
     for cookie_list in cookies:
         url_set.append(BasicURLScraper(ROOT_URL[CURR_APP_NAME], cookie_list).crawl())
 
-    print("Crawling web elements...")
+    LOGGER.info("Crawling web elements...")
     # TODO 实时进度
-    for i in range(1, len(url_set)):
+    for i in range(3, len(url_set)):
         urls = random.sample(list(url_set[i]), min(len(url_set[i]), URL_SAMPLE))
         cookie_list = cookies[i]
         for url in urls:

@@ -30,22 +30,27 @@ def convert_to_dict(header_str):
 
 def extract_api_log_to_csv():
     LOGGER.info(f'从{CURR_APP_NAME}爬虫记录中提取API流量...')
+
     url_log_path = f"{dirname(__file__)}\\crawl_script\\crawl_log\\{CURR_APP_NAME}_url_crawl_log.csv"
-    web_element_log_element_path = f"{dirname(__file__)}\\crawl_script\\crawl_log\\{CURR_APP_NAME}_web_element_crawl_log.csv"
+    web_element_log_path = f"{dirname(__file__)}\\crawl_script\\crawl_log\\{CURR_APP_NAME}_web_element_crawl_log.csv"
+    burp_log_path = f"{dirname(__file__)}\\crawl_script\\crawl_log\\{CURR_APP_NAME}_burp_log.csv"
 
     url_log = pd.read_csv(url_log_path)
-    web_element_log = pd.read_csv(web_element_log_element_path)
+    web_element_log = pd.read_csv(web_element_log_path)
+    burp_log = pd.read_csv(burp_log_path)
 
     url_log = url_log[url_log['URL'].str.contains(ROOT_URL[CURR_APP_NAME])]
     web_element_log = web_element_log[web_element_log['url'].str.contains(ROOT_URL[CURR_APP_NAME])]
+    burp_log = burp_log[burp_log['url'].str.contains(ROOT_URL[CURR_APP_NAME])]
 
     if URL_ENCODING_CONVERT[CURR_APP_NAME]:
         url_log['URL'] = url_log['URL'].apply(url_decoding)
         web_element_log['url'] = web_element_log['url'].apply(url_decoding)
+        burp_log['url'] = burp_log['url'].apply(url_decoding)
 
-    # 确保 matches_static 函数正确使用，它将返回一个布尔型的 Series
     url_log = url_log[url_log['URL'].apply(not_matches_static)]
     web_element_log = web_element_log[web_element_log['url'].apply(not_matches_static)]
+    burp_log = burp_log[burp_log['url'].apply(not_matches_static)]
 
     url_log['method'] = url_log['Method'].apply(lambda x: x[0].upper() + x[1:].lower() if pd.notnull(x) else x)
     url_log['url'] = url_log['URL']
@@ -62,7 +67,12 @@ def extract_api_log_to_csv():
     web_element_log['type'] = 0
     web_element_log = web_element_log[['method', 'url', 'header', 'data', 'time', 'type']]
 
-    api_log = pd.concat([url_log, web_element_log], ignore_index=True)
+    burp_log['method'] = burp_log['method'].apply(lambda x: x[0].upper() + x[1:].lower() if pd.notnull(x) else x)
+    burp_log['time'] = 0
+    burp_log['type'] = 0
+    burp_log = burp_log[['method', 'url', 'header', 'data', 'time', 'type']]
+
+    api_log = pd.concat([url_log, web_element_log, burp_log], ignore_index=True)
 
     index_list = list(range(len(api_log)))
     # 在位置 0 插入行号列

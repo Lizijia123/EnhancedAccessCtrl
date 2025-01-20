@@ -8,6 +8,8 @@ from config.basic import CURR_APP_NAME
 from config.crawling import URL_SET_MAX_PER_USER
 from urllib.parse import urljoin
 
+from config.log import LOGGER
+
 
 # TODO 判断url是否相同
 def are_urls_similar(url1, url2):
@@ -80,6 +82,6 @@ class BasicURLScraper:
                         break
                 if not visited:
                     to_visit.append(url)
-        print(f'Fetched {len(self.visited)} urls:')
-        print('\n'.join(self.visited))
+        LOGGER.info(f'Fetched {len(self.visited)} urls:')
+        LOGGER.info('       '.join(self.visited))
         return self.visited

@@ -21,6 +21,9 @@ def collect_param_set(api_log, api_list):
     从爬虫记录中收集API列表中API的可取参数集合
     """
     api_log['api'] = api_log.apply(recognize_api, args=(api_list,), axis=1)
+
+    api_log[['api', 'url']].to_csv('apis.csv', index=False)
+
     # api_log['api'].to_csv('index.csv', index=False)
     api_log.apply(collect_param, args=(api_list,), axis=1)
     param_set_to_file()
@@ -80,7 +83,10 @@ def collect_param(record, api_list):
             continue
         param = quote(param)
         if query not in param_set[api_title]['query_params']:
-            param_set[api_title]['query_params'][query] = [param]
+            if len(param_set[api_title]['query_params']) == 0:
+                param_set[api_title]['query_params'][query] = [param]
+            else:  # 此流量记录中的某个查询参数项，从未在此API的其他流量记录中出现过
+                param_set[api_title]['query_params'][query] = [None, param]
         else:
             param_set[api_title]['query_params'][query].append(param)
 
@@ -90,7 +96,10 @@ def collect_param(record, api_list):
         # print(record['data'])
         for field in record['data']:
             if field not in param_set[api_title]['request_data']:
-                param_set[api_title]['request_data'][field] = [record['data'][field]]
+                if len(param_set[api_title]['request_data']) == 0:
+                    param_set[api_title]['request_data'][field] = [record['data'][field]]
+                else:  # 此流量记录中，请求体的某个字段，从未在此API的其他流量记录中出现过
+                    param_set[api_title]['request_data'][field] = [None, record['data'][field]]
             else:
                 param_set[api_title]['request_data'][field].append(record['data'][field])
 
@@ -98,4 +107,3 @@ def collect_param(record, api_list):
         'url': record['url'],
         'data': None if record['data'] is None or pd.isnull(record['data']) else record['data']
     })
-

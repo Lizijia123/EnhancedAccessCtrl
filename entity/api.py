@@ -17,15 +17,9 @@ class API:
         self.sample_headers = info['sample_headers']
 
     def matches(self, method, url):
+        # TODO 需要处理有路径变量的情况！！
         return method == self.method and urlparse(url).path == self.path
 
-    #
-    # @classmethod
-    # def from_record(cls, record):
-    #     return API({})
-
-    def set_index(self, index):
-        self.index = index
 
     def to_dict(self):
         return {
@@ -45,13 +39,14 @@ class API:
         api_list = []
         proj_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         with open(f'{proj_path}\\behavior_agent\\api_doc\\{CURR_APP_NAME}.json', 'r', encoding='utf-8') as f:
-            api_json = json.load(f, ensure_ascii=False)
+            api_json = json.load(f)
             for api_title in api_json:
                 api_list.append(API({
                     'method': api_json[api_title]['method'],
                     'path': api_json[api_title]['path'],
-                    'variable_indexes': api_json[api_title]['variable_indexes'],
-                    'query_params': api_json[api_title]['query_params'],
+                    # TODO
+                    'variable_indexes': [], # api_json[api_title]['variable_indexes'],
+                    'query_params': api_json[api_title]['identified_request_params'], # api_json[api_title]['query_params'],
                     'sample_body': api_json[api_title]['sample_body'],
                     'sample_headers': api_json[api_title]['sample_headers']
                 }, index=int(api_title[4:])))

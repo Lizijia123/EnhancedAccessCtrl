@@ -70,6 +70,7 @@ def xml_to_csv(xml_file, csv_file):
             header = parse_request_headers(request)
             data = None
             if method == 'POST':
+                # TODO 根据content-type，解析body
                 data = urlencoded_to_json(request.split('\n')[-1])
 
             status = item.find('status').text

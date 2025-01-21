@@ -53,7 +53,8 @@ def collect_param(record, api_list):
     # print(record['api'])
     global param_set
 
-    api = api_list[int(record['api'])]
+    api = [api for api in api_list if int(api.index) == int(record['api'])][0]
+
     api_title = 'API_' + str(int(record['api']))
     if api_title not in param_set:
         param_set[api_title] = {
@@ -68,6 +69,7 @@ def collect_param(record, api_list):
     path = parsed_url.path
     segments = path[1:].split('/')
     for variable_index in api.variable_indexes:
+        print(api.variable_indexes)
         if variable_index >= len(segments):
             break
         variable = segments[variable_index]

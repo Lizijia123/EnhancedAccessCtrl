@@ -23,10 +23,10 @@ def gen_data_set():
     malicious_num = MALICIOUS_USER_NUM[CURR_APP_NAME]
     for role in normal_num:
         for i in range(normal_num[role]):
-            users.append(Agent(role=role, action_step=ACTION_STEP, malicious=False))
+            users.append(Agent(role=role, action_step=ACTION_STEP, malicious=False, unlogged=(True if role == 'unlogged_in_user' else False)))
     for role in malicious_num:
         for i in range(malicious_num[role]):
-            users.append(Agent(role=role, action_step=ACTION_STEP, malicious=True))
+            users.append(Agent(role=role, action_step=ACTION_STEP, malicious=True, unlogged=(True if role == 'unlogged_in_user' else False)))
     random.shuffle(users)
 
     final_data_set = []
@@ -35,7 +35,7 @@ def gen_data_set():
     for user in users:
         user.exec()
         api_seq, action_type_seq = user.api_sequence, user.action_type_seq
-        user_data, seq_valid = try_gen_data_seq(api_seq, action_type_seq, user.uname)
+        user_data, seq_valid = try_gen_data_seq(api_seq, action_type_seq, user.uname, unlogged=user.unlogged)
         for i in range(len(api_seq)):
             # method, url, header, data, data_valid
             user_data[i].append(seq_valid)  # seq_valid
@@ -55,30 +55,32 @@ def gen_data_set():
     df.to_csv(f'{dirname(__file__)}\\simulated_traffic_data\\{CURR_APP_NAME}.csv', index=False)
 
 
-def try_gen_data_seq(api_seq, action_type_seq, uname):
+def try_gen_data_seq(api_seq, action_type_seq, uname, unlogged=False):
     """
     TODO
     按一定策略轮询尝试填充参数/交互校验/生成流量
     """
     seq_valid = True
 
-    auth_list = AUTH[CURR_APP_NAME]
-    pwd = ''
-    for role in auth_list:
-        find = False
-        for auth_item in auth_list[role]:
-            if uname == auth_item['uname']:
-                find = True
-                pwd = auth_item['pwd']
-                break
-        if find:
-            break
+    cookie_list = []
 
-    driver = webdriver.Edge()
-    # TODO 目标项目的登录器
-    loginer = HumhubLoginer(driver)
-    cookies = loginer.login(uname, pwd)
-    driver.quit()
+    if not unlogged:
+        auth_list = AUTH[CURR_APP_NAME]
+        pwd = ''
+        for role in auth_list:
+            find = False
+            for auth_item in auth_list[role]:
+                if uname == auth_item['uname']:
+                    find = True
+                    pwd = auth_item['pwd']
+                    break
+            if find:
+                break
+        driver = webdriver.Edge()
+        # TODO 目标项目的登录器
+        loginer = HumhubLoginer(driver)
+        cookie_list = loginer.login(uname, pwd)
+        driver.quit()
 
     injected_data_seq = param_injection_for_api_seq(api_seq)
     traffic_data_seq = []
@@ -90,7 +92,7 @@ def try_gen_data_seq(api_seq, action_type_seq, uname):
 
         while try_time < PARAM_INJECTION_MAX_RETRY:
             url, req_data = injected_data_seq[i]['url'], injected_data_seq[i]['data']
-            calling_info = call_api(api_seq[i], url, req_data, cookies)
+            calling_info = call_api(api_seq[i], url, req_data, cookie_list=([] if unlogged else cookie_list))
             data_valid = INTERACTION_JUDGEMENT[CURR_APP_NAME](action_type_seq[i], calling_info)
             if data_valid:
                 break

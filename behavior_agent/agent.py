@@ -18,10 +18,11 @@ class Agent:
         cls.brain = Brain()
         cls.apis = API.from_api_doc()
 
-    def __init__(self, role, action_step, malicious=False):
+    def __init__(self, role, action_step, malicious=False, unlogged=False):
         self.role = role
         self.action_step = action_step
         self.malicious = malicious
+        self.unlogged = unlogged
 
         self.api_sequence = []
         self.malicious_api_indexes = []

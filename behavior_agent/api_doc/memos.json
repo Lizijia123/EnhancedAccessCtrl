@@ -1,0 +1,1293 @@
+{
+    "API_0": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/api/v1/memo/<NUM>",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            3
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "47.97.114.24:5230",
+            "Proxy-Connection": "keep-alive",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/132.0.0.0 Safari/537.36 Edg/132.0.0.0",
+            "Accept": "application/json, text/plain, */*",
+            "Referer": "http://47.97.114.24:5230/m/20",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "memos.access-token=eyJhbGciOiJIUzI1NiIsImtpZCI6InYxIiwidHlwIjoiSldUIn0.eyJuYW1lIjoidXNlckEiLCJpc3MiOiJtZW1vcyIsInN1YiI6IjIiLCJhdWQiOlsidXNlci5hY2Nlc3MtdG9rZW4iXSwiZXhwIjoxNzM4MjQ2OTYwLCJpYXQiOjE3Mzc2NDIxNjB9.JR_NZDqeVkIZpHqzCpcRetFQwFtwlnpdpEAsckAwx7k"
+        }
+    },
+    "API_1": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/m/<NUM>",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            1
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "47.97.114.24:5230",
+            "Proxy-Connection": "keep-alive",
+            "Upgrade-Insecure-Requests": "1",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/132.0.0.0 Safari/537.36 Edg/132.0.0.0",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "memos.access-token=eyJhbGciOiJIUzI1NiIsImtpZCI6InYxIiwidHlwIjoiSldUIn0.eyJuYW1lIjoidXNlckEiLCJpc3MiOiJtZW1vcyIsInN1YiI6IjIiLCJhdWQiOlsidXNlci5hY2Nlc3MtdG9rZW4iXSwiZXhwIjoxNzM4MjQ2OTYwLCJpYXQiOjE3Mzc2NDIxNjB9.JR_NZDqeVkIZpHqzCpcRetFQwFtwlnpdpEAsckAwx7k"
+        }
+    },
+    "API_2": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/api/v1/user/name/<UNAME>",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            4
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "47.97.114.24:5230",
+            "Proxy-Connection": "keep-alive",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/132.0.0.0 Safari/537.36 Edg/132.0.0.0",
+            "Accept": "application/json, text/plain, */*",
+            "Referer": "http://47.97.114.24:5230/explore",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6"
+        }
+    },
+    "API_3": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/o/r/<NUM>",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            2
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "47.97.114.24:5230",
+            "Proxy-Connection": "keep-alive",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/132.0.0.0 Safari/537.36 Edg/132.0.0.0",
+            "Accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
+            "Referer": "http://47.97.114.24:5230/",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "memos.access-token=eyJhbGciOiJIUzI1NiIsImtpZCI6InYxIiwidHlwIjoiSldUIn0.eyJuYW1lIjoidXNlckEiLCJpc3MiOiJtZW1vcyIsInN1YiI6IjIiLCJhdWQiOlsidXNlci5hY2Nlc3MtdG9rZW4iXSwiZXhwIjoxNzM4MjQ2OTYwLCJpYXQiOjE3Mzc2NDIxNjB9.JR_NZDqeVkIZpHqzCpcRetFQwFtwlnpdpEAsckAwx7k"
+        }
+    },
+    "API_4": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "User-Agent": "python-requests/2.32.3",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept": "*/*",
+            "Connection": "keep-alive",
+            "Cookie": "memos.access-token=eyJhbGciOiJIUzI1NiIsImtpZCI6InYxIiwidHlwIjoiSldUIn0.eyJuYW1lIjoiYWRtaW4iLCJpc3MiOiJtZW1vcyIsInN1YiI6IjEiLCJhdWQiOlsidXNlci5hY2Nlc3MtdG9rZW4iXSwiZXhwIjoxNzM4MjQ1MTY4LCJpYXQiOjE3Mzc2NDAzNjh9.n7LsvNEMB78KMkWv7FrSOJOPaE13gD3howzEP6lgfik"
+        }
+    },
+    "API_6": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/api/v1/user/me",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "47.97.114.24:5230",
+            "Proxy-Connection": "keep-alive",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/132.0.0.0 Safari/537.36 Edg/132.0.0.0",
+            "Accept": "application/json, text/plain, */*",
+            "Referer": "http://47.97.114.24:5230/",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6"
+        }
+    },
+    "API_7": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/api/v1/memo/all",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [],
+        "identified_request_params": [
+            "limit"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "47.97.114.24:5230",
+            "Proxy-Connection": "keep-alive",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/132.0.0.0 Safari/537.36 Edg/132.0.0.0",
+            "Accept": "application/json, text/plain, */*",
+            "Referer": "http://47.97.114.24:5230/explore",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6"
+        }
+    },
+    "API_8": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/explore",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "47.97.114.24:5230",
+            "Proxy-Connection": "keep-alive",
+            "Cache-Control": "max-age=0",
+            "Upgrade-Insecure-Requests": "1",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/132.0.0.0 Safari/537.36 Edg/132.0.0.0",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "memos.access-token=eyJhbGciOiJIUzI1NiIsImtpZCI6InYxIiwidHlwIjoiSldUIn0.eyJuYW1lIjoiYWRtaW4iLCJpc3MiOiJtZW1vcyIsInN1YiI6IjEiLCJhdWQiOlsidXNlci5hY2Nlc3MtdG9rZW4iXSwiZXhwIjoxNzM4MjQ1NzQ4LCJpYXQiOjE3Mzc2NDA5NDh9.0jz7tUZ47zGUi_ea8RlP0MylncpBOAeB8xDhmUDxJE0"
+        }
+    },
+    "API_9": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/api/v1/memo",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [],
+        "identified_request_params": [
+            "creatorUsername",
+            "rowStatus",
+            "limit"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "47.97.114.24:5230",
+            "Proxy-Connection": "keep-alive",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/132.0.0.0 Safari/537.36 Edg/132.0.0.0",
+            "Accept": "application/json, text/plain, */*",
+            "Referer": "http://47.97.114.24:5230/u/userB",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "memos.access-token=eyJhbGciOiJIUzI1NiIsImtpZCI6InYxIiwidHlwIjoiSldUIn0.eyJuYW1lIjoiYWRtaW4iLCJpc3MiOiJtZW1vcyIsInN1YiI6IjEiLCJhdWQiOlsidXNlci5hY2Nlc3MtdG9rZW4iXSwiZXhwIjoxNzM4MjQ2OTU0LCJpYXQiOjE3Mzc2NDIxNTR9.7KrcYR1AAMimcudLrwpta6LrCGFwIEuLCvMarvxtN24"
+        }
+    },
+    "API_11": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/review",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "47.97.114.24:5230",
+            "Proxy-Connection": "keep-alive",
+            "Upgrade-Insecure-Requests": "1",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/132.0.0.0 Safari/537.36 Edg/132.0.0.0",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "memos.access-token=eyJhbGciOiJIUzI1NiIsImtpZCI6InYxIiwidHlwIjoiSldUIn0.eyJuYW1lIjoiYWRtaW4iLCJpc3MiOiJtZW1vcyIsInN1YiI6IjEiLCJhdWQiOlsidXNlci5hY2Nlc3MtdG9rZW4iXSwiZXhwIjoxNzM4MjQ2OTU0LCJpYXQiOjE3Mzc2NDIxNTR9.7KrcYR1AAMimcudLrwpta6LrCGFwIEuLCvMarvxtN24"
+        }
+    },
+    "API_13": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/api/v1/resource",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [],
+        "identified_request_params": [
+            "limit"
+        ],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "47.97.114.24:5230",
+            "Proxy-Connection": "keep-alive",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/132.0.0.0 Safari/537.36 Edg/132.0.0.0",
+            "Accept": "application/json, text/plain, */*",
+            "Referer": "http://47.97.114.24:5230/resources",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "memos.access-token=eyJhbGciOiJIUzI1NiIsImtpZCI6InYxIiwidHlwIjoiSldUIn0.eyJuYW1lIjoiYWRtaW4iLCJpc3MiOiJtZW1vcyIsInN1YiI6IjEiLCJhdWQiOlsidXNlci5hY2Nlc3MtdG9rZW4iXSwiZXhwIjoxNzM4MjQ2OTU0LCJpYXQiOjE3Mzc2NDIxNTR9.7KrcYR1AAMimcudLrwpta6LrCGFwIEuLCvMarvxtN24"
+        }
+    },
+    "API_14": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/resources",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "47.97.114.24:5230",
+            "Proxy-Connection": "keep-alive",
+            "Upgrade-Insecure-Requests": "1",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/132.0.0.0 Safari/537.36 Edg/132.0.0.0",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "memos.access-token=eyJhbGciOiJIUzI1NiIsImtpZCI6InYxIiwidHlwIjoiSldUIn0.eyJuYW1lIjoiYWRtaW4iLCJpc3MiOiJtZW1vcyIsInN1YiI6IjEiLCJhdWQiOlsidXNlci5hY2Nlc3MtdG9rZW4iXSwiZXhwIjoxNzM4MjQ2OTU0LCJpYXQiOjE3Mzc2NDIxNTR9.7KrcYR1AAMimcudLrwpta6LrCGFwIEuLCvMarvxtN24"
+        }
+    },
+    "API_15": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/u/<UNAME>",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            1
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "47.97.114.24:5230",
+            "Proxy-Connection": "keep-alive",
+            "Upgrade-Insecure-Requests": "1",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/132.0.0.0 Safari/537.36 Edg/132.0.0.0",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "memos.access-token=eyJhbGciOiJIUzI1NiIsImtpZCI6InYxIiwidHlwIjoiSldUIn0.eyJuYW1lIjoidXNlckEiLCJpc3MiOiJtZW1vcyIsInN1YiI6IjIiLCJhdWQiOlsidXNlci5hY2Nlc3MtdG9rZW4iXSwiZXhwIjoxNzM4MjQ2OTYwLCJpYXQiOjE3Mzc2NDIxNjB9.JR_NZDqeVkIZpHqzCpcRetFQwFtwlnpdpEAsckAwx7k"
+        }
+    },
+    "API_17": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/setting",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "47.97.114.24:5230",
+            "Proxy-Connection": "keep-alive",
+            "Upgrade-Insecure-Requests": "1",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/132.0.0.0 Safari/537.36 Edg/132.0.0.0",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "Cookie": "memos.access-token=eyJhbGciOiJIUzI1NiIsImtpZCI6InYxIiwidHlwIjoiSldUIn0.eyJuYW1lIjoidXNlckMiLCJpc3MiOiJtZW1vcyIsInN1YiI6IjQiLCJhdWQiOlsidXNlci5hY2Nlc3MtdG9rZW4iXSwiZXhwIjoxNzM4MjQ2OTczLCJpYXQiOjE3Mzc2NDIxNzN9.VntHpJtzUHli6iVZfx6iQPs5wyvVQ-_53C0_3lsegC8"
+        }
+    },
+    "API_22": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/api/v1/system/setting",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "47.97.114.24:5230",
+            "Accept": "application/json, text/plain, */*",
+            "Accept-Language": "zh-CN",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.6533.100 Safari/537.36",
+            "Referer": "http://47.97.114.24:5230/setting",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Cookie": "nc_sameSiteCookielax=true; nc_sameSiteCookiestrict=true; memos.access-token=eyJhbGciOiJIUzI1NiIsImtpZCI6InYxIiwidHlwIjoiSldUIn0.eyJuYW1lIjoiYWRtaW4iLCJpc3MiOiJtZW1vcyIsInN1YiI6IjEiLCJhdWQiOlsidXNlci5hY2Nlc3MtdG9rZW4iXSwiZXhwIjoxNzM4MjQ0MTUzLCJpYXQiOjE3Mzc2MzkzNTN9.IXtohO12CLbPyFayqAE0-LNlUhvfljYpZ342sMTnXVk",
+            "Connection": "keep-alive"
+        }
+    },
+    "API_24": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/api/v1/storage",
+        "method": "Get",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "47.97.114.24:5230",
+            "Accept": "application/json, text/plain, */*",
+            "Accept-Language": "zh-CN",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.6533.100 Safari/537.36",
+            "Referer": "http://47.97.114.24:5230/setting",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Cookie": "nc_sameSiteCookielax=true; nc_sameSiteCookiestrict=true; memos.access-token=eyJhbGciOiJIUzI1NiIsImtpZCI6InYxIiwidHlwIjoiSldUIn0.eyJuYW1lIjoiYWRtaW4iLCJpc3MiOiJtZW1vcyIsInN1YiI6IjEiLCJhdWQiOlsidXNlci5hY2Nlc3MtdG9rZW4iXSwiZXhwIjoxNzM4MjQ0MTUzLCJpYXQiOjE3Mzc2MzkzNTN9.IXtohO12CLbPyFayqAE0-LNlUhvfljYpZ342sMTnXVk",
+            "Connection": "keep-alive"
+        }
+    },
+    "API_25": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/api/v1/memo/<NUM>/organizer",
+        "method": "Post",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            3
+        ],
+        "identified_request_params": [],
+        "sample_body": {
+            "pinned": true
+        },
+        "sample_headers": {
+            "Host": "47.97.114.24:5230",
+            "Content-Length": "15",
+            "Accept": "application/json, text/plain, */*",
+            "Accept-Language": "zh-CN",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.6533.100 Safari/537.36",
+            "Content-Type": "application/json",
+            "Origin": "http://47.97.114.24:5230",
+            "Referer": "http://47.97.114.24:5230/",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Cookie": "nc_sameSiteCookielax=true; nc_sameSiteCookiestrict=true; memos.access-token=eyJhbGciOiJIUzI1NiIsImtpZCI6InYxIiwidHlwIjoiSldUIn0.eyJuYW1lIjoidXNlckEiLCJpc3MiOiJtZW1vcyIsInN1YiI6IjIiLCJhdWQiOlsidXNlci5hY2Nlc3MtdG9rZW4iXSwiZXhwIjoxNzM4MjQzMTE5LCJpYXQiOjE3Mzc2MzgzMTl9.dTULMgW2srCHR5epcY4zrXDTusBxphM8NGGibCrKB0w",
+            "Connection": "keep-alive"
+        }
+    },
+    "API_27": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/api/v1/memo",
+        "method": "Post",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [],
+        "identified_request_params": [],
+        "sample_body": {
+            "content": "A1",
+            "visibility": "PRIVATE",
+            "resourceIdList": [],
+            "relationList": []
+        },
+        "sample_headers": {
+            "Host": "47.97.114.24:5230",
+            "Content-Length": "77",
+            "Accept": "application/json, text/plain, */*",
+            "Accept-Language": "zh-CN",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.6533.100 Safari/537.36",
+            "Content-Type": "application/json",
+            "Origin": "http://47.97.114.24:5230",
+            "Referer": "http://47.97.114.24:5230/",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Cookie": "nc_sameSiteCookielax=true; nc_sameSiteCookiestrict=true; memos.access-token=eyJhbGciOiJIUzI1NiIsImtpZCI6InYxIiwidHlwIjoiSldUIn0.eyJuYW1lIjoidXNlckEiLCJpc3MiOiJtZW1vcyIsInN1YiI6IjIiLCJhdWQiOlsidXNlci5hY2Nlc3MtdG9rZW4iXSwiZXhwIjoxNzM4MjQzMTE5LCJpYXQiOjE3Mzc2MzgzMTl9.dTULMgW2srCHR5epcY4zrXDTusBxphM8NGGibCrKB0w",
+            "Connection": "keep-alive"
+        }
+    },
+    "API_29": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/api/v1/tag",
+        "method": "Post",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [],
+        "identified_request_params": [],
+        "sample_body": {
+            "name": "HaHa"
+        },
+        "sample_headers": {
+            "Host": "47.97.114.24:5230",
+            "Content-Length": "15",
+            "Accept": "application/json, text/plain, */*",
+            "Accept-Language": "zh-CN",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.6533.100 Safari/537.36",
+            "Content-Type": "application/json",
+            "Origin": "http://47.97.114.24:5230",
+            "Referer": "http://47.97.114.24:5230/",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Cookie": "nc_sameSiteCookielax=true; nc_sameSiteCookiestrict=true; memos.access-token=eyJhbGciOiJIUzI1NiIsImtpZCI6InYxIiwidHlwIjoiSldUIn0.eyJuYW1lIjoidXNlckEiLCJpc3MiOiJtZW1vcyIsInN1YiI6IjIiLCJhdWQiOlsidXNlci5hY2Nlc3MtdG9rZW4iXSwiZXhwIjoxNzM4MjQzMTE5LCJpYXQiOjE3Mzc2MzgzMTl9.dTULMgW2srCHR5epcY4zrXDTusBxphM8NGGibCrKB0w",
+            "Connection": "keep-alive"
+        }
+    },
+    "API_31": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/api/v1/user/setting",
+        "method": "Post",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [],
+        "identified_request_params": [],
+        "sample_body": {
+            "key": "telegram-user-id",
+            "value": "\"\""
+        },
+        "sample_headers": {
+            "Host": "47.97.114.24:5230",
+            "Content-Length": "41",
+            "Accept": "application/json, text/plain, */*",
+            "Accept-Language": "zh-CN",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.6533.100 Safari/537.36",
+            "Content-Type": "application/json",
+            "Origin": "http://47.97.114.24:5230",
+            "Referer": "http://47.97.114.24:5230/setting",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Cookie": "nc_sameSiteCookielax=true; nc_sameSiteCookiestrict=true; memos.access-token=eyJhbGciOiJIUzI1NiIsImtpZCI6InYxIiwidHlwIjoiSldUIn0.eyJuYW1lIjoidXNlckEiLCJpc3MiOiJtZW1vcyIsInN1YiI6IjIiLCJhdWQiOlsidXNlci5hY2Nlc3MtdG9rZW4iXSwiZXhwIjoxNzM4MjQzMTE5LCJpYXQiOjE3Mzc2MzgzMTl9.dTULMgW2srCHR5epcY4zrXDTusBxphM8NGGibCrKB0w",
+            "Connection": "keep-alive"
+        }
+    },
+    "API_33": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/api/v1/resource",
+        "method": "Post",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [],
+        "identified_request_params": [],
+        "sample_body": {
+            "filename": "aa",
+            "externalLink": "htp:",
+            "type": "image/*",
+            "downloadToLocal": false
+        },
+        "sample_headers": {
+            "Host": "47.97.114.24:5230",
+            "Content-Length": "80",
+            "Accept": "application/json, text/plain, */*",
+            "Accept-Language": "zh-CN",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.6533.100 Safari/537.36",
+            "Content-Type": "application/json",
+            "Origin": "http://47.97.114.24:5230",
+            "Referer": "http://47.97.114.24:5230/resources",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Cookie": "nc_sameSiteCookielax=true; nc_sameSiteCookiestrict=true; memos.access-token=eyJhbGciOiJIUzI1NiIsImtpZCI6InYxIiwidHlwIjoiSldUIn0.eyJuYW1lIjoidXNlckIiLCJpc3MiOiJtZW1vcyIsInN1YiI6IjMiLCJhdWQiOlsidXNlci5hY2Nlc3MtdG9rZW4iXSwiZXhwIjoxNzM4MjQzNDE0LCJpYXQiOjE3Mzc2Mzg2MTR9.Yk15zdxY586EcFItwAh55WEFwy5m5YVtadpi3pdQKjM",
+            "Connection": "keep-alive"
+        }
+    },
+    "API_34": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/api/v1/user",
+        "method": "Post",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [],
+        "identified_request_params": [],
+        "sample_body": {
+            "username": "new",
+            "password": "202501",
+            "role": "USER"
+        },
+        "sample_headers": {
+            "Host": "47.97.114.24:5230",
+            "Content-Length": "52",
+            "Accept": "application/json, text/plain, */*",
+            "Accept-Language": "zh-CN",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.6533.100 Safari/537.36",
+            "Content-Type": "application/json",
+            "Origin": "http://47.97.114.24:5230",
+            "Referer": "http://47.97.114.24:5230/setting",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Cookie": "nc_sameSiteCookielax=true; nc_sameSiteCookiestrict=true; memos.access-token=eyJhbGciOiJIUzI1NiIsImtpZCI6InYxIiwidHlwIjoiSldUIn0.eyJuYW1lIjoiYWRtaW4iLCJpc3MiOiJtZW1vcyIsInN1YiI6IjEiLCJhdWQiOlsidXNlci5hY2Nlc3MtdG9rZW4iXSwiZXhwIjoxNzM4MjQ0MTUzLCJpYXQiOjE3Mzc2MzkzNTN9.IXtohO12CLbPyFayqAE0-LNlUhvfljYpZ342sMTnXVk",
+            "Connection": "keep-alive"
+        }
+    },
+    "API_35": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/api/v1/system/setting",
+        "method": "Post",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [],
+        "identified_request_params": [],
+        "sample_body": {
+            "name": "allow-signup",
+            "value": "True"
+        },
+        "sample_headers": {
+            "Host": "47.97.114.24:5230",
+            "Content-Length": "38",
+            "Accept": "application/json, text/plain, */*",
+            "Accept-Language": "zh-CN",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.6533.100 Safari/537.36",
+            "Content-Type": "application/json",
+            "Origin": "http://47.97.114.24:5230",
+            "Referer": "http://47.97.114.24:5230/setting",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Cookie": "nc_sameSiteCookielax=true; nc_sameSiteCookiestrict=true; memos.access-token=eyJhbGciOiJIUzI1NiIsImtpZCI6InYxIiwidHlwIjoiSldUIn0.eyJuYW1lIjoiYWRtaW4iLCJpc3MiOiJtZW1vcyIsInN1YiI6IjEiLCJhdWQiOlsidXNlci5hY2Nlc3MtdG9rZW4iXSwiZXhwIjoxNzM4MjQ0MTUzLCJpYXQiOjE3Mzc2MzkzNTN9.IXtohO12CLbPyFayqAE0-LNlUhvfljYpZ342sMTnXVk",
+            "Connection": "keep-alive"
+        }
+    },
+    "API_37": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/api/v1/memo/<NUM>",
+        "method": "Delete",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            3
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "47.97.114.24:5230",
+            "Accept": "application/json, text/plain, */*",
+            "Accept-Language": "zh-CN",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.6533.100 Safari/537.36",
+            "Origin": "http://47.97.114.24:5230",
+            "Referer": "http://47.97.114.24:5230/",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Cookie": "nc_sameSiteCookielax=true; nc_sameSiteCookiestrict=true; memos.access-token=eyJhbGciOiJIUzI1NiIsImtpZCI6InYxIiwidHlwIjoiSldUIn0.eyJuYW1lIjoidXNlckEiLCJpc3MiOiJtZW1vcyIsInN1YiI6IjIiLCJhdWQiOlsidXNlci5hY2Nlc3MtdG9rZW4iXSwiZXhwIjoxNzM4MjQzMTE5LCJpYXQiOjE3Mzc2MzgzMTl9.dTULMgW2srCHR5epcY4zrXDTusBxphM8NGGibCrKB0w",
+            "Connection": "keep-alive"
+        }
+    },
+    "API_38": {
+        "description": "请填充功能描述信息",
+        "role": "请填充权限信息",
+        "path": "/api/v1/resource/<NUM>",
+        "method": "Delete",
+        "path_variables": [
+            "请填充各个路径变量的信息，例如：",
+            {
+                "name": "需要在path中用<>标识",
+                "description": "",
+                "required": true
+            }
+        ],
+        "query_params": [
+            "请填充各个查询参数的信息，例如：",
+            {
+                "name": "",
+                "description": "",
+                "required": true
+            }
+        ],
+        "request_body": {
+            "type": "object",
+            "fields": [
+                {
+                    "field_name": "请填充请求体字段名",
+                    "field_type": "object",
+                    "required": true,
+                    "description": "请填充请求体字段描述信息",
+                    "sub_fields": [
+                        "请填充请求体子字段信息"
+                    ]
+                }
+            ]
+        },
+        "variable_indexes": [
+            3
+        ],
+        "identified_request_params": [],
+        "sample_body": {},
+        "sample_headers": {
+            "Host": "47.97.114.24:5230",
+            "Accept": "application/json, text/plain, */*",
+            "Accept-Language": "zh-CN",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.6533.100 Safari/537.36",
+            "Origin": "http://47.97.114.24:5230",
+            "Referer": "http://47.97.114.24:5230/resources",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Cookie": "nc_sameSiteCookielax=true; nc_sameSiteCookiestrict=true; memos.access-token=eyJhbGciOiJIUzI1NiIsImtpZCI6InYxIiwidHlwIjoiSldUIn0.eyJuYW1lIjoidXNlckEiLCJpc3MiOiJtZW1vcyIsInN1YiI6IjIiLCJhdWQiOlsidXNlci5hY2Nlc3MtdG9rZW4iXSwiZXhwIjoxNzM4MjQzMTE5LCJpYXQiOjE3Mzc2MzgzMTl9.dTULMgW2srCHR5epcY4zrXDTusBxphM8NGGibCrKB0w",
+            "Connection": "keep-alive"
+        }
+    }
+}

@@ -1,0 +1,127 @@
+[
+  {
+    "number": "API_0",
+    "functionDescription": "Get the detailed information of a certain memo by its number.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, any user may call this API. Unauthorized situations include: any user calls this API to get the detailed information of a private memo that is not created by themselves."
+  },
+  {
+    "number": "API_1",
+    "functionDescription": "Access the detailed information page of a certain memo by its number.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, any user may call this API. Unauthorized situations include: any user calls this API to access the detailed information page of a private memo that is not created by themselves."
+  },
+  {
+    "number": "API_2",
+    "functionDescription": "Get the detailed information of a certain user by their username.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, any user may call this API. There are no unauthorized situations."
+  },
+  {
+    "number": "API_3",
+    "functionDescription": "View a certain resource by its number.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, any user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API."
+  },
+  {
+    "number": "API_4",
+    "functionDescription": "Access the system's home page.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, any user may call this API. There are no unauthorized situations."
+  },
+  {
+    "number": "API_6",
+    "functionDescription": "A user gets their own detailed information.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, any user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API."
+  },
+  {
+    "number": "API_7",
+    "functionDescription": "A user gets the information of all memos that they can access.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, any user may call this API. There are no unauthorized situations."
+  },
+  {
+    "number": "API_8",
+    "functionDescription": "A user accesses their own exploration page.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, any user may call this API. There are no unauthorized situations."
+  },
+  {
+    "number": "API_9",
+    "functionDescription": "A user queries the information of memos that they can access according to certain criteria.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, any user may call this API. There are no unauthorized situations."
+  },
+  {
+    "number": "API_11",
+    "functionDescription": "Access the current user's daily review page.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, any user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API."
+  },
+  {
+    "number": "API_13",
+    "functionDescription": "A user queries the information of resources that they can access according to certain criteria.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, any user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API."
+  },
+  {
+    "number": "API_14",
+    "functionDescription": "Access the current user's resource page.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, any user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API."
+  },
+  {
+    "number": "API_15",
+    "functionDescription": "Get the visible memo information of a certain user.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, any user may call this API. There are no unauthorized situations."
+  },
+  {
+    "number": "API_17",
+    "functionDescription": "Access the current user's settings page.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, any logged - in user can call this API. Unauthorized situations include: a user who is not logged in calls this API."
+  },
+  {
+    "number": "API_22",
+    "functionDescription": "Access the system settings page.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, logged - in administrator users can call this API. Unauthorized situations include: a user who is not logged in calls this API; a logged - in ordinary user calls this API."
+  },
+  {
+    "number": "API_24",
+    "functionDescription": "Get the system's storage setting information.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, logged - in administrator users can call this API. Unauthorized situations include: a user who is not logged in calls this API; a logged - in ordinary user calls this API."
+  },
+  {
+    "number": "API_25",
+    "functionDescription": "Pin a certain memo to the top.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, any logged - in user can call this API. Unauthorized situations include: a user who is not logged in calls this API; a logged - in user calls this API to pin a memo that they did not publish to the top."
+  },
+  {
+    "number": "API_27",
+    "functionDescription": "Create a memo.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, any logged - in user can call this API. Unauthorized situations include: a user who is not logged in calls this API."
+  },
+  {
+    "number": "API_29",
+    "functionDescription": "Create a label.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, any logged - in user can call this API. Unauthorized situations include: a user who is not logged in calls this API."
+  },
+  {
+    "number": "API_31",
+    "functionDescription": "Modify the current user's setting information.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, any logged - in user can call this API. Unauthorized situations include: a user who is not logged in calls this API."
+  },
+  {
+    "number": "API_33",
+    "functionDescription": "Create a resource.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, any logged - in user can call this API. Unauthorized situations include: a user who is not logged in calls this API."
+  },
+  {
+    "number": "API_34",
+    "functionDescription": "Create a new user.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, logged - in administrator users can call this API. Unauthorized situations include: a user who is not logged in calls this API; a logged - in ordinary user calls this API."
+  },
+  {
+    "number": "API_35",
+    "functionDescription": "Modify the system settings.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, logged - in administrator users can call this API. Unauthorized situations include: a user who is not logged in calls this API; a logged - in ordinary user calls this API."
+  },
+  {
+    "number": "API_37",
+    "functionDescription": "Delete a certain memo.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, any logged - in user can call this API. Unauthorized situations include: a user who is not logged in calls this API; a logged - in user calls this API to delete a memo that they did not publish."
+  },
+  {
+    "number": "API_38",
+    "functionDescription": "Delete a certain resource.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, any logged - in user can call this API. Unauthorized situations include: a user who is not logged in calls this API; a logged - in user calls this API to delete a resource that they did not create."
+  }
+]

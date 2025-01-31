@@ -1,6 +1,9 @@
 import json
 from os.path import dirname
 
+import pandas as pd
+
+from config.api_matching import API_MATCHES
 from config.basic import CURR_APP_NAME
 from config.log import LOGGER
 from entity.api import API
@@ -24,24 +27,35 @@ def api_discovery(api_crawl_log, user_config_path):
         index = 0
         # print(api_list)
         # TODO 利用api_item['API']中的路径信息，识别路径变量的索引号
+        api_matches = API_MATCHES[CURR_APP_NAME]
         for api_item in api_list:
-            sample_traffic_data = api_crawl_log.loc[api_crawl_log['Unnamed: 0'] == api_item['data_id']]
-            parsed_url = urlparse(sample_traffic_data['url'].iloc[0])
-            path = parsed_url.path
+            sample_traffic_data = next((row for index, row in api_crawl_log.iterrows() if api_matches(
+                api_item['method'], api_item['API'], row['method'], row['url']
+            )), None)
+            parsed_url = urlparse(sample_traffic_data['url'])
+            path = urlparse(api_item['API']).path
+            print(path)
+            print(sample_traffic_data)
+            path_segments = (path + '/').split('/')[1:-1]
+            variable_indexes = []
+            for i in range(len(path_segments)):
+                if path_segments[i].startswith('<'):
+                    variable_indexes.append(i)
             query = parsed_url.query
             sample_body = {}
-            if not sample_traffic_data['data'].empty:
-                if type(sample_traffic_data['data'].iloc[0]) is str:
-                    sample_body = eval(sample_traffic_data['data'].iloc[0])
-                elif type(sample_traffic_data['data'].iloc[0]) is dict:
-                    sample_body = sample_traffic_data['data'].iloc[0]
+            if not pd.isna(sample_traffic_data['data']):
+                if type(sample_traffic_data['data']) is str:
+                    sample_body = eval(
+                        sample_traffic_data['data'].replace('true', 'True').replace('false', 'False'))
+                elif type(sample_traffic_data['data']) is dict:
+                    sample_body = sample_traffic_data['data']
             api_info = {
                 'method': api_item['method'],
                 'path': path,
-                'variable_indexes': [],
+                'variable_indexes': variable_indexes,
                 'query_params': list(parse_qs(query).keys()),
                 'sample_body': sample_body,
-                'sample_headers': sample_traffic_data['header'].iloc[0]
+                'sample_headers': sample_traffic_data['header']
             }
             api_info_list.append(API(api_info, index=index))
             index += 1
@@ -98,7 +112,7 @@ def gen_initial_api_doc(api_list):
                         }
                     ]
                 },
-                "variable_indexes": ["请填充所有路径变量的索引"],
+                "variable_indexes": api_info['variable_indexes'],
                 "identified_request_params": api_info['query_params'],
                 "sample_body": api_info['sample_body'],
                 "sample_headers": headers

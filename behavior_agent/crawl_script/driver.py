@@ -16,7 +16,7 @@ if __name__ == '__main__':
         for auth in auth_list:
             users.append(auth)
     # TODO 目标项目的登录器
-    loginer = HumhubLoginer(driver)
+    loginer = MemosLoginer(driver)
 
     LOGGER.info("Fetching user cookies...")
     cookies = [loginer.login(user['uname'], user['pwd']) for user in users]
@@ -29,7 +29,7 @@ if __name__ == '__main__':
 
     LOGGER.info("Crawling web elements...")
     # TODO 实时进度
-    for i in range(5, len(url_set)):
+    for i in range(len(url_set)):
         urls = random.sample(list(url_set[i]), min(len(url_set[i]), URL_SAMPLE))
         cookie_list = cookies[i]
         for url in urls:

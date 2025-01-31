@@ -34,9 +34,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [],
         "sample_body": {},
         "sample_headers": {
@@ -82,9 +80,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [],
         "sample_body": {},
         "sample_headers": {
@@ -130,9 +126,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [],
         "sample_body": {},
         "sample_headers": {
@@ -178,9 +172,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [
             "tour",
             "cguid"
@@ -229,9 +221,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [
             "cguid"
         ],
@@ -279,9 +269,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [],
         "sample_body": {},
         "sample_headers": {
@@ -327,9 +315,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [],
         "sample_body": {},
         "sample_headers": {
@@ -375,9 +361,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [],
         "sample_body": {},
         "sample_headers": {
@@ -424,7 +408,7 @@
             ]
         },
         "variable_indexes": [
-            "请填充所有路径变量的索引"
+            0
         ],
         "identified_request_params": [],
         "sample_body": {},
@@ -472,7 +456,7 @@
             ]
         },
         "variable_indexes": [
-            "请填充所有路径变量的索引"
+            0
         ],
         "identified_request_params": [],
         "sample_body": {},
@@ -520,7 +504,7 @@
             ]
         },
         "variable_indexes": [
-            "请填充所有路径变量的索引"
+            0
         ],
         "identified_request_params": [],
         "sample_body": {},
@@ -567,9 +551,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [
             "cguid"
         ],
@@ -617,9 +599,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [
             "cguid"
         ],
@@ -667,9 +647,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [
             "cguid"
         ],
@@ -717,9 +695,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [
             "cguid"
         ],
@@ -767,9 +743,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [
             "cguid"
         ],
@@ -817,9 +791,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [
             "cguid"
         ],
@@ -867,9 +839,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [],
         "sample_body": {},
         "sample_headers": {
@@ -915,9 +885,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [],
         "sample_body": {},
         "sample_headers": {
@@ -963,9 +931,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [],
         "sample_body": {},
         "sample_headers": {
@@ -1011,9 +977,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [
             "cguid"
         ],
@@ -1061,9 +1025,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [
             "cguid"
         ],
@@ -1112,7 +1074,7 @@
             ]
         },
         "variable_indexes": [
-            "请填充所有路径变量的索引"
+            1
         ],
         "identified_request_params": [],
         "sample_body": {},
@@ -1160,7 +1122,7 @@
             ]
         },
         "variable_indexes": [
-            "请填充所有路径变量的索引"
+            0
         ],
         "identified_request_params": [],
         "sample_body": {},
@@ -1208,7 +1170,7 @@
             ]
         },
         "variable_indexes": [
-            "请填充所有路径变量的索引"
+            0
         ],
         "identified_request_params": [],
         "sample_body": {},
@@ -1255,9 +1217,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [
             "cguid"
         ],
@@ -1305,9 +1265,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [
             "cguid"
         ],
@@ -1355,9 +1313,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [
             "cguid"
         ],
@@ -1405,9 +1361,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [
             "from"
         ],
@@ -1460,9 +1414,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [
             "keyword"
         ],
@@ -1515,9 +1467,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [
             "cguid"
         ],
@@ -1571,9 +1521,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [
             "contentModel",
             "contentId"
@@ -1630,9 +1578,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [
             "contentModel",
             "contentId"
@@ -1689,9 +1635,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [
             "cguid"
         ],
@@ -1746,9 +1690,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [
             "cguid"
         ],
@@ -1803,9 +1745,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [
             "cguid"
         ],
@@ -1860,9 +1800,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [
             "objectModel",
             "objectId"
@@ -1918,9 +1856,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [
             "cguid"
         ],
@@ -1930,9 +1866,9 @@
             "options[acceptInvite][attrs][class]": "btn btn-info btn-sm",
             "options[acceptInvite][togglerClass]": "btn btn-info btn-sm",
             "options[cancelPendingMembership][attrs][class]": "btn btn-info btn-sm active",
-            "options[cancelMembership][visible]": "true",
+            "options[cancelMembership][visible]": "True",
             "options[cancelMembership][attrs][class]": "btn btn-info btn-sm active",
-            "options[cannotCancelMembership][visible]": "true",
+            "options[cannotCancelMembership][visible]": "True",
             "options[cannotCancelMembership][attrs][class]": "btn btn-info btn-sm active"
         },
         "sample_headers": {
@@ -1986,9 +1922,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [
             "cguid"
         ],
@@ -2049,9 +1983,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [
             "id",
             "cguid"
@@ -2111,9 +2043,7 @@
                 }
             ]
         },
-        "variable_indexes": [
-            "请填充所有路径变量的索引"
-        ],
+        "variable_indexes": [],
         "identified_request_params": [
             "cguid"
         ],

@@ -5,6 +5,6 @@
 NON_API_KEYS = {
     'humhub': ['.html', '.css', '.js', '.jpg', '.png', '.jpeg', '.ico', '.php', '/uploads/', '/assets/', '/themes/',
                '/static/'],
-    'memos': [],
+    'memos': ['.css', '.js', '.jpg', '.png', '.jpeg', '.webp', '.ico', '.xml'],
     'nextcloud': []
 }

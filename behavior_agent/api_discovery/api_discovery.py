@@ -25,7 +25,7 @@ import fasttext.util
 def init_drain3():
 
     config = TemplateMinerConfig()
-    config.load(f"{dirname(__file__)}\\api_discovery.ini")
+    config.load(f"{dirname(__file__)}\\api-discovery.ini")
     config.profiling_enabled = True
     template_miner = TemplateMiner(config=config)
     return template_miner
@@ -101,7 +101,7 @@ def data_processing(data, content_type, bound):
                 return None
             # 将Python的True/False转换为JSON的true/false，将None转换为null
             # 同时确保所有的字符串值用双引号包围
-            data_as_json_string = json.dumps(eval(data))
+            data_as_json_string = json.dumps(eval(data.replace('true', 'True').replace('false', 'False')))
             # 现在可以安全地使用json.loads来解析这个字符串
             data_dict = json.loads(data_as_json_string)
             return data_dict
@@ -283,16 +283,19 @@ def extract_api_list(df):
     df2 = df[df['method'] == 'Post']
     df3 = df[df['method'] == 'Delete']
     df4 = df[df['method'] == 'Put']
+    df5 = df[df['method'] == 'Patch']
 
 
     url_dict1 = extract_key_value(df1)
     url_dict2 = extract_key_value(df2)
     url_dict3 = extract_key_value(df3)
     url_dict4 = extract_key_value(df4)
+    url_dict5 = extract_key_value(df5)
 
     res = []
     res.extend(cluster(url_dict1, 'Get'))
     res.extend(cluster(url_dict2, 'Post'))
-    res.extend(cluster(url_dict3, 'Put'))
-    res.extend(cluster(url_dict4, 'Delete'))
+    res.extend(cluster(url_dict3, 'Delete'))
+    res.extend(cluster(url_dict4, 'Put'))
+    res.extend(cluster(url_dict5, 'Patch'))
     return res

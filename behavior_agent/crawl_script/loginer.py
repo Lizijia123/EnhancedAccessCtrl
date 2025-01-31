@@ -25,19 +25,19 @@ page_elements = {
     'memos': {
         'to_login_btn': {
             'by': By.XPATH,
-            'value': '/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/header[1]/div[2]/a[2]'
+            'value': '/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/header[1]/div[2]/a[2]'
         },
         'uname_input': {
             'by': By.XPATH,
-            'value': '/html[1]/body[1]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/div[1]/input[1]',
+            'value': '/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/input[1]',
         },
         'pwd_input': {
             'by': By.XPATH,
-            'value': '/html[1]/body[1]/div[1]/div[1]/div[1]/form[1]/div[1]/div[2]/div[1]/input[1]'
+            'value': '/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/div[2]/input[1]'
         },
         'login_btn': {
             'by': By.XPATH,
-            'value': '/html[1]/body[1]/div[1]/div[1]/div[1]/form[1]/div[3]/button[1]'
+            'value': '/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[2]/button[1]'
         }
     },
     'nextcloud': {

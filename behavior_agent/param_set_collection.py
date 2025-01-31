@@ -22,7 +22,7 @@ def collect_param_set(api_log, api_list):
     """
     api_log['api'] = api_log.apply(recognize_api, args=(api_list,), axis=1)
 
-    api_log[['api', 'url']].to_csv('apis.csv', index=False)
+    # api_log[['api', 'url']].to_csv(f'{CURR_APP_NAME}_api_url.csv', index=False)
 
     # api_log['api'].to_csv('index.csv', index=False)
     api_log.apply(collect_param, args=(api_list,), axis=1)
@@ -37,6 +37,7 @@ def recognize_api(record, api_list):
     for api in api_list:
         if api.matches(record['method'], record['url']):
             return api.index
+    # print(record['method'], record['url'])
     return None
 
 
@@ -67,9 +68,9 @@ def collect_param(record, api_list):
     parsed_url = urlparse(record['url'])
 
     path = parsed_url.path
-    segments = path[1:].split('/')
+    segments = (path + '/').split('/')[1:-1]
     for variable_index in api.variable_indexes:
-        print(api.variable_indexes)
+        # print(api.variable_indexes)
         if variable_index >= len(segments):
             break
         variable = segments[variable_index]
@@ -93,7 +94,7 @@ def collect_param(record, api_list):
             param_set[api_title]['query_params'][query].append(param)
 
     if record['data'] is not None and not pd.isnull(record['data']):
-        record['data'] = eval(str(record['data']))
+        record['data'] = eval(str(record['data']).replace('true', 'True').replace('false', 'False'))
         # TODO
         # print(record['data'])
         for field in record['data']:

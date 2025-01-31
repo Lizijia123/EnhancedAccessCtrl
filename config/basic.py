@@ -1,6 +1,7 @@
+from urllib import parse
 from urllib.parse import unquote
 
-CURR_APP_NAME = 'humhub'
+CURR_APP_NAME = 'memos'
 
 ROOT_URL = {
     'humhub': 'http://111.229.33.190:8081',
@@ -24,6 +25,18 @@ def url_decoding(url):
     if query_params:
         res += f"?{query_params}"
     return res
+
+
+# TODO
+def url_encoding(url):
+    query = ''
+    if '?' in url:
+        query = '&' + url.split('?')[1]
+        url = url.split('?')[0]
+    path = parse.urlparse(url).path
+    path_segments = (path + '/').split('/')[1:-1]
+    path = '%2F'.join(path_segments)
+    return f'{ROOT_URL[CURR_APP_NAME]}/index.php?r={path}{query}'
 
 
 # # TODO 每个项目的鉴权字段，获取&设置此字段的方法

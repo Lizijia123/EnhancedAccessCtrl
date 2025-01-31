@@ -19,14 +19,14 @@ def gen_data_set():
     生成流量数据集并保存到文件
     """
     users = []
-    normal_num = NORMAL_USER_NUM[CURR_APP_NAME]
-    malicious_num = MALICIOUS_USER_NUM[CURR_APP_NAME]
-    for role in normal_num:
-        for i in range(normal_num[role]):
-            users.append(Agent(role=role, action_step=ACTION_STEP, malicious=False, unlogged=(True if role == 'unlogged_in_user' else False)))
-    for role in malicious_num:
-        for i in range(malicious_num[role]):
-            users.append(Agent(role=role, action_step=ACTION_STEP, malicious=True, unlogged=(True if role == 'unlogged_in_user' else False)))
+    for role in NORMAL_USER_NUM[CURR_APP_NAME]:
+        unlogged = True if role == 'unlogged_in_user' else False
+        for i in range(NORMAL_USER_NUM[CURR_APP_NAME][role]):
+            users.append(Agent(role=role, action_step=ACTION_STEP, malicious=False, unlogged=unlogged))
+    for role in MALICIOUS_USER_NUM[CURR_APP_NAME]:
+        unlogged = True if role == 'unlogged_in_user' else False
+        for i in range(MALICIOUS_USER_NUM[CURR_APP_NAME][role]):
+            users.append(Agent(role=role, action_step=ACTION_STEP, malicious=True, unlogged=unlogged))
     random.shuffle(users)
 
     final_data_set = []

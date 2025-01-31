@@ -59,6 +59,7 @@ class BasicURLScraper:
             return []
 
         soup = BeautifulSoup(response.text, 'html.parser')
+
         links = soup.find_all('a', href=True)
         urls = []
         for link in links:
@@ -85,3 +86,4 @@ class BasicURLScraper:
         LOGGER.info(f'Fetched {len(self.visited)} urls:')
         LOGGER.info('       '.join(self.visited))
         return self.visited
+

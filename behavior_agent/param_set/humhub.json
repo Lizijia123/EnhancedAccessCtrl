@@ -4768,7 +4768,16 @@
     ]
   },
   "API_18": {
-    "path_variables": {},
+    "path_variables": {
+      "0": [
+        "admin",
+        "admin",
+        "admin",
+        "admin",
+        "admin",
+        "admin"
+      ]
+    },
     "query_params": {},
     "request_data": {},
     "sample": [
@@ -4799,7 +4808,21 @@
     ]
   },
   "API_19": {
-    "path_variables": {},
+    "path_variables": {
+      "0": [
+        "admin",
+        "admin",
+        "admin",
+        "admin",
+        "admin",
+        "admin",
+        "admin",
+        "admin",
+        "admin",
+        "admin",
+        "admin"
+      ]
+    },
     "query_params": {},
     "request_data": {},
     "sample": [
@@ -4850,7 +4873,23 @@
     ]
   },
   "API_23": {
-    "path_variables": {},
+    "path_variables": {
+      "0": [
+        "admin",
+        "admin",
+        "admin",
+        "admin",
+        "admin",
+        "admin",
+        "admin",
+        "admin",
+        "admin",
+        "admin",
+        "admin",
+        "admin",
+        "admin"
+      ]
+    },
     "query_params": {},
     "request_data": {},
     "sample": [
@@ -8401,7 +8440,16 @@
     ]
   },
   "API_50": {
-    "path_variables": {},
+    "path_variables": {
+      "1": [
+        "admin",
+        "admin",
+        "admin",
+        "admin",
+        "admin",
+        "admin"
+      ]
+    },
     "query_params": {},
     "request_data": {},
     "sample": [
@@ -8432,7 +8480,14 @@
     ]
   },
   "API_55": {
-    "path_variables": {},
+    "path_variables": {
+      "0": [
+        "admin",
+        "admin",
+        "admin",
+        "admin"
+      ]
+    },
     "query_params": {},
     "request_data": {},
     "sample": [
@@ -8455,7 +8510,18 @@
     ]
   },
   "API_56": {
-    "path_variables": {},
+    "path_variables": {
+      "0": [
+        "admin",
+        "admin",
+        "admin",
+        "admin",
+        "admin",
+        "admin",
+        "admin",
+        "admin"
+      ]
+    },
     "query_params": {},
     "request_data": {},
     "sample": [
@@ -10116,9 +10182,9 @@
       ],
       "options[cancelMembership][visible]": [
         null,
-        "true",
-        "true",
-        "true"
+        "True",
+        "True",
+        "True"
       ],
       "options[cancelMembership][attrs][class]": [
         null,
@@ -10128,9 +10194,9 @@
       ],
       "options[cannotCancelMembership][visible]": [
         null,
-        "true",
-        "true",
-        "true"
+        "True",
+        "True",
+        "True"
       ],
       "options[cannotCancelMembership][attrs][class]": [
         null,
@@ -10156,9 +10222,9 @@
           "options[acceptInvite][attrs][class]": "btn btn-info btn-sm",
           "options[acceptInvite][togglerClass]": "btn btn-info btn-sm",
           "options[cancelPendingMembership][attrs][class]": "btn btn-info btn-sm active",
-          "options[cancelMembership][visible]": "true",
+          "options[cancelMembership][visible]": "True",
           "options[cancelMembership][attrs][class]": "btn btn-info btn-sm active",
-          "options[cannotCancelMembership][visible]": "true",
+          "options[cannotCancelMembership][visible]": "True",
           "options[cannotCancelMembership][attrs][class]": "btn btn-info btn-sm active"
         }
       },
@@ -10170,9 +10236,9 @@
           "options[acceptInvite][attrs][class]": "btn btn-info btn-sm",
           "options[acceptInvite][togglerClass]": "btn btn-info btn-sm",
           "options[cancelPendingMembership][attrs][class]": "btn btn-info btn-sm active",
-          "options[cancelMembership][visible]": "true",
+          "options[cancelMembership][visible]": "True",
           "options[cancelMembership][attrs][class]": "btn btn-info btn-sm active",
-          "options[cannotCancelMembership][visible]": "true",
+          "options[cannotCancelMembership][visible]": "True",
           "options[cannotCancelMembership][attrs][class]": "btn btn-info btn-sm active"
         }
       },
@@ -10184,9 +10250,9 @@
           "options[acceptInvite][attrs][class]": "btn btn-info btn-sm",
           "options[acceptInvite][togglerClass]": "btn btn-info btn-sm",
           "options[cancelPendingMembership][attrs][class]": "btn btn-info btn-sm active",
-          "options[cancelMembership][visible]": "true",
+          "options[cancelMembership][visible]": "True",
           "options[cancelMembership][attrs][class]": "btn btn-info btn-sm active",
-          "options[cannotCancelMembership][visible]": "true",
+          "options[cannotCancelMembership][visible]": "True",
           "options[cannotCancelMembership][attrs][class]": "btn btn-info btn-sm active"
         }
       },

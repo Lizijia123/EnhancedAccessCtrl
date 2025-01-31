@@ -8,16 +8,26 @@ MALICIOUS_STEP_RANGE = range(2, 6)
 """
 NORMAL_USER_NUM = {
     'humhub':{
-        'admin': 2,
-        'ordinary_user': 17,
+        'admin': 18,
+        'ordinary_user': 162,
         'unlogged_in_user': 0
+    },
+    'memos':{
+        'admin': 18,
+        'ordinary_user': 126,
+        'unlogged_in_user': 36
     }
 }
 
 MALICIOUS_USER_NUM = {
     'humhub':{
         'admin': 0,
-        'ordinary_user': 2,
-        'unlogged_in_user': 1
+        'ordinary_user': 17,
+        'unlogged_in_user': 3
+    },
+    'memos':{
+        'admin': 0,
+        'ordinary_user': 17,
+        'unlogged_in_user': 3
     }
 }

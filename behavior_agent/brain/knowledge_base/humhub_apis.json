@@ -1,207 +1,207 @@
 [
-{
-"number": "API_2",
-"functionDescription": "Users edit their own basic information",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
-},
-{
-"number": "API_5",
-"functionDescription": "View the list of all spaces",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
-},
-{
-"number": "API_6",
-"functionDescription": "View the list of all users on the platform",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
-},
-{
-"number": "API_8",
-"functionDescription": "View the details of a certain space",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
-},
-{
-"number": "API_10",
-"functionDescription": "View the personal - related information of a certain user",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
-},
-{
-"number": "API_13",
-"functionDescription": "Users view the basic setting information of their own accounts",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
-},
-{
-"number": "API_14",
-"functionDescription": "Users access the username editing page of their own accounts",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
-},
-{
-"number": "API_15",
-"functionDescription": "Users access the email editing page of their own accounts",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
-},
-{
-"number": "API_18",
-"functionDescription": "View the space management page of the platform",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily. Unauthorized situations include: users who are not logged into the system call this API, and ordinary users logged into the system call this API"
-},
-{
-"number": "API_19",
-"functionDescription": "View the module management page of the platform",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily. Unauthorized situations include: users who are not logged into the system call this API, and ordinary users logged into the system call this API"
-},
-{
-"number": "API_23",
-"functionDescription": "View the user attribute management page of the platform",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily. Unauthorized situations include: users who are not logged into the system call this API, and ordinary users logged into the system call this API"
-},
-{
-"number": "API_28",
-"functionDescription": "View the dynamic - related information of a certain user",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
-},
-{
-"number": "API_34",
-"functionDescription": "Access the basic space setting page of a certain space",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily; ordinary users logged into the system can only call this API as space creators or space super - administrators. Unauthorized situations include: users who are not logged into the system call this API; ordinary users logged into the system call this API as non - space members, space moderators, or ordinary space members"
-},
-{
-"number": "API_35",
-"functionDescription": "Access the space security setting page of a certain space",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily; ordinary users logged into the system can only call this API as space creators or space super - administrators. Unauthorized situations include: users who are not logged into the system call this API; ordinary users logged into the system call this API as non - space members, space moderators, or ordinary space members"
-},
-{
-"number": "API_36",
-"functionDescription": "Access the member management page of a certain space",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily; ordinary users logged into the system can only call this API as space creators or space super - administrators. Unauthorized situations include: users who are not logged into the system call this API; ordinary users logged into the system call this API as non - space members, space moderators, or ordinary space members"
-},
-{
-"number": "API_37",
-"functionDescription": "Access the module management page of a certain space",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily; ordinary users logged into the system can only call this API as space creators or space super - administrators. Unauthorized situations include: users who are not logged into the system call this API; ordinary users logged into the system call this API as non - space members, space moderators, or ordinary space members"
-},
-{
-"number": "API_39",
-"functionDescription": "View the space - related information of a certain space",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
-},
-{
-"number": "API_40",
-"functionDescription": "Access the module purchase page of the platform",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily. Unauthorized situations include: users who are not logged into the system call this API, and ordinary users logged into the system call this API"
-},
-{
-"number": "API_41",
-"functionDescription": "Access the module available update page of the platform",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily. Unauthorized situations include: users who are not logged into the system call this API, and ordinary users logged into the system call this API"
-},
-{
-"number": "API_42",
-"functionDescription": "View the list of third - party modules of the platform",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily. Unauthorized situations include: users who are not logged into the system call this API, and ordinary users logged into the system call this API"
-},
-{
-"number": "API_43",
-"functionDescription": "Access the theme management page of a certain space",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily; ordinary users logged into the system can only call this API as space creators, space super - administrators, or space moderators. Unauthorized situations include: users who are not logged into the system call this API; ordinary users logged into the system call this API as non - space members or ordinary space members"
-},
-{
-"number": "API_47",
-"functionDescription": "Access the page for transferring the ownership of a certain space",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily; ordinary users logged into the system can only call this API as space creators. Unauthorized situations include: users who are not logged into the system call this API; ordinary users logged into the system call this API as non - space members, space super - administrators, space moderators, or ordinary space members"
-},
-{
-"number": "API_50",
-"functionDescription": "Access the email summary management page of the platform",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily. Unauthorized situations include: users who are not logged into the system call this API, and ordinary users logged into the system call this API"
-},
-{
-"number": "API_55",
-"functionDescription": "View the database information of the platform",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily. Unauthorized situations include: users who are not logged into the system call this API, and ordinary users logged into the system call this API"
-},
-{
-"number": "API_56",
-"functionDescription": "View the Background Jobs page of the platform",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily. Unauthorized situations include: users who are not logged into the system call this API, and ordinary users logged into the system call this API"
-},
-{
-"number": "API_63",
-"functionDescription": "Access the advanced setting page of a certain space",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily; ordinary users logged into the system can only call this API as space creators or space super - administrators. Unauthorized situations include: users who are not logged into the system call this API; ordinary users logged into the system call this API as non - space members, space moderators, or ordinary space members"
-},
-{
-"number": "API_64",
-"functionDescription": "Access the permission setting page of a certain space",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily; ordinary users logged into the system can only call this API as space creators or space super - administrators. Unauthorized situations include: users who are not logged into the system call this API; ordinary users logged into the system call this API as non - space members, space moderators, or ordinary space members"
-},
-{
-"number": "API_65",
-"functionDescription": "Access the member management page of a certain space",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily; ordinary users logged into the system can only call this API as space creators or space super - administrators. Unauthorized situations include: users who are not logged into the system call this API; ordinary users logged into the system call this API as non - space members, space moderators, or ordinary space members"
-},
-{
-"number": "API_84",
-"functionDescription": "View the list of notification information",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
-},
-{
-"number": "API_100",
-"functionDescription": "Search for relevant spaces on the platform according to keywords",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
-},
-{
-"number": "API_107",
-"functionDescription": "Search for members that can be invited to a certain space according to keywords",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily; ordinary users logged into the system can only call this API as space creators, space super - administrators, or ordinary space members. Unauthorized situations include: users who are not logged into the system call this API; ordinary users logged into the system call this API as non - space members"
-},
-{
-"number": "API_117",
-"functionDescription": "Like a certain comment",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
-},
-{
-"number": "API_120",
-"functionDescription": "Cancel liking a certain comment",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API. It is best to have called API_117, that is, liked some comments, before calling this API"
-},
-{
-"number": "API_121",
-"functionDescription": "Follow a certain space",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
-},
-{
-"number": "API_122",
-"functionDescription": "Follow a certain user",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
-},
-{
-"number": "API_123",
-"functionDescription": "Unfollow a certain followed user",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API. It is best to have called API_122, that is, followed some users, before calling this API"
-},
-{
-"number": "API_126",
-"functionDescription": "View the list of all sub - comments under a certain comment",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
-},
-{
-"number": "API_129",
-"functionDescription": "Non - space creators request to leave the space",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily; ordinary users logged into the system can only call this API as space super - administrators, space moderators, or ordinary space members. Unauthorized situations include: users who are not logged into the system call this API; ordinary users logged into the system call this API as non - space members"
-},
-{
-"number": "API_131",
-"functionDescription": "Post a new comment",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily; ordinary users logged into the system can only call this API as space creators, space super - administrators, or ordinary space members. Unauthorized situations include: users who are not logged into the system call this API; ordinary users logged into the system call this API as non - space members; when ordinary users logged into the system call this API as ordinary space members and add a new theme (only space creators, super - administrators, and moderators can add a new theme when calling this API)"
-},
-{
-"number": "API_134",
-"functionDescription": "Modify the content of a certain comment",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily; ordinary logged - in users can only call this API to modify the comments they have posted. Unauthorized situations include: users who are not logged into the system call this API; ordinary users logged into the system call this API to modify comments that they did not post"
-},
-{
-"number": "API_155",
-"functionDescription": "Invite new members to a certain space",
-"permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily; ordinary users logged into the system can only call this API as space super - administrators, space moderators, or ordinary space members. Unauthorized situations include: users who are not logged into the system call this API; ordinary users logged into the system call this API as non - space members"
-}
+  {
+    "number": "API_2",
+    "functionDescription": "Users edit their own basic information",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
+  },
+  {
+    "number": "API_5",
+    "functionDescription": "View the list of all spaces",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
+  },
+  {
+    "number": "API_6",
+    "functionDescription": "View the list of all users on the platform",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
+  },
+  {
+    "number": "API_8",
+    "functionDescription": "View the details of a certain space",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
+  },
+  {
+    "number": "API_10",
+    "functionDescription": "View the personal - related information of a certain user",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
+  },
+  {
+    "number": "API_13",
+    "functionDescription": "Users view the basic setting information of their own accounts",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
+  },
+  {
+    "number": "API_14",
+    "functionDescription": "Users access the username editing page of their own accounts",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
+  },
+  {
+    "number": "API_15",
+    "functionDescription": "Users access the email editing page of their own accounts",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
+  },
+  {
+    "number": "API_18",
+    "functionDescription": "View the space management page of the platform",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily. Unauthorized situations include: users who are not logged into the system call this API, and ordinary users logged into the system call this API"
+  },
+  {
+    "number": "API_19",
+    "functionDescription": "View the module management page of the platform",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily. Unauthorized situations include: users who are not logged into the system call this API, and ordinary users logged into the system call this API"
+  },
+  {
+    "number": "API_23",
+    "functionDescription": "View the user attribute management page of the platform",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily. Unauthorized situations include: users who are not logged into the system call this API, and ordinary users logged into the system call this API"
+  },
+  {
+    "number": "API_28",
+    "functionDescription": "View the dynamic - related information of a certain user",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
+  },
+  {
+    "number": "API_34",
+    "functionDescription": "Access the basic space setting page of a certain space",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily; ordinary users logged into the system can only call this API as space creators or space super - administrators. Unauthorized situations include: users who are not logged into the system call this API; ordinary users logged into the system call this API as non - space members, space moderators, or ordinary space members"
+  },
+  {
+    "number": "API_35",
+    "functionDescription": "Access the space security setting page of a certain space",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily; ordinary users logged into the system can only call this API as space creators or space super - administrators. Unauthorized situations include: users who are not logged into the system call this API; ordinary users logged into the system call this API as non - space members, space moderators, or ordinary space members"
+  },
+  {
+    "number": "API_36",
+    "functionDescription": "Access the member management page of a certain space",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily; ordinary users logged into the system can only call this API as space creators or space super - administrators. Unauthorized situations include: users who are not logged into the system call this API; ordinary users logged into the system call this API as non - space members, space moderators, or ordinary space members"
+  },
+  {
+    "number": "API_37",
+    "functionDescription": "Access the module management page of a certain space",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily; ordinary users logged into the system can only call this API as space creators or space super - administrators. Unauthorized situations include: users who are not logged into the system call this API; ordinary users logged into the system call this API as non - space members, space moderators, or ordinary space members"
+  },
+  {
+    "number": "API_39",
+    "functionDescription": "View the space - related information of a certain space",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
+  },
+  {
+    "number": "API_40",
+    "functionDescription": "Access the module purchase page of the platform",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily. Unauthorized situations include: users who are not logged into the system call this API, and ordinary users logged into the system call this API"
+  },
+  {
+    "number": "API_41",
+    "functionDescription": "Access the module available update page of the platform",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily. Unauthorized situations include: users who are not logged into the system call this API, and ordinary users logged into the system call this API"
+  },
+  {
+    "number": "API_42",
+    "functionDescription": "View the list of third - party modules of the platform",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily. Unauthorized situations include: users who are not logged into the system call this API, and ordinary users logged into the system call this API"
+  },
+  {
+    "number": "API_43",
+    "functionDescription": "Access the theme management page of a certain space",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily; ordinary users logged into the system can only call this API as space creators, space super - administrators, or space moderators. Unauthorized situations include: users who are not logged into the system call this API; ordinary users logged into the system call this API as non - space members or ordinary space members"
+  },
+  {
+    "number": "API_47",
+    "functionDescription": "Access the page for transferring the ownership of a certain space",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily; ordinary users logged into the system can only call this API as space creators. Unauthorized situations include: users who are not logged into the system call this API; ordinary users logged into the system call this API as non - space members, space super - administrators, space moderators, or ordinary space members"
+  },
+  {
+    "number": "API_50",
+    "functionDescription": "Access the email summary management page of the platform",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily. Unauthorized situations include: users who are not logged into the system call this API, and ordinary users logged into the system call this API"
+  },
+  {
+    "number": "API_55",
+    "functionDescription": "View the database information of the platform",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily. Unauthorized situations include: users who are not logged into the system call this API, and ordinary users logged into the system call this API"
+  },
+  {
+    "number": "API_56",
+    "functionDescription": "View the Background Jobs page of the platform",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily. Unauthorized situations include: users who are not logged into the system call this API, and ordinary users logged into the system call this API"
+  },
+  {
+    "number": "API_63",
+    "functionDescription": "Access the advanced setting page of a certain space",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily; ordinary users logged into the system can only call this API as space creators or space super - administrators. Unauthorized situations include: users who are not logged into the system call this API; ordinary users logged into the system call this API as non - space members, space moderators, or ordinary space members"
+  },
+  {
+    "number": "API_64",
+    "functionDescription": "Access the permission setting page of a certain space",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily; ordinary users logged into the system can only call this API as space creators or space super - administrators. Unauthorized situations include: users who are not logged into the system call this API; ordinary users logged into the system call this API as non - space members, space moderators, or ordinary space members"
+  },
+  {
+    "number": "API_65",
+    "functionDescription": "Access the member management page of a certain space",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily; ordinary users logged into the system can only call this API as space creators or space super - administrators. Unauthorized situations include: users who are not logged into the system call this API; ordinary users logged into the system call this API as non - space members, space moderators, or ordinary space members"
+  },
+  {
+    "number": "API_84",
+    "functionDescription": "View the list of notification information",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
+  },
+  {
+    "number": "API_100",
+    "functionDescription": "Search for relevant spaces on the platform according to keywords",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
+  },
+  {
+    "number": "API_107",
+    "functionDescription": "Search for members that can be invited to a certain space according to keywords",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily; ordinary users logged into the system can only call this API as space creators, space super - administrators, or ordinary space members. Unauthorized situations include: users who are not logged into the system call this API; ordinary users logged into the system call this API as non - space members"
+  },
+  {
+    "number": "API_117",
+    "functionDescription": "Like a certain comment",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
+  },
+  {
+    "number": "API_120",
+    "functionDescription": "Cancel liking a certain comment",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API. It is best to have called API_117, that is, liked some comments, before calling this API"
+  },
+  {
+    "number": "API_121",
+    "functionDescription": "Follow a certain space",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
+  },
+  {
+    "number": "API_122",
+    "functionDescription": "Follow a certain user",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
+  },
+  {
+    "number": "API_123",
+    "functionDescription": "Unfollow a certain followed user",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API. It is best to have called API_122, that is, followed some users, before calling this API"
+  },
+  {
+    "number": "API_126",
+    "functionDescription": "View the list of all sub - comments under a certain comment",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, users of all identities logged into the system may call this API. Unauthorized situations include: users who are not logged into the system call this API"
+  },
+  {
+    "number": "API_129",
+    "functionDescription": "Non - space creators request to leave the space",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily; ordinary users logged into the system can only call this API as space super - administrators, space moderators, or ordinary space members. Unauthorized situations include: users who are not logged into the system call this API; ordinary users logged into the system call this API as non - space members"
+  },
+  {
+    "number": "API_131",
+    "functionDescription": "Post a new comment",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily; ordinary users logged into the system can only call this API as space creators, space super - administrators, or ordinary space members. Unauthorized situations include: users who are not logged into the system call this API; ordinary users logged into the system call this API as non - space members; when ordinary users logged into the system call this API as ordinary space members and add a new theme (only space creators, super - administrators, and moderators can add a new theme when calling this API)"
+  },
+  {
+    "number": "API_134",
+    "functionDescription": "Modify the content of a certain comment",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily; ordinary logged - in users can only call this API to modify the comments they have posted. Unauthorized situations include: users who are not logged into the system call this API; ordinary users logged into the system call this API to modify comments that they did not post"
+  },
+  {
+    "number": "API_155",
+    "functionDescription": "Invite new members to a certain space",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, administrator users logged into the system can call this API arbitrarily; ordinary users logged into the system can only call this API as space super - administrators, space moderators, or ordinary space members. Unauthorized situations include: users who are not logged into the system call this API; ordinary users logged into the system call this API as non - space members"
+  }
 ]

@@ -60,7 +60,7 @@ AUTH = {
             #     'uname': 'userM',
             #     'pwd': '202501'
             # },
-            { # 需要修改密码的用户
+            {  # 需要修改密码的用户
                 'uname': 'userN',
                 'pwd': '20251'
             }
@@ -69,19 +69,31 @@ AUTH = {
     'memos': {
         'admin': [
             {
-                'uname': 'hanke11',
-                'pwd': 'hanke2350'
+                'uname': 'admin',
+                'pwd': '202501'
             }
         ],
         'ordinary_user': [
             {
-                'uname': 'user1',
-                'pwd': 'user1'
+                'uname': 'userA',
+                'pwd': '202501'
             },
             {
-                'uname': 'user2',
-                'pwd': 'user2'
-            }
+                'uname': 'userB',
+                'pwd': '202501'
+            },
+            {
+                'uname': 'userC',
+                'pwd': '202501'
+            },
+            {
+                'uname': 'userD',
+                'pwd': '202501'
+            },
+            {
+                'uname': 'userE',
+                'pwd': '202501'
+            },
         ]
     },
     'nextcloud': {

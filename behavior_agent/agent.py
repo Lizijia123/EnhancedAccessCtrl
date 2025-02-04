@@ -25,12 +25,12 @@ class Agent:
         self.unlogged = unlogged
 
         self.api_sequence = []
-        self.malicious_api_indexes = []
+        self.api_malicious_seq = []
         self.action_type_seq = []  # 0为正常，1为水平越权，2为垂直越权
 
     def _gen_api_seq(self):
         # role_user_index表示brain生成的API seq对应的用户是哪个身份下的哪种类型
-        self.api_sequence, self.malicious_api_indexes, role_user_index = Agent.brain.gen_api_seq(
+        self.api_sequence, self.api_malicious_seq, role_user_index = Agent.brain.gen_api_seq(
             malicious=self.malicious,
             role=self.role,
             action_step=self.action_step,
@@ -43,7 +43,7 @@ class Agent:
         self._gen_api_seq()
 
         for index in range(len(self.api_sequence)):
-            if index not in self.malicious_api_indexes:
+            if self.api_malicious_seq[index] == 0:
                 self.action_type_seq.append(NORMAL)
             else:
                 if self.api_sequence[index] in APIS_OF_USER_ROLES[CURR_APP_NAME][self.role]:

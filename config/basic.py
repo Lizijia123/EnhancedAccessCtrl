@@ -1,7 +1,9 @@
 from urllib import parse
 from urllib.parse import unquote
 
-CURR_APP_NAME = 'memos'
+from behavior_agent.crawl_script.loginer import HumhubLoginer, MemosLoginer
+
+CURR_APP_NAME = 'collegeerp'
 
 ROOT_URL = {
     'humhub': 'http://111.229.33.190:8081',
@@ -15,6 +17,10 @@ URL_ENCODING_CONVERT = {
     'nextcloud': False
 }
 
+LOGINER_MAPPING = {
+    'humhub': HumhubLoginer,
+    'memos': MemosLoginer,
+}
 
 def url_decoding(url):
     if '/index.php?r=' not in url:
@@ -77,4 +83,7 @@ BROWSERMOB_PROXY_PATH = 'B:\\browsermob-proxy-2.1.4-bin\\browsermob-proxy-2.1.4\
 EDGE_DRIVER_PATH = 'C:\\Users\\hp\\miniconda3\\msedgedriver.exe'
 
 BRAIN_MAX_FORMAT_RETRY = 5
+
 PARAM_INJECTION_MAX_RETRY = 10
+PARAM_INJECTION_SAMPLE_RATE = 0.1
+PARAM_INJECTION_CACHE_RATE = 0.3

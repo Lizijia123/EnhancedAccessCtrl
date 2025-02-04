@@ -15,8 +15,7 @@ if __name__ == '__main__':
     for role, auth_list in AUTH[CURR_APP_NAME].items():
         for auth in auth_list:
             users.append(auth)
-    # TODO 目标项目的登录器
-    loginer = MemosLoginer(driver)
+    loginer = LOGINER_MAPPING.get(CURR_APP_NAME)(driver)
 
     LOGGER.info("Fetching user cookies...")
     cookies = [loginer.login(user['uname'], user['pwd']) for user in users]

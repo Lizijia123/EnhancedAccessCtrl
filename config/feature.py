@@ -14,5 +14,5 @@ FEATURE_BASE_LINE = [
 APP_FEATURE = { # TODO
     'humhub': FEATURE_BASE_LINE + [Feature1(), Feature2(), Feature3()],
     'memos': FEATURE_BASE_LINE + [Feature1(), Feature2(), Feature3()],
-    'nextcloud': FEATURE_BASE_LINE + [Feature1(), Feature2(), Feature3()],
+    'collegeerp': FEATURE_BASE_LINE + [Feature1(), Feature2(), Feature3()],
 }

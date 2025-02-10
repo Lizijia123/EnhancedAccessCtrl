@@ -12,6 +12,7 @@ from supervised_data_gen.interaction_judgement import INTERACTION_JUDGEMENT
 
 param_cache = {}
 
+
 def fetch_cookie(uname, unlogged):
     cookie_list = []
 
@@ -29,10 +30,11 @@ def fetch_cookie(uname, unlogged):
                 break
         driver = webdriver.Edge()
         loginer = LOGINER_MAPPING.get(CURR_APP_NAME)(driver)
-        cookie_list = loginer.login(uname, pwd)
+        cookie_list = loginer.login(uname, pwd, admin=(uname == ADMIN_UNAME))
         driver.quit()
 
     return cookie_list
+
 
 def param_injection_for_api_seq(api_title_seq, uname, unlogged, action_type_seq):
     """
@@ -46,7 +48,6 @@ def param_injection_for_api_seq(api_title_seq, uname, unlogged, action_type_seq)
 
     api_title_info_map = {f'API_{int(api.index)}': api for api in Agent.apis}
     api_seq = [api_title_info_map[title] for title in api_title_seq]
-
 
     traffic_data_seq = []
     seq_valid = True
@@ -75,7 +76,6 @@ def param_injection_for_api_seq(api_title_seq, uname, unlogged, action_type_seq)
 
     param_cache.clear()
     return traffic_data_seq, seq_valid
-
 
 
 def param_injection_for_api(api):

@@ -22,11 +22,11 @@ def gen_data_set():
     for role in NORMAL_USER_NUM[CURR_APP_NAME]:
         unlogged = True if role == 'unlogged_in_user' else False
         for i in range(NORMAL_USER_NUM[CURR_APP_NAME][role]):
-            users.append(Agent(role=role, action_step=ACTION_STEP, malicious=False, unlogged=unlogged))
+            users.append(Agent(role=role, action_step=ACTION_STEP[CURR_APP_NAME], malicious=False, unlogged=unlogged))
     for role in MALICIOUS_USER_NUM[CURR_APP_NAME]:
         unlogged = True if role == 'unlogged_in_user' else False
         for i in range(MALICIOUS_USER_NUM[CURR_APP_NAME][role]):
-            users.append(Agent(role=role, action_step=ACTION_STEP, malicious=True, unlogged=unlogged))
+            users.append(Agent(role=role, action_step=ACTION_STEP[CURR_APP_NAME], malicious=True, unlogged=unlogged))
     random.shuffle(users)
 
     final_data_set = []

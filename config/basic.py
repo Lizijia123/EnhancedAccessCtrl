@@ -1,25 +1,26 @@
 from urllib import parse
 from urllib.parse import unquote
 
-from behavior_agent.crawl_script.loginer import HumhubLoginer, MemosLoginer
+from behavior_agent.crawl_script.loginer import HumhubLoginer, MemosLoginer, CollegeerpLoginer
 
 CURR_APP_NAME = 'collegeerp'
 
 ROOT_URL = {
     'humhub': 'http://111.229.33.190:8081',
     'memos': 'http://47.97.114.24:5230',
-    'nextcloud': 'http://47.97.114.24:80'
+    'collegeerp': 'http://111.229.33.190:8000'
 }
 
 URL_ENCODING_CONVERT = {
     'humhub': True,
     'memos': False,
-    'nextcloud': False
+    'collegeerp': False
 }
 
 LOGINER_MAPPING = {
     'humhub': HumhubLoginer,
     'memos': MemosLoginer,
+    'collegeerp': CollegeerpLoginer,
 }
 
 def url_decoding(url):
@@ -87,3 +88,6 @@ BRAIN_MAX_FORMAT_RETRY = 5
 PARAM_INJECTION_MAX_RETRY = 10
 PARAM_INJECTION_SAMPLE_RATE = 0.1
 PARAM_INJECTION_CACHE_RATE = 0.3
+
+ADMIN_UNAME = 'admin'
+

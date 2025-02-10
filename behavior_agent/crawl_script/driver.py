@@ -18,11 +18,12 @@ if __name__ == '__main__':
     loginer = LOGINER_MAPPING.get(CURR_APP_NAME)(driver)
 
     LOGGER.info("Fetching user cookies...")
-    cookies = [loginer.login(user['uname'], user['pwd']) for user in users]
+    cookies = [loginer.login(user['uname'], user['pwd'], admin=(user['uname'] == ADMIN_UNAME)) for user in users]
     driver.quit()
 
     LOGGER.info("Fetching urls...")
     url_set = []
+    print(cookies)
     for cookie_list in cookies:
         url_set.append(BasicURLScraper(ROOT_URL[CURR_APP_NAME], cookie_list).crawl())
 

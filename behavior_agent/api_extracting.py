@@ -29,13 +29,14 @@ def api_discovery(api_crawl_log, user_config_path):
         # TODO 利用api_item['API']中的路径信息，识别路径变量的索引号
         api_matches = API_MATCHES[CURR_APP_NAME]
         for api_item in api_list:
+            print(api_item['API'])
             sample_traffic_data = next((row for index, row in api_crawl_log.iterrows() if api_matches(
                 api_item['method'], api_item['API'], row['method'], row['url']
             )), None)
+            print(sample_traffic_data['url'])
+
             parsed_url = urlparse(sample_traffic_data['url'])
             path = urlparse(api_item['API']).path
-            print(path)
-            print(sample_traffic_data)
             path_segments = (path + '/').split('/')[1:-1]
             variable_indexes = []
             for i in range(len(path_segments)):

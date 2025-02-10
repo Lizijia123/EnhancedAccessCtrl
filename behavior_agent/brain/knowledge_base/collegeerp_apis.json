@@ -1,0 +1,132 @@
+[
+  {
+    "number": "API_0",
+    "functionDescription": "The administrator requests to modify the personal information of a certain student in the system.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, an administrator user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API; a logged - in teacher or student user calls this API."
+  },
+  {
+    "number": "API_1",
+    "functionDescription": "A teacher views the information of a certain class for a certain course in the system.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, an administrator user or a teacher user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API; a logged - in student user calls this API; a logged - in teacher user calls this API to view the information of a certain class for a course they do not teach."
+  },
+  {
+    "number": "API_2",
+    "functionDescription": "A teacher requests to edit the student attendance for a certain class session of a certain class for a certain course.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, an administrator user or a teacher user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API; a logged - in student user calls this API; a logged - in teacher user calls this API to request to edit the student attendance for a certain class session of a certain class for a course they do not teach."
+  },
+  {
+    "number": "API_3",
+    "functionDescription": "A teacher requests to cancel a certain class session of a certain class for a certain course.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, an administrator user or a teacher user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API; a logged - in student user calls this API; a logged - in teacher user calls this API to request to cancel a certain class session of a certain class for a course they do not teach."
+  },
+  {
+    "number": "API_4",
+    "functionDescription": "A teacher requests to edit the score of a certain student in a certain class for a certain course.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, an administrator user or a teacher user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API; a logged - in student user calls this API; a logged - in teacher user calls this API to request to edit the score of a certain student in a certain class for a course they do not teach."
+  },
+  {
+    "number": "API_5",
+    "functionDescription": "A student views the attendance of a certain course.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, an administrator user or a student user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API; a logged - in teacher user calls this API; a logged - in student user calls this API to view the attendance of other students in a certain course."
+  },
+  {
+    "number": "API_8",
+    "functionDescription": "A teacher requests to add a class session for a certain class for a certain course.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, an administrator user or a teacher user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API; a logged - in student user calls this API; a logged - in teacher user calls this API to request to add a class session for a certain class for a course they do not teach."
+  },
+  {
+    "number": "API_9",
+    "functionDescription": "The administrator requests to modify the information of a certain class in the system.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, an administrator user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API; a logged - in teacher or student user calls this API."
+  },
+  {
+    "number": "API_10",
+    "functionDescription": "The administrator requests to modify the information of a certain course in the system.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, an administrator user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API; a logged - in teacher or student user calls this API."
+  },
+  {
+    "number": "API_11",
+    "functionDescription": "A teacher requests to view the student attendance for a certain class session of a certain class for a certain course.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, an administrator user or a teacher user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API; a logged - in student user calls this API; a logged - in teacher user calls this API to request to view the student attendance for a certain class session of a certain class for a course they do not teach."
+  },
+  {
+    "number": "API_14",
+    "functionDescription": "The administrator requests to add a course to the system.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, an administrator user or a teacher user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API; a logged - in student user calls this API; a logged - in teacher user calls this API to request to view the student attendance for a certain class session of a certain class for a course they do not teach."
+  },
+  {
+    "number": "API_16",
+    "functionDescription": "The administrator requests to add a department to the system.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, an administrator user or a teacher user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API; a logged - in student user calls this API; a logged - in teacher user calls this API to request to view the student attendance for a certain class session of a certain class for a course they do not teach."
+  },
+  {
+    "number": "API_21",
+    "functionDescription": "The administrator requests to modify the personal information of a certain user in the system.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, an administrator user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API; a logged - in teacher or student user calls this API."
+  },
+  {
+    "number": "API_26",
+    "functionDescription": "The administrator requests to add a course allocation information to the system.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, an administrator user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API; a logged - in teacher or student user calls this API."
+  },
+  {
+    "number": "API_34",
+    "functionDescription": "A student views the overall attendance of all courses.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, an administrator user or a student user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API; a logged - in teacher user calls this API; a logged - in student user calls this API to view the overall attendance of all courses of other students."
+  },
+  {
+    "number": "API_35",
+    "functionDescription": "A student views the score sheet of all courses.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, an administrator user or a student user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API; a logged - in teacher user calls this API; a logged - in student user calls this API to view the score sheet of all courses of other students."
+  },
+  {
+    "number": "API_40",
+    "functionDescription": "The administrator requests to modify the personal information of a certain teacher in the system.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, an administrator user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API; a logged - in teacher or student user calls this API."
+  },
+  {
+    "number": "API_41",
+    "functionDescription": "A teacher views the schedule of a certain class for a certain course in the system.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, an administrator user or a teacher user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API; a logged - in student user calls this API; a logged - in teacher user calls this API to view the schedule of a certain class for a course they do not teach."
+  },
+  {
+    "number": "API_42",
+    "functionDescription": "A teacher views the score sheet of a certain class for a certain course in the system.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, an administrator user or a teacher user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API; a logged - in student user calls this API; a logged - in teacher user calls this API to view the score sheet of a certain class for a course they do not teach."
+  },
+  {
+    "number": "API_43",
+    "functionDescription": "A teacher views their own schedule.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, an administrator user or a teacher user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API; a logged - in student user calls this API; a logged - in teacher user calls this API to view the schedule of other teachers."
+  },
+  {
+    "number": "API_49",
+    "functionDescription": "The administrator requests to delete a certain course from the system.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, an administrator user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API; a logged - in teacher or student user calls this API."
+  },
+  {
+    "number": "API_50",
+    "functionDescription": "The administrator executes the modification of the personal information of a certain student in the system.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, an administrator user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API; a logged - in teacher or student user calls this API."
+  },
+  {
+    "number": "API_51",
+    "functionDescription": "A teacher executes the edit of the student attendance for a certain class session of a certain class for a certain course.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, an administrator user or a teacher user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API; a logged - in student user calls this API; a logged - in teacher user calls this API to execute the edit of the student attendance for a certain class session of a certain class for a course they do not teach."
+  },
+  {
+    "number": "API_52",
+    "functionDescription": "A teacher executes the addition of a class session for a certain class for a certain course.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, an administrator user or a teacher user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API; a logged - in student user calls this API; a logged - in teacher user calls this API to execute the addition of a class session for a certain class for a course they do not teach."
+  },
+  {
+    "number": "API_54",
+    "functionDescription": "The administrator executes the addition of a department to the system.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, an administrator user or a teacher user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API; a logged - in student user calls this API; a logged - in teacher user calls this API to request to view the student attendance for a certain class session of a certain class for a course they do not teach."
+  },
+  {
+    "number": "API_55",
+    "functionDescription": "The administrator executes the addition of a course to the system.",
+    "permissionInfoAndUnauthorizedSituation": "Under normal circumstances, an administrator user or a teacher user who has logged into the system may call this API. Unauthorized situations include: a user who has not logged into the system calls this API; a logged - in student user calls this API; a logged - in teacher user calls this API to request to view the student attendance for a certain class session of a certain class for a course they do not teach."
+  }
+]

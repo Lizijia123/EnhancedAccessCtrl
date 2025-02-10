@@ -24,8 +24,14 @@ APIS_OF_USER_ROLES = {
                           'API_37', 'API_38'],
         'unlogged_in_user': ['API_0', 'API_1', 'API_2', 'API_4', 'API_7', 'API_8', 'API_9', 'API_15']
     },
-    'nextcloud': {
-
+    'collegeerp': {
+        'admin': ['API_0', 'API_1', 'API_2', 'API_3', 'API_4', 'API_5', 'API_8', 'API_9', 'API_10', 'API_11', 'API_14',
+                  'API_16', 'API_21', 'API_26', 'API_34', 'API_35', 'API_40', 'API_41', 'API_42', 'API_43', 'API_49',
+                  'API_50', 'API_51', 'API_52', 'API_54', 'API_55'],
+        'teacher': ['API_1', 'API_2', 'API_3', 'API_4', 'API_8', 'API_11', 'API_41', 'API_42', 'API_43', 'API_51',
+                    'API_52'],
+        'student': ['API_5', 'API_34', 'API_35'],
+        'unlogged_in_user': []
     }
 }
 
@@ -59,7 +65,16 @@ USER_INFO_UNAME = {
             ['userH']
         ]
     },
-    'nextcloud': {
-
+    'collegeerp': {
+        "admin": [
+            ['admin']
+        ],
+        "ordinary_user": [
+            ['teacherA', 'teacherB'],
+            ['studentA', 'studentB', 'studentC', 'studentD', 'studentE', 'studentF']
+        ],
+        "unlogged_in_user": [
+            ['unlogged_in_user']
+        ]
     }
 }

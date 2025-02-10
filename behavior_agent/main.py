@@ -11,8 +11,8 @@ from entity.api import API
 
 if __name__ == '__main__':
     api_log = clp.extract_api_log_to_csv()
-    api_list = ae.api_discovery(api_log, user_config_path=None)
-    # api_list = API.from_api_doc()
+    # api_list = ae.api_discovery(api_log, user_config_path=None)
+    api_list = API.from_api_doc()
     # for api in api_list:
     #     print(json.dumps(api.to_dict(), indent=4))
 

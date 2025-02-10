@@ -52,25 +52,28 @@ def extract_api_log_to_csv():
     web_element_log = web_element_log[web_element_log['url'].apply(not_matches_static)]
     burp_log = burp_log[burp_log['url'].apply(not_matches_static)]
 
-    url_log['method'] = url_log['Method'].apply(lambda x: x[0].upper() + x[1:].lower() if pd.notnull(x) else x)
-    url_log['url'] = url_log['URL']
-    url_log['header'] = url_log['Headers']
-    url_log['data'] = None
-    url_log['time'] = 0
-    url_log['type'] = 0
-    url_log = url_log[['method', 'url', 'header', 'data', 'time', 'type']]
+    if not url_log.empty:
+        url_log['method'] = url_log['Method'].apply(lambda x: x[0].upper() + x[1:].lower() if pd.notnull(x) else x)
+        url_log['url'] = url_log['URL']
+        url_log['header'] = url_log['Headers']
+        url_log['data'] = None
+        url_log['time'] = 0
+        url_log['type'] = 0
+        url_log = url_log[['method', 'url', 'header', 'data', 'time', 'type']]
 
-    web_element_log['method'] = web_element_log['method'].apply(
-        lambda x: x[0].upper() + x[1:].lower() if pd.notnull(x) else x)
-    web_element_log['header'] = web_element_log['header'].apply(convert_to_dict)
-    web_element_log['time'] = 0
-    web_element_log['type'] = 0
-    web_element_log = web_element_log[['method', 'url', 'header', 'data', 'time', 'type']]
+    if not web_element_log.empty:
+        web_element_log['method'] = web_element_log['method'].apply(
+            lambda x: x[0].upper() + x[1:].lower() if pd.notnull(x) else x)
+        web_element_log['header'] = web_element_log['header'].apply(convert_to_dict)
+        web_element_log['time'] = 0
+        web_element_log['type'] = 0
+        web_element_log = web_element_log[['method', 'url', 'header', 'data', 'time', 'type']]
 
-    burp_log['method'] = burp_log['method'].apply(lambda x: x[0].upper() + x[1:].lower() if pd.notnull(x) else x)
-    burp_log['time'] = 0
-    burp_log['type'] = 0
-    burp_log = burp_log[['method', 'url', 'header', 'data', 'time', 'type']]
+    if not burp_log.empty:
+        burp_log['method'] = burp_log['method'].apply(lambda x: x[0].upper() + x[1:].lower() if pd.notnull(x) else x)
+        burp_log['time'] = 0
+        burp_log['type'] = 0
+        burp_log = burp_log[['method', 'url', 'header', 'data', 'time', 'type']]
 
     api_log = pd.concat([url_log, web_element_log, burp_log], ignore_index=True)
 

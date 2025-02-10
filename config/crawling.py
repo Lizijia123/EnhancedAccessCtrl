@@ -96,8 +96,53 @@ AUTH = {
             },
         ]
     },
-    'nextcloud': {
-        # TODO
+    'collegeerp': {
+        'admin':[
+            {
+                'uname': 'admin',
+                'pwd': 'project123'
+            }
+        ],
+        'teacher':[
+            {
+                'uname': 'teacherA',
+                'pwd': '202501aa'
+            },
+            {
+                'uname': 'teacherB',
+                'pwd': '202501aa'
+            },
+            {
+                'uname': 'teacherC',
+                'pwd': '202501aa'
+            }
+        ],
+        'student':[
+            {
+                'uname': 'studentA',
+                'pwd': '202501aa'
+            },
+            {
+                'uname': 'studentB',
+                'pwd': '202501aa'
+            },
+            {
+                'uname': 'studentC',
+                'pwd': '202501aa'
+            },
+            {
+                'uname': 'studentD',
+                'pwd': '202501aa'
+            },
+            {
+                'uname': 'studentE',
+                'pwd': '202501aa'
+            },
+            {
+                'uname': 'studentF',
+                'pwd': '202501aa'
+            }
+        ]
     }
 }
 

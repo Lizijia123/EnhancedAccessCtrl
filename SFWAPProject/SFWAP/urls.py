@@ -11,4 +11,12 @@ urlpatterns = [
     path('api-lists/', get_api_lists, name='get_api_lists'),
     path('user-api-list/', update_user_api_list, name='update_user_api_list'),
     path('api/discovery/', api_discovery, name='api_discovery'),
+    path('api/discovery/notification/', api_discovery_notification, name='api_discovery_notification'),
+
+    path('detection/features/', detect_feature, name='detect_feature'),
+    path('model/construct/', construct_model, name='construct_model'),
+
+    path('detection/config/', detection_config, name='detection_config'),
+    path('detection/start/', start_detection, name='start_detection'),
+    path('detection/pause/', pause_detection, name='pause_detection'),
 ]

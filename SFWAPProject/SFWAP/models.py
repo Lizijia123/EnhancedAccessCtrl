@@ -49,8 +49,8 @@ class API(models.Model):
         ('PUT', 'PUT'),
         ('DELETE', 'DELETE'),
     )
-    sample_url = models.CharField(max_length=200, null=True, blank=True, validators=[URLValidator()])
-    sample_request_data = models.CharField(max_length=200, null=True, blank=True)
+    sample_url = models.CharField(max_length=200, validators=[URLValidator()])
+    sample_request_data = models.CharField(max_length=200)
     request_method = models.CharField(max_length=10, choices=METHOD_CHOICES)
     function_description = models.CharField(max_length=200)
     permission_info = models.CharField(max_length=2000)
@@ -71,6 +71,26 @@ class LoginCredential(models.Model):
         return f"{self.user_role} - {self.username}"
 
 
+class DetectFeature(models.Model):
+    name = models.CharField(max_length=20)
+    description = models.CharField(max_length=100)
+
+    class Meta:
+        abstract = True
+
+    def __str__(self):
+        return self.name
+
+
+class SeqOccurTimeFeature(DetectFeature):
+    string_list = models.JSONField(validators=[
+        lambda x: all(isinstance(s, str) and 1 <= len(s) <= 100 for s in x) and len(x) > 0
+    ])
+
+    def __str__(self):
+        return f"SeqOccurTimeFeature - {self.name}"
+
+
 class TargetApplication(models.Model):
     APP_name = models.CharField(max_length=20, unique=True)
     APP_url = models.CharField(max_length=200, validators=[URLValidator()])
@@ -83,8 +103,10 @@ class TargetApplication(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_draft = models.BooleanField(default=False)
+
     last_API_discovery_at = models.DateTimeField(null=True, blank=True)
     last_model_construction_at = models.DateTimeField(null=True, blank=True)
+
     discovered_API_list = models.ManyToManyField(API, related_name='discovered_in_apps')
     user_API_list = models.ManyToManyField(API, related_name='used_in_apps')
 
@@ -100,5 +122,65 @@ class TargetApplication(models.Model):
     )
     detect_state = models.CharField(max_length=20, choices=DETECT_TASK_STATE_CHOICES)
 
+    detect_feature_list = models.ManyToManyField(DetectFeature, related_name='used_in_apps', blank=True)
+
+    model_report = models.TextField(null=True, blank=True)
+
+    enhanced_detection_enabled = models.BooleanField(null=True, blank=True)
+    combined_data_duration = models.IntegerField(null=True, blank=True)
+
     def __str__(self):
         return self.APP_name
+
+
+class TrafficData(models.Model):
+    METHOD_CHOICES = (
+        ('GET', 'GET'),
+        ('POST', 'POST'),
+        ('PUT', 'PUT'),
+        ('DELETE', 'DELETE'),
+    )
+    method = models.CharField(max_length=10, choices=METHOD_CHOICES)
+    header = models.CharField(max_length=5000)
+    url = models.CharField(max_length=1000)
+    data = models.CharField(max_length=5000)
+    status_code = models.IntegerField()
+    accessed_at = models.DateTimeField()
+    API = models.ForeignKey(API, on_delete=models.SET_NULL, null=True, blank=True)
+
+    DETECTION_RESULT_CHOICES = (
+        ('NORMAL', 'NORMAL'),
+        ('MALICIOUS', 'MALICIOUS'),
+    )
+    detection_result = models.CharField(max_length=20, choices=DETECTION_RESULT_CHOICES)
+
+    class Meta:
+        ordering = ['accessed_at']
+
+    def __str__(self):
+        return f"TrafficData - {self.method} {self.url}"
+
+
+class DetectionRecord(models.Model):
+    DETECTION_RESULT_CHOICES = (
+        ('ALLOW', 'ALLOW'),
+        ('ALARM', 'ALARM'),
+        ('INTERCEPTION', 'INTERCEPTION'),
+    )
+    app = models.ForeignKey(TargetApplication, on_delete=models.CASCADE)
+    started_at = models.DateTimeField()
+    ended_at = models.DateTimeField()
+    traffic_data_list = models.ManyToManyField(TrafficData)
+    detection_result = models.CharField(max_length=20, choices=DETECTION_RESULT_CHOICES)
+
+    def clean(self):
+        from django.core.exceptions import ValidationError
+        if self.traffic_data_list.count() == 0:
+            raise ValidationError("traffic_data_list cannot be empty.")
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"DetectionRecord - {self.app.APP_name} ({self.started_at} - {self.ended_at})"

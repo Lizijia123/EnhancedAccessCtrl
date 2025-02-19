@@ -77,6 +77,7 @@ class Brain:
             self.normal_seqs = knowledge['normal_seqs']
             self.malicious_seqs = knowledge['malicious_seqs']
             self.auth_info_set = knowledge['auth_info']
+
             self.context_prompt = self.build_context_prompt()
         except Exception as e:
             self.logger.error(f"Failed to load knowledge base: {e}", exc_info=True)
@@ -95,7 +96,7 @@ class Brain:
         )
 
     def query_for_api_seq(self, prompt):
-        """调用 LLM 生成 API 调用序列，确保返回符合 gen_api_seq 需要的格式"""
+        """调用 LLM 生成 API 调用序列"""
         try:
             messages = [
                 {"role": "system", "content": self.context_prompt},
@@ -105,69 +106,91 @@ class Brain:
             answer = self.client.Think(messages)
             self.logger.info(f"Query: {prompt}, Answer: {answer}")
 
-            # 调用专门的解析方法
-            return self._parse_llm_response_for_api_seq(answer)
+            return self._parse_llm_response(answer, "api_seq", "malicious_sign_seq")
 
         except Exception as e:
             self.logger.error(f"Failed to process LLM response: {e}", exc_info=True)
-            return [], []  # 确保返回空列表，防止 unpack 失败
+            return [], []
 
-    def _parse_llm_response_for_api_seq(self, response):
-        """解析 LLM 返回的 JSON，确保符合 gen_api_seq 需要的格式"""
+    def query_for_api_explanation(self, prompt):
+        """调用 LLM 生成 API 解释"""
         try:
-            # 1. 使用正则找到 ```json ... ``` 之间的内容
-            match = re.search(r"```json\s*(\{.*?\})\s*```", response, re.DOTALL)
-            if match:
-                json_str = match.group(1)  # 提取 JSON 字符串
-            else:
-                json_str = response  # 如果没有 ```json 包裹，直接尝试解析整个返回内容
+            messages = [
+                {"role": "system", "content": self.context_prompt},
+                {"role": "user", "content": prompt}
+            ]
 
-            # 2. 解析 JSON
+            answer = self.client.Think(messages)
+            self.logger.info(f"Query for API explanation: {prompt}, Answer: {answer}")
+
+            return self._parse_llm_response(answer, "api_seq_exp")
+
+        except Exception as e:
+            self.logger.error(f"Failed to process LLM response for API explanation: {e}", exc_info=True)
+            return []
+
+    def _parse_llm_response(self, response, *keys):
+        """解析 LLM 返回的 JSON"""
+        try:
+            match = re.search(r"```json\s*(\{.*?\})\s*```", response, re.DOTALL)
+            json_str = match.group(1) if match else response
+
             parsed_data = json.loads(json_str)
 
-            # 3. 确保返回数据格式正确
-            if isinstance(parsed_data, dict) and "api_seq" in parsed_data and "malicious_sign_seq" in parsed_data:
-                return parsed_data["api_seq"], parsed_data["malicious_sign_seq"]
-
-            raise ValueError("Unexpected response format from LLM")
+            return [parsed_data.get(key, []) for key in keys]
 
         except json.JSONDecodeError as e:
             self.logger.error(f"JSON decoding error: {e}\nRaw response: {response}", exc_info=True)
-            return [], []  # 返回空列表，防止 unpack 失败
+            return [[] for _ in keys]
 
-    def gen_api_seq(self, malicious, role, action_step):
-        """生成 API 调用序列，确保返回 3 个值"""
+    def gen_api_seq(self, malicious, role):
+        """生成 API 调用序列，并返回 API 解释"""
         if role not in self.auth_info_set:
             raise ValueError(f"Invalid role: {role}")
 
         role_user_index = random.choice(range(len(self.auth_info_set[role])))
         auth_info = self.auth_info_set[role][role_user_index]
 
-        # **构造 LLM 提示**
         prompt = (
             f"Assume you are a user with the following identity: {auth_info}.\n"
-            f"You need to generate an API call sequence with approximately {action_step} steps.\n"
+            f"Generate an API call sequence that helps you achieve your goal efficiently.\n"
         )
 
         if malicious:
             prompt += "However, you will attempt privilege escalation by making unauthorized API calls.\n"
 
         prompt += (
-            "Your response MUST be in the following JSON format, and you MUST NOT include any explanations:\n"
+            "Your response MUST be in JSON format, and you MUST NOT include any explanations.\n"
+            "The number of API calls should be sufficient to achieve the goal but not fixed.\n"
+            "Example format:\n"
             "```json\n"
             "{\n"
-            '  "api_seq": ["API_1", "API_3", "API_5"],\n'
-            '  "malicious_sign_seq": [0, 1, 0]\n'
+            '  "api_seq": ["API_1", "API_2", "API_3", "API_4"],\n'
+            '  "malicious_sign_seq": [0, 0, 1, 0]\n'
             "}\n"
             "```\n"
         )
 
-        # **调用 query_for_api_seq**
         seq, malicious_sign_seq = self.query_for_api_seq(prompt)
 
-        # **确保返回格式正确**
-        if not isinstance(seq, list) or not isinstance(malicious_sign_seq, list):
-            self.logger.error(f"Invalid LLM response format: seq={seq}, malicious_sign_seq={malicious_sign_seq}")
-            seq, malicious_sign_seq = [], []  # **防止 `NoneType` 错误**
+        exp_prompt = (
+            "For the following API sequence, provide a step-by-step explanation of what each API does.\n"
+            "Also, indicate whether each API call is legal or illegal based on the user's role.\n"
+            "Your response MUST be in JSON format, and you MUST NOT include any explanations outside JSON.\n"
+            "Example format:\n"
+            "```json\n"
+            "{\n"
+            '  "api_seq_exp": [\n'
+            '    "API_1 - Access system homepage (normal user)",\n'
+            '    "API_2 - View user details (normal user)",\n'
+            '    "API_3 - Modify system settings (illegal, requires admin)",\n'
+            '    "API_4 - Create a new memo (normal user)"\n'
+            "  ]\n"
+            "}\n"
+            "```\n"
+            f"API Sequence: {seq}"
+        )
 
-        return seq, malicious_sign_seq, role_user_index
+        api_seq_exp = self.query_for_api_explanation(exp_prompt)
+
+        return seq, malicious_sign_seq, api_seq_exp[0], role_user_index

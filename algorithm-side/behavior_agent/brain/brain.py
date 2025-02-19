@@ -107,12 +107,8 @@ class Brain:
             raise
 
     def gen_api_seq(self, malicious, role, action_step):
-        """
-        @param
-        """
         role_user_index = random.choice(range(len(self.auth_info_set[role])))
         auth_info = self.auth_info_set[role][role_user_index]
-
         if malicious:
             question = (
                 f"假设你是{auth_info}，你打破了权限检测机制，可以实现任意你想做的越权行为；作为恶意越权用户，你倾向于伪装成善意的用户。"

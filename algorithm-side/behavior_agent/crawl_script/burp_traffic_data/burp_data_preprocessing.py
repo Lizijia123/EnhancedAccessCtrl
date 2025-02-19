@@ -7,8 +7,6 @@ from config.basic import CURR_APP_NAME
 from urllib.parse import  quote_plus, unquote_plus
 
 def urlencoded_to_json(urlencoded_data):
-    if '&' not in urlencoded_data and '=' not in urlencoded_data:
-        return {}
     # 解析 URL 编码的数据，同时保留原始编码
     parsed_data = {}
     for pair in urlencoded_data.split('&'):
@@ -73,7 +71,7 @@ def xml_to_csv(xml_file, csv_file):
             data = None
             if method == 'POST':
                 # TODO 根据content-type，解析body
-                data = urlencoded_to_json(request.split('\n')[-1])
+                data = request.split('\n')[-1]
 
             status = item.find('status').text
             writer.writerow([method, url, header, data, status])

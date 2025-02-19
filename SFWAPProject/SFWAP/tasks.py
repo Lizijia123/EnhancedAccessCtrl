@@ -3,7 +3,7 @@ from celery import shared_task
 import requests
 from django.http import JsonResponse
 from .models import TargetApplication
-from .views import validate_and_save_api
+from .views import *
 from django.utils import timezone
 
 @shared_task

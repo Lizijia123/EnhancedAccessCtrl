@@ -32,6 +32,7 @@ class RequestDataField(models.Model):
     TYPE_CHOICES = (
         ('String', 'String'),
         ('Number', 'Number'),
+        ('Boolean', 'Boolean'),
         ('List', 'List'),
         ('Object', 'Object'),
     )
@@ -75,17 +76,16 @@ class DetectFeature(models.Model):
     name = models.CharField(max_length=20)
     description = models.CharField(max_length=100)
 
-    class Meta:
-        abstract = True
-
     def __str__(self):
         return self.name
 
 
+def validate_string_list(value):
+    return all(isinstance(s, str) and 1 <= len(s) <= 100 for s in value) and len(value) > 0
+
+
 class SeqOccurTimeFeature(DetectFeature):
-    string_list = models.JSONField(validators=[
-        lambda x: all(isinstance(s, str) and 1 <= len(s) <= 100 for s in x) and len(x) > 0
-    ])
+    string_list = models.JSONField(validators=[validate_string_list])
 
     def __str__(self):
         return f"SeqOccurTimeFeature - {self.name}"
@@ -120,7 +120,7 @@ class TargetApplication(models.Model):
         ('STARTED', 'STARTED'),
         ('PAUSED', 'PAUSED')
     )
-    detect_state = models.CharField(max_length=20, choices=DETECT_TASK_STATE_CHOICES)
+    detect_state = models.CharField(max_length=50, choices=DETECT_TASK_STATE_CHOICES)
 
     detect_feature_list = models.ManyToManyField(DetectFeature, related_name='used_in_apps', blank=True)
 

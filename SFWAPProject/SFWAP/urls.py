@@ -19,4 +19,8 @@ urlpatterns = [
     path('detection/config/', detection_config, name='detection_config'),
     path('detection/start/', start_detection, name='start_detection'),
     path('detection/pause/', pause_detection, name='pause_detection'),
+
+    path('detection/record/combination', get_detection_records_by_combination,
+         name='get_detection_records_by_combination'),
+    path('detection/record/api', get_detection_records_by_api, name='get_detection_records_by_api'),
 ]

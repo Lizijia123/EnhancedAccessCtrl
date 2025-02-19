@@ -379,9 +379,9 @@ def validate_and_save_api(api_data):
     for field_data in request_data_fields_data:
         name = field_data.get('name')
         type_ = field_data.get('type')
-        if not name or not type_ or type_ not in ['String', 'Number', 'List', 'Object']:
+        if not name or not type_ or type_ not in ['String', 'Number', 'Boolean', 'List', 'Object']:
             return JsonResponse({
-                'error': 'Each request data field must have a non - empty name and a valid type (String, Number, List, Object)'
+                'error': 'Each request data field must have a non - empty name and a valid type (String, Number, Boolean, List, Object)'
             }, status=400)
         field = RequestDataField(name=name, type=type_)
         try:
@@ -437,7 +437,7 @@ def update_user_api_list(request):
         data_collect_url = f'http://{target_app.SFWAP_address}/data_collect'
         data = {'API_list': get_API_list(target_app.user_API_list)}
         try:
-            request.post(data_collect_url, json=data)
+            requests.post(data_collect_url, json=data)
         except requests.RequestException as e:
             return JsonResponse({'error': f'Error making data collection request: {str(e)}'}, status=500)
 
@@ -466,7 +466,7 @@ def api_discovery(request):
 
     sfwap_address = target_app.SFWAP_address
     mode = request.query_params.get('mode')
-    discovery_url = f'http://{sfwap_address}/api_discovery?mode={mode}'
+    discovery_url = f'http://{sfwap_address}/api_discovery'
     data = get_target_app_info(target_app)
 
     if mode == 'AUTO':
@@ -518,13 +518,17 @@ def api_discovery(request):
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
+def stop_api_discovery(request):
+    pass
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def cancel_api_discovery(request):
     # TODO
     pass
 
-
 # 接收算法端的API发现通知
-@api_view(['GET'])
+@api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def api_discovery_notification(request):
     app_id = request.query_params.get('id')
@@ -764,7 +768,7 @@ def detection_config(request):
         target_app.save(update_fields=['enhanced_detection_enabled', 'combined_data_duration'])
         try:
             target_app.full_clean()
-            return JsonResponse({'message': 'Detection configration successful'}, status=200)
+            return JsonResponse({'message': 'Detection configuration successful'}, status=200)
         except ValidationError as e:
             return JsonResponse({'error': str(e)}, status=400)
 
@@ -801,7 +805,7 @@ def start_detection(request):
         if response.status_code != 200:
             return JsonResponse({'error': 'Detection start failed: ' + info}, status=500)
         else:
-            target_app.detection_state = 'STARTED'
+            target_app.detect_state = 'STARTED'
             return JsonResponse({'message': 'Detection start successful'}, status=200)
     except requests.RequestException as e:
         return JsonResponse({'error': f'Detection start failed: {str(e)}'}, status=500)
@@ -831,7 +835,7 @@ def pause_detection(request):
         if response.status_code != 200:
             return JsonResponse({'error': 'Detection pause failed: ' + info}, status=500)
         else:
-            target_app.detection_state = 'PAUSED'
+            target_app.detect_state = 'PAUSED'
             return JsonResponse({'message': 'Detection pause successful'}, status=200)
     except requests.RequestException as e:
         return JsonResponse({'error': 'Detection pause failed: ' + str(e)}, status=500)

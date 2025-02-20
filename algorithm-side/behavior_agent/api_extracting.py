@@ -29,13 +29,14 @@ def api_discovery(api_crawl_log, user_config_path):
         # TODO 利用api_item['API']中的路径信息，识别路径变量的索引号
         api_matches = API_MATCHES[CURR_APP_NAME]
         for api_item in api_list:
+            print(api_item['API'])
             sample_traffic_data = next((row for index, row in api_crawl_log.iterrows() if api_matches(
                 api_item['method'], api_item['API'], row['method'], row['url']
             )), None)
+            print(sample_traffic_data['url'])
+
             parsed_url = urlparse(sample_traffic_data['url'])
             path = urlparse(api_item['API']).path
-            print(path)
-            print(sample_traffic_data)
             path_segments = (path + '/').split('/')[1:-1]
             variable_indexes = []
             for i in range(len(path_segments)):
@@ -67,7 +68,7 @@ def api_discovery(api_crawl_log, user_config_path):
 
 
 def gen_initial_api_doc(api_list):
-    with open(f'{dirname(__file__)}\\param_set\\{CURR_APP_NAME}.json', 'r') as f:
+    with open(f'{dirname(__file__)}/param_set/{CURR_APP_NAME}.json', 'r') as f:
         param_set = json.load(f)
     no_dup_api_indexes = list(param_set.keys())
     initial_api_doc = {}
@@ -117,6 +118,6 @@ def gen_initial_api_doc(api_list):
                 "sample_body": api_info['sample_body'],
                 "sample_headers": headers
             }
-    with open(f'{dirname(__file__)}\\api_doc\\{CURR_APP_NAME}.json', 'w', encoding='utf-8') as f:
+    with open(f'{dirname(__file__)}/api_doc/{CURR_APP_NAME}.json', 'w', encoding='utf-8') as f:
         json.dump(initial_api_doc, f, ensure_ascii=False, indent=4)
-    LOGGER.info(f'已生成API文档至.\\api_doc\\{CURR_APP_NAME}.json')
+    LOGGER.info(f'已生成API文档至./api_doc/{CURR_APP_NAME}.json')

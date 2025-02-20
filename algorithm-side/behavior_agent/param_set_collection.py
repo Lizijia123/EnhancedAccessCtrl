@@ -13,7 +13,7 @@ def param_set_to_file():
     global param_set
     with open(json_path, 'w') as json_file:
         json.dump(param_set, json_file, indent=2)
-    LOGGER.info(f'已将{CURR_APP_NAME}的可取参数集合记录至.\\param_set\\{CURR_APP_NAME}.json')
+    LOGGER.info(f'已将{CURR_APP_NAME}的可取参数集合记录至./param_set/{CURR_APP_NAME}.json')
 
 
 def collect_param_set(api_log, api_list):

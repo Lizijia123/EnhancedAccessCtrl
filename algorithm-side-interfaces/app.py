@@ -1,15 +1,21 @@
-from datetime import datetime
+import csv
+import subprocess
 import threading
+from os.path import dirname
 from urllib.parse import urlparse
+from datetime import datetime
 
-import pandas as pd
 from flask import Flask, request, jsonify
 
 import algorithm.api_discovery
 import config.basic
+import enhanced_detector
 from algorithm import traffic_data_generation
 from algorithm.entity.api import API
+from algorithm.entity.feature import SeqOccurTimeFeature, FEATURES
+from algorithm.model_training import *
 from config.log import LOGGER
+import pandas as pd
 
 app = Flask(__name__)
 
@@ -21,6 +27,13 @@ DATA_COLLECTION_STATUS = 'NOT_STARTED'
 STOP_FLAG = threading.Event()
 # 存储当前运行的线程
 current_thread = None
+
+ERROR_APIS = []
+
+# 定义锁
+api_discovery_lock = threading.Lock()
+file_operation_lock = threading.Lock()
+
 
 def compile_discovered_api_list(api_list, sample_list):
     discovered_api_list = []
@@ -96,8 +109,9 @@ def auto_api_discovery():
 @app.route('/api_discovery/start', methods=['POST'])
 def start_api_discovery():
     global MANUAL_API_DISCOVER_STARTED_AT, MANUAL_API_DISCOVER_ENDED_AT
-    MANUAL_API_DISCOVER_STARTED_AT = datetime.now()
-    MANUAL_API_DISCOVER_ENDED_AT = None
+    with api_discovery_lock:
+        MANUAL_API_DISCOVER_STARTED_AT = datetime.now()
+        MANUAL_API_DISCOVER_ENDED_AT = None
 
     data = request.get_json()
     try:
@@ -112,15 +126,38 @@ def start_api_discovery():
 @app.route('/api_discovery/stop', methods=['POST'])
 def stop_api_discovery():
     global MANUAL_API_DISCOVER_STARTED_AT, MANUAL_API_DISCOVER_ENDED_AT
-    if MANUAL_API_DISCOVER_STARTED_AT is None:
-        return jsonify({'error': 'Manual API discovery has not started'}), 400
-    if MANUAL_API_DISCOVER_ENDED_AT is not None:
-        return jsonify({'error': 'Manual API discovery has ended'}), 400
-    MANUAL_API_DISCOVER_ENDED_AT = datetime.now()
-    # TODO: 将started_at~ended_at之间的网关流量数据记录至manual_API_discovery_traffic_log.csv
-    MANUAL_API_DISCOVER_STARTED_AT = None
-    MANUAL_API_DISCOVER_ENDED_AT = None
+    with api_discovery_lock:
+        if MANUAL_API_DISCOVER_STARTED_AT is None:
+            return jsonify({'error': 'Manual API discovery has not started'}), 400
+        if MANUAL_API_DISCOVER_ENDED_AT is not None:
+            return jsonify({'error': 'Manual API discovery has ended'}), 400
+        MANUAL_API_DISCOVER_ENDED_AT = datetime.now()
 
+    fields_to_record = ['method', 'url', 'header', 'data']
+    output_file = os.path.join(dirname(__file__), 'algorithm', 'crawl_log', 'manual_API_discovery_traffic_log.csv')
+    file_exists = False
+    try:
+        with file_operation_lock:
+            with open(output_file, 'r'):
+                file_exists = True
+    except FileNotFoundError:
+        pass
+    with file_operation_lock:
+        with open(output_file, 'a', newline='') as outfile:
+            writer = csv.DictWriter(outfile, fieldnames=fields_to_record) # type: ignore
+            if not file_exists:
+                writer.writeheader()
+            with open('traffic.csv', 'r') as infile:
+                reader = csv.DictReader(infile)
+                for row in reader:
+                    request_time = datetime.strptime(row['request_time'], '%Y-%m-%d %H:%M:%S')
+                    if MANUAL_API_DISCOVER_STARTED_AT <= request_time <= MANUAL_API_DISCOVER_ENDED_AT: # type: ignore
+                        data_to_write = {field: row.get(field) for field in fields_to_record}
+                        writer.writerow(data_to_write)
+
+    with api_discovery_lock:
+        MANUAL_API_DISCOVER_STARTED_AT = None
+        MANUAL_API_DISCOVER_ENDED_AT = None
     api_log = algorithm.api_discovery.extract_api_log_to_csv()
     api_list, sample_list = algorithm.api_discovery.api_extract(api_log)
     discovered_api_list = compile_discovered_api_list(api_list, sample_list)
@@ -134,12 +171,13 @@ def stop_api_discovery():
 @app.route('/api_discovery/cancel', methods=['GET'])
 def cancel_api_discovery():
     global MANUAL_API_DISCOVER_STARTED_AT, MANUAL_API_DISCOVER_ENDED_AT
-    if MANUAL_API_DISCOVER_STARTED_AT is None:
-        return jsonify({'error': 'Manual API discovery has not started'}), 400
-    if MANUAL_API_DISCOVER_ENDED_AT is not None:
-        return jsonify({'error': 'Manual API discovery has ended'}), 400
-    MANUAL_API_DISCOVER_STARTED_AT = None
-    MANUAL_API_DISCOVER_ENDED_AT = None
+    with api_discovery_lock:
+        if MANUAL_API_DISCOVER_STARTED_AT is None:
+            return jsonify({'error': 'Manual API discovery has not started'}), 400
+        if MANUAL_API_DISCOVER_ENDED_AT is not None:
+            return jsonify({'error': 'Manual API discovery has ended'}), 400
+        MANUAL_API_DISCOVER_STARTED_AT = None
+        MANUAL_API_DISCOVER_ENDED_AT = None
     return jsonify({'message': 'Manual API discovery cancelled successfully'}), 200
 
 
@@ -147,38 +185,60 @@ def cancel_api_discovery():
 def construct_model():
     data = request.get_json()
     target_app = data.get('target_app')
-    config.basic.APP_URL =target_app.get('APP_url')
+    config.basic.APP_URL = target_app.get('APP_url')
     config.basic.APP_DESCRIPTION = target_app.get('description')
     config.basic.LOGIN_CREDENTIALS = target_app.get('login_credentials')
     config.basic.ACTION_STEP = target_app.get('user_behavior_cycle')
 
     if DATA_COLLECTION_STATUS == 'NOT_STARTED':
-        thread = threading.Thread(target=async_data_collect, args=(data.get('API_list'),))
+        thread = threading.Thread(target=async_data_collect, args=(data,))
         thread.start()
         return jsonify({'message': 'Data collection is ongoing, please try again later'}), 200
     elif DATA_COLLECTION_STATUS == 'IN_PROGRESS':
         return jsonify({'message': 'Data collection is ongoing, please try again later'}), 200
     else:
         detection_feature_list = data.get('detection_feature_list')
-        # 模拟模型构建逻辑，返回示例数据
-        report = "模型构建报告示例"
-        error_API_list = []
-        return jsonify({"report": report, "error_API_list": error_API_list})
+
+        features = []
+        for feature in detection_feature_list:
+            if feature.get('type') == 'SeqOccurTimeFeature':
+                features.append(SeqOccurTimeFeature(feature.get('string_list')))
+            else:
+                features.append(FEATURES[feature.get('name')])
+
+        data_splitting()
+        report = train_and_save_xgboost_model(
+            # TODO
+            features=features,
+            train_path='',
+            test_path='',
+            model_path='',
+            scaler_path=''
+        )
+        return jsonify({"report": report, "error_API_list": ERROR_APIS})
 
 
+# 启动检测
 @app.route('/detection/start', methods=['POST'])
 def start_detection():
     data = request.get_json()
-    enhanced_detection_enabled = data.get('enhanced_detection_enabled')
-    combined_data_duration = data.get('combined_data_duration')
-    # 模拟启动检测逻辑，返回示例数据
-    return jsonify({"info": "检测已启动"})
+    config.basic.COMBINED_DATA_DURATION = data.get('combined_data_duration')
+
+    with enhanced_detector.detection_lock:
+        if enhanced_detector.DETECTING == 'ON':
+            return jsonify({'error': 'Detection has already started'}), 400
+        enhanced_detector.DETECTING = "ON"
+    return jsonify({"info": "Detection has started successfully"}), 200
 
 
+# 暂停检测
 @app.route('/detection/pause', methods=['GET'])
 def pause_detection():
-    # 模拟暂停检测逻辑，返回示例数据
-    return jsonify({"info": "检测已暂停"})
+    with enhanced_detector.detection_lock:
+        if enhanced_detector.DETECTING == 'OFF':
+            return jsonify({'error': 'Detection has already paused'}), 400
+        enhanced_detector.DETECTING = "OFF"
+    return jsonify({'info': 'Detection has paused successfully'}), 200
 
 
 @app.route('/detection/records', methods=['GET'])
@@ -232,10 +292,9 @@ def api_matches(api_info, api_log_row):
 
 
 # 异步执行的数据收集函数
-
-# 异步执行的数据收集函数
 def async_data_collect(data):
-    global DATA_COLLECTION_STATUS
+    global DATA_COLLECTION_STATUS, ERROR_APIS
+    ERROR_APIS.clear()
     DATA_COLLECTION_STATUS = "IN_PROGRESS"
     try:
         api_list = data.get('API_list')
@@ -252,10 +311,11 @@ def async_data_collect(data):
             path_segments = api_info.get('path_segments')
             sample_traffic_data = next((row for index, row in api_log.iterrows() if api_matches(api_info, row)), None)
             if sample_traffic_data is None:
+                ERROR_APIS.append(api_info)
                 continue
             path = urlparse(api_info.get('sample_url')).path
             variable_indexes = []
-            for j in range(len(api_info.get('path_segments'))):
+            for j in range(len(path_segments)):
                 if api_info['path_segments'][j]['is_path_variable']:
                     variable_indexes.append(j)
             query_params = [item['name'] for item in api_info['request_param_list']]
@@ -292,6 +352,9 @@ def async_data_collect(data):
                 'sample_body': sample_body,
                 'sample_headers': sample_headers
             }, index=i))
+
+            if STOP_FLAG.is_set():
+                break
 
         if not STOP_FLAG.is_set():
             algorithm.api_discovery.collect_param_set(api_log, user_api_set)
@@ -354,6 +417,20 @@ def data_collect():
 def data_collect_status():
     global DATA_COLLECTION_STATUS
     return jsonify({"status": DATA_COLLECTION_STATUS}), 200
+
+
+# 启动 mitmproxy 的函数
+def start_mitmproxy():
+    try:
+        # 启动 mitmproxy 并指定脚本
+        subprocess.run(['mitmproxy', '-s', 'traffic_collector.py'])
+    except Exception as e:
+        print(f"Error starting mitmproxy: {e}")
+
+
+# 在项目启动时启动 mitmproxy
+mitmproxy_thread = threading.Thread(target=start_mitmproxy)
+mitmproxy_thread.start()
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)

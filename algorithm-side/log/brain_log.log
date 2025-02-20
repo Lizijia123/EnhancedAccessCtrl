@@ -1,0 +1,1477 @@
+2025-02-20 11:06:43,334 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/humhub_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/humhub_apis.json not found
+2025-02-20 11:06:43,457 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/humhub_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/humhub_apis.json not found
+2025-02-20 11:06:43,457 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/humhub_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/humhub_apis.json not found
+2025-02-20 11:06:43,587 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/humhub_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/humhub_apis.json not found
+2025-02-20 11:06:43,587 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/humhub_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/humhub_apis.json not found
+2025-02-20 11:06:43,587 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/humhub_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/humhub_apis.json not found
+2025-02-20 11:06:43,588 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/humhub_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/humhub_apis.json not found
+2025-02-20 11:06:43,588 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/humhub_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/humhub_apis.json not found
+2025-02-20 11:06:43,588 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/humhub_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/humhub_apis.json not found
+2025-02-20 11:06:43,588 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/humhub_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/humhub_apis.json not found
+2025-02-20 11:06:43,711 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/memos_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/memos_apis.json not found
+2025-02-20 11:06:43,711 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/memos_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/memos_apis.json not found
+2025-02-20 11:06:43,711 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/memos_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/memos_apis.json not found
+2025-02-20 11:06:43,711 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/memos_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/memos_apis.json not found
+2025-02-20 11:06:43,711 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/memos_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/memos_apis.json not found
+2025-02-20 11:06:43,840 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/memos_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/memos_apis.json not found
+2025-02-20 11:06:43,840 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/memos_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/memos_apis.json not found
+2025-02-20 11:06:43,840 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/memos_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/memos_apis.json not found
+2025-02-20 11:06:43,840 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/memos_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/memos_apis.json not found
+2025-02-20 11:06:43,840 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/memos_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/memos_apis.json not found
+2025-02-20 11:06:43,840 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/memos_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/memos_apis.json not found
+2025-02-20 11:06:43,964 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/memos_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/memos_apis.json not found
+2025-02-20 11:06:43,964 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/memos_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/memos_apis.json not found
+2025-02-20 11:06:43,964 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/memos_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/memos_apis.json not found
+2025-02-20 11:06:43,964 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/memos_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/memos_apis.json not found
+2025-02-20 11:06:43,964 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/memos_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/memos_apis.json not found
+2025-02-20 11:06:43,964 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/memos_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/memos_apis.json not found
+2025-02-20 11:06:43,964 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/memos_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/memos_apis.json not found
+2025-02-20 11:06:43,964 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/memos_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/memos_apis.json not found
+2025-02-20 11:06:43,964 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/memos_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/memos_apis.json not found
+2025-02-20 11:06:43,964 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/memos_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/memos_apis.json not found
+2025-02-20 11:06:43,964 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/memos_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/memos_apis.json not found
+2025-02-20 11:06:43,964 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/memos_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/memos_apis.json not found
+2025-02-20 11:06:43,964 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/memos_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/memos_apis.json not found
+2025-02-20 11:06:43,964 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/memos_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/memos_apis.json not found
+2025-02-20 11:06:43,964 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/memos_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/memos_apis.json not found
+2025-02-20 11:06:44,088 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,088 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,088 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,088 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,088 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,088 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,088 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,088 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,088 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,216 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,216 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,216 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,216 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,216 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,216 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,216 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,216 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,216 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,216 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,340 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,340 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,340 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,340 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,340 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,340 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,340 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,340 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,340 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,340 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,340 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,340 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,340 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,340 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,340 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,340 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,340 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,340 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,340 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,340 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,340 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,340 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:06:44,340 - ERROR - Failed to load knowledge base: API config file ./knowledge_base/collegeerp_apis.json not found
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 66, in load_knowledge
+    raise FileNotFoundError(f"API config file {api_file} not found")
+FileNotFoundError: API config file ./knowledge_base/collegeerp_apis.json not found
+2025-02-20 11:11:12,182 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: thinking failure...
+2025-02-20 11:11:12,182 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: thinking failure...
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 128, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-02-20 11:11:47,562 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: thinking failure...
+2025-02-20 11:11:47,562 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: thinking failure...
+2025-02-20 11:11:47,562 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: thinking failure...
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 128, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-02-20 11:11:47,562 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: thinking failure...
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 128, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-02-20 11:12:22,979 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: thinking failure...
+2025-02-20 11:12:22,979 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: thinking failure...
+2025-02-20 11:12:22,979 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: thinking failure...
+2025-02-20 11:12:22,980 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: thinking failure...
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 128, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-02-20 11:12:22,980 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: thinking failure...
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 128, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-02-20 11:12:22,980 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: thinking failure...
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 128, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-02-20 11:12:53,012 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: thinking failure...
+2025-02-20 11:12:53,012 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: thinking failure...
+2025-02-20 11:12:53,012 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: thinking failure...
+2025-02-20 11:12:53,012 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: thinking failure...
+2025-02-20 11:12:53,013 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: thinking failure...
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 128, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-02-20 11:12:53,013 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: thinking failure...
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 128, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-02-20 11:12:53,013 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: thinking failure...
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 128, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-02-20 11:12:53,013 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: thinking failure...
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 128, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-02-20 11:24:05,781 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: thinking failure...
+2025-02-20 11:24:05,782 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: thinking failure...
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 128, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-02-20 11:24:41,284 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: thinking failure...
+2025-02-20 11:24:41,284 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: thinking failure...
+2025-02-20 11:24:41,284 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: thinking failure...
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 128, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-02-20 11:24:41,284 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: thinking failure...
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 128, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-02-20 11:25:16,607 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: thinking failure...
+2025-02-20 11:25:16,607 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: thinking failure...
+2025-02-20 11:25:16,607 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: thinking failure...
+2025-02-20 11:25:16,607 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: thinking failure...
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 128, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-02-20 11:25:16,607 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: thinking failure...
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 128, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-02-20 11:25:16,607 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: thinking failure...
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 128, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-02-20 11:25:46,627 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: thinking failure...
+2025-02-20 11:25:46,627 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: thinking failure...
+2025-02-20 11:25:46,627 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: thinking failure...
+2025-02-20 11:25:46,627 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: thinking failure...
+2025-02-20 11:25:46,627 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: thinking failure...
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 128, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-02-20 11:25:46,627 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: thinking failure...
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 128, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-02-20 11:25:46,627 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: thinking failure...
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 128, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-02-20 11:25:46,627 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: thinking failure...
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/algorithm-side/behavior_agent/brain/brain_no_LC.py", line 128, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-02-20 11:36:20,128 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_6", "API_18", "API_5"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:37:58,140 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_6", "API_5", "API_18"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:38:15,698 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_6", "API_18", "API_23"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:38:19,575 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_6", "API_8", "API_18"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:38:19,575 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_6", "API_8", "API_18"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:40:56,937 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_6", "API_18", "API_35"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:40:56,937 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_6", "API_18", "API_35"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:40:56,937 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_6", "API_18", "API_35"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:41:03,521 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system and has published some memos, created some file resources, and created some labels.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_22", "API_24", "API_35"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:41:03,521 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system and has published some memos, created some file resources, and created some labels.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_22", "API_24", "API_35"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:41:03,521 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system and has published some memos, created some file resources, and created some labels.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_22", "API_24", "API_35"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:41:03,521 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system and has published some memos, created some file resources, and created some labels.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_22", "API_24", "API_35"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:41:06,655 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system and has published some memos, created some file resources, and created some labels.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_4", "API_27", "API_22"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:41:06,655 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system and has published some memos, created some file resources, and created some labels.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_4", "API_27", "API_22"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:41:06,655 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system and has published some memos, created some file resources, and created some labels.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_4", "API_27", "API_22"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:41:06,655 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system and has published some memos, created some file resources, and created some labels.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_4", "API_27", "API_22"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:41:06,655 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system and has published some memos, created some file resources, and created some labels.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_4", "API_27", "API_22"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:44:07,017 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system and has published some memos, created some file resources, and created some labels.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_22", "API_35", "API_34"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:44:07,017 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system and has published some memos, created some file resources, and created some labels.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_22", "API_35", "API_34"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:44:07,017 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system and has published some memos, created some file resources, and created some labels.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_22", "API_35", "API_34"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:44:07,017 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system and has published some memos, created some file resources, and created some labels.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_22", "API_35", "API_34"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:44:07,017 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system and has published some memos, created some file resources, and created some labels.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_22", "API_35", "API_34"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:44:07,017 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system and has published some memos, created some file resources, and created some labels.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_22", "API_35", "API_34"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:44:10,879 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_14", "API_26", "API_50"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:44:10,879 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_14", "API_26", "API_50"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:44:10,879 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_14", "API_26", "API_50"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:44:10,879 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_14", "API_26", "API_50"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:44:10,879 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_14", "API_26", "API_50"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:44:10,879 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_14", "API_26", "API_50"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:44:10,879 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_14", "API_26", "API_50"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:44:13,655 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_14", "API_26", "API_9"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:44:13,655 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_14", "API_26", "API_9"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:44:13,655 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_14", "API_26", "API_9"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:44:13,655 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_14", "API_26", "API_9"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:44:13,655 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_14", "API_26", "API_9"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:44:13,655 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_14", "API_26", "API_9"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:44:13,655 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_14", "API_26", "API_9"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:44:13,655 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 3 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_14", "API_26", "API_9"],
+  "malicious_sign_seq": [0, 0, 0]
+}
+```
+2025-02-20 11:48:31,990 - INFO - Query: Assume you are a user with the following identity: A user who has not logged into the system.
+You need to generate an API call sequence with approximately 15 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_4", "API_8", "API_7", "API_9", "API_2", "API_15", "API_0", "API_1", "API_8", "API_7", "API_9", "API_2", "API_15", "API_27", "API_29"],
+  "malicious_sign_seq": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1]
+}
+```
+2025-02-20 11:48:36,862 - INFO - Query: Assume you are a user with the following identity: An ordinary user who has logged into the system and has no historical operations such as creating memos, file resources, or labels.
+You need to generate an API call sequence with approximately 15 steps.
+However, you will attempt privilege escalation by making unauthorized API calls.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_4", "API_8", "API_7", "API_9", "API_27", "API_29", "API_31", "API_11", "API_14", "API_13", "API_33", "API_22", "API_35", "API_34", "API_37"],
+  "malicious_sign_seq": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1]
+}
+```
+2025-02-20 11:48:41,631 - INFO - Query: Assume you are a user with the following identity: An ordinary user who has logged into the system and has published some memos, created some file resources, and created some labels.
+You need to generate an API call sequence with approximately 15 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_4", "API_8", "API_7", "API_9", "API_27", "API_29", "API_31", "API_11", "API_14", "API_13", "API_33", "API_37", "API_38", "API_15", "API_0"],
+  "malicious_sign_seq": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0]
+}
+```
+2025-02-20 11:48:46,542 - INFO - Query: Assume you are a user with the following identity: A user who has not logged into the system.
+You need to generate an API call sequence with approximately 15 steps.
+However, you will attempt privilege escalation by making unauthorized API calls.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_4", "API_8", "API_7", "API_9", "API_2", "API_15", "API_0", "API_1", "API_27", "API_29", "API_14", "API_13", "API_3", "API_31", "API_35"],
+  "malicious_sign_seq": [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1]
+}
+```
+2025-02-20 11:49:07,055 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system and has published some memos, created some file resources, and created some labels.
+You need to generate an API call sequence with approximately 15 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_4", "API_22", "API_24", "API_34", "API_27", "API_29", "API_31", "API_11", "API_14", "API_13", "API_33", "API_0", "API_1", "API_15", "API_35"],
+  "malicious_sign_seq": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+}
+```

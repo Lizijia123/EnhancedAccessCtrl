@@ -1,9 +1,9 @@
 from urllib import parse
 from urllib.parse import unquote
 
-from behavior_agent.crawl_script.loginer import HumhubLoginer, MemosLoginer, CollegeerpLoginer
-
-CURR_APP_NAME = 'collegeerp'
+CURR_APP_NAME = 'memos'
+model_names = ["gpt-4o-mini", "qwen-max", "deepseek-r1", "llama3.3-70b-instruct"]
+LLM_MODEL_NAME = "llama3.3-70b-instruct"
 
 ROOT_URL = {
     'humhub': 'http://111.229.33.190:8081',
@@ -17,11 +17,6 @@ URL_ENCODING_CONVERT = {
     'collegeerp': False
 }
 
-LOGINER_MAPPING = {
-    'humhub': HumhubLoginer,
-    'memos': MemosLoginer,
-    'collegeerp': CollegeerpLoginer,
-}
 
 def url_decoding(url):
     if '/index.php?r=' not in url:
@@ -80,8 +75,9 @@ NORMAL = 0
 VERTICAL_AUTH_OVERREACH = 1
 HORIZONTAL_AUTH_OVERREACH = 2
 
-BROWSERMOB_PROXY_PATH = 'B:\\browsermob-proxy-2.1.4-bin\\browsermob-proxy-2.1.4\\bin\\browsermob-proxy.bat'
-EDGE_DRIVER_PATH = 'C:\\Users\\hp\\miniconda3\\msedgedriver.exe'
+# TODO
+BROWSERMOB_PROXY_PATH = '/home/ubuntu/browsermob-proxy-2.1.4/bin/browsermob-proxy'
+EDGE_DRIVER_PATH = '/home/ubuntu/msedgedriver'
 
 BRAIN_MAX_FORMAT_RETRY = 5
 

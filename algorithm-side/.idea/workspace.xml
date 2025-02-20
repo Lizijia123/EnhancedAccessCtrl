@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="64fbf079-2326-43d4-9089-f0d4ef5ef6d0" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/../algorithm-side-interfaces/algorithm/model_training.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../algorithm-side-interfaces/enhanced_detector.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../algorithm-side-interfaces/traffic_collector.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/behavior_agent/brain/knowledge_base/collegeerp_apis.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/behavior_agent/brain/knowledge_base/collegeerp_knowledge.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/behavior_agent/crawl_script/burp_traffic_data/collegeerp_burp_traffic_data.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/behavior_agent/crawl_script/crawl_log/collegeerp_burp_log.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/behavior_agent/crawl_script/crawl_log/collegeerp_url_crawl_log.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/behavior_agent/crawl_script/crawl_log/collegeerp_web_element_crawl_log.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/behavior_agent/param_set/collegeerp.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algorithm-side-interfaces/algorithm/entity/feature.py" beforeDir="false" afterPath="$PROJECT_DIR$/../algorithm-side-interfaces/algorithm/entity/feature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algorithm-side-interfaces/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/../algorithm-side-interfaces/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algorithm-side-interfaces/config/basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/../algorithm-side-interfaces/config/basic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/algorithm-side.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/behavior_agent/agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/behavior_agent/agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/behavior_agent/api_discovery/api-discovery.ini" beforeDir="false" afterPath="$PROJECT_DIR$/behavior_agent/api_discovery/api-discovery.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/behavior_agent/api_discovery/api_discovery.py" beforeDir="false" afterPath="$PROJECT_DIR$/behavior_agent/api_discovery/api_discovery.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/behavior_agent/api_doc/memos.json" beforeDir="false" afterPath="$PROJECT_DIR$/behavior_agent/api_doc/memos.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/behavior_agent/api_doc/nextcloud.json" beforeDir="false" afterPath="$PROJECT_DIR$/../algorithm-side-interfaces/traffic.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/behavior_agent/api_extracting.py" beforeDir="false" afterPath="$PROJECT_DIR$/behavior_agent/api_extracting.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/behavior_agent/brain/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/behavior_agent/brain/Thoughts/LLM.py" beforeDir="false" afterPath="$PROJECT_DIR$/behavior_agent/brain/Thoughts/LLM.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/behavior_agent/brain/brain.py" beforeDir="false" afterPath="$PROJECT_DIR$/behavior_agent/brain/brain.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/behavior_agent/brain/brain_no_LC.py" beforeDir="false" afterPath="$PROJECT_DIR$/behavior_agent/brain/brain_no_LC.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/behavior_agent/brain/knowledge_base/nextcloud_apis.json" beforeDir="false" afterPath="$PROJECT_DIR$/behavior_agent/api_doc/collegeerp.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/behavior_agent/brain/knowledge_base/nextcloud_knowledge.json" beforeDir="false" afterPath="$PROJECT_DIR$/behavior_agent/crawl_script/crawl_log/collegeerp_API_crawl_log.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/behavior_agent/brain/log/brain_log.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/behavior_agent/brain/test_brain.py" beforeDir="false" afterPath="$PROJECT_DIR$/behavior_agent/brain/test_brain.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/behavior_agent/crawl_log_preprocessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/behavior_agent/crawl_log_preprocessing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/behavior_agent/crawl_script/burp_traffic_data/burp_data_preprocessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/behavior_agent/crawl_script/burp_traffic_data/burp_data_preprocessing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/behavior_agent/crawl_script/crawl_log/memos_API_crawl_log.csv" beforeDir="false" afterPath="$PROJECT_DIR$/behavior_agent/crawl_script/crawl_log/memos_API_crawl_log.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/behavior_agent/crawl_script/driver.py" beforeDir="false" afterPath="$PROJECT_DIR$/behavior_agent/crawl_script/driver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/behavior_agent/crawl_script/loginer.py" beforeDir="false" afterPath="$PROJECT_DIR$/behavior_agent/crawl_script/loginer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/behavior_agent/crawl_script/server.log" beforeDir="false" afterPath="$PROJECT_DIR$/behavior_agent/crawl_script/server.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/behavior_agent/crawl_script/web_element_interact_log.log" beforeDir="false" afterPath="$PROJECT_DIR$/behavior_agent/crawl_script/web_element_interact_log.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/behavior_agent/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/behavior_agent/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/behavior_agent/param_set/memos.json" beforeDir="false" afterPath="$PROJECT_DIR$/behavior_agent/param_set/memos.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/behavior_agent/param_set/nextcloud.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/behavior_agent/param_set_collection.py" beforeDir="false" afterPath="$PROJECT_DIR$/behavior_agent/param_set_collection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/basic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/traffic_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/traffic_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/entity/api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/supervised_data_gen/api_interaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/supervised_data_gen/api_interaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/supervised_data_gen/interaction_judgement.py" beforeDir="false" afterPath="$PROJECT_DIR$/supervised_data_gen/interaction_judgement.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/supervised_data_gen/param_injection.py" beforeDir="false" afterPath="$PROJECT_DIR$/supervised_data_gen/param_injection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/supervised_data_gen/traffic_data_generation.py" beforeDir="false" afterPath="$PROJECT_DIR$/supervised_data_gen/traffic_data_generation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/数据收集与模型构建-初步代码设计框架.md" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2tIvCVOUVnbrBw81416yuvGQfAb" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/hp/Desktop/EnhancedAccessCtrl/algorithm-side",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-PY-243.21565.199" />
+        <option value="bundled-python-sdk-cab1f2013843-4ae2d6a61b08-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.21565.199" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="64fbf079-2326-43d4-9089-f0d4ef5ef6d0" name="更改" comment="" />
+      <created>1740052276282</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1740052276282</updated>
+      <workItem from="1740052277486" duration="1680000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

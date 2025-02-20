@@ -10,19 +10,19 @@ ACTION_STEP = {
 """
 NORMAL_USER_NUM = {
     'humhub': {
-        'admin': 18,
-        'ordinary_user': 162,
+        'admin': 1,#18,
+        'ordinary_user': 1,#162,
         'unlogged_in_user': 0
     },
     'memos': {
-        'admin': 18,
-        'ordinary_user': 126,
-        'unlogged_in_user': 36
+        'admin': 1,#18,
+        'ordinary_user': 1,#126,
+        'unlogged_in_user': 1#36
     },
     'collegeerp': {
-        'admin': 18,
-        'teacher': 81,
-        'student': 81,
+        'admin': 1,#18,
+        'teacher': 1,#81,
+        'student': 1,#81,
         'unlogged_in_user': 0
     }
 }
@@ -30,18 +30,18 @@ NORMAL_USER_NUM = {
 MALICIOUS_USER_NUM = {
     'humhub': {
         'admin': 0,
-        'ordinary_user': 17,
-        'unlogged_in_user': 3
+        'ordinary_user': 1,#17,
+        'unlogged_in_user': 1,#3
     },
     'memos': {
         'admin': 0,
-        'ordinary_user': 17,
-        'unlogged_in_user': 3
+        'ordinary_user': 1,#17,
+        'unlogged_in_user': 1,#3
     },
     'collegeerp': {
         'admin': 0,
-        'teacher': 5,
-        'student': 12,
-        'unlogged_in_user': 3
+        'teacher': 1,#5,
+        'student': 1,#12,
+        'unlogged_in_user': 1,#3
     }
 }

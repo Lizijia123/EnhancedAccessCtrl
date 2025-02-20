@@ -41,7 +41,7 @@ class API:
     def from_api_doc(cls):
         api_list = []
         proj_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        with open(f'{proj_path}\\behavior_agent\\api_doc\\{CURR_APP_NAME}.json', 'r', encoding='utf-8') as f:
+        with open(f'{proj_path}/behavior_agent/api_doc/{CURR_APP_NAME}.json', 'r', encoding='utf-8') as f:
             api_json = json.load(f)
             for api_title in api_json:
                 api_list.append(API({

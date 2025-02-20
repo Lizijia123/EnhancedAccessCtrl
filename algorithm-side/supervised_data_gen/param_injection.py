@@ -5,16 +5,22 @@ import random
 from selenium import webdriver
 
 from behavior_agent.agent import Agent
+from behavior_agent.crawl_script.loginer import LOGINER_MAPPING
 from config.basic import *
 from config.crawling import AUTH
+from config.log import LOGGER
 from supervised_data_gen.api_interaction import call_api
 from supervised_data_gen.interaction_judgement import INTERACTION_JUDGEMENT
+from selenium.webdriver.edge.options import Options
+from selenium.webdriver.edge.service import Service
 
 param_cache = {}
 
 
 def fetch_cookie(uname, unlogged):
     cookie_list = []
+    driver = None
+    service = None
 
     if not unlogged:
         auth_list = AUTH[CURR_APP_NAME]
@@ -28,15 +34,46 @@ def fetch_cookie(uname, unlogged):
                     break
             if find:
                 break
-        driver = webdriver.Edge()
-        loginer = LOGINER_MAPPING.get(CURR_APP_NAME)(driver)
-        cookie_list = loginer.login(uname, pwd, admin=(uname == ADMIN_UNAME))
-        driver.quit()
+
+        # 创建 Edge 浏览器服务
+        service = Service(EDGE_DRIVER_PATH)
+
+        # 创建 Edge 浏览器选项并开启无头模式
+        edge_options = Options()
+        edge_options.add_argument('--headless')
+
+        try:
+            # 创建浏览器实例
+            driver = webdriver.Edge(service=service, options=edge_options)
+
+            # 获取登录器实例并执行登录操作
+            loginer = LOGINER_MAPPING.get(CURR_APP_NAME)(driver)
+            cookie_list = loginer.login(uname, pwd, admin=(uname == ADMIN_UNAME))
+            LOGGER.info(f"Fetched cookie: {uname}, {cookie_list}")
+
+        except Exception as e:
+            print(f"An error occurred while fetching cookies: {e}")
+        finally:
+            # 确保浏览器实例和服务被正确关闭和停止
+            if driver:
+                driver.quit()
+            if service:
+                service.stop()
 
     return cookie_list
 
+def param_injection_for_api_seq(api_title_seq, uname, unlogged, action_type_seq, malicious):
+    # 确保正常的用户不会进行越权操作
+    if not malicious:
+        valid_api_title_seq = []
+        valid_action_type_seq = []
+        for i in range(len(action_type_seq)):
+            if action_type_seq[i] == NORMAL:
+                valid_api_title_seq.append(api_title_seq[i])
+                valid_action_type_seq.append(action_type_seq[i])
+        api_title_seq = valid_api_title_seq
+        action_type_seq = valid_action_type_seq
 
-def param_injection_for_api_seq(api_title_seq, uname, unlogged, action_type_seq):
     """
     填充某个API序列的参数
     轮询+交互校验
@@ -58,7 +95,7 @@ def param_injection_for_api_seq(api_title_seq, uname, unlogged, action_type_seq)
 
         while try_time < PARAM_INJECTION_MAX_RETRY:
             url, req_data = param_injection_for_api(api_seq[i])
-            calling_info = call_api(api_title_seq[i], url, req_data, cookie_list)
+            calling_info = call_api(api_seq[i], url, req_data, cookie_list)
             data_valid = INTERACTION_JUDGEMENT[CURR_APP_NAME](action_type_seq[i], calling_info)
             if data_valid:
                 break
@@ -66,11 +103,35 @@ def param_injection_for_api_seq(api_title_seq, uname, unlogged, action_type_seq)
         if not data_valid:
             seq_valid = False
 
+        LOGGER.info(f'轮询次数：{try_time}；单条数据合法性：{data_valid}；组合流量数据合法性：{seq_valid}')
+
+        # calling_info = {
+        #     'timestamp': timestamp,
+        #     'api_endpoint': api_endpoint,
+        #     'http_method': method,
+        #     'request_body_size': request_body_size,
+        #     'response_body_size': response_body_size,
+        #     'response_status': response.status_code,
+        #     'execution_time': execution_time,
+        #     'status_code': response.status_code,
+        #     'method': response.request.method,
+        #     'url': response.request.url,
+        #     'header': response.request.headers,
+        #     'data': None if len(data) == 0 else data,
+        #     # 'response': response.text
+        # }
+
         traffic_data_seq.append([
-            calling_info['method'],
+            calling_info['timestamp'],
+            calling_info['http_method'].upper(),
             calling_info['url'],
+            calling_info['api_endpoint'],
             calling_info['header'],
             calling_info['data'],
+            calling_info['request_body_size'],
+            calling_info['response_body_size'],
+            calling_info['response_status'],
+            calling_info['execution_time'],
             data_valid
         ])
 
@@ -85,8 +146,8 @@ def param_injection_for_api(api):
     global param_cache
 
     proj_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    with open(f'{proj_path}\\behavior_agent\\param_set\\{CURR_APP_NAME}.json', 'r', encoding='utf-8') as f:
-        param_set = json.load(f, ensure_ascii=False)
+    with open(f'{proj_path}/behavior_agent/param_set/{CURR_APP_NAME}.json', 'r', encoding='utf-8') as f:
+        param_set = json.load(f)
     api_param_set = param_set[f'API_{int(api.index)}']
 
     if len(api_param_set['sample']) > 0 and random.random() < PARAM_INJECTION_SAMPLE_RATE:

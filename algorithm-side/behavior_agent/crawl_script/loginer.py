@@ -40,8 +40,31 @@ page_elements = {
             'value': '/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[2]/button[1]'
         }
     },
-    'nextcloud': {
-        # TODO
+    'collegeerp': {
+        'admin_uname_input': {
+            'by': By.XPATH,
+            'value': '/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/div[1]/form[1]/div[1]/input[1]'
+        },
+        'admin_pwd_input': {
+            'by': By.XPATH,
+            'value': '/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/div[1]/form[1]/div[2]/input[1]'
+        },
+        'admin_login_btn': {
+            'by': By.XPATH,
+            'value': '/html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/div[1]/form[1]/div[3]/input[1]'
+        },
+        'normal_uname_input': {
+            'by': By.XPATH,
+            'value': '/html[1]/body[1]/div[1]/div[1]/div[2]/form[1]/p[1]/input[1]'
+        },
+        'normal_pwd_input': {
+            'by': By.XPATH,
+            'value': '/html[1]/body[1]/div[1]/div[1]/div[2]/form[1]/p[2]/input[1]'
+        },
+        'normal_login_btn': {
+            'by': By.XPATH,
+            'value': '/html[1]/body[1]/div[1]/div[1]/div[2]/form[1]/button[1]'
+        }
     }
 }
 
@@ -62,7 +85,7 @@ class Loginer:
     """
     登录并进入登录后首页，返回cookies
     """
-    def login(self, uname, pwd):
+    def login(self, uname, pwd, admin=False):
         self.driver.delete_all_cookies()
         self.driver.get(ROOT_URL[CURR_APP_NAME])
 
@@ -84,7 +107,7 @@ class HumhubLoginer(Loginer):
     def __init__(self, driver):
         Loginer.__init__(self, driver, app_name='humhub')
 
-    def login(self, uname, pwd):
+    def login(self, uname, pwd, admin=False):
         self.driver.delete_all_cookies()
         self.driver.get(ROOT_URL[CURR_APP_NAME])
 
@@ -103,3 +126,29 @@ class MemosLoginer(Loginer):
     def __init__(self, driver):
         Loginer.__init__(self, driver, app_name='memos')
 
+
+class CollegeerpLoginer(Loginer):
+    def __init__(self, driver):
+        Loginer.__init__(self, driver, app_name='collegeerp')
+        self.ADMIN_URL = 'http://111.229.33.190:8000/admin/login/?next=/admin/'
+        self.NORMAL_URL = 'http://111.229.33.190:8000/accounts/login/?next=/'
+
+    def login(self, uname, pwd, admin=False):
+        self.driver.delete_all_cookies()
+        self.driver.get(self.ADMIN_URL if admin else self.NORMAL_URL)
+
+        self._wait_for('admin_uname_input' if admin else 'normal_uname_input')
+        self._wait_for('admin_pwd_input' if admin else 'normal_pwd_input')
+        self._wait_for('admin_login_btn' if admin else 'normal_login_btn')
+        self._element('admin_uname_input' if admin else 'normal_uname_input').send_keys(uname)
+        self._element('admin_pwd_input' if admin else 'normal_pwd_input').send_keys(pwd)
+        self._element('admin_login_btn' if admin else 'normal_login_btn').click()
+
+        time.sleep(login_wait_time)
+        return self.driver.get_cookies()
+
+LOGINER_MAPPING = {
+    'humhub': HumhubLoginer,
+    'memos': MemosLoginer,
+    'collegeerp': CollegeerpLoginer,
+}

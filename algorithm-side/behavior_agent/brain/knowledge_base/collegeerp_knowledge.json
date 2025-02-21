@@ -28,8 +28,10 @@
     "admin": [
       "An administrator user who has logged into the system"
     ],
-    "ordinary_user": [
-      "A teacher user who has logged into the system is responsible for teaching some courses in the educational system.",
+    "teacher": [
+      "A teacher user who has logged into the system is responsible for teaching some courses in the educational system."
+    ],
+    "student":[
       "A student user who has logged into the system is taking some courses in the educational system."
     ],
     "unlogged_in_user": [

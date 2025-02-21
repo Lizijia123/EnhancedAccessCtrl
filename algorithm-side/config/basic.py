@@ -1,7 +1,7 @@
 from urllib import parse
 from urllib.parse import unquote
 
-CURR_APP_NAME = 'memos'
+CURR_APP_NAME = 'collegeerp'
 model_names = ["gpt-4o-mini", "qwen-max", "deepseek-r1", "llama3.3-70b-instruct"]
 LLM_MODEL_NAME = "llama3.3-70b-instruct"
 
@@ -31,6 +31,8 @@ def url_decoding(url):
 
 # TODO
 def url_encoding(url):
+    if 'index.php' in url:
+        return url
     query = ''
     if '?' in url:
         query = '&' + url.split('?')[1]
@@ -87,3 +89,14 @@ PARAM_INJECTION_CACHE_RATE = 0.3
 
 ADMIN_UNAME = 'admin'
 
+NECESSARY_HEADERS = {
+    'humhub': {
+        "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+    },
+    'memos': {
+
+    },
+    'collegeerp': {
+
+    }
+}

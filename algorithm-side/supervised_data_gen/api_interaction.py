@@ -8,7 +8,6 @@ from config.log import LOGGER
 
 
 def call_api(api, url, data, cookie_list):
-    start_time = datetime.datetime.now()  # 记录请求开始时间
     method = api.method.upper()
 
     cookies = {}
@@ -21,10 +20,13 @@ def call_api(api, url, data, cookie_list):
 
     request_body_size = len(str(data).encode('utf-8'))  # 计算请求体大小
 
+    start_time = datetime.datetime.now()  # 记录请求开始时间
+
     if not URL_ENCODING_CONVERT[CURR_APP_NAME]:
-        response = requests.request(method, url, json=data, cookies=cookies)  # Content-Type: application/x-www-form-urlencoded
+        response = requests.request(method, url, json=data, cookies=cookies, headers=NECESSARY_HEADERS[CURR_APP_NAME])  # Content-Type: application/x-www-form-urlencoded
     else:
-        response = requests.request(method, url, data=data, cookies=cookies)  # Content-Type: application/json
+        url = url_encoding(url)
+        response = requests.request(method, url, data=data, cookies=cookies, headers=NECESSARY_HEADERS[CURR_APP_NAME])  # Content-Type: application/json
 
     end_time = datetime.datetime.now()  # 记录请求结束时间
     execution_time = (end_time - start_time).total_seconds() * 1000  # 计算执行时间（毫秒）
@@ -46,6 +48,7 @@ def call_api(api, url, data, cookie_list):
         'url': response.request.url,
         'header': response.request.headers,
         'data': None if len(data) == 0 else data,
+        'response': str(response.content)
         # 'response': response.text
     }  # ["status_code", "method", "url", "headers", "data", "response"]
 

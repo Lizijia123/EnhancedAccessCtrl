@@ -107,7 +107,7 @@ class TargetApplication(models.Model):
     last_API_discovery_at = models.DateTimeField(null=True, blank=True)
     last_model_construction_at = models.DateTimeField(null=True, blank=True)
 
-    discovered_API_list = models.ManyToManyField(API, related_name='discovered_in_apps')
+    discovered_API_list = models.ManyToManyField(API, related_name='discovered_in_apps') # 前端需要调用get_api_lists接口以获取这两个列表的数据
     user_API_list = models.ManyToManyField(API, related_name='used_in_apps')
 
     DETECT_TASK_STATE_CHOICES = (

@@ -69,8 +69,10 @@ USER_INFO_UNAME = {
         "admin": [
             ['admin']
         ],
-        "ordinary_user": [
-            ['teacherA', 'teacherB'],
+        "teacher": [
+            ['teacherA', 'teacherB']
+        ],
+        "student": [
             ['studentA', 'studentB', 'studentC', 'studentD', 'studentE', 'studentF']
         ],
         "unlogged_in_user": [

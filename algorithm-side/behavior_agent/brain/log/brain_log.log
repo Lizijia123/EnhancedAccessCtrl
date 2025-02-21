@@ -174,3 +174,179 @@ Your response MUST be in the following JSON format, and you MUST NOT include any
 ```
 2025-02-20 19:39:24,166 - INFO - gen_api_seq()方法返回: seq=['API_4', 'API_22', 'API_24', 'API_34', 'API_27', 'API_29', 'API_31', 'API_11', 'API_14', 'API_13', 'API_33', 'API_0', 'API_1', 'API_15', 'API_35'], malicious_sign_seq=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], role_user_index=0
 2025-02-20 19:39:24,166 - INFO - gen_api_seq()方法参数: malicious=True, role=ordinary_user, action_step=15
+2025-02-21 10:10:59,546 - INFO - gen_api_seq()方法参数: malicious=False, role=admin, action_step=20
+2025-02-21 10:11:07,869 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 20 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_6", "API_5", "API_8", "API_34", "API_35", "API_36", "API_37", "API_18", "API_19", "API_23", "API_10", "API_28", "API_84", "API_100", "API_121", "API_122", "API_117", "API_131", "API_134", "API_155"],
+  "malicious_sign_seq": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+}
+```
+2025-02-21 10:11:07,870 - INFO - gen_api_seq()方法返回: seq=['API_6', 'API_5', 'API_8', 'API_34', 'API_35', 'API_36', 'API_37', 'API_18', 'API_19', 'API_23', 'API_10', 'API_28', 'API_84', 'API_100', 'API_121', 'API_122', 'API_117', 'API_131', 'API_134', 'API_155'], malicious_sign_seq=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], role_user_index=0
+2025-02-21 10:11:07,870 - INFO - gen_api_seq()方法参数: malicious=True, role=ordinary_user, action_step=20
+2025-02-21 10:11:14,339 - INFO - Query: Assume you are a user with the following identity: An ordinary user who has logged into the system, has joined some spaces; is a super - administrator in some spaces and an ordinary user in some spaces; is not the creator or moderator of any space; there are some spaces that the user has not joined.
+You need to generate an API call sequence with approximately 20 steps.
+However, you will attempt privilege escalation by making unauthorized API calls.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_5", "API_8", "API_100", "API_121", "API_122", "API_117", "API_131", "API_126", "API_120", "API_123", "API_18", "API_19", "API_23", "API_34", "API_35", "API_36", "API_37", "API_43", "API_47", "API_55"],
+  "malicious_sign_seq": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+}
+```
+2025-02-21 10:11:14,340 - INFO - gen_api_seq()方法返回: seq=['API_5', 'API_8', 'API_100', 'API_121', 'API_122', 'API_117', 'API_131', 'API_126', 'API_120', 'API_123', 'API_18', 'API_19', 'API_23', 'API_34', 'API_35', 'API_36', 'API_37', 'API_43', 'API_47', 'API_55'], malicious_sign_seq=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], role_user_index=3
+2025-02-21 10:11:14,340 - INFO - gen_api_seq()方法参数: malicious=True, role=unlogged_in_user, action_step=20
+2025-02-21 10:11:22,562 - INFO - Query: Assume you are a user with the following identity: A user who has not logged into the system.
+You need to generate an API call sequence with approximately 20 steps.
+However, you will attempt privilege escalation by making unauthorized API calls.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_5", "API_6", "API_8", "API_10", "API_13", "API_18", "API_19", "API_23", "API_28", "API_34", "API_35", "API_36", "API_37", "API_39", "API_40", "API_41", "API_42", "API_55", "API_56", "API_2"],
+  "malicious_sign_seq": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+}
+```
+2025-02-21 10:11:22,562 - INFO - gen_api_seq()方法返回: seq=['API_5', 'API_6', 'API_8', 'API_10', 'API_13', 'API_18', 'API_19', 'API_23', 'API_28', 'API_34', 'API_35', 'API_36', 'API_37', 'API_39', 'API_40', 'API_41', 'API_42', 'API_55', 'API_56', 'API_2'], malicious_sign_seq=[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], role_user_index=0
+2025-02-21 10:11:22,563 - INFO - gen_api_seq()方法参数: malicious=False, role=ordinary_user, action_step=20
+2025-02-21 10:11:28,637 - INFO - Query: Assume you are a user with the following identity: An ordinary user who has logged into the system, has joined some spaces; is a moderator in some spaces and an ordinary user in some spaces; is not the creator or super - administrator of any space; there are some spaces that the user has not joined; has posted some comments.
+You need to generate an API call sequence with approximately 20 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_5", "API_8", "API_100", "API_121", "API_122", "API_117", "API_131", "API_126", "API_120", "API_123", "API_2", "API_13", "API_14", "API_15", "API_28", "API_84", "API_39", "API_43", "API_47", "API_134"],
+  "malicious_sign_seq": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0]
+}
+```
+2025-02-21 10:11:28,637 - INFO - gen_api_seq()方法返回: seq=['API_5', 'API_8', 'API_100', 'API_121', 'API_122', 'API_117', 'API_131', 'API_126', 'API_120', 'API_123', 'API_2', 'API_13', 'API_14', 'API_15', 'API_28', 'API_84', 'API_39', 'API_43', 'API_47', 'API_134'], malicious_sign_seq=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0], role_user_index=4
+2025-02-21 13:18:12,861 - INFO - gen_api_seq()方法参数: malicious=False, role=teacher, action_step=10
+2025-02-21 13:22:10,110 - INFO - gen_api_seq()方法参数: malicious=True, role=unlogged_in_user, action_step=10
+2025-02-21 13:22:14,986 - INFO - Query: Assume you are a user with the following identity: A user who has not logged into the system.
+You need to generate an API call sequence with approximately 10 steps.
+However, you will attempt privilege escalation by making unauthorized API calls.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_14", "API_0", "API_26", "API_9", "API_21", "API_11", "API_4", "API_52", "API_54", "API_55"],
+  "malicious_sign_seq": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+}
+```
+2025-02-21 13:22:14,987 - INFO - gen_api_seq()方法返回: seq=['API_14', 'API_0', 'API_26', 'API_9', 'API_21', 'API_11', 'API_4', 'API_52', 'API_54', 'API_55'], malicious_sign_seq=[1, 1, 1, 1, 1, 1, 1, 1, 1, 1], role_user_index=0
+2025-02-21 13:22:14,987 - INFO - gen_api_seq()方法参数: malicious=False, role=teacher, action_step=10
+2025-02-21 13:22:18,570 - INFO - Query: Assume you are a user with the following identity: A teacher user who has logged into the system is responsible for teaching some courses in the educational system..
+You need to generate an API call sequence with approximately 10 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_41", "API_42", "API_11", "API_2", "API_51", "API_8", "API_52", "API_3", "API_4", "API_43"],
+  "malicious_sign_seq": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+}
+```
+2025-02-21 13:22:18,571 - INFO - gen_api_seq()方法返回: seq=['API_41', 'API_42', 'API_11', 'API_2', 'API_51', 'API_8', 'API_52', 'API_3', 'API_4', 'API_43'], malicious_sign_seq=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], role_user_index=0
+2025-02-21 13:22:18,571 - INFO - gen_api_seq()方法参数: malicious=True, role=teacher, action_step=10
+2025-02-21 13:22:22,106 - INFO - Query: Assume you are a user with the following identity: A teacher user who has logged into the system is responsible for teaching some courses in the educational system..
+You need to generate an API call sequence with approximately 10 steps.
+However, you will attempt privilege escalation by making unauthorized API calls.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_41", "API_42", "API_11", "API_4", "API_0", "API_43", "API_8", "API_52", "API_14", "API_9"],
+  "malicious_sign_seq": [0, 0, 0, 0, 1, 0, 0, 0, 1, 1]
+}
+```
+2025-02-21 13:22:22,106 - INFO - gen_api_seq()方法返回: seq=['API_41', 'API_42', 'API_11', 'API_4', 'API_0', 'API_43', 'API_8', 'API_52', 'API_14', 'API_9'], malicious_sign_seq=[0, 0, 0, 0, 1, 0, 0, 0, 1, 1], role_user_index=0
+2025-02-21 13:22:22,107 - INFO - gen_api_seq()方法参数: malicious=True, role=student, action_step=10
+2025-02-21 13:22:26,961 - INFO - Query: Assume you are a user with the following identity: A student user who has logged into the system is taking some courses in the educational system..
+You need to generate an API call sequence with approximately 10 steps.
+However, you will attempt privilege escalation by making unauthorized API calls.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_5", "API_34", "API_35", "API_2", "API_4", "API_5", "API_34", "API_26", "API_8", "API_3"],
+  "malicious_sign_seq": [0, 0, 0, 1, 1, 0, 0, 1, 1, 1]
+}
+```
+2025-02-21 13:22:26,962 - INFO - gen_api_seq()方法返回: seq=['API_5', 'API_34', 'API_35', 'API_2', 'API_4', 'API_5', 'API_34', 'API_26', 'API_8', 'API_3'], malicious_sign_seq=[0, 0, 0, 1, 1, 0, 0, 1, 1, 1], role_user_index=0
+2025-02-21 13:22:26,962 - INFO - gen_api_seq()方法参数: malicious=False, role=student, action_step=10
+2025-02-21 13:22:30,542 - INFO - Query: Assume you are a user with the following identity: A student user who has logged into the system is taking some courses in the educational system..
+You need to generate an API call sequence with approximately 10 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_5", "API_34", "API_35", "API_5", "API_2", "API_4", "API_34", "API_35", "API_5", "API_3"],
+  "malicious_sign_seq": [0, 0, 0, 0, 1, 1, 0, 0, 0, 1]
+}
+```
+2025-02-21 13:22:30,542 - INFO - gen_api_seq()方法返回: seq=['API_5', 'API_34', 'API_35', 'API_5', 'API_2', 'API_4', 'API_34', 'API_35', 'API_5', 'API_3'], malicious_sign_seq=[0, 0, 0, 0, 1, 1, 0, 0, 0, 1], role_user_index=0
+2025-02-21 13:22:30,542 - INFO - gen_api_seq()方法参数: malicious=False, role=admin, action_step=10
+2025-02-21 13:22:34,068 - INFO - Query: Assume you are a user with the following identity: An administrator user who has logged into the system.
+You need to generate an API call sequence with approximately 10 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_14", "API_26", "API_9", "API_0", "API_21", "API_40", "API_49", "API_50", "API_54", "API_55"],
+  "malicious_sign_seq": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+}
+```
+2025-02-21 13:22:34,068 - INFO - gen_api_seq()方法返回: seq=['API_14', 'API_26', 'API_9', 'API_0', 'API_21', 'API_40', 'API_49', 'API_50', 'API_54', 'API_55'], malicious_sign_seq=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], role_user_index=0

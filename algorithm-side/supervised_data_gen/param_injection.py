@@ -2,10 +2,11 @@ import json
 import os
 import random
 
+from requests import Session
 from selenium import webdriver
 
 from behavior_agent.agent import Agent
-from behavior_agent.crawl_script.loginer import LOGINER_MAPPING
+from behavior_agent.crawl_script.loginer import LOGINER_MAPPING, session_login
 from config.basic import *
 from config.crawling import AUTH
 from config.log import LOGGER
@@ -79,6 +80,22 @@ def param_injection_for_api_seq(api_title_seq, uname, unlogged, action_type_seq,
     轮询+交互校验
     """
     cookie_list = fetch_cookie(uname, unlogged)
+    # session = Session()
+    # if not unlogged:
+    #     auth_list = AUTH[CURR_APP_NAME]
+    #     pwd = ''
+    #     user_role = ''
+    #     for role in auth_list:
+    #         find = False
+    #         for auth_item in auth_list[role]:
+    #             if uname == auth_item['uname']:
+    #                 find = True
+    #                 pwd = auth_item['pwd']
+    #                 user_role = role
+    #                 break
+    #         if find:
+    #             break
+    #     session = session_login(uname, pwd, user_role)
 
     global param_cache
     param_cache.clear()
@@ -96,7 +113,7 @@ def param_injection_for_api_seq(api_title_seq, uname, unlogged, action_type_seq,
         while try_time < PARAM_INJECTION_MAX_RETRY:
             url, req_data = param_injection_for_api(api_seq[i])
             calling_info = call_api(api_seq[i], url, req_data, cookie_list)
-            data_valid = INTERACTION_JUDGEMENT[CURR_APP_NAME](action_type_seq[i], calling_info)
+            data_valid = INTERACTION_JUDGEMENT[CURR_APP_NAME](action_type_seq[i], calling_info, uname)
             if data_valid:
                 break
             try_time += 1
@@ -175,7 +192,8 @@ def param_injection_for_api(api):
             param_cache[param].append(val)
         else:
             param_cache[param] = [val]
-        query_segment += f'&{param}={val}'
+        if val is not None and val != '':
+            query_segment += f'&{param}={val}'
     if not query_segment == '':
         if URL_ENCODING_CONVERT[CURR_APP_NAME]:
             path += query_segment

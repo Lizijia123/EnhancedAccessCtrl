@@ -5,6 +5,7 @@ from os.path import dirname
 from urllib.parse import urlparse
 from datetime import datetime
 
+import requests
 from flask import Flask, request, jsonify
 
 import algorithm.api_discovery
@@ -85,14 +86,9 @@ def compile_discovered_api_list(api_list, sample_list):
     return discovered_api_list
 
 
-@app.route('/api_discovery', methods=['POST'])
-def auto_api_discovery():
-    data = request.get_json()
+# 定义异步任务函数
+def async_api_discovery(data, backend_notification_url):
     try:
-        config.basic.APP_URL = data.get('APP_url')
-        config.basic.APP_DESCRIPTION = data.get('description')
-        config.basic.LOGIN_CREDENTIALS = data.get('login_credentials')
-        config.basic.ACTION_STEP = data.get('user_behavior_cycle')
         algorithm.api_discovery.gen_crawl_log()
         api_log = algorithm.api_discovery.extract_api_log_to_csv()
         api_list, sample_list = algorithm.api_discovery.api_extract(api_log)
@@ -100,10 +96,34 @@ def auto_api_discovery():
         algorithm.api_discovery.gen_initial_api_doc(api_list)
 
         discovered_api_list = compile_discovered_api_list(api_list, sample_list)
-        return jsonify({"discovered_API_list": discovered_api_list}), 200
 
+        # 完成API发现后，向后端发送通知
+        notification_data = {"discovered_API_list": discovered_api_list}
+        response = requests.post(backend_notification_url, json=notification_data)
+        response.raise_for_status()
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        # 处理异常，这里可以添加日志记录等操作
+        print(f"Error in async API discovery: {str(e)}")
+
+@app.route('/api_discovery', methods=['POST'])
+def auto_api_discovery():
+    data = request.get_json()
+    app_id = data.get('id')  # 假设数据中包含app_id
+    config.basic.APP_URL = data.get('APP_url')
+    config.basic.APP_DESCRIPTION = data.get('description')
+    config.basic.LOGIN_CREDENTIALS = data.get('login_credentials')
+    config.basic.ACTION_STEP = data.get('user_behavior_cycle')
+    if not app_id:
+        return jsonify({"error": "Missing target application ID"}), 400
+
+    # 构造后端通知URL
+    backend_notification_url = f'http://backend_host/api_discovery_notification?id={app_id}'
+
+    # 创建并启动异步线程
+    thread = threading.Thread(target=async_api_discovery, args=(data, backend_notification_url))
+    thread.start()
+
+    return jsonify({"message": "API发现已开始"}), 200
 
 
 @app.route('/api_discovery/start', methods=['POST'])

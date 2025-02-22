@@ -1,7 +1,9 @@
+import json
 import random
 
 from algorithm.brain import Brain
 from config.basic import *
+from config.log import LOGGER
 from config.role import APIS_OF_USER_ROLES
 
 
@@ -49,3 +51,60 @@ class Agent:
                     self.action_type_seq.append(VERTICAL_AUTH_OVERREACH)
                 else:
                     self.action_type_seq.append(HORIZONTAL_AUTH_OVERREACH)
+
+    @classmethod
+    def deserialize(cls, data):
+        # 从字典中恢复 Agent 实例
+        agent = cls(
+            role=data["role"],
+            action_step=data["action_step"],
+            malicious=data["malicious"],
+            unlogged=data["unlogged"]
+        )
+        agent.api_sequence = data["api_sequence"]
+        agent.api_malicious_seq = data["api_malicious_seq"]
+        agent.action_type_seq = data["action_type_seq"]
+        if "uname" in data:
+            agent.uname = data["uname"]
+        return agent
+
+    def serialize(self):
+        # 将 Agent 实例转换为可序列化的字典
+        serialized = {
+            "role": self.role,
+            "action_step": self.action_step,
+            "malicious": self.malicious,
+            "unlogged": self.unlogged,
+            "api_sequence": self.api_sequence,
+            "api_malicious_seq": self.api_malicious_seq,
+            "action_type_seq": self.action_type_seq,
+            "uname": getattr(self, "uname", None)
+        }
+        return serialized
+
+
+def save_agents_to_file(agents, file_path):
+    """
+    将多个 Agent 对象存储到文件中
+    :param agents: Agent 对象列表
+    :param file_path: 存储文件的路径
+    """
+    serialized_agents = [agent.serialize() for agent in agents]
+    with open(file_path, 'w') as f:
+        json.dump(serialized_agents, f)
+
+
+def load_agents_from_file(file_path):
+    """
+    从文件中读取多个 Agent 对象
+    :param file_path: 存储文件的路径
+    :return: Agent 对象列表
+    """
+    try:
+        with open(file_path, 'r') as f:
+            serialized_agents = json.load(f)
+        return [Agent.deserialize(agent_data) for agent_data in serialized_agents]
+    except FileNotFoundError:
+        LOGGER.error(f"文件 {file_path} 未找到。")
+        return []
+

@@ -7,12 +7,17 @@ import pandas as pd
 import requests
 from selenium import webdriver
 
-from agent import Agent
+import algorithm.entity.api
+from agent import Agent, save_agents_to_file, load_agents_from_file
 from algorithm.exception import UnameNotFindException
 from algorithm.login import login
+from algorithm.loginer import LOGINER
 from config.basic import *
+from config.crawling import AUTH
 from config.log import LOGGER
 from config.traffic_data import *
+from selenium.webdriver.edge.options import Options
+from selenium.webdriver.edge.service import Service
 
 
 def call_api(api, url, data, session):
@@ -38,13 +43,67 @@ def call_api(api, url, data, session):
     return calling_info
 
 
-def humhub(action_type, info):
-    return True
+def memos(action_type, info, uname):
+    if action_type == 0:
+        return str(info['status_code']).startswith('2')
+    elif action_type == 1:
+        return (info['status_code'] in [401, 403, 404] or
+                str(info['status_code']).startswith('5'))
+    else:
+        return (info['status_code'] in [401, 403, 404] or
+                str(info['status_code']).startswith('5') or
+                str(info['status_code']).startswith('3'))
 
 
-INTERACTION_JUDGEMENT = humhub
+INTERACTION_JUDGEMENT = memos
 
 param_cache = {}
+
+
+def fetch_cookie(uname, unlogged):
+    cookie_list = []
+    driver = None
+    service = None
+
+    if not unlogged:
+        auth_list = AUTH
+        pwd = ''
+        for role in auth_list:
+            find = False
+            for auth_item in auth_list[role]:
+                if uname == auth_item['uname']:
+                    find = True
+                    pwd = auth_item['pwd']
+                    break
+            if find:
+                break
+
+        # 创建 Edge 浏览器服务
+        service = Service(EDGE_DRIVER_PATH)
+
+        # 创建 Edge 浏览器选项并开启无头模式
+        edge_options = Options()
+        edge_options.add_argument('--headless')
+
+        try:
+            # 创建浏览器实例
+            driver = webdriver.Edge(service=service, options=edge_options)
+
+            # 获取登录器实例并执行登录操作
+            loginer = LOGINER(driver)
+            cookie_list = loginer.login(uname, pwd, admin=(uname == ADMIN_UNAME))
+            LOGGER.info(f"Fetched cookie: {uname}, {cookie_list}")
+
+        except Exception as e:
+            print(f"An error occurred while fetching cookies: {e}")
+        finally:
+            # 确保浏览器实例和服务被正确关闭和停止
+            if driver:
+                driver.quit()
+            if service:
+                service.stop()
+
+    return cookie_list
 
 
 def get_session(uname, unlogged):
@@ -63,13 +122,39 @@ def get_session(uname, unlogged):
     return login(uname, pwd, role)
 
 
+def param_injection_for_api_seq(api_title_seq, uname, unlogged, action_type_seq, malicious):
+    # 确保正常的用户不会进行越权操作
+    if not malicious:
+        valid_api_title_seq = []
+        valid_action_type_seq = []
+        for i in range(len(action_type_seq)):
+            if action_type_seq[i] == NORMAL:
+                valid_api_title_seq.append(api_title_seq[i])
+                valid_action_type_seq.append(action_type_seq[i])
+        api_title_seq = valid_api_title_seq
+        action_type_seq = valid_action_type_seq
 
-def param_injection_for_api_seq(api_title_seq, uname, unlogged, action_type_seq):
     """
     填充某个API序列的参数
     轮询+交互校验
     """
-    session = get_session(uname, unlogged)
+    cookie_list = fetch_cookie(uname, unlogged)
+    # session = Session()
+    # if not unlogged:
+    #     auth_list = AUTH[CURR_APP_NAME]
+    #     pwd = ''
+    #     user_role = ''
+    #     for role in auth_list:
+    #         find = False
+    #         for auth_item in auth_list[role]:
+    #             if uname == auth_item['uname']:
+    #                 find = True
+    #                 pwd = auth_item['pwd']
+    #                 user_role = role
+    #                 break
+    #         if find:
+    #             break
+    #     session = session_login(uname, pwd, user_role)
 
     global param_cache
     param_cache.clear()
@@ -86,19 +171,43 @@ def param_injection_for_api_seq(api_title_seq, uname, unlogged, action_type_seq)
 
         while try_time < PARAM_INJECTION_MAX_RETRY:
             url, req_data = param_injection_for_api(api_seq[i])
-            calling_info = call_api(api_title_seq[i], url, req_data, session)
-            data_valid = INTERACTION_JUDGEMENT(action_type_seq[i], calling_info)
+            calling_info = call_api(api_seq[i], url, req_data, cookie_list)
+            data_valid = INTERACTION_JUDGEMENT(action_type_seq[i], calling_info, uname)
             if data_valid:
                 break
             try_time += 1
         if not data_valid:
             seq_valid = False
 
+        LOGGER.info(f'轮询次数：{try_time}；单条数据合法性：{data_valid}；组合流量数据合法性：{seq_valid}')
+
+        # calling_info = {
+        #     'timestamp': timestamp,
+        #     'api_endpoint': api_endpoint,
+        #     'http_method': method,
+        #     'request_body_size': request_body_size,
+        #     'response_body_size': response_body_size,
+        #     'response_status': response.status_code,
+        #     'execution_time': execution_time,
+        #     'status_code': response.status_code,
+        #     'method': response.request.method,
+        #     'url': response.request.url,
+        #     'header': response.request.headers,
+        #     'data': None if len(data) == 0 else data,
+        #     # 'response': response.text
+        # }
+
         traffic_data_seq.append([
-            calling_info['method'],
+            calling_info['timestamp'],
+            calling_info['http_method'].upper(),
             calling_info['url'],
+            calling_info['api_endpoint'],
             calling_info['header'],
             calling_info['data'],
+            calling_info['request_body_size'],
+            calling_info['response_body_size'],
+            calling_info['response_status'],
+            calling_info['execution_time'],
             data_valid
         ])
 
@@ -171,6 +280,7 @@ def param_injection_for_api(api):
 
 def gen_data_set(api_list, api_knowledge, app_knowledge):
     Agent.cinit(api_list, api_knowledge, app_knowledge)
+    algorithm.entity.api.save_apis_to_json(api_list)
     """
     生成流量数据集并保存到文件
     """
@@ -188,14 +298,23 @@ def gen_data_set(api_list, api_knowledge, app_knowledge):
     final_data_set = []
     user_index = 0
     data_index = 0
+    seq_index = 0
     for user in users:
+        seq_index += 1
         user.exec()
+        LOGGER.info(f'已生成{seq_index}/{len(users)}个API序列')
 
+    save_agents_to_file(users, file_path=os.path.join(dirname(__file__), 'serialized_llm_agents.json'))
+    LOGGER.info(f'已将Agents(包含API序列)序列化至{os.path.join(dirname(__file__), 'serialized_llm_agents.json')}')
+
+    users = load_agents_from_file(file_path=os.path.join(dirname(__file__), 'serialized_llm_agents.json'))
+    for user in users:
         user_data, seq_valid = param_injection_for_api_seq(
             api_title_seq=user.api_sequence,
             uname=user.uname,
             unlogged=user.unlogged,
-            action_type_seq=user.action_type_seq
+            action_type_seq=user.action_type_seq,
+            malicious=user.malicious
         )
         for i in range(len(user_data)):
             # method, url, header, data, data_valid
@@ -207,10 +326,15 @@ def gen_data_set(api_list, api_knowledge, app_knowledge):
             data_index += 1
         final_data_set.extend(user_data)
         user_index += 1
+        LOGGER.info(
+            f'已完成{user_index}/{len(users)}个用户的流量数据收集：user: {user.uname} malicious: {user.malicious}')
 
     df = pd.DataFrame(final_data_set,
-                      columns=['method', 'url', 'header', 'data', 'data_valid', 'seq_valid', 'user_type', 'data_type',
-                               'user_index', 'Unnamed: 0'])
-    df = df[['user_index', 'Unnamed: 0', 'method', 'url', 'header', 'data', 'user_type', 'data_type', 'data_valid',
-             'seq_valid']]
-    df.to_csv(f'{dirname(__file__)}\\simulated_traffic_data.csv', index=False)
+                      columns=['timestamp', 'http_method', 'url', 'api_endpoint', 'header', 'data',
+                               'request_body_size', 'response_body_size', 'response_status', 'execution_time',
+                               'data_valid', 'seq_valid', 'user_type', 'data_type', 'user_index', 'Unnamed: 0'])
+    df = df[['user_index', 'Unnamed: 0', 'timestamp', 'http_method', 'url', 'api_endpoint', 'header', 'data',
+             'request_body_size', 'response_body_size', 'response_status', 'execution_time', 'user_type', 'data_type',
+             'data_valid', 'seq_valid']]
+    df.to_csv(os.path.join(dirname(__file__), 'simulated_traffic_data.csv'))
+    LOGGER.info(f"已完成流量数据收集：{os.path.join(dirname(__file__), 'simulated_traffic_data.csv')}")

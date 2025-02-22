@@ -39,22 +39,31 @@ class API:
             'sample_headers': self.sample_headers
         }
 
-    # TODO 从目标应用的API文档中读取所有API信息
     @classmethod
-    def from_api_doc(cls):
-        api_list = []
-        algorithm_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        with open(f'{algorithm_path}\\api_doc.json', 'r', encoding='utf-8') as f:
-            api_json = json.load(f)
-            for api_title in api_json:
-                api_list.append(API({
-                    'method': api_json[api_title]['method'].upper(),
-                    'path': api_json[api_title]['path'],
-                    # TODO
-                    'variable_indexes': api_json[api_title]['variable_indexes'],
-                    'query_params': api_json[api_title]['identified_request_params'],
-                    # api_json[api_title]['query_params'],
-                    'sample_body': api_json[api_title]['sample_body'],
-                    'sample_headers': api_json[api_title]['sample_headers']
-                }, index=int(api_title[4:])))
-        return api_list
+    def from_dict(cls, data):
+        # 从字典创建 API 对象
+        index = int(data['title'].split('_')[1])
+        info = {
+            'method': data['method'],
+            'path': data['path'],
+            'variable_indexes': data['variable_indexes'],
+            'query_params': data['query_params'],
+            'sample_body': data['sample_body'],
+            'sample_headers': data['sample_headers']
+        }
+        return cls(info, index)
+
+
+def save_apis_to_json(apis):
+    # 将 API 对象数组保存到 JSON 文件
+    api_dicts = [api.to_dict() for api in apis]
+    with open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'user_api_list.json'), 'w') as f:
+        json.dump(api_dicts, f, indent=4)
+
+
+def load_apis_from_json():
+    # 从 JSON 文件加载 API 对象数组
+    with open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'user_api_list.json'), 'r') as f:
+        api_dicts = json.load(f)
+    return [API.from_dict(api_dict) for api_dict in api_dicts]
+

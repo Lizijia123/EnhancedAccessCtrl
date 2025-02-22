@@ -29,8 +29,10 @@ class SeqOccurTimeFeature(Feature):
     def get_val(self, data_seq):
         pass
 
-FEATURES = {
+BASIC_FEATURES = {
     'feature1': Feature1,
     'feature2': Feature2,
     'feature3': Feature3
 }
+
+APP_FEATURES = {}

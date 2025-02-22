@@ -8,9 +8,9 @@ from xgboost import XGBClassifier
 import warnings
 import os
 
-
 warnings.filterwarnings("ignore")
 PROJ_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 
 def extract_features(df, features):
     feats = {}
@@ -18,8 +18,12 @@ def extract_features(df, features):
         feats[feature.signature] = feature.get_val(df)
     return feats
 
-def extract_feats_and_labels(user_data_path, features):
-    df = pd.read_excel(user_data_path, sheet_name='Sheet1')
+
+def extract_feats_and_labels(user_data_path, features, real_data=None):
+    if real_data is not None:
+        df = real_data
+    else:
+        df = pd.read_excel(user_data_path, sheet_name='Sheet1')
     if len(df) == 0:
         raise Exception("用户流量数据集为空")
 
@@ -40,19 +44,9 @@ def extract_feats_and_labels(user_data_path, features):
     return feats, labels
 
 
-
-
-
 def train_and_save_xgboost_model(train_path, test_path, model_path, scaler_path, features):
-    """
-    训练并保存XGBoost模型，打印测试报告
-    :param train_path: 训练数据集路径(xlsx文件(Sheet1中存储数据),包含user_index列)
-    :param test_path: 测试数据集路径(xlsx文件(Sheet1中存储数据),包含user_index列)
-    :param model_path: XGBoost模型路径
-    :param scaler_path: XGBoost的Scaler路径
-    """
     # 读取测试数据并提取特征
-    X_train, y_train = extract_feats_and_labels(train_path,features=features)
+    X_train, y_train = extract_feats_and_labels(train_path, features=features)
 
     # 标准化特征
     scaler = StandardScaler()
@@ -75,15 +69,7 @@ def train_and_save_xgboost_model(train_path, test_path, model_path, scaler_path,
     report = classification_report(y_test, y_pred)
     return report
 
+
 def data_splitting():
     # TODO
     pass
-
-if __name__ == '__main__':
-    train_and_save_xgboost_model(
-        train_path="",
-        test_path="",
-        model_path="",
-        scaler_path="",
-        features=[]
-    )

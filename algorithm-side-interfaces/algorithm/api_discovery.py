@@ -172,61 +172,6 @@ def api_extract(api_crawl_log):
     return api_info_list, sample_list
 
 
-def gen_initial_api_doc(api_list):
-    with open(f'{dirname(__file__)}\\param_set.json', 'r') as f:
-        param_set = json.load(f)
-    no_dup_api_indexes = list(param_set.keys())
-    initial_api_doc = {}
-    for api in api_list:
-        if f'API_{api.index}' in no_dup_api_indexes:
-            api_info = api.to_dict()
-            headers = api_info['sample_headers']
-            if type(headers) is str:
-                headers = eval(headers)
-            initial_api_doc[api_info['title']] = {
-                "description": "请填充功能描述信息",
-                "role": "请填充权限信息",
-                "path": api_info['path'],
-                "method": api_info['method'],
-                "path_variables": [
-                    "请填充各个路径变量的信息，例如：",
-                    {
-                        "name": "需要在path中用<>标识",
-                        "description": "",
-                        "required": True
-                    }
-                ],
-                "query_params": [
-                    "请填充各个查询参数的信息，例如：",
-                    {
-                        "name": "",
-                        "description": "",
-                        "required": True
-                    }
-                ],
-                "request_body": {
-                    "type": "object",
-                    "fields": [
-                        {
-                            "field_name": "请填充请求体字段名",
-                            "field_type": "object",
-                            "required": True,
-                            "description": "请填充请求体字段描述信息",
-                            "sub_fields": [
-                                "请填充请求体子字段信息"
-                            ]
-                        }
-                    ]
-                },
-                "variable_indexes": api_info['variable_indexes'],
-                "identified_request_params": api_info['query_params'],
-                "sample_body": api_info['sample_body'],
-                "sample_headers": headers
-            }
-    with open(f'{dirname(__file__)}\\api_set.json', 'w', encoding='utf-8') as f:
-        json.dump(initial_api_doc, f, ensure_ascii=False, indent=4)
-    LOGGER.info(f'已生成API文档至{dirname(__file__)}\\api_set.json')
-
 
 def gen_crawl_log():
     LOGGER.info("Verifying user login...")

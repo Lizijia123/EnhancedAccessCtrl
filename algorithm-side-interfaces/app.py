@@ -1,4 +1,5 @@
 import csv
+import json
 import subprocess
 import threading
 from os.path import dirname
@@ -7,13 +8,14 @@ from datetime import datetime
 
 import requests
 from flask import Flask, request, jsonify
+from transformers.utils.chat_template_utils import BASIC_TYPES
 
 import algorithm.api_discovery
 import config.basic
 import enhanced_detector
 from algorithm import traffic_data_generation
 from algorithm.entity.api import API
-from algorithm.entity.feature import SeqOccurTimeFeature, FEATURES
+from algorithm.entity.feature import SeqOccurTimeFeature, BASIC_FEATURES, APP_FEATURES
 from algorithm.model_training import *
 from config.log import LOGGER
 import pandas as pd
@@ -87,9 +89,11 @@ def compile_discovered_api_list(api_list, sample_list):
         discovered_api_list.append(api_info)
     return discovered_api_list
 
+
 @app.route('/api_discovery/status', methods=['GET'])
 def get_api_discovery_status():
     return jsonify({"api_discovery_status": 'IN_PROGRESS' if api_discovery_in_progress else 'AVAILABLE'}), 200
+
 
 # 定义异步任务函数
 def async_api_discovery(data, backend_notification_url):
@@ -99,7 +103,7 @@ def async_api_discovery(data, backend_notification_url):
         api_log = algorithm.api_discovery.extract_api_log_to_csv()
         api_list, sample_list = algorithm.api_discovery.api_extract(api_log)
         algorithm.api_discovery.collect_param_set(api_log, api_list)
-        algorithm.api_discovery.gen_initial_api_doc(api_list)
+        # algorithm.api_discovery.gen_initial_api_doc(api_list)
 
         discovered_api_list = compile_discovered_api_list(api_list, sample_list)
         # 完成API发现后，向后端发送通知
@@ -238,16 +242,17 @@ def construct_model():
                 if feature.get('type') == 'SeqOccurTimeFeature':
                     features.append(SeqOccurTimeFeature(feature.get('string_list')))
                 else:
-                    features.append(FEATURES[feature.get('name')])
+                    features.append(BASIC_FEATURES[feature.get('name')])
 
             data_splitting()
+            algorithm.entity.feature.APP_FEATURES = features
             report = train_and_save_xgboost_model(
                 # TODO
                 features=features,
-                train_path='',
-                test_path='',
-                model_path='',
-                scaler_path=''
+                train_path=os.path.join(dirname(__file__), 'data', 'train.xlsx'),
+                test_path=os.path.join(dirname(__file__), 'data', 'test.xlsx'),
+                model_path=os.path.join(dirname(__file__), 'model', 'model.pkl'),
+                scaler_path=os.path.join(dirname(__file__), 'model', 'scaler.pkl'),
             )
             return jsonify({"report": report, "error_API_list": ERROR_APIS}), 200
     except Exception as e:
@@ -280,26 +285,8 @@ def pause_detection():
 @app.route('/detection/records', methods=['GET'])
 def get_detection_records():
     # 模拟获取检测记录逻辑，返回示例数据
-    records = [
-        {
-            "detection_result": "ALLOW",
-            "started_at": "2023-01-01 12:00:00",
-            "ended_at": "2023-01-01 12:10:00",
-            "traffic_data_list": [
-                {
-                    "accessed_at": "2023-01-01 12:05:00",
-                    "method": "GET",
-                    "url": "http://example.com/api1",
-                    "header": "{}",
-                    "data": "{}",
-                    "status_code": 200,
-                    "API": {"id": 1},
-                    "detection_result": "NORMAL"
-                }
-            ]
-        }
-    ]
-    return jsonify(records)
+    records = json.load(open(os.path.join(dirname(__file__), 'detect_records.json'), encoding='utf-8'))
+    return jsonify({'records': records}), 200
 
 
 def api_matches(api_info, api_log_row):

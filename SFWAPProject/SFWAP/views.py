@@ -954,7 +954,7 @@ def get_detection_records_by_combination(request):
     try:
         response = requests.get(records_url)
         response.raise_for_status()
-        records_data = response.json()
+        records_data = response.json().get('records')
     except requests.RequestException as e:
         return JsonResponse({'error': f'Error fetching detection records: {str(e)}'}, status=500)
     except ValueError:

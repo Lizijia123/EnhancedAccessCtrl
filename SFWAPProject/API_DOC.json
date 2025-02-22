@@ -1,0 +1,1147 @@
+{
+  "注释": "SFWAP服务端的接口说明文档（AI生成），部分API的响应体结构、请求体结构可能有误差，请参见具体代码实现",
+  "用户注册": {
+    "调用规范": {
+      "请求方法": "POST",
+      "URL": "/register/",
+      "认证要求": "无",
+      "说明": "用于新用户注册，必填字段为 username、password 和 email，若用户名或邮箱已存在会返回错误。"
+    },
+    "请求体结构": {
+      "结构": {
+        "username": "用户名，字符串类型",
+        "password": "密码，字符串类型",
+        "email": "邮箱，字符串类型"
+      }
+    },
+    "状态码及响应体结构示例": {
+      "201 Created": {
+        "说明": "用户注册成功",
+        "示例": {
+          "message": "User registered successfully",
+          "user_id": 123
+        }
+      },
+      "400 Bad Request": {
+        "说明": "请求参数有误，如缺少必填字段",
+        "示例": {
+          "error": "Missing required field: username",
+          "message": "请提供用户名"
+        }
+      },
+      "409 Conflict": {
+        "说明": "用户名或邮箱已存在",
+        "示例": {
+          "error": "Username or email already exists",
+          "message": "用户名或邮箱已被注册"
+        }
+      }
+    }
+  },
+  "用户登录": {
+    "调用规范": {
+      "请求方法": "POST",
+      "URL": "/login/",
+      "认证要求": "无",
+      "说明": "用户输入用户名和密码进行登录，验证通过则返回成功信息，否则返回错误。"
+    },
+    "请求体结构": {
+      "结构": {
+        "username": "用户名，字符串类型",
+        "password": "密码，字符串类型"
+      }
+    },
+    "状态码及响应体结构示例": {
+      "200 OK": {
+        "说明": "登录成功",
+        "示例": {
+          "message": "Login successful",
+          "access_token": "your_access_token",
+          "refresh_token": "your_refresh_token"
+        }
+      },
+      "400 Bad Request": {
+        "说明": "请求参数有误，如缺少必填字段",
+        "示例": {
+          "error": "Missing required field: password",
+          "message": "请提供密码"
+        }
+      },
+      "401 Unauthorized": {
+        "说明": "用户名或密码错误",
+        "示例": {
+          "error": "Invalid username or password",
+          "message": "用户名或密码错误"
+        }
+      }
+    }
+  },
+  "用户登出": {
+    "调用规范": {
+      "请求方法": "POST",
+      "URL": "/logout/",
+      "认证要求": "已认证用户",
+      "说明": "用户登出，成功登出返回成功信息。"
+    },
+    "请求体结构": {
+      "结构": "无"
+    },
+    "状态码及响应体结构示例": {
+      "200 OK": {
+        "说明": "登出成功",
+        "示例": {
+          "message": "Logout successful"
+        }
+      },
+      "401 Unauthorized": {
+        "说明": "用户未登录或认证信息无效",
+        "示例": {
+          "error": "User not authenticated",
+          "message": "用户未登录"
+        }
+      }
+    }
+  },
+  "获取目标应用列表": {
+    "调用规范": {
+      "请求方法": "GET",
+      "URL": "/target-app-list/",
+      "认证要求": "已认证用户",
+      "说明": "获取当前用户的所有目标应用列表，返回包含目标应用详细信息的 JSON 数据。"
+    },
+    "请求体结构": {
+      "结构": "无"
+    },
+    "状态码及响应体结构示例": {
+      "200 OK": {
+        "说明": "获取成功",
+        "示例": {
+          "message": "Successfully retrieved target app list",
+          "target_apps": [
+            {
+              "id": 1,
+              "APP_name": "App Name 1",
+              "APP_url": "https://example.com/app1"
+            },
+            {
+              "id": 2,
+              "APP_name": "App Name 2",
+              "APP_url": "https://example.com/app2"
+            }
+          ]
+        }
+      },
+      "401 Unauthorized": {
+        "说明": "用户未登录或认证信息无效",
+        "示例": {
+          "error": "User not authenticated",
+          "message": "用户未登录"
+        }
+      }
+    }
+  },
+  "目标应用操作": {
+    "调用规范": {
+      "请求方法": "GET、POST、PUT、DELETE",
+      "URL": "/target-app/",
+      "认证要求": "已认证用户",
+      "说明": "GET：根据 id 获取单个目标应用的详细信息；POST：创建新的目标应用；PUT：根据 id 更新目标应用的信息；DELETE：根据 id 删除目标应用。"
+    },
+    "请求体结构": {
+      "GET": {
+        "参数": {
+          "id": "目标应用的 ID，格式如 ?id=1"
+        }
+      },
+      "POST": {
+        "结构": {
+          "APP_name": "应用名称，字符串类型",
+          "APP_url": "应用 URL，字符串类型",
+          "user_behavior_cycle": "用户行为周期，整数类型",
+          "SFWAP_address": "SFWAP 地址，字符串类型",
+          "description": "描述，字符串类型",
+          "login_credentials": [
+            {
+              "user_role": "用户角色，字符串类型",
+              "username": "用户名，字符串类型",
+              "password": "密码，字符串类型"
+            }
+          ],
+          "is_draft": "是否为草稿，布尔类型"
+        }
+      },
+      "PUT": {
+        "结构": {
+          "APP_name": "应用名称（可选，若更新则提供），字符串类型",
+          "APP_url": "应用 URL（可选，若更新则提供），字符串类型",
+          "user_behavior_cycle": "用户行为周期（可选，若更新则提供），整数类型",
+          "SFWAP_address": "SFWAP 地址（可选，若更新则提供），字符串类型",
+          "description": "描述（可选，若更新则提供），字符串类型",
+          "login_credentials": [
+            {
+              "user_role": "用户角色，字符串类型",
+              "username": "用户名，字符串类型",
+              "password": "密码，字符串类型"
+            }
+          ]
+        }
+      },
+      "DELETE": {
+        "参数": {
+          "id": "目标应用的 ID，格式如 ?id=1"
+        }
+      }
+    },
+    "状态码及响应体结构示例": {
+      "GET": {
+        "200 OK": {
+          "说明": "获取成功",
+          "示例": {
+            "message": "Successfully retrieved target app details",
+            "target_app": {
+              "id": 1,
+              "APP_name": "App Name 1",
+              "APP_url": "https://example.com/app1"
+            }
+          }
+        },
+        "401 Unauthorized": {
+          "说明": "用户未登录或认证信息无效",
+          "示例": {
+            "error": "User not authenticated",
+            "message": "用户未登录"
+          }
+        },
+        "404 Not Found": {
+          "说明": "目标应用不存在",
+          "示例": {
+            "error": "Target app not found",
+            "message": "目标应用不存在"
+          }
+        }
+      },
+      "POST": {
+        "201 Created": {
+          "说明": "创建成功",
+          "示例": {
+            "message": "Target app created successfully",
+            "target_app_id": 123
+          }
+        },
+        "400 Bad Request": {
+          "说明": "请求参数有误",
+          "示例": {
+            "error": "Invalid request data",
+            "message": "请求数据无效"
+          }
+        },
+        "401 Unauthorized": {
+          "说明": "用户未登录或认证信息无效",
+          "示例": {
+            "error": "User not authenticated",
+            "message": "用户未登录"
+          }
+        }
+      },
+      "PUT": {
+        "200 OK": {
+          "说明": "更新成功",
+          "示例": {
+            "message": "Target app updated successfully"
+          }
+        },
+        "400 Bad Request": {
+          "说明": "请求参数有误",
+          "示例": {
+            "error": "Invalid request data",
+            "message": "请求数据无效"
+          }
+        },
+        "401 Unauthorized": {
+          "说明": "用户未登录或认证信息无效",
+          "示例": {
+            "error": "User not authenticated",
+            "message": "用户未登录"
+          }
+        },
+        "404 Not Found": {
+          "说明": "目标应用不存在",
+          "示例": {
+            "error": "Target app not found",
+            "message": "目标应用不存在"
+          }
+        }
+      },
+      "DELETE": {
+        "200 OK": {
+          "说明": "删除成功",
+          "示例": {
+            "message": "Target app deleted successfully"
+          }
+        },
+        "401 Unauthorized": {
+          "说明": "用户未登录或认证信息无效",
+          "示例": {
+            "error": "User not authenticated",
+            "message": "用户未登录"
+          }
+        },
+        "404 Not Found": {
+          "说明": "目标应用不存在",
+          "示例": {
+            "error": "Target app not found",
+            "message": "目标应用不存在"
+          }
+        }
+      }
+    }
+  },
+  "获取 API 列表": {
+    "调用规范": {
+      "请求方法": "GET",
+      "URL": "/api-lists/",
+      "认证要求": "已认证用户",
+      "说明": "根据目标应用 ID 获取该应用的已发现 API 列表和用户 API 列表。"
+    },
+    "请求体结构": {
+      "参数": {
+        "app_id": "目标应用的 ID，格式如 ?app_id=1"
+      }
+    },
+    "状态码及响应体结构示例": {
+      "200 OK": {
+        "说明": "获取成功",
+        "示例": {
+          "message": "Successfully retrieved API lists",
+          "discovered_API_list": [
+            {
+              "sample_url": "https://example.com/api/1",
+              "sample_request_data": "{\"key\": \"value\"}",
+              "request_method": "GET",
+              "function_description": "获取数据",
+              "permission_info": "需要普通用户权限",
+              "path_segment_list": [
+                {
+                  "name": "api",
+                  "is_path_variable": false
+                },
+                {
+                  "name": "1",
+                  "is_path_variable": false
+                }
+              ],
+              "request_param_list": [
+                {
+                  "name": "param1",
+                  "is_necessary": false
+                }
+              ],
+              "request_data_fields": [
+                {
+                  "name": "key",
+                  "type": "String"
+                }
+              ]
+            }
+          ],
+          "user_API_list": [
+            {
+              "sample_url": "https://example.com/user/api/1",
+              "sample_request_data": "{\"user_key\": \"user_value\"}",
+              "request_method": "POST",
+              "function_description": "创建用户数据",
+              "permission_info": "需要管理员权限",
+              "path_segment_list": [
+                {
+                  "name": "user",
+                  "is_path_variable": false
+                },
+                {
+                  "name": "api",
+                  "is_path_variable": false
+                },
+                {
+                  "name": "1",
+                  "is_path_variable": false
+                }
+              ],
+              "request_param_list": [
+                {
+                  "name": "user_param1",
+                  "is_necessary": true
+                }
+              ],
+              "request_data_fields": [
+                {
+                  "name": "user_key",
+                  "type": "String"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "401 Unauthorized": {
+        "说明": "用户未登录或认证信息无效",
+        "示例": {
+          "error": "User not authenticated",
+          "message": "用户未登录"
+        }
+      },
+      "404 Not Found": {
+        "说明": "目标应用不存在或无相关 API 列表",
+        "示例": {
+          "error": "Target app not found or no API lists available",
+          "message": "目标应用不存在或无相关 API 列表"
+        }
+      }
+    }
+  },
+  "更新用户 API 列表": {
+    "调用规范": {
+      "请求方法": "PUT",
+      "URL": "/user-api-list/",
+      "认证要求": "已认证用户",
+      "说明": "更新目标应用的用户 API 列表，需提供 app_id 请求参数。"
+    },
+    "请求体结构": {
+      "结构": {
+        "user_API_list": [
+          {
+            "sample_url": "API 示例 URL，字符串类型",
+            "sample_request_data": "示例请求数据，字符串类型",
+            "request_method": "请求方法（GET、POST、PUT、DELETE），字符串类型",
+            "function_description": "功能描述，字符串类型",
+            "permission_info": "权限信息，字符串类型",
+            "path_segment_list": [
+              {
+                "name": "路径段名称，字符串类型",
+                "is_path_variable": "是否为路径变量，布尔类型"
+              }
+            ],
+            "request_param_list": [
+              {
+                "name": "请求参数名称，字符串类型",
+                "is_necessary": "是否必要，布尔类型"
+              }
+            ],
+            "request_data_fields": [
+              {
+                "name": "请求数据字段名称，字符串类型",
+                "type": "类型（String、Number、Boolean、List、Object），字符串类型"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "状态码及响应体结构示例": {
+      "200 OK": {
+        "说明": "更新成功",
+        "示例": {
+          "message": "User API list updated successfully"
+        }
+      },
+      "400 Bad Request": {
+        "说明": "请求参数有误",
+        "示例": {
+          "error": "Invalid request data",
+          "message": "请求数据无效"
+        }
+      },
+      "401 Unauthorized": {
+        "说明": "用户未登录或认证信息无效",
+        "示例": {
+          "error": "User not authenticated",
+          "message": "用户未登录"
+        }
+      },
+      "404 Not Found": {
+        "说明": "目标应用不存在或无相关用户 API 列表",
+        "示例": {
+          "error": "Target app not found or no user API list available",
+          "message": "目标应用不存在或无相关用户 API 列表"
+        }
+      }
+    }
+  },
+  "API发现": {
+    "调用规范": {
+      "请求方法": "GET",
+      "URL": "/api/discovery/",
+      "认证要求": "已认证用户",
+      "说明": "根据 mode 进行 API 发现操作，AUTO 模式和 MANUAL 模式有不同的前置条件。"
+    },
+    "请求体结构": {
+      "参数": {
+        "app_id": "目标应用的 ID，格式为 ?app_id=1",
+        "mode": "发现模式，值为 AUTO 或 MANUAL，格式为 mode=AUTO 或 mode=MANUAL"
+      }
+    },
+    "状态码及响应体示例": {
+      "200 OK": {
+        "说明": "成功启动 API 发现任务",
+        "示例": {
+          "status": "success",
+          "message": "API 发现任务已成功启动",
+          "task_id": "123e4567-e89b-12d3-a456-426614174000"
+        }
+      },
+      "400 Bad Request": {
+        "说明": "请求参数错误，如 app_id 或 mode 格式不正确或值不合法",
+        "示例": {
+          "status": "error",
+          "message": "请求参数错误，请检查 app_id 和 mode",
+          "error_details": {
+            "app_id": "必须为有效的应用 ID",
+            "mode": "只能为 AUTO 或 MANUAL"
+          }
+        }
+      },
+      "401 Unauthorized": {
+        "说明": "用户未认证或认证信息无效",
+        "示例": {
+          "status": "error",
+          "message": "用户未认证，请先登录"
+        }
+      },
+      "404 Not Found": {
+        "说明": "指定的目标应用不存在",
+        "示例": {
+          "status": "error",
+          "message": "未找到指定的目标应用"
+        }
+      },
+      "500 Internal Server Error": {
+        "说明": "服务器内部错误，无法启动 API 发现任务",
+        "示例": {
+          "status": "error",
+          "message": "服务器内部错误，请稍后重试"
+        }
+      }
+    }
+  },
+  "完成API发现": {
+    "调用规范": {
+      "请求方法": "GET",
+      "URL": "/api/discovery/finish",
+      "认证要求": "已认证用户",
+      "说明": "完成 API 发现操作，更新相关数据和状态。"
+    },
+    "请求体结构": {
+      "参数": {
+        "app_id": "目标应用的 ID，格式为 ?app_id=1"
+      }
+    },
+    "状态码及响应体示例": {
+      "200 OK": {
+        "说明": "成功完成 API 发现任务并更新数据",
+        "示例": {
+          "status": "success",
+          "message": "API 发现任务已完成，相关数据已更新",
+          "discovered_api_count": 10
+        }
+      },
+      "400 Bad Request": {
+        "说明": "请求参数错误，如 app_id 格式不正确",
+        "示例": {
+          "status": "error",
+          "message": "请求参数错误，请检查 app_id",
+          "error_details": {
+            "app_id": "必须为有效的应用 ID"
+          }
+        }
+      },
+      "401 Unauthorized": {
+        "说明": "用户未认证或认证信息无效",
+        "示例": {
+          "status": "error",
+          "message": "用户未认证，请先登录"
+        }
+      },
+      "404 Not Found": {
+        "说明": "指定的目标应用不存在或该应用没有正在进行的 API 发现任务",
+        "示例": {
+          "status": "error",
+          "message": "未找到指定的目标应用或无正在进行的 API 发现任务"
+        }
+      },
+      "500 Internal Server Error": {
+        "说明": "服务器内部错误，无法完成 API 发现任务",
+        "示例": {
+          "status": "error",
+          "message": "服务器内部错误，请稍后重试"
+        }
+      }
+    }
+  },
+  "取消API发现": {
+    "调用规范": {
+      "请求方法": "GET",
+      "URL": "/api/discovery/cancel",
+      "认证要求": "已认证用户",
+      "说明": "取消正在进行的 API 发现操作。"
+    },
+    "请求体结构": {
+      "参数": {
+        "app_id": "目标应用的 ID，格式为 ?app_id=1"
+      }
+    },
+    "状态码及响应体示例": {
+      "200 OK": {
+        "说明": "成功取消 API 发现任务",
+        "示例": {
+          "status": "success",
+          "message": "API 发现任务已取消"
+        }
+      },
+      "400 Bad Request": {
+        "说明": "请求参数错误，如 app_id 格式不正确",
+        "示例": {
+          "status": "error",
+          "message": "请求参数错误，请检查 app_id",
+          "error_details": {
+            "app_id": "必须为有效的应用 ID"
+          }
+        }
+      },
+      "401 Unauthorized": {
+        "说明": "用户未认证或认证信息无效",
+        "示例": {
+          "status": "error",
+          "message": "用户未认证，请先登录"
+        }
+      },
+      "404 Not Found": {
+        "说明": "指定的目标应用不存在或该应用没有正在进行的 API 发现任务",
+        "示例": {
+          "status": "error",
+          "message": "未找到指定的目标应用或无正在进行的 API 发现任务"
+        }
+      },
+      "500 Internal Server Error": {
+        "说明": "服务器内部错误，无法取消 API 发现任务",
+        "示例": {
+          "status": "error",
+          "message": "服务器内部错误，请稍后重试"
+        }
+      }
+    }
+  },
+  "API发现通知": {
+    "调用规范": {
+      "请求方法": "POST",
+      "URL": "/api/discovery/notification/",
+      "认证要求": "已认证用户",
+      "说明": "接收算法端的 API 发现通知，处理相关数据更新。"
+    },
+    "请求体结构": {
+      "参数": {
+        "app_id": "目标应用的 ID，在请求参数中提供，格式为 ?app_id=1"
+      },
+      "结构": {
+        "discovered_API_list": [
+          {
+            "sample_url": "API 示例 URL，字符串类型",
+            "sample_request_data": "示例请求数据，字符串类型",
+            "request_method": "请求方法，如 GET、POST、PUT、DELETE 等，字符串类型",
+            "function_description": "功能描述，字符串类型",
+            "permission_info": "权限信息，字符串类型",
+            "path_segment_list": [
+              {
+                "name": "路径段名称，字符串类型",
+                "is_path_variable": "是否为路径变量，布尔类型"
+              }
+            ],
+            "request_param_list": [
+              {
+                "name": "请求参数名称，字符串类型",
+                "is_necessary": "是否为必要参数，布尔类型"
+              }
+            ],
+            "request_data_fields": [
+              {
+                "name": "请求数据字段名称，字符串类型",
+                "type": "字段类型，如 String、Number、Boolean 等，字符串类型"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "状态码及响应体示例": {
+      "200 OK": {
+        "说明": "成功接收并处理 API 发现通知",
+        "示例": {
+          "status": "success",
+          "message": "API 发现通知已成功接收并处理",
+          "updated_api_count": 5
+        }
+      },
+      "400 Bad Request": {
+        "说明": "请求参数或请求体格式错误",
+        "示例": {
+          "status": "error",
+          "message": "请求参数或请求体格式错误，请检查",
+          "error_details": {
+            "app_id": "必须为有效的应用 ID",
+            "discovered_API_list": "必须为有效的 API 列表"
+          }
+        }
+      },
+      "401 Unauthorized": {
+        "说明": "用户未认证或认证信息无效",
+        "示例": {
+          "status": "error",
+          "message": "用户未认证，请先登录"
+        }
+      },
+      "404 Not Found": {
+        "说明": "指定的目标应用不存在",
+        "示例": {
+          "status": "error",
+          "message": "未找到指定的目标应用"
+        }
+      },
+      "500 Internal Server Error": {
+        "说明": "服务器内部错误，无法处理 API 发现通知",
+        "示例": {
+          "status": "error",
+          "message": "服务器内部错误，请稍后重试"
+        }
+      }
+    }
+  },
+  "检测特征操作": {
+    "调用规范": {
+      "请求方法": "GET、PUT",
+      "URL": "/detection/features/",
+      "认证要求": "已认证用户",
+      "说明": "GET 用于获取目标应用的检测特征列表；PUT 用于更新目标应用的检测特征列表。"
+    },
+    "请求体结构": {
+      "GET": {
+        "参数": {
+          "app_id": "目标应用的 ID，格式如 ?app_id=1"
+        }
+      },
+      "PUT": {
+        "结构": {
+          "detect_feature_list": [
+            {
+              "id": "特征 ID（可选，若为新特征则不提供）",
+              "name": "特征名称，字符串类型",
+              "description": "特征描述，字符串类型",
+              "type": "特征类型，如 SeqOccurTimeFeature 或 DetectFeature",
+              "string_list": "仅当 type 为 SeqOccurTimeFeature 时需要，字符串数组"
+            }
+          ]
+        }
+      }
+    },
+    "状态码及响应体结构示例": {
+      "GET": {
+        "200 OK": {
+          "说明": "成功获取检测特征列表",
+          "示例": {
+            "status": "success",
+            "message": "检测特征列表获取成功",
+            "data": {
+              "detect_feature_list": [
+                {
+                  "id": 1,
+                  "name": "登录频率特征",
+                  "description": "用户登录的时间频率特征",
+                  "type": "SeqOccurTimeFeature",
+                  "string_list": [
+                    "周一",
+                    "周二"
+                  ]
+                },
+                {
+                  "id": 2,
+                  "name": "数据访问特征",
+                  "description": "用户对特定数据的访问特征",
+                  "type": "DetectFeature"
+                }
+              ]
+            }
+          }
+        },
+        "401 Unauthorized": {
+          "说明": "用户未认证",
+          "示例": {
+            "status": "error",
+            "message": "用户未认证，请先登录"
+          }
+        },
+        "404 Not Found": {
+          "说明": "目标应用不存在或该应用没有检测特征",
+          "示例": {
+            "status": "error",
+            "message": "未找到目标应用或该应用没有检测特征"
+          }
+        }
+      },
+      "PUT": {
+        "200 OK": {
+          "说明": "检测特征列表更新成功",
+          "示例": {
+            "status": "success",
+            "message": "检测特征列表更新成功"
+          }
+        },
+        "400 Bad Request": {
+          "说明": "请求体格式错误或数据不合法",
+          "示例": {
+            "status": "error",
+            "message": "请求体格式错误，请检查输入数据",
+            "errors": {
+              "detect_feature_list[0].name": "名称不能为空"
+            }
+          }
+        },
+        "401 Unauthorized": {
+          "说明": "用户未认证",
+          "示例": {
+            "status": "error",
+            "message": "用户未认证，请先登录"
+          }
+        },
+        "404 Not Found": {
+          "说明": "目标应用不存在",
+          "示例": {
+            "status": "error",
+            "message": "未找到目标应用"
+          }
+        }
+      }
+    }
+  },
+  "构建模型": {
+    "调用规范": {
+      "请求方法": "GET",
+      "URL": "/model/construct/",
+      "认证要求": "已认证用户",
+      "说明": "触发目标应用的模型构建操作，根据返回状态码处理后续逻辑。"
+    },
+    "请求体结构": {
+      "参数": {
+        "app_id": "目标应用的 ID，格式如 ?app_id=1"
+      }
+    },
+    "状态码及响应体结构示例": {
+      "202 Accepted": {
+        "说明": "模型构建任务已成功接受，进入处理队列",
+        "示例": {
+          "status": "success",
+          "message": "模型构建任务已接受，正在处理中",
+          "task_id": "task_123456"
+        }
+      },
+      "401 Unauthorized": {
+        "说明": "用户未认证",
+        "示例": {
+          "status": "error",
+          "message": "用户未认证，请先登录"
+        }
+      },
+      "404 Not Found": {
+        "说明": "目标应用不存在",
+        "示例": {
+          "status": "error",
+          "message": "未找到目标应用"
+        }
+      },
+      "409 Conflict": {
+        "说明": "该应用已有正在进行的模型构建任务",
+        "示例": {
+          "status": "error",
+          "message": "该应用已有正在进行的模型构建任务，请等待完成"
+        }
+      },
+      "500 Internal Server Error": {
+        "说明": "服务器内部错误导致模型构建任务无法启动",
+        "示例": {
+          "status": "error",
+          "message": "服务器内部错误，无法启动模型构建任务，请稍后重试"
+        }
+      }
+    }
+  },
+  "检测配置操作": {
+    "调用规范": {
+      "请求方法": "GET、PUT",
+      "URL": "/detection/config/",
+      "认证要求": "已认证用户",
+      "说明": "GET 用于获取目标应用的检测配置信息；PUT 用于更新目标应用的检测配置信息。"
+    },
+    "请求体结构": {
+      "GET": {
+        "参数": "无"
+      },
+      "PUT": {
+        "结构": {
+          "enhanced_detection_enabled": "是否启用增强检测，布尔类型",
+          "combined_data_duration": "组合数据持续时间，整数类型"
+        }
+      }
+    },
+    "状态码及响应体结构示例": {
+      "GET": {
+        "200 OK": {
+          "说明": "成功获取检测配置信息",
+          "示例": {
+            "status": "success",
+            "message": "检测配置信息获取成功",
+            "data": {
+              "enhanced_detection_enabled": true,
+              "combined_data_duration": 3600
+            }
+          }
+        },
+        "401 Unauthorized": {
+          "说明": "用户未认证",
+          "示例": {
+            "status": "error",
+            "message": "用户未认证，请先登录"
+          }
+        },
+        "404 Not Found": {
+          "说明": "目标应用不存在或该应用没有检测配置信息",
+          "示例": {
+            "status": "error",
+            "message": "未找到目标应用或该应用没有检测配置信息"
+          }
+        }
+      },
+      "PUT": {
+        "200 OK": {
+          "说明": "检测配置信息更新成功",
+          "示例": {
+            "status": "success",
+            "message": "检测配置信息更新成功"
+          }
+        },
+        "400 Bad Request": {
+          "说明": "请求体格式错误或数据不合法",
+          "示例": {
+            "status": "error",
+            "message": "请求体格式错误，请检查输入数据",
+            "errors": {
+              "combined_data_duration": "组合数据持续时间必须为正整数"
+            }
+          }
+        },
+        "401 Unauthorized": {
+          "说明": "用户未认证",
+          "示例": {
+            "status": "error",
+            "message": "用户未认证，请先登录"
+          }
+        },
+        "404 Not Found": {
+          "说明": "目标应用不存在",
+          "示例": {
+            "status": "error",
+            "message": "未找到目标应用"
+          }
+        }
+      }
+    }
+  },
+  "开始检测": {
+    "调用规范": {
+      "请求方法": "GET",
+      "URL": "/detection/start/",
+      "认证要求": "已认证用户",
+      "说明": "开始目标应用的检测操作。"
+    },
+    "请求体结构": {
+      "参数": {
+        "app_id": "目标应用的 ID，格式如 ?app_id=1"
+      }
+    },
+    "状态码及响应体结构示例": {
+      "202 Accepted": {
+        "说明": "检测任务已成功接受，进入处理队列",
+        "示例": {
+          "status": "success",
+          "message": "检测任务已接受，正在启动",
+          "task_id": "task_654321"
+        }
+      },
+      "401 Unauthorized": {
+        "说明": "用户未认证",
+        "示例": {
+          "status": "error",
+          "message": "用户未认证，请先登录"
+        }
+      },
+      "404 Not Found": {
+        "说明": "目标应用不存在",
+        "示例": {
+          "status": "error",
+          "message": "未找到目标应用"
+        }
+      },
+      "409 Conflict": {
+        "说明": "该应用已有正在进行的检测任务",
+        "示例": {
+          "status": "error",
+          "message": "该应用已有正在进行的检测任务，请等待完成"
+        }
+      },
+      "500 Internal Server Error": {
+        "说明": "服务器内部错误导致检测任务无法启动",
+        "示例": {
+          "status": "error",
+          "message": "服务器内部错误，无法启动检测任务，请稍后重试"
+        }
+      }
+    }
+  },
+  "暂停检测": {
+    "调用规范": {
+      "请求方法": "GET",
+      "URL": "/detection/pause/",
+      "认证要求": "已认证用户",
+      "说明": "暂停目标应用的检测操作。"
+    },
+    "请求体结构": {
+      "参数": {
+        "app_id": "目标应用的 ID，格式如 ?app_id=1"
+      }
+    },
+    "状态码及响应体结构示例": {
+      "200 OK": {
+        "说明": "检测任务成功暂停",
+        "示例": {
+          "status": "success",
+          "message": "检测任务已成功暂停"
+        }
+      },
+      "401 Unauthorized": {
+        "说明": "用户未认证",
+        "示例": {
+          "status": "error",
+          "message": "用户未认证，请先登录"
+        }
+      },
+      "404 Not Found": {
+        "说明": "目标应用不存在或没有正在进行的检测任务",
+        "示例": {
+          "status": "error",
+          "message": "未找到目标应用或没有正在进行的检测任务"
+        }
+      },
+      "500 Internal Server Error": {
+        "说明": "服务器内部错误导致无法暂停检测任务",
+        "示例": {
+          "status": "error",
+          "message": "服务器内部错误，无法暂停检测任务，请稍后重试"
+        }
+      }
+    }
+  },
+  "按组合获取检测记录": {
+    "调用规范": {
+      "请求方法": "GET",
+      "URL": "/detection/record/combination",
+      "认证要求": "已认证用户",
+      "说明": "获取目标应用的按组合的检测记录信息。"
+    },
+    "请求体结构": {
+      "参数": {
+        "app_id": "目标应用的 ID，格式如 ?app_id=1"
+      }
+    },
+    "状态码及响应体结构示例": {
+      "200 OK": {
+        "说明": "成功获取按组合的检测记录",
+        "示例": {
+          "status": "success",
+          "message": "按组合的检测记录获取成功",
+          "data": {
+            "combination_records": [
+              {
+                "combination_id": 1,
+                "record_time": "2025-02-22 12:00:00",
+                "result": "正常"
+              },
+              {
+                "combination_id": 2,
+                "record_time": "2025-02-22 13:00:00",
+                "result": "异常"
+              }
+            ]
+          }
+        }
+      },
+      "401 Unauthorized": {
+        "说明": "用户未认证",
+        "示例": {
+          "status": "error",
+          "message": "用户未认证，请先登录"
+        }
+      },
+      "404 Not Found": {
+        "说明": "目标应用不存在或该应用没有按组合的检测记录",
+        "示例": {
+          "status": "error",
+          "message": "未找到目标应用或该应用没有按组合的检测记录"
+        }
+      }
+    }
+  },
+  "按 API 获取检测记录": {
+    "调用规范": {
+      "请求方法": "GET",
+      "URL": "/detection/record/api",
+      "认证要求": "已认证用户",
+      "说明": "获取目标应用的按 API 的检测记录信息。"
+    },
+    "请求体结构": {
+      "参数": {
+        "app_id": "目标应用的 ID，格式如 ?app_id=1"
+      }
+    },
+    "状态码及响应体结构示例": {
+      "200 OK": {
+        "说明": "成功获取按 API 的检测记录",
+        "示例": {
+          "status": "success",
+          "message": "按 API 的检测记录获取成功",
+          "data": {
+            "api_records": [
+              {
+                "api_id": 1,
+                "record_time": "2025-02-22 14:00:00",
+                "result": "正常"
+              },
+              {
+                "api_id": 2,
+                "record_time": "2025-02-22 15:00:00",
+                "result": "异常"
+              }
+            ]
+          }
+        }
+      },
+      "401 Unauthorized": {
+        "说明": "用户未认证",
+        "示例": {
+          "status": "error",
+          "message": "用户未认证，请先登录"
+        }
+      },
+      "404 Not Found": {
+        "说明": "目标应用不存在或该应用没有按 API 的检测记录",
+        "示例": {
+          "status": "error",
+          "message": "未找到目标应用或该应用没有按 API 的检测记录"
+        }
+      }
+    }
+  }
+}

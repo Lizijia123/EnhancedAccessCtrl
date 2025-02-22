@@ -1,3 +1,4 @@
+# urls.py
 from django.urls import path
 from .views import *
 
@@ -6,11 +7,14 @@ urlpatterns = [
     path('login/', user_login, name='login'),
     path('logout/', user_logout, name='logout'),
 
+    path('target-app-list/', get_target_app_list, name='get_target_app_list'),
     path('target-app/', target_app, name='target_app'),
 
     path('api-lists/', get_api_lists, name='get_api_lists'),
     path('user-api-list/', update_user_api_list, name='update_user_api_list'),
     path('api/discovery/', api_discovery, name='api_discovery'),
+    path('api/discovery/finish', finish_api_discovery, name='finish_api_discovery'),
+    path('api/discovery/cancel', cancel_api_discovery, name='cancel_api_discovery'),
     path('api/discovery/notification/', api_discovery_notification, name='api_discovery_notification'),
 
     path('detection/features/', detect_feature, name='detect_feature'),

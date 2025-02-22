@@ -29,6 +29,8 @@ STOP_FLAG = threading.Event()
 # 存储当前运行的线程
 current_thread = None
 
+api_discovery_in_progress = False
+
 ERROR_APIS = []
 
 # 定义锁
@@ -85,9 +87,13 @@ def compile_discovered_api_list(api_list, sample_list):
         discovered_api_list.append(api_info)
     return discovered_api_list
 
+@app.route('/api_discovery/status', methods=['GET'])
+def get_api_discovery_status():
+    return jsonify({"api_discovery_status": 'IN_PROGRESS' if api_discovery_in_progress else 'AVAILABLE'}), 200
 
 # 定义异步任务函数
 def async_api_discovery(data, backend_notification_url):
+    global api_discovery_in_progress
     try:
         algorithm.api_discovery.gen_crawl_log()
         api_log = algorithm.api_discovery.extract_api_log_to_csv()
@@ -96,34 +102,41 @@ def async_api_discovery(data, backend_notification_url):
         algorithm.api_discovery.gen_initial_api_doc(api_list)
 
         discovered_api_list = compile_discovered_api_list(api_list, sample_list)
-
         # 完成API发现后，向后端发送通知
-        notification_data = {"discovered_API_list": discovered_api_list}
-        response = requests.post(backend_notification_url, json=notification_data)
+        response = requests.post(backend_notification_url, json={"discovered_API_list": discovered_api_list})
         response.raise_for_status()
     except Exception as e:
         # 处理异常，这里可以添加日志记录等操作
-        print(f"Error in async API discovery: {str(e)}")
+        response = requests.post(backend_notification_url, json={"discovered_API_list": []})
+        response.raise_for_status()
+        LOGGER.error(f"Error in async API discovery: {str(e)}")
+    finally:
+        # 标记 API 发现结束
+        api_discovery_in_progress = False
+
 
 @app.route('/api_discovery', methods=['POST'])
 def auto_api_discovery():
+    global api_discovery_in_progress
+    # 检查 API 发现是否正在进行中
+    if api_discovery_in_progress:
+        return jsonify({"error": "Auto API Discovery is ongoing, please try again later"}), 409
+
     data = request.get_json()
-    app_id = data.get('id')  # 假设数据中包含app_id
+    app_id = data.get('id')
+    if not app_id:
+        return jsonify({"error": "Missing target application ID"}), 400
+
     config.basic.APP_URL = data.get('APP_url')
     config.basic.APP_DESCRIPTION = data.get('description')
     config.basic.LOGIN_CREDENTIALS = data.get('login_credentials')
     config.basic.ACTION_STEP = data.get('user_behavior_cycle')
-    if not app_id:
-        return jsonify({"error": "Missing target application ID"}), 400
 
-    # 构造后端通知URL
-    backend_notification_url = f'http://backend_host/api_discovery_notification?id={app_id}'
-
-    # 创建并启动异步线程
+    backend_notification_url = f'http://backend_host/api_discovery_notification?app_id={app_id}'
+    api_discovery_in_progress = True
     thread = threading.Thread(target=async_api_discovery, args=(data, backend_notification_url))
     thread.start()
-
-    return jsonify({"message": "API发现已开始"}), 200
+    return jsonify({"message": "Auto API discovery started successfully"}), 200
 
 
 @app.route('/api_discovery/start', methods=['POST'])
@@ -143,8 +156,8 @@ def start_api_discovery():
     return jsonify({'message': 'Manual API discovery started successfully'}), 200
 
 
-@app.route('/api_discovery/stop', methods=['POST'])
-def stop_api_discovery():
+@app.route('/api_discovery/finish', methods=['GET'])
+def finish_api_discovery():
     global MANUAL_API_DISCOVER_STARTED_AT, MANUAL_API_DISCOVER_ENDED_AT
     with api_discovery_lock:
         if MANUAL_API_DISCOVER_STARTED_AT is None:
@@ -164,14 +177,14 @@ def stop_api_discovery():
         pass
     with file_operation_lock:
         with open(output_file, 'a', newline='') as outfile:
-            writer = csv.DictWriter(outfile, fieldnames=fields_to_record) # type: ignore
+            writer = csv.DictWriter(outfile, fieldnames=fields_to_record)  # type: ignore
             if not file_exists:
                 writer.writeheader()
             with open('traffic.csv', 'r') as infile:
                 reader = csv.DictReader(infile)
                 for row in reader:
                     request_time = datetime.strptime(row['request_time'], '%Y-%m-%d %H:%M:%S')
-                    if MANUAL_API_DISCOVER_STARTED_AT <= request_time <= MANUAL_API_DISCOVER_ENDED_AT: # type: ignore
+                    if MANUAL_API_DISCOVER_STARTED_AT <= request_time <= MANUAL_API_DISCOVER_ENDED_AT:  # type: ignore
                         data_to_write = {field: row.get(field) for field in fields_to_record}
                         writer.writerow(data_to_write)
 
@@ -210,32 +223,35 @@ def construct_model():
     config.basic.LOGIN_CREDENTIALS = target_app.get('login_credentials')
     config.basic.ACTION_STEP = target_app.get('user_behavior_cycle')
 
-    if DATA_COLLECTION_STATUS == 'NOT_STARTED':
-        thread = threading.Thread(target=async_data_collect, args=(data,))
-        thread.start()
-        return jsonify({'message': 'Data collection is ongoing, please try again later'}), 200
-    elif DATA_COLLECTION_STATUS == 'IN_PROGRESS':
-        return jsonify({'message': 'Data collection is ongoing, please try again later'}), 200
-    else:
-        detection_feature_list = data.get('detection_feature_list')
+    try:
+        if DATA_COLLECTION_STATUS == 'NOT_STARTED':
+            thread = threading.Thread(target=async_data_collect, args=(data,))
+            thread.start()
+            return jsonify({'message': 'Data collection is ongoing, please try again later'}), 102
+        elif DATA_COLLECTION_STATUS == 'IN_PROGRESS':
+            return jsonify({'message': 'Data collection is ongoing, please try again later'}), 102
+        else:
+            detection_feature_list = data.get('detection_feature_list')
 
-        features = []
-        for feature in detection_feature_list:
-            if feature.get('type') == 'SeqOccurTimeFeature':
-                features.append(SeqOccurTimeFeature(feature.get('string_list')))
-            else:
-                features.append(FEATURES[feature.get('name')])
+            features = []
+            for feature in detection_feature_list:
+                if feature.get('type') == 'SeqOccurTimeFeature':
+                    features.append(SeqOccurTimeFeature(feature.get('string_list')))
+                else:
+                    features.append(FEATURES[feature.get('name')])
 
-        data_splitting()
-        report = train_and_save_xgboost_model(
-            # TODO
-            features=features,
-            train_path='',
-            test_path='',
-            model_path='',
-            scaler_path=''
-        )
-        return jsonify({"report": report, "error_API_list": ERROR_APIS})
+            data_splitting()
+            report = train_and_save_xgboost_model(
+                # TODO
+                features=features,
+                train_path='',
+                test_path='',
+                model_path='',
+                scaler_path=''
+            )
+            return jsonify({"report": report, "error_API_list": ERROR_APIS}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 
 # 启动检测
@@ -371,7 +387,7 @@ def async_data_collect(data):
                 'query_params': query_params,
                 'sample_body': sample_body,
                 'sample_headers': sample_headers
-            }, index=i))
+            }, index=api_info.get('id')))
 
             if STOP_FLAG.is_set():
                 break

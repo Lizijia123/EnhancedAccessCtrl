@@ -1,10 +1,11 @@
-# tasks.py
+import logging
 from celery import shared_task
-import requests
-from django.http import JsonResponse
-from .models import TargetApplication
 from .views import *
 from django.utils import timezone
+from typing import Dict, List
+
+logger = logging.getLogger(__name__)
+
 
 @shared_task
 def handle_api_discovery_notification(app_id, discovery_data):
@@ -13,22 +14,15 @@ def handle_api_discovery_notification(app_id, discovery_data):
         discovered_api_list_data = discovery_data.get('discovered_API_list', [])
 
         # 更新 discovered_API_list
-        for api in target_app.discovered_API_list.all():
-            api.path_segment_list.all().delete()
-            api.request_param_list.all().delete()
-            api.request_data_fields.all().delete()
-            api.delete()
-        target_app.discovered_API_list.clear()
-        for api_data in discovered_api_list_data:
-            result = validate_and_save_api(api_data)
-            if isinstance(result, JsonResponse):
-                continue
-            target_app.discovered_API_list.add(result)
+        error_response = save_api_list(target_app, 'discovered_API_list', discovered_api_list_data)
+        if error_response:
+            return error_response
 
         # 更新 user_API_list
         if len(list(target_app.user_API_list.all())) == 0:
-            for api_data in discovered_api_list_data:
-                target_app.user_API_list.add(validate_and_save_api(api_data))
+            error_response = save_api_list(target_app, 'user_API_list', discovered_api_list_data)
+            if error_response:
+                return error_response
 
         # 更新状态
         if target_app.detect_state == 'API_LIST_TO_DISCOVER':
@@ -38,5 +32,9 @@ def handle_api_discovery_notification(app_id, discovery_data):
         target_app.save(update_fields=['last_API_discovery_at'])
 
         return {'message': 'API discovery and update successful'}
+    except TargetApplication.DoesNotExist:
+        logger.error(f"Target application with id {app_id} not found.")
+        return {'error': f"Target application with id {app_id} not found."}
     except Exception as e:
+        logger.error(f"An error occurred during API discovery notification handling: {str(e)}")
         return {'error': str(e)}

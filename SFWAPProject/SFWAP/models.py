@@ -1,3 +1,4 @@
+# models.py
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import MinValueValidator, MaxValueValidator, URLValidator, RegexValidator
@@ -115,7 +116,7 @@ class TargetApplication(models.Model):
         ('API_LIST_TO_DISCOVER', 'API_LIST_TO_DISCOVER'),  # is_draft=False, last_API_discovery_at=None
         ('API_LIST_TO_IMPROVE', 'API_LIST_TO_IMPROVE'),
         # is_draft=False, last_API_discovery_at!=None, last_model_construction_at=None
-        ('MODEL_FEATURES_TO_CONFIGURE', 'MODEL_FEATURES_TO_IMPROVE'),
+        ('MODEL_FEATURES_TO_CONFIGURE', 'MODEL_FEATURES_TO_CONFIGURE'),
         # is_draft=False, last_API_discovery_at!=None, last_model_construction_at!=None, 未开始检测
         ('STARTED', 'STARTED'),
         ('PAUSED', 'PAUSED')

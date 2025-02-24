@@ -8,7 +8,7 @@ import requests
 from selenium import webdriver
 
 import algorithm.entity.api
-from agent import Agent, save_agents_to_file, load_agents_from_file
+from algorithm.agent import Agent, save_agents_to_file, load_agents_from_file
 from algorithm.exception import UnameNotFindException
 from algorithm.login import login
 from algorithm.loginer import LOGINER
@@ -159,7 +159,7 @@ def param_injection_for_api_seq(api_title_seq, uname, unlogged, action_type_seq,
     global param_cache
     param_cache.clear()
 
-    api_title_info_map = {f'API_{int(api.index)}': api for api in Agent.apis}
+    api_title_info_map = {f'API_{str(api.index)}': api for api in Agent.apis}
     api_seq = [api_title_info_map[title] for title in api_title_seq]
 
     traffic_data_seq = []
@@ -221,10 +221,9 @@ def param_injection_for_api(api):
     """
     global param_cache
 
-    proj_path = os.path.dirname(os.path.abspath(__file__))
-    with open(f'{proj_path}\\param_set.json', 'r', encoding='utf-8') as f:
+    with open(os.path.join(os.path.dirname(__file__), 'param_set.json'), 'r', encoding='utf-8') as f:
         param_set = json.load(f, ensure_ascii=False)
-    api_param_set = param_set[f'API_{int(api.index)}']
+    api_param_set = param_set[f'API_{str(api.index)}']
 
     if len(api_param_set['sample']) > 0 and random.random() < PARAM_INJECTION_SAMPLE_RATE:
         sample = random.choice(api_param_set['sample'])
@@ -278,12 +277,10 @@ def param_injection_for_api(api):
     return url, data
 
 
-def gen_data_set(api_list, api_knowledge, app_knowledge):
-    Agent.cinit(api_list, api_knowledge, app_knowledge)
-    algorithm.entity.api.save_apis_to_json(api_list)
-    """
-    生成流量数据集并保存到文件
-    """
+def gen_data_set(user_configured_api_list, api_knowledge, app_knowledge):
+    Agent.cinit(user_configured_api_list, api_knowledge, app_knowledge)
+    algorithm.entity.api.save_apis_to_json(user_configured_api_list)
+
     users = []
     for role in NORMAL_USER_NUM:
         unlogged = True if role == 'unlogged_in_user' else False

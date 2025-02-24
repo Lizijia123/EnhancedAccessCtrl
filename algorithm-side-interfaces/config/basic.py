@@ -37,3 +37,6 @@ def url_decoding(url):
     if query_params:
         res += f"?{query_params}"
     return res
+
+# ["deepseek-v3"] #"gpt-4o-mini", # "qwen-max",  "llama3.3-70b-instruct"
+LLM_MODEL_NAME = "llama3.3-70b-instruct"

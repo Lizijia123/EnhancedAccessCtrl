@@ -1,122 +1,156 @@
-import json
-import logging
-from langchain.text_splitter import CharacterTextSplitter
-from langchain.embeddings import OpenAIEmbeddings
-from langchain.vectorstores import Chroma
-from langchain.chains import ConversationalRetrievalChain
-from langchain.chat_models import ChatOpenAI
+import sys
 import os
+import json
+import random
+import logging
+import re
 
-from config.basic import *
+from os.path import dirname
 
+# 自动添加 LLM.py 所在的路径，防止 ModuleNotFoundError
+current_dir = os.path.dirname(os.path.abspath(__file__))
+thoughts_dir = os.path.join(current_dir, "Thoughts")
+sys.path.append(thoughts_dir)
+
+from algorithm.LLM import GPTClient, QwenClient, DeepSeekClient, LlamaClient
 
 class Brain:
-
-    def __init__(self, api_knowledge, app_knowledge):
-        os.environ["OPENAI_API_KEY"] = "YOUR_API_KEY"
+    def __init__(self, model_name, api_knowledge, app_knowledge):
+        """初始化 Brain 实例"""
+        self.client = self._select_client(model_name)
         self.chat_history = []
 
-        # 初始化日志记录器
-        self.logger = logging.getLogger(__name__)
-        self.logger.setLevel(logging.INFO)
+        # 初始化日志
+        self.logger = self.setup_logger()
+
+        # 加载知识库
+        self.documents = api_knowledge
+        self.func_description = app_knowledge['func_description']
+        self.normal_seqs = app_knowledge['normal_seqs']
+        self.malicious_seqs = app_knowledge['malicious_seqs']
+        self.auth_info_set = app_knowledge['auth_info']
+        self.context_prompt = self.build_context_prompt()
+
+    def _select_client(self, model_name):
+        """选择对应的 LLM Client"""
+        model_mapping = {
+            "gpt-4o-mini": GPTClient,
+            "qwen-max": QwenClient,
+            "deepseek-r1": DeepSeekClient,
+            "llama3.3-70b-instruct": LlamaClient,
+        }
+
+        if model_name not in model_mapping:
+            raise ValueError(f"Unsupported model name: {model_name}")
+
+        return model_mapping[model_name](model_name=model_name)
+
+    def setup_logger(self):
+        """配置日志"""
+        logger = logging.getLogger(__name__)
+        logger.setLevel(logging.INFO)
+
         formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-        file_handler = logging.FileHandler(f'./log/brain_log.log')
+
+        file_handler = logging.FileHandler(f'{os.path.dirname(os.path.abspath(__file__))}/log/brain_log.log')
         file_handler.setFormatter(formatter)
-        self.logger.addHandler(file_handler)
+        logger.addHandler(file_handler)
 
-        # 构建API知识库
-        documents = api_knowledge
-        text_splitter = CharacterTextSplitter(chunk_size=300, chunk_overlap=0)
-        texts = text_splitter.split_documents(documents)
-        embeddings = OpenAIEmbeddings()
-        vectorstore = Chroma.from_documents(texts, embeddings)
+        console_handler = logging.StreamHandler()
+        console_handler.setFormatter(formatter)
+        logger.addHandler(console_handler)
 
-        # 初始化大模型
-        llm = ChatOpenAI(model_name='gpt-3.5-turbo', temperature=0)
-        self.qa_chain = ConversationalRetrievalChain.from_llm(
-            llm,
-            retriever=vectorstore.as_retriever(search_kwargs={"k": 2})
+        return logger
+
+    def build_context_prompt(self):
+        """构造上下文提示"""
+        return (
+            f"Imagine a web application with the following functionality:\n{self.func_description}\n"
+            f"The application has basic permission control mechanisms. Below are some examples of user behaviors:\n"
+            f"Normal user behavior examples: {self.normal_seqs}\n"
+            f"Malicious privilege escalation behavior examples: {self.malicious_seqs}\n"
+            f"Malicious users often mix normal operations with unauthorized actions.\n"
+            f"Your task is to generate an API call sequence based on user roles and behavior patterns.\n"
+            f"The response must only be in JSON format: {{'api_seq': ['API_1', 'API_3'], 'malicious_sign_seq': [0,1]}}"
         )
 
-        # 构建context
-        knowledge = app_knowledge
-        func_description = knowledge['func_description']
-        normal_seqs = knowledge['normal_seqs']
-        malicious_seqs = knowledge['malicious_seqs']
-        self.auth_info_set = knowledge['auth_info']
-        self.context_prompt = (f"假设有一款Web应用，它的功能描述为：\n{str(func_description)}\n"
-                               f"应用包含基本的权限检测机制。下面给出一些正常用户和一些恶意越权用户的操作行为示例：\n"
-                               f"正常用户的操作行为示例：[\n    {'\n    '.join(normal_seqs)}\n]\n"
-                               f"恶意越权用户的操作行为示例：[\n    {'\n    '.join(malicious_seqs)}\n]\n"
-                               f"恶意越权用户的操作序列，通常会混杂正常操作与恶意越权操作，也就是试图伪装成善意用户。正常用户的操作序列中，所有操作均为正常操作。"
-                               f"你需要利用下面的知识库内容来回答问题。"
-                               f"最终输出格式为恰好包含两个列表的列表："
-                               f"第一个列表是API调用序列（注意，问题中可能指明了序列的长度），格式为知识库中的API编号列表，例如['API2', 'API1', 'API3']；"
-                               f"第二个列表用来标识调用序列中哪些是正常操作，哪些是恶意越权操作，正常用0表示，恶意用1表示，例如[0, 1, 0]。"
-                               f"不要输出任何多余的文字描述、解释、换行符等空白字符。最终输出示例：[['API2', 'API1', 'API3'], [0, 1, 0]]")
-
-    def _retry_query(self, answer):
-        retry_request = f"你刚刚的回复{answer}: 无法解析成两个列表的列表，请严格按照要求输出"
-        new_query = {
-            "question": retry_request,
-            "chat_history": self.chat_history,
-            "context": self.context_prompt
-        }
+    def query_for_api_seq(self, prompt):
+        """调用 LLM 生成 API 调用序列，确保返回符合 gen_api_seq 需要的格式"""
         try:
-            new_answer = self.qa_chain.query(new_query)['answer']
-            self.chat_history.append((retry_request, new_answer))
-            self.logger.info(f"重试查询: Question - {retry_request}, Answer - {new_answer}")
-            return new_answer
-        except Exception as e:
-            self.logger.error(f"重试查询期间出错: {e}", exc_info=True)
-            raise
+            messages = [
+                {"role": "system", "content": self.context_prompt},
+                {"role": "user", "content": prompt}
+            ]
 
-    def query(self, question):
-        query = {
-            "question": question,
-            "chat_history": self.chat_history,
-            "context": self.context_prompt
-        }
+            answer = self.client.Think(messages)
+            self.logger.info(f"Query: {prompt}, Answer: {answer}")
+
+            # 调用专门的解析方法
+            return self._parse_llm_response_for_api_seq(answer)
+
+        except Exception as e:
+            self.logger.error(f"Failed to process LLM response: {e}", exc_info=True)
+            return [], []  # 确保返回空列表，防止 unpack 失败
+
+    def _parse_llm_response_for_api_seq(self, response):
+        """解析 LLM 返回的 JSON，确保符合 gen_api_seq 需要的格式"""
         try:
-            answer = self.qa_chain.query(query)['answer']
-            self.chat_history.append((question, answer))
-            self.logger.info(f"初次查询: Question - {question}, Answer - {answer}")
+            # 1. 使用正则找到 ```json ... ``` 之间的内容
+            match = re.search(r"```json\s*(\{.*?\})\s*```", response, re.DOTALL)
+            if match:
+                json_str = match.group(1)  # 提取 JSON 字符串
+            else:
+                json_str = response  # 如果没有 ```json 包裹，直接尝试解析整个返回内容
 
-            retries = 0
-            while True:
-                try:
-                    result_lists = json.loads(answer)
-                    api_call_sequence = result_lists[0]
-                    malicious_indicator = result_lists[1]
-                    if not isinstance(api_call_sequence, list) or not isinstance(malicious_indicator, list):
-                        raise TypeError()
-                    return api_call_sequence, malicious_indicator
-                except Exception:
-                    retries += 1
-                    if retries > BRAIN_MAX_FORMAT_RETRY:
-                        self.logger.error("超过最大重试次数，仍无法获取正确格式的回复")
-                        raise ValueError("超过最大重试次数，仍无法获取正确格式的回复")
-                    self.logger.error(f"LLM的本次回答无法解析为正确格式: {answer}")
-                    answer = self._retry_query(answer)
-        except Exception as e:
-            self.logger.error(f"初次查询期间出错: {e}", exc_info=True)
-            raise
+            # 2. 解析 JSON
+            parsed_data = json.loads(json_str)
+
+            # 3. 确保返回数据格式正确
+            if isinstance(parsed_data, dict) and "api_seq" in parsed_data and "malicious_sign_seq" in parsed_data:
+                return parsed_data["api_seq"], parsed_data["malicious_sign_seq"]
+
+            raise ValueError("Unexpected response format from LLM")
+
+        except json.JSONDecodeError as e:
+            self.logger.error(f"JSON decoding error: {e}\nRaw response: {response}", exc_info=True)
+            return [], []  # 返回空列表，防止 unpack 失败
 
     def gen_api_seq(self, malicious, role, action_step):
-        """
-        @param
-        """
+        self.logger.info(f"gen_api_seq()方法参数: malicious={malicious}, role={role}, action_step={action_step}")
+
+        """生成 API 调用序列，确保返回 3 个值"""
+        if role not in self.auth_info_set:
+            raise ValueError(f"Invalid role: {role}")
+
+        role_user_index = random.choice(range(len(self.auth_info_set[role])))
+        auth_info = self.auth_info_set[role][role_user_index]
+
+        # **构造 LLM 提示**
+        prompt = (
+            f"Assume you are a user with the following identity: {auth_info}.\n"
+            f"You need to generate an API call sequence with approximately {action_step} steps.\n"
+        )
+
         if malicious:
-            question = (
-                f"假设你是{role}，你打破了权限检测机制，可以实现任意你想做的越权行为；作为恶意越权用户，你倾向于伪装成善意的用户。"
-                f"请再给我一个可能的API调用序列，长度为{action_step}，实现某个或某些越权行为。")
-        else:
-            question = (f"假设你是{role}，你可以调用你有权调用的API，来进行某些你想去完成的业务操作。"
-                        f"请再给我一个可能的API调用序列，长度为{action_step}，代表正常用户的操作序列。")
-        question += "如果可能，尽量保证你的输出与历史输出之间的多样性。以我指定的格式输出。"
-        try:
-            seq, indexes = self.query(question)
-            self.logger.info(f"生成API序列: Question - {question}, Result - {(seq, indexes)}")
-            return seq, indexes
-        except Exception as e:
-            self.logger.error(f"生成API序列期间出错: {e}", exc_info=True)
+            prompt += "However, you will attempt privilege escalation by making unauthorized API calls.\n"
+
+        prompt += (
+            "Your response MUST be in the following JSON format, and you MUST NOT include any explanations:\n"
+            "```json\n"
+            "{\n"
+            '  "api_seq": ["API_1", "API_3", "API_5"],\n'
+            '  "malicious_sign_seq": [0, 1, 0]\n'
+            "}\n"
+            "```\n"
+        )
+
+        # **调用 query_for_api_seq**
+        seq, malicious_sign_seq = self.query_for_api_seq(prompt)
+
+        # **确保返回格式正确**
+        if not isinstance(seq, list) or not isinstance(malicious_sign_seq, list):
+            self.logger.error(f"Invalid LLM response format: seq={seq}, malicious_sign_seq={malicious_sign_seq}")
+            seq, malicious_sign_seq = [], []  # **防止 `NoneType` 错误**
+
+        self.logger.info(f"gen_api_seq()方法返回: seq={seq}, malicious_sign_seq={malicious_sign_seq}, role_user_index={role_user_index}")
+        return seq, malicious_sign_seq, role_user_index

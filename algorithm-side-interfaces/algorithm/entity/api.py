@@ -29,7 +29,7 @@ class API:
 
     def to_dict(self):
         return {
-            'title': f'API_{int(self.index)}',
+            'title': f'API_{str(self.index)}',
             'description': '',
             'method': self.method,
             'path': self.path,
@@ -57,13 +57,13 @@ class API:
 def save_apis_to_json(apis):
     # 将 API 对象数组保存到 JSON 文件
     api_dicts = [api.to_dict() for api in apis]
-    with open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'user_api_list.json'), 'w') as f:
+    with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), 'user_api_list.json'), 'w') as f:
         json.dump(api_dicts, f, indent=4)
 
 
 def load_apis_from_json():
     # 从 JSON 文件加载 API 对象数组
-    with open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'user_api_list.json'), 'r') as f:
+    with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), 'user_api_list.json'), 'r') as f:
         api_dicts = json.load(f)
     return [API.from_dict(api_dict) for api_dict in api_dicts]
 

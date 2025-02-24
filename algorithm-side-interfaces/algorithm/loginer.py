@@ -206,7 +206,7 @@ LOGIN_API_INFO = [
 
 LOGIN_TIMEOUT = 10
 
-from exception import *
+from algorithm.exception import *
 
 
 def validate_login_config():

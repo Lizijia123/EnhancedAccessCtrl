@@ -10,22 +10,23 @@ from config.basic import url_decoding
 from config.api_log_filtering import NON_API_KEYS
 from config.basic import URL_ENCODING_CONVERT, APP_URL, LOGIN_CREDENTIALS
 from config.crawling import *
-from login import *
+from algorithm.login import *
 from config.api_matching import API_MATCHES
 from algorithm.api_discovery_algorithm.api_discovery import extract_api_list
-from entity.api import API
+from algorithm.entity.api import API
 from os.path import dirname
 from urllib.parse import urlparse, parse_qs, quote
 from config.log import LOGGER
 
 param_set = {}
 
+
 def param_set_to_file():
-    json_path = f'{dirname(__file__)}\\param_set.json'
+    json_path = os.path.join(dirname(__file__), 'param_set.json')
     global param_set
     with open(json_path, 'w') as json_file:
         json.dump(param_set, json_file, indent=2)
-    LOGGER.info(f'已将可取参数集合记录至{dirname(__file__)}\\param_set.json')
+    LOGGER.info(f'已将可取参数集合记录至{json_path}')
 
 
 def collect_param_set(api_log, api_list):
@@ -63,9 +64,9 @@ def collect_param(record, api_list):
     # print(record['api'])
     global param_set
 
-    api = [api for api in api_list if int(api.index) == int(record['api'])][0]
+    api = [api for api in api_list if str(api.index) == str(record['api'])][0]
 
-    api_title = 'API_' + str(int(record['api']))
+    api_title = 'API_' + str(record['api'])
     if api_title not in param_set:
         param_set[api_title] = {
             'path_variables': {},
@@ -122,29 +123,26 @@ def collect_param(record, api_list):
 
 
 def api_extract(api_crawl_log):
-    sample_list = []
-
+    API_sample_traffic_data_list = []
     LOGGER.info('利用API发现，提取API列表...')
-    """
-    TODO
-    从API调用记录中：
-    利用API发现获取API列表
-    """
-    # 对列表中的API按顺序编号
-    api_list = extract_api_list(api_crawl_log)
+    API_discovery_result = extract_api_list(api_crawl_log)
     api_info_list = []
     index = 0
     # print(api_list)
     api_matches = API_MATCHES
-    for api_item in api_list:
+    for item in API_discovery_result:
         # print(api_item['API'])
         sample_traffic_data = next((row for index, row in api_crawl_log.iterrows() if api_matches(
-            api_item['method'], api_item['API'], row['method'], row['url']
+            item['method'], item['API'], row['method'], row['url']
         )), None)
+        if sample_traffic_data is None:
+            continue
         # print(sample_traffic_data['url'])
 
         parsed_url = urlparse(sample_traffic_data['url'])
-        path = urlparse(api_item['API']).path
+        path = urlparse(item['API']).path
+        if path == '':
+            path = '/'
         path_segments = (path + '/').split('/')[1:-1]
         variable_indexes = []
         for i in range(len(path_segments)):
@@ -157,20 +155,25 @@ def api_extract(api_crawl_log):
                 sample_body = eval(sample_traffic_data['data'].replace('true', 'True').replace('false', 'False'))
             elif type(sample_traffic_data['data']) is dict:
                 sample_body = sample_traffic_data['data']
+        sample_headers = {}
+        if not pd.isna(sample_traffic_data['headers']):
+            if type(sample_traffic_data['headers']) is str:
+                sample_headers = eval(sample_traffic_data['headers'].replace('true', 'True').replace('false', 'False'))
+            elif type(sample_traffic_data['headers']) is dict:
+                sample_headers = sample_traffic_data['headers']
         api_info = {
-            'method': api_item['method'],
+            'method': item['method'],
             'path': path,
             'variable_indexes': variable_indexes,
             'query_params': list(parse_qs(query).keys()),
             'sample_body': sample_body,
-            'sample_headers': sample_traffic_data['header']
+            'sample_headers': sample_headers
         }
-        api_info_list.append(API(api_info, index=index))
-        sample_list.append((sample_traffic_data['url'], sample_body))
+        api_info_list.append(API(api_info, index=str(index)))
+        API_sample_traffic_data_list.append((sample_traffic_data['url'], sample_body))
         index += 1
 
-    return api_info_list, sample_list
-
+    return api_info_list, API_sample_traffic_data_list
 
 
 def gen_crawl_log():
@@ -228,13 +231,13 @@ def extract_api_log_to_csv():
         domain = domain.split(':')[0]
 
     LOGGER.info(f'从爬虫记录中提取API流量...')
-    url_log_path = f"{dirname(__file__)}\\crawl_log\\url_crawl_log.csv"
-    web_element_log_path = f"{dirname(__file__)}\\crawl_log\\web_element_crawl_log.csv"
-    manual_traffic_log = f"{dirname(__file__)}\\crawl_log\\manual_API_discovery_traffic_log.csv"
+    url_log_path = os.path.join(dirname(__file__), 'crawl_log', 'url_crawl_log.csv')
+    web_element_log_path = os.path.join(dirname(__file__), 'crawl_log', 'web_element_crawl_log.csv')
+    manual_traffic_log_path = os.path.join(dirname(__file__), 'crawl_log', 'manual_API_discovery_traffic_log.csv')
 
     url_log = None
     web_element_log = None
-    burp_log = None
+    manual_traffic_log = None
 
     if os.path.exists(url_log_path):
         if pd.read_csv(url_log_path).shape[0] >= 2:
@@ -242,23 +245,27 @@ def extract_api_log_to_csv():
     if os.path.exists(web_element_log_path):
         if pd.read_csv(web_element_log_path).shape[0] >= 2:
             web_element_log = pd.read_csv(web_element_log_path)
-    if os.path.exists(manual_traffic_log):
-        if pd.read_csv(manual_traffic_log).shape[0] >= 2:
-            burp_log = pd.read_csv(manual_traffic_log)
+    if os.path.exists(manual_traffic_log_path):
+        if pd.read_csv(manual_traffic_log_path).shape[0] >= 2:
+            manual_traffic_log = pd.read_csv(manual_traffic_log_path)
 
     url_log = url_log[url_log['URL'].str.contains(domain)] if url_log is not None else None
-    web_element_log = web_element_log[
-        web_element_log['url'].str.contains(domain)] if web_element_log is not None else None
-    burp_log = burp_log[burp_log['url'].str.contains(domain)] if burp_log is not None else None
+    web_element_log = web_element_log[web_element_log['url'].str.contains(domain)] \
+        if web_element_log is not None else None
+    manual_traffic_log = manual_traffic_log[manual_traffic_log['url'].str.contains(domain)] \
+        if manual_traffic_log is not None else None
 
     if URL_ENCODING_CONVERT:
         url_log['URL'] = url_log['URL'].apply(url_decoding) if url_log is not None else None
         web_element_log['url'] = web_element_log['url'].apply(url_decoding) if web_element_log is not None else None
-        burp_log['url'] = burp_log['url'].apply(url_decoding) if burp_log is not None else None
+        manual_traffic_log['url'] = manual_traffic_log['url'].apply(url_decoding) \
+            if manual_traffic_log is not None else None
 
-    url_log = url_log[url_log['URL'].apply(not_matches_static)]
-    web_element_log = web_element_log[web_element_log['url'].apply(not_matches_static)]
-    burp_log = burp_log[burp_log['url'].apply(not_matches_static)]
+    url_log = url_log[url_log['URL'].apply(not_matches_static)] if url_log is not None else None
+    web_element_log = web_element_log[web_element_log['url'].apply(not_matches_static)] \
+        if web_element_log is not None else None
+    manual_traffic_log = manual_traffic_log[manual_traffic_log['url'].apply(not_matches_static)] \
+        if manual_traffic_log is not None else None
 
     if url_log is not None:
         url_log['method'] = url_log['Method'].apply(lambda x: x[0].upper() + x[1:].lower() if pd.notnull(x) else x)
@@ -268,26 +275,33 @@ def extract_api_log_to_csv():
         url_log['time'] = 0
         url_log['type'] = 0
         url_log = url_log[['method', 'url', 'header', 'data', 'time', 'type']]
+    else:
+        url_log = pd.DataFrame(columns=['method', 'url', 'header', 'data', 'time', 'type'])
 
     if web_element_log is not None:
-        web_element_log['method'] = web_element_log['method'].apply(
-            lambda x: x[0].upper() + x[1:].lower() if pd.notnull(x) else x)
+        web_element_log['method'] = (web_element_log['method'].apply(
+            lambda x: x[0].upper() + x[1:].lower() if pd.notnull(x) else x))
         web_element_log['header'] = web_element_log['header'].apply(convert_to_dict)
         web_element_log['time'] = 0
         web_element_log['type'] = 0
         web_element_log = web_element_log[['method', 'url', 'header', 'data', 'time', 'type']]
+    else:
+        web_element_log = pd.DataFrame(columns=['method', 'url', 'header', 'data', 'time', 'type'])
 
-    if burp_log is not None:
-        burp_log['method'] = burp_log['method'].apply(lambda x: x[0].upper() + x[1:].lower() if pd.notnull(x) else x)
-        burp_log['time'] = 0
-        burp_log['type'] = 0
-        burp_log = burp_log[['method', 'url', 'header', 'data', 'time', 'type']]
+    if manual_traffic_log is not None:
+        manual_traffic_log['method'] = manual_traffic_log['method'].apply(
+            lambda x: x[0].upper() + x[1:].lower() if pd.notnull(x) else x)
+        manual_traffic_log['time'] = 0
+        manual_traffic_log['type'] = 0
+        manual_traffic_log = manual_traffic_log[['method', 'url', 'header', 'data', 'time', 'type']]
+    else:
+        manual_traffic_log = pd.DataFrame(columns=['method', 'url', 'header', 'data', 'time', 'type'])
 
-    api_log = pd.concat([url_log, web_element_log, burp_log], ignore_index=True)
+    api_log = pd.concat([url_log, web_element_log, manual_traffic_log], ignore_index=True)
 
     index_list = pd.Series(list(range(len(api_log))))
     api_log.insert(0, 'Unnamed: 0', index_list)
 
-    api_log.to_csv(f'{dirname(__file__)}\\crawl_log\\API_crawl_log.csv', index=False)
-    LOGGER.info(f'{dirname(__file__)}\\crawl_log\\API_crawl_log.csv')
+    api_log.to_csv(os.path.join(dirname(__file__), 'crawl_log', 'API_crawl_log.csv'), index=False)
+    LOGGER.info(f'已将api_log保存至{os.path.join(dirname(__file__), 'crawl_log', 'API_crawl_log.csv')}')
     return api_log

@@ -16,7 +16,7 @@ class Agent:
 
     @classmethod
     def cinit(cls, api_list, api_knowledge, app_knowledge):
-        cls.brain = Brain(api_knowledge, app_knowledge)
+        cls.brain = Brain(LLM_MODEL_NAME, api_knowledge, app_knowledge)
         cls.apis = api_list
 
     def __init__(self, role, action_step, malicious=False, unlogged=False):

@@ -1004,7 +1004,7 @@ def get_detection_records_by_combination(request):
                 api_id = api_info.get('id')
                 if api_id:
                     try:
-                        api = API.objects.get(id=api_id)
+                        api = API.objects.get(id=int(api_id))
                     except API.DoesNotExist:
                         pass
 

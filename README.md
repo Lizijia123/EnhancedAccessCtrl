@@ -41,3 +41,8 @@ SFWAP(SmartFlow WebAccess Pro)是一个Web应用的访问控制管控平台原�
     - 用户重新进行Start Model Construction。模型构建可以进行多次。如果更新了user_API_list或者更新了detect_feature_list，需要（最好）重新Start Model Construction以保证数据同步
   - Start Detection阶段：用户编辑Detection Config并启动检测（此前需要至少完成一次自动API Discovery，至少完成一次Model Construction）。用户可以暂停检测。在检测进行中时，不能进行Basic Config&API Discovery&Model Construction阶段的操作（需要先暂停检测）
 - 用户在当前目标应用的报告页面查看检测报告
+
+
+
+
+

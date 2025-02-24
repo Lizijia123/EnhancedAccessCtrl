@@ -2,6 +2,7 @@ import csv
 import json
 import subprocess
 import threading
+import time
 from os.path import dirname
 from urllib.parse import urlparse
 from datetime import datetime
@@ -22,8 +23,8 @@ import pandas as pd
 
 app = Flask(__name__)
 
-MANUAL_API_DISCOVER_STARTED_AT = None
-MANUAL_API_DISCOVER_ENDED_AT = None
+MANUAL_API_DISCOVERY_STARTED_AT = None
+MANUAL_API_DISCOVERY_ENDED_AT = None
 DATA_COLLECTION_STATUS = 'NOT_STARTED'
 
 # 定义线程退出标志
@@ -40,26 +41,24 @@ api_discovery_lock = threading.Lock()
 file_operation_lock = threading.Lock()
 
 
-def compile_discovered_api_list(api_list, sample_list):
+def compile_to_api_discovery_result(api_list, sample_traffic_data_list):
     discovered_api_list = []
 
     for i in range(len(api_list)):
         api_info = {
             'function_description': 'Please fill in the function description',
             'permission_info': 'Please fill in the permission info',
-            'sample_url': sample_list[i][0],
-            'sample_request_data': sample_list[i][1],
+            'sample_url': sample_traffic_data_list[i][0],
+            'sample_request_data': sample_traffic_data_list[i][1],
             'request_method': api_list[i].method.upper()
         }
 
         path_segment_list = []
         path = api_list[i].path
-        if path.endswith('/'):
-            path = path[:-1]
         path_segments = (path + '/').split('/')[1:-1]
         for j in range(len(path_segments)):
             path_segment_list.append({
-                'name': path_segments[j],
+                'name': '[EMPTY]' if path_segments[j] == '' else path_segments[j],
                 'is_path_variable': j in api_list[i].variable_indexes,
             })
         api_info['path_segments'] = path_segment_list
@@ -82,7 +81,7 @@ def compile_discovered_api_list(api_list, sample_list):
         for key, val in api_list[i].sample_body.items():
             request_data_fields.append({
                 'name': key,
-                'type': get_variable_type(val),
+                'type': get_variable_type(val) if val is not None else 'Object',
             })
         api_info['request_data_fields'] = request_data_fields
 
@@ -99,13 +98,24 @@ def get_api_discovery_status():
 def async_api_discovery(data, backend_notification_url):
     global api_discovery_in_progress
     try:
-        algorithm.api_discovery.gen_crawl_log()
-        api_log = algorithm.api_discovery.extract_api_log_to_csv()
-        api_list, sample_list = algorithm.api_discovery.api_extract(api_log)
-        algorithm.api_discovery.collect_param_set(api_log, api_list)
-        # algorithm.api_discovery.gen_initial_api_doc(api_list)
+        time.sleep(20)
+        # algorithm.api_discovery.gen_crawl_log()
 
-        discovered_api_list = compile_discovered_api_list(api_list, sample_list)
+        api_log = algorithm.api_discovery.extract_api_log_to_csv()
+        api_list, sample_traffic_data_list = algorithm.api_discovery.api_extract(api_log)
+        algorithm.api_discovery.collect_param_set(api_log, api_list)
+
+        with open(os.path.join(dirname(__file__), 'algorithm', 'param_set.json'), 'r') as f:
+            param_set = json.load(f)
+
+        revised_api_list = []
+        revised_sample_traffic_data_list = []
+        for i in range(len(api_list)):
+            if f'API_{str(api_list[i].index)}' in list(param_set.keys()):
+                revised_api_list.append(api_list[i])
+                revised_sample_traffic_data_list.append(sample_traffic_data_list[i])
+
+        discovered_api_list = compile_to_api_discovery_result(api_list, sample_traffic_data_list)
         # 完成API发现后，向后端发送通知
         response = requests.post(backend_notification_url, json={"discovered_API_list": discovered_api_list})
         response.raise_for_status()
@@ -136,7 +146,8 @@ def auto_api_discovery():
     config.basic.LOGIN_CREDENTIALS = data.get('login_credentials')
     config.basic.ACTION_STEP = data.get('user_behavior_cycle')
 
-    backend_notification_url = f'http://backend_host/api_discovery_notification?app_id={app_id}'
+    # TODO
+    backend_notification_url = f'http://backend_host/api/api/discovery/notification/?app_id={app_id}'
     api_discovery_in_progress = True
     thread = threading.Thread(target=async_api_discovery, args=(data, backend_notification_url))
     thread.start()
@@ -144,11 +155,11 @@ def auto_api_discovery():
 
 
 @app.route('/api_discovery/start', methods=['POST'])
-def start_api_discovery():
-    global MANUAL_API_DISCOVER_STARTED_AT, MANUAL_API_DISCOVER_ENDED_AT
+def start_manual_api_discovery():
+    global MANUAL_API_DISCOVERY_STARTED_AT, MANUAL_API_DISCOVERY_ENDED_AT
     with api_discovery_lock:
-        MANUAL_API_DISCOVER_STARTED_AT = datetime.now()
-        MANUAL_API_DISCOVER_ENDED_AT = None
+        MANUAL_API_DISCOVERY_STARTED_AT = datetime.now()
+        MANUAL_API_DISCOVERY_ENDED_AT = None
 
     data = request.get_json()
     try:
@@ -161,14 +172,14 @@ def start_api_discovery():
 
 
 @app.route('/api_discovery/finish', methods=['GET'])
-def finish_api_discovery():
-    global MANUAL_API_DISCOVER_STARTED_AT, MANUAL_API_DISCOVER_ENDED_AT
+def finish_manual_api_discovery():
+    global MANUAL_API_DISCOVERY_STARTED_AT, MANUAL_API_DISCOVERY_ENDED_AT
     with api_discovery_lock:
-        if MANUAL_API_DISCOVER_STARTED_AT is None:
-            return jsonify({'error': 'Manual API discovery has not started'}), 400
-        if MANUAL_API_DISCOVER_ENDED_AT is not None:
-            return jsonify({'error': 'Manual API discovery has ended'}), 400
-        MANUAL_API_DISCOVER_ENDED_AT = datetime.now()
+        if MANUAL_API_DISCOVERY_STARTED_AT is None:
+            return jsonify({'error': 'Manual API discovery has not started'}), 409
+        if MANUAL_API_DISCOVERY_ENDED_AT is not None:
+            return jsonify({'error': 'Manual API discovery has ended'}), 409
+        MANUAL_API_DISCOVERY_ENDED_AT = datetime.now()
 
     fields_to_record = ['method', 'url', 'header', 'data']
     output_file = os.path.join(dirname(__file__), 'algorithm', 'crawl_log', 'manual_API_discovery_traffic_log.csv')
@@ -188,33 +199,42 @@ def finish_api_discovery():
                 reader = csv.DictReader(infile)
                 for row in reader:
                     request_time = datetime.strptime(row['request_time'], '%Y-%m-%d %H:%M:%S')
-                    if MANUAL_API_DISCOVER_STARTED_AT <= request_time <= MANUAL_API_DISCOVER_ENDED_AT:  # type: ignore
+                    if MANUAL_API_DISCOVERY_STARTED_AT <= request_time <= MANUAL_API_DISCOVERY_ENDED_AT:  # type: ignore
                         data_to_write = {field: row.get(field) for field in fields_to_record}
                         writer.writerow(data_to_write)
 
     with api_discovery_lock:
-        MANUAL_API_DISCOVER_STARTED_AT = None
-        MANUAL_API_DISCOVER_ENDED_AT = None
+        MANUAL_API_DISCOVERY_STARTED_AT = None
+        MANUAL_API_DISCOVERY_ENDED_AT = None
+
     api_log = algorithm.api_discovery.extract_api_log_to_csv()
-    api_list, sample_list = algorithm.api_discovery.api_extract(api_log)
-    discovered_api_list = compile_discovered_api_list(api_list, sample_list)
+    api_list, sample_traffic_data_list = algorithm.api_discovery.api_extract(api_log)
+    algorithm.api_discovery.collect_param_set(api_log, api_list)
+    with open(os.path.join(dirname(__file__), 'algorithm', 'param_set.json'), 'r') as f:
+        param_set = json.load(f)
+    revised_api_list = []
+    revised_sample_traffic_data_list = []
+    for i in range(len(api_list)):
+        if f'API_{str(api_list[i].index)}' in list(param_set.keys()):
+            revised_api_list.append(api_list[i])
+            revised_sample_traffic_data_list.append(sample_traffic_data_list[i])
 
     return jsonify({
         'message': 'Manual API discovery stopped successfully',
-        'discovered_API_list': discovered_api_list
+        'discovered_API_list': compile_to_api_discovery_result(api_list, sample_traffic_data_list)
     }), 200
 
 
 @app.route('/api_discovery/cancel', methods=['GET'])
-def cancel_api_discovery():
-    global MANUAL_API_DISCOVER_STARTED_AT, MANUAL_API_DISCOVER_ENDED_AT
+def cancel_manual_api_discovery():
+    global MANUAL_API_DISCOVERY_STARTED_AT, MANUAL_API_DISCOVERY_ENDED_AT
     with api_discovery_lock:
-        if MANUAL_API_DISCOVER_STARTED_AT is None:
+        if MANUAL_API_DISCOVERY_STARTED_AT is None:
             return jsonify({'error': 'Manual API discovery has not started'}), 400
-        if MANUAL_API_DISCOVER_ENDED_AT is not None:
+        if MANUAL_API_DISCOVERY_ENDED_AT is not None:
             return jsonify({'error': 'Manual API discovery has ended'}), 400
-        MANUAL_API_DISCOVER_STARTED_AT = None
-        MANUAL_API_DISCOVER_ENDED_AT = None
+        MANUAL_API_DISCOVERY_STARTED_AT = None
+        MANUAL_API_DISCOVERY_ENDED_AT = None
     return jsonify({'message': 'Manual API discovery cancelled successfully'}), 200
 
 
@@ -267,7 +287,7 @@ def start_detection():
 
     with enhanced_detector.detection_lock:
         if enhanced_detector.DETECTING == 'ON':
-            return jsonify({'error': 'Detection has already started'}), 400
+            return jsonify({'error': 'Detection has already started'}), 409
         enhanced_detector.DETECTING = "ON"
     return jsonify({"info": "Detection has started successfully"}), 200
 
@@ -301,15 +321,21 @@ def api_matches(api_info, api_log_row):
         row_path = '/'
     if not sample_path.count('/') == row_path.count('/'):
         return False
-    api_segments = (sample_path + '/').split('/')[1:-1]
+    sample_segments = (sample_path + '/').split('/')[1:-1]
     row_segments = (row_path + '/').split('/')[1:-1]
-    if len(api_segments) != len(row_segments):
+    if len(sample_segments) != len(row_segments):
         return False
-    path_segments = api_info['path_segments']
-    for i in range(len(api_segments)):
-        if i < len(path_segments) and path_segments[i]['is_path_variable']:
+    user_configured_api_segments = api_info['path_segments']
+    if len(user_configured_api_segments) != len(sample_segments):
+        return False
+    for i in range(len(sample_segments)):
+        if user_configured_api_segments[i]['is_path_variable']:
             continue
-        if api_segments[i] != row_segments[i]:
+        if user_configured_api_segments[i]['name'] == '[EMPTY]':
+            user_configured_api_segments[i]['name'] = ''
+        if sample_segments[i] != row_segments[i]:
+            return False
+        if user_configured_api_segments[i]['name'] != row_segments[i]:
             return False
     return True
 
@@ -320,35 +346,41 @@ def async_data_collect(data):
     ERROR_APIS.clear()
     DATA_COLLECTION_STATUS = "IN_PROGRESS"
     try:
-        api_list = data.get('API_list')
-
+        user_configured_api_list = data.get('API_list')
         api_log = algorithm.api_discovery.extract_api_log_to_csv()
         user_api_set = []
+        knowledge_set = []
 
-        for i in range(len(api_list)):
-            # 检查是否需要终止线程
+        for i in range(len(user_configured_api_list)):
             if STOP_FLAG.is_set():
                 break
-            api_info = api_list[i]
-            request_method = api_info.get('request_method')
-            path_segments = api_info.get('path_segments')
-            sample_traffic_data = next((row for index, row in api_log.iterrows() if api_matches(api_info, row)), None)
+            user_configured_api_info = user_configured_api_list[i]
+            request_method = user_configured_api_info.get('request_method')
+            path_segments = user_configured_api_info.get('path_segments')
+            sample_traffic_data = next(
+                (row for index, row in api_log.iterrows() if api_matches(user_configured_api_info, row)), None)
             if sample_traffic_data is None:
-                ERROR_APIS.append(api_info)
+                ERROR_APIS.append(user_configured_api_info)
                 continue
-            path = urlparse(api_info.get('sample_url')).path
+
+            path = urlparse(sample_traffic_data['url']).path
+            if path == '':
+                path = '/'
+
             variable_indexes = []
             for j in range(len(path_segments)):
-                if api_info['path_segments'][j]['is_path_variable']:
+                if user_configured_api_info['path_segments'][j]['is_path_variable']:
                     variable_indexes.append(j)
-            query_params = [item['name'] for item in api_info['request_param_list']]
-            sample_body = {}
+
+            query_params = [item['name'] for item in user_configured_api_info['request_param_list']]
+
+            sample_request_data = {}
             if not pd.isna(sample_traffic_data['data']):
                 if type(sample_traffic_data['data']) is str:
-                    sample_body = eval(sample_traffic_data['data'].replace('true', 'True').replace('false', 'False'))
+                    sample_request_data = eval(
+                        sample_traffic_data['data'].replace('true', 'True').replace('false', 'False'))
                 elif type(sample_traffic_data['data']) is dict:
-                    sample_body = sample_traffic_data['data']
-            request_data_fields = api_info['request_data_fields']
+                    sample_request_data = sample_traffic_data['data']
 
             def get_default_val(type_):
                 if type_ == 'String':
@@ -362,9 +394,13 @@ def async_data_collect(data):
                 else:
                     return {}
 
-            for field in request_data_fields:
-                if field['name'] not in sample_body:
+            sample_body = {}
+            for field in user_configured_api_info['request_data_fields']:
+                if field['name'] not in sample_request_data:
                     sample_body[field['name']] = get_default_val(field['type'])
+                else:
+                    sample_body[field['name']] = sample_request_data[field['name']]
+
             sample_headers = sample_traffic_data['header']
 
             user_api_set.append(API(info={
@@ -374,28 +410,30 @@ def async_data_collect(data):
                 'query_params': query_params,
                 'sample_body': sample_body,
                 'sample_headers': sample_headers
-            }, index=api_info.get('id')))
+            }, index=str(user_configured_api_info.get('id'))))
+            knowledge_set.append({
+                'function_description': user_configured_api_info.get('description'),
+                'permission_info': user_configured_api_info.get('permission_info'),
+            })
 
             if STOP_FLAG.is_set():
                 break
-
         if not STOP_FLAG.is_set():
             algorithm.api_discovery.collect_param_set(api_log, user_api_set)
 
             api_knowledge = []
-            for api in user_api_set:
-                index = int(api.index)
+            for i in range(len(user_api_set)):
                 api_knowledge.append({
-                    "number": 'API_' + str(index),
-                    "functionDescription": api_list[index]['function_description'],
-                    "permissionInfoAndUnauthorizedSituation": api_list[index]['permission_info']
+                    "number": 'API_' + str(user_api_set[i].index),
+                    "functionDescription": knowledge_set[i]['function_description'],
+                    "permissionInfoAndUnauthorizedSituation": knowledge_set[i]['permission_info']
                 })
 
             roles = []
             credentials = config.basic.LOGIN_CREDENTIALS
             for credential in credentials:
-                if credential['role'] not in roles:
-                    roles.append(credential['role'])
+                if credential['user_role'] not in roles:
+                    roles.append(credential['user_role'])
             app_knowledge = {
                 "func_description": config.basic.APP_DESCRIPTION,
                 "normal_seqs": [
@@ -406,17 +444,16 @@ def async_data_collect(data):
                 ],
                 "roles": roles,
             }
-            traffic_data_generation.gen_data_set(api_list, api_knowledge, app_knowledge)
+            traffic_data_generation.gen_data_set(user_configured_api_list, api_knowledge, app_knowledge)
 
         if STOP_FLAG.is_set():
             DATA_COLLECTION_STATUS = "TERMINATED"
         else:
             DATA_COLLECTION_STATUS = "COMPLETED"
     except Exception as e:
-        LOGGER.error(f"Error in data collection: {e}"), 500
+        LOGGER.error(f"Error in data collection: {e}")
         DATA_COLLECTION_STATUS = "ERROR"
     finally:
-        # 重置停止标志
         STOP_FLAG.clear()
 
 
@@ -424,13 +461,10 @@ def async_data_collect(data):
 def data_collect():
     global DATA_COLLECTION_STATUS, current_thread
     if DATA_COLLECTION_STATUS == "IN_PROGRESS":
-        # 设置停止标志
         STOP_FLAG.set()
-        # 等待线程结束
         if current_thread:
             current_thread.join()
     data = request.get_json()
-    # 启动一个新线程来执行数据收集任务
     current_thread = threading.Thread(target=async_data_collect, args=(data,))
     current_thread.start()
     return jsonify({"message": "Data collection started"}), 200

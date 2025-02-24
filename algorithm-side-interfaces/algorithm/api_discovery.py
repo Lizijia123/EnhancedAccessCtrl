@@ -22,7 +22,7 @@ param_set = {}
 
 
 def param_set_to_file():
-    json_path = os.path.join(dirname(__file__), 'param_set.json')
+    json_path = os.path.join(os.path.abspath(__file__), 'param_set.json')
     global param_set
     with open(json_path, 'w') as json_file:
         json.dump(param_set, json_file, indent=2)
@@ -231,9 +231,9 @@ def extract_api_log_to_csv():
         domain = domain.split(':')[0]
 
     LOGGER.info(f'从爬虫记录中提取API流量...')
-    url_log_path = os.path.join(dirname(__file__), 'crawl_log', 'url_crawl_log.csv')
-    web_element_log_path = os.path.join(dirname(__file__), 'crawl_log', 'web_element_crawl_log.csv')
-    manual_traffic_log_path = os.path.join(dirname(__file__), 'crawl_log', 'manual_API_discovery_traffic_log.csv')
+    url_log_path = os.path.join(os.path.abspath(__file__), 'crawl_log', 'url_crawl_log.csv')
+    web_element_log_path = os.path.join(os.path.abspath(__file__), 'crawl_log', 'web_element_crawl_log.csv')
+    manual_traffic_log_path = os.path.join(os.path.abspath(__file__), 'crawl_log', 'manual_API_discovery_traffic_log.csv')
 
     url_log = None
     web_element_log = None
@@ -302,6 +302,6 @@ def extract_api_log_to_csv():
     index_list = pd.Series(list(range(len(api_log))))
     api_log.insert(0, 'Unnamed: 0', index_list)
 
-    api_log.to_csv(os.path.join(dirname(__file__), 'crawl_log', 'API_crawl_log.csv'), index=False)
-    LOGGER.info(f'已将api_log保存至{os.path.join(dirname(__file__), 'crawl_log', 'API_crawl_log.csv')}')
+    api_log.to_csv(os.path.join(os.path.abspath(__file__), 'crawl_log', 'API_crawl_log.csv'), index=False)
+    LOGGER.info(f'已将api_log保存至{os.path.join(os.path.abspath(__file__), 'crawl_log', 'API_crawl_log.csv')}')
     return api_log

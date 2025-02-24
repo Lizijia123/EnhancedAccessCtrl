@@ -1,5 +1,6 @@
 import csv
 import json
+import os.path
 import subprocess
 import threading
 import time
@@ -16,7 +17,7 @@ import config.basic
 import enhanced_detector
 from algorithm import traffic_data_generation
 from algorithm.entity.api import API
-from algorithm.entity.feature import SeqOccurTimeFeature, BASIC_FEATURES, APP_FEATURES
+from algorithm.entity.feature import SeqOccurTimeFeature, BASIC_FEATURES, APP_FEATURES, BASIC_FEATURE_DESCRIPTIONS
 from algorithm.model_training import *
 from config.log import LOGGER
 import pandas as pd
@@ -105,7 +106,7 @@ def async_api_discovery(data, backend_notification_url):
         api_list, sample_traffic_data_list = algorithm.api_discovery.api_extract(api_log)
         algorithm.api_discovery.collect_param_set(api_log, api_list)
 
-        with open(os.path.join(dirname(__file__), 'algorithm', 'param_set.json'), 'r') as f:
+        with open(os.path.join(os.path.abspath(__file__), 'algorithm', 'param_set.json'), 'r') as f:
             param_set = json.load(f)
 
         revised_api_list = []
@@ -182,7 +183,7 @@ def finish_manual_api_discovery():
         MANUAL_API_DISCOVERY_ENDED_AT = datetime.now()
 
     fields_to_record = ['method', 'url', 'header', 'data']
-    output_file = os.path.join(dirname(__file__), 'algorithm', 'crawl_log', 'manual_API_discovery_traffic_log.csv')
+    output_file = os.path.join(os.path.abspath(__file__), 'algorithm', 'crawl_log', 'manual_API_discovery_traffic_log.csv')
     file_exists = False
     try:
         with file_operation_lock:
@@ -210,7 +211,7 @@ def finish_manual_api_discovery():
     api_log = algorithm.api_discovery.extract_api_log_to_csv()
     api_list, sample_traffic_data_list = algorithm.api_discovery.api_extract(api_log)
     algorithm.api_discovery.collect_param_set(api_log, api_list)
-    with open(os.path.join(dirname(__file__), 'algorithm', 'param_set.json'), 'r') as f:
+    with open(os.path.join(os.path.abspath(__file__), 'algorithm', 'param_set.json'), 'r') as f:
         param_set = json.load(f)
     revised_api_list = []
     revised_sample_traffic_data_list = []
@@ -264,15 +265,18 @@ def construct_model():
                 else:
                     features.append(BASIC_FEATURES[feature.get('name')])
 
-            data_splitting()
+            data_splitting(
+                simulated_data_path=os.path.join(os.path.abspath(__file__), 'algorithm', 'simulated_traffic_data.csv'),
+                train_path=os.path.join(os.path.abspath(__file__), 'data', 'train.xlsx'),
+                test_path=os.path.join(os.path.abspath(__file__), 'data', 'test.xlsx')
+            )
             algorithm.entity.feature.APP_FEATURES = features
             report = train_and_save_xgboost_model(
-                # TODO
                 features=features,
-                train_path=os.path.join(dirname(__file__), 'data', 'train.xlsx'),
-                test_path=os.path.join(dirname(__file__), 'data', 'test.xlsx'),
-                model_path=os.path.join(dirname(__file__), 'model', 'model.pkl'),
-                scaler_path=os.path.join(dirname(__file__), 'model', 'scaler.pkl'),
+                train_path=os.path.join(os.path.abspath(__file__), 'data', 'train.xlsx'),
+                test_path=os.path.join(os.path.abspath(__file__), 'data', 'test.xlsx'),
+                model_path=os.path.join(os.path.abspath(__file__), 'model', 'model.pkl'),
+                scaler_path=os.path.join(os.path.abspath(__file__), 'model', 'scaler.pkl')
             )
             return jsonify({"report": report, "error_API_list": ERROR_APIS}), 200
     except Exception as e:
@@ -305,7 +309,7 @@ def pause_detection():
 @app.route('/detection/records', methods=['GET'])
 def get_detection_records():
     # 模拟获取检测记录逻辑，返回示例数据
-    records = json.load(open(os.path.join(dirname(__file__), 'detect_records.json'), encoding='utf-8'))
+    records = json.load(open(os.path.join(os.path.abspath(__file__), 'detect_records.json'), encoding='utf-8'))
     return jsonify({'records': records}), 200
 
 
@@ -443,6 +447,7 @@ def async_data_collect(data):
                     "There are no example malicious seqs"
                 ],
                 "roles": roles,
+
             }
             traffic_data_generation.gen_data_set(user_configured_api_list, api_knowledge, app_knowledge)
 
@@ -474,6 +479,15 @@ def data_collect():
 def data_collect_status():
     global DATA_COLLECTION_STATUS
     return jsonify({"status": DATA_COLLECTION_STATUS}), 200
+
+
+@app.route('/basic_features', methods=['GET'])
+def get_basic_detect_features():
+    return jsonify({"basic_feature_list": [{
+        'name': feature_name,
+        'description': BASIC_FEATURE_DESCRIPTIONS[feature_name],
+        'type': 'DetectFeature'
+    } for feature_name in BASIC_FEATURE_DESCRIPTIONS]}), 200
 
 
 # 启动 mitmproxy 的函数

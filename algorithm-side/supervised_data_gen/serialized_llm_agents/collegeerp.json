@@ -1,1 +1,260 @@
-[{"role": "unlogged_in_user", "action_step": 10, "malicious": true, "unlogged": true, "api_sequence": ["API_14", "API_0", "API_26", "API_9", "API_21", "API_11", "API_4", "API_52", "API_54", "API_55"], "api_malicious_seq": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], "action_type_seq": [2, 2, 2, 2, 2, 2, 2, 2, 2, 2], "uname": "unlogged_in_user"}, {"role": "teacher", "action_step": 10, "malicious": false, "unlogged": false, "api_sequence": ["API_41", "API_42", "API_11", "API_2", "API_51", "API_8", "API_52", "API_3", "API_4", "API_43"], "api_malicious_seq": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "action_type_seq": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "uname": "teacherA"}, {"role": "teacher", "action_step": 10, "malicious": true, "unlogged": false, "api_sequence": ["API_41", "API_42", "API_11", "API_4", "API_0", "API_43", "API_8", "API_52", "API_14", "API_9"], "api_malicious_seq": [0, 0, 0, 0, 1, 0, 0, 0, 1, 1], "action_type_seq": [0, 0, 0, 0, 2, 0, 0, 0, 2, 2], "uname": "teacherA"}, {"role": "student", "action_step": 10, "malicious": true, "unlogged": false, "api_sequence": ["API_5", "API_34", "API_35", "API_2", "API_4", "API_5", "API_34", "API_26", "API_8", "API_3"], "api_malicious_seq": [0, 0, 0, 1, 1, 0, 0, 1, 1, 1], "action_type_seq": [0, 0, 0, 2, 2, 0, 0, 2, 2, 2], "uname": "studentE"}, {"role": "student", "action_step": 10, "malicious": false, "unlogged": false, "api_sequence": ["API_5", "API_34", "API_35", "API_5", "API_2", "API_4", "API_34", "API_35", "API_5", "API_3"], "api_malicious_seq": [0, 0, 0, 0, 1, 1, 0, 0, 0, 1], "action_type_seq": [0, 0, 0, 0, 2, 2, 0, 0, 0, 2], "uname": "studentE"}, {"role": "admin", "action_step": 10, "malicious": false, "unlogged": false, "api_sequence": ["API_14", "API_26", "API_9", "API_0", "API_21", "API_40", "API_49", "API_50", "API_54", "API_55"], "api_malicious_seq": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "action_type_seq": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "uname": "admin"}]
+[
+  {
+    "role": "unlogged_in_user",
+    "action_step": 10,
+    "malicious": true,
+    "unlogged": true,
+    "api_sequence": [
+      "API_14",
+      "API_0",
+      "API_26",
+      "API_9",
+      "API_21",
+      "API_11",
+      "API_4",
+      "API_52",
+      "API_54",
+      "API_55"
+    ],
+    "api_malicious_seq": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "action_type_seq": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "uname": "unlogged_in_user"
+  },
+  {
+    "role": "teacher",
+    "action_step": 10,
+    "malicious": false,
+    "unlogged": false,
+    "api_sequence": [
+      "API_41",
+      "API_42",
+      "API_11",
+      "API_2",
+      "API_51",
+      "API_8",
+      "API_52",
+      "API_3",
+      "API_4",
+      "API_43"
+    ],
+    "api_malicious_seq": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "action_type_seq": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "uname": "teacherA"
+  },
+  {
+    "role": "teacher",
+    "action_step": 10,
+    "malicious": true,
+    "unlogged": false,
+    "api_sequence": [
+      "API_41",
+      "API_42",
+      "API_11",
+      "API_4",
+      "API_0",
+      "API_43",
+      "API_8",
+      "API_52",
+      "API_14",
+      "API_9"
+    ],
+    "api_malicious_seq": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      1
+    ],
+    "action_type_seq": [
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2,
+      2
+    ],
+    "uname": "teacherA"
+  },
+  {
+    "role": "student",
+    "action_step": 10,
+    "malicious": true,
+    "unlogged": false,
+    "api_sequence": [
+      "API_5",
+      "API_34",
+      "API_35",
+      "API_2",
+      "API_4",
+      "API_5",
+      "API_34",
+      "API_26",
+      "API_8",
+      "API_3"
+    ],
+    "api_malicious_seq": [
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1
+    ],
+    "action_type_seq": [
+      0,
+      0,
+      0,
+      2,
+      2,
+      0,
+      0,
+      2,
+      2,
+      2
+    ],
+    "uname": "studentE"
+  },
+  {
+    "role": "student",
+    "action_step": 10,
+    "malicious": false,
+    "unlogged": false,
+    "api_sequence": [
+      "API_5",
+      "API_34",
+      "API_35",
+      "API_5",
+      "API_2",
+      "API_4",
+      "API_34",
+      "API_35",
+      "API_5",
+      "API_3"
+    ],
+    "api_malicious_seq": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "action_type_seq": [
+      0,
+      0,
+      0,
+      0,
+      2,
+      2,
+      0,
+      0,
+      0,
+      2
+    ],
+    "uname": "studentE"
+  },
+  {
+    "role": "admin",
+    "action_step": 10,
+    "malicious": false,
+    "unlogged": false,
+    "api_sequence": [
+      "API_14",
+      "API_26",
+      "API_9",
+      "API_0",
+      "API_21",
+      "API_40",
+      "API_49",
+      "API_50",
+      "API_54",
+      "API_55"
+    ],
+    "api_malicious_seq": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "action_type_seq": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "uname": "admin"
+  }
+]

@@ -1,7 +1,6 @@
 import json
 import os
 import random
-from os.path import dirname
 
 import pandas as pd
 import requests
@@ -221,7 +220,7 @@ def param_injection_for_api(api):
     """
     global param_cache
 
-    with open(os.path.join(os.path.dirname(__file__), 'param_set.json'), 'r', encoding='utf-8') as f:
+    with open(os.path.join(os.path.abspath(__file__), 'param_set.json'), 'r', encoding='utf-8') as f:
         param_set = json.load(f, ensure_ascii=False)
     api_param_set = param_set[f'API_{str(api.index)}']
 
@@ -301,10 +300,10 @@ def gen_data_set(user_configured_api_list, api_knowledge, app_knowledge):
         user.exec()
         LOGGER.info(f'已生成{seq_index}/{len(users)}个API序列')
 
-    save_agents_to_file(users, file_path=os.path.join(dirname(__file__), 'serialized_llm_agents.json'))
-    LOGGER.info(f'已将Agents(包含API序列)序列化至{os.path.join(dirname(__file__), 'serialized_llm_agents.json')}')
+    save_agents_to_file(users, file_path=os.path.join(os.path.abspath(__file__), 'serialized_llm_agents.json'))
+    LOGGER.info(f'已将Agents(包含API序列)序列化至{os.path.join(os.path.abspath(__file__), 'serialized_llm_agents.json')}')
 
-    users = load_agents_from_file(file_path=os.path.join(dirname(__file__), 'serialized_llm_agents.json'))
+    users = load_agents_from_file(file_path=os.path.join(os.path.abspath(__file__), 'serialized_llm_agents.json'))
     for user in users:
         user_data, seq_valid = param_injection_for_api_seq(
             api_title_seq=user.api_sequence,
@@ -333,5 +332,5 @@ def gen_data_set(user_configured_api_list, api_knowledge, app_knowledge):
     df = df[['user_index', 'Unnamed: 0', 'timestamp', 'http_method', 'url', 'api_endpoint', 'header', 'data',
              'request_body_size', 'response_body_size', 'response_status', 'execution_time', 'user_type', 'data_type',
              'data_valid', 'seq_valid']]
-    df.to_csv(os.path.join(dirname(__file__), 'simulated_traffic_data.csv'))
-    LOGGER.info(f"已完成流量数据收集：{os.path.join(dirname(__file__), 'simulated_traffic_data.csv')}")
+    df.to_csv(os.path.join(os.path.abspath(__file__), 'simulated_traffic_data.csv'))
+    LOGGER.info(f"已完成流量数据收集：{os.path.join(os.path.abspath(__file__), 'simulated_traffic_data.csv')}")

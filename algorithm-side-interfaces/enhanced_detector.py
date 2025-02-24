@@ -9,7 +9,7 @@ import pandas as pd
 
 import algorithm.entity.feature
 from algorithm.api_discovery import recognize_api
-from algorithm.model_training import extract_feats_and_labels, extract_features
+from algorithm.model_training import extract_features
 from config.basic import COMBINED_DATA_DURATION
 
 # 定义锁
@@ -54,8 +54,8 @@ def anomaly_detection(window_data):
 
     df = pd.DataFrame(window_data)
     detection_result = xgboost_user_classification(
-        model_path=os.path.join(dirname(__file__), 'model', 'model.pkl'),
-        scaler_path=os.path.join(dirname(__file__), 'model', 'scaler.pkl'),
+        model_path=os.path.join(os.path.abspath(__file__), 'model', 'model.pkl'),
+        scaler_path=os.path.join(os.path.abspath(__file__), 'model', 'scaler.pkl'),
         real_data=pd.DataFrame(window_data)
     )
     detection_record = {
@@ -82,7 +82,7 @@ def anomaly_detection(window_data):
         detection_record["traffic_data_list"].append(traffic_data)
 
     try:
-        with open(os.path.join(dirname(__file__), 'detect_records.json'), 'r', encoding='utf-8') as file:
+        with open(os.path.join(os.path.abspath(__file__), 'detect_records.json'), 'r', encoding='utf-8') as file:
             content = file.read().strip()
             if not content:
                 appended_records = []
@@ -91,7 +91,7 @@ def anomaly_detection(window_data):
     except json.JSONDecodeError:
         appended_records = []
     appended_records.append(detection_record)
-    with open(os.path.join(dirname(__file__), 'detect_records.json'), 'w', encoding='utf-8') as file:
+    with open(os.path.join(os.path.abspath(__file__), 'detect_records.json'), 'w', encoding='utf-8') as file:
         file.write(json.dumps(appended_records, indent=4))
 
 

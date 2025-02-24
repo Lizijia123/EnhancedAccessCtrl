@@ -14,6 +14,7 @@ sys.path.append(thoughts_dir)
 
 from algorithm.LLM import GPTClient, QwenClient, DeepSeekClient, LlamaClient
 
+
 class Brain:
     def __init__(self, model_name, api_knowledge, app_knowledge):
         """初始化 Brain 实例"""
@@ -28,7 +29,7 @@ class Brain:
         self.func_description = app_knowledge['func_description']
         self.normal_seqs = app_knowledge['normal_seqs']
         self.malicious_seqs = app_knowledge['malicious_seqs']
-        self.auth_info_set = app_knowledge['auth_info']
+        # self.auth_info_set = app_knowledge['auth_info']
         self.context_prompt = self.build_context_prompt()
 
     def _select_client(self, model_name):
@@ -119,15 +120,15 @@ class Brain:
         self.logger.info(f"gen_api_seq()方法参数: malicious={malicious}, role={role}, action_step={action_step}")
 
         """生成 API 调用序列，确保返回 3 个值"""
-        if role not in self.auth_info_set:
-            raise ValueError(f"Invalid role: {role}")
+        # if role not in self.auth_info_set:
+        #     raise ValueError(f"Invalid role: {role}")
 
-        role_user_index = random.choice(range(len(self.auth_info_set[role])))
-        auth_info = self.auth_info_set[role][role_user_index]
+        # role_user_index = random.choice(range(len(self.auth_info_set[role])))
+        # auth_info = self.auth_info_set[role][role_user_index]
 
         # **构造 LLM 提示**
         prompt = (
-            f"Assume you are a user with the following identity: {auth_info}.\n"
+            f"Assume you are a {role} {'who has logged in to the application' if role == 'unlogged_in_user' else ''}.\n"
             f"You need to generate an API call sequence with approximately {action_step} steps.\n"
         )
 
@@ -152,5 +153,5 @@ class Brain:
             self.logger.error(f"Invalid LLM response format: seq={seq}, malicious_sign_seq={malicious_sign_seq}")
             seq, malicious_sign_seq = [], []  # **防止 `NoneType` 错误**
 
-        self.logger.info(f"gen_api_seq()方法返回: seq={seq}, malicious_sign_seq={malicious_sign_seq}, role_user_index={role_user_index}")
-        return seq, malicious_sign_seq, role_user_index
+        self.logger.info(f"gen_api_seq()方法返回: seq={seq}, malicious_sign_seq={malicious_sign_seq}")
+        return seq, malicious_sign_seq

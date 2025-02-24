@@ -114,6 +114,30 @@ def get_target_app_list(request):
         return JsonResponse({'error': str(e)}, status=500)
 
 
+def setup_basic_features(target_app):
+    target_app.detect_feature_list.clear()
+    get_basic_feature_url = f'http://{target_app.SFWAP_address}/basic_features'
+    try:
+        response = requests.get(get_basic_feature_url)
+        result = response.json()
+
+
+        basic_feature_list = result.get('basic_feature_list')
+        for basic_feature_info in basic_feature_list:
+            feature, created = DetectFeature.objects.get_or_create(
+                name=basic_feature_info['name'],
+                defaults={'description': basic_feature_info['description']}
+            )
+            target_app.detect_feature_list.add(feature)
+            return None
+    except requests.RequestException as e:
+        return JsonResponse({'error': f'Error making get basic feature list request: {str(e)}'}, status=500)
+    except ValueError:
+        return JsonResponse({'error': 'Invalid JSON response from getting basic feature list'}, status=500)
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)
+
+
 @api_view(['GET', 'POST', 'PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])
 def target_app(request):
@@ -182,6 +206,10 @@ def target_app(request):
             for credential in valid_credentials:
                 credential.save()
                 target_app.login_credentials.add(credential)
+
+            basic_feature_setup_res = setup_basic_features(target_app)
+            if basic_feature_setup_res is not None:
+                return basic_feature_setup_res
 
             return JsonResponse({
                 'message': 'Target application created successfully',

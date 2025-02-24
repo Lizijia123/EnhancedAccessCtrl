@@ -23,9 +23,8 @@ import fasttext.util
 
 
 def init_drain3():
-
     config = TemplateMinerConfig()
-    config.load(f"{dirname(__file__)}\\api-discovery.ini")
+    config.load(os.path.join(os.path.abspath(__file__), 'api-discovery.ini'))
     config.profiling_enabled = True
     template_miner = TemplateMiner(config=config)
     return template_miner
@@ -278,13 +277,12 @@ def get_bias_to_mean_distance(vectors, mean_distance):
 
 
 def extract_api_list(df):
-    # df = pd.read_excel(f'{dirname(__file__)}\\humhub_url_crawl_log_modified.xlsx')
+    # df = pd.read_excel(f'{os.path.abspath(__file__)}\\humhub_url_crawl_log_modified.xlsx')
     df1 = df[df['method'] == 'Get']
     df2 = df[df['method'] == 'Post']
     df3 = df[df['method'] == 'Delete']
     df4 = df[df['method'] == 'Put']
     df5 = df[df['method'] == 'Patch']
-
 
     url_dict1 = extract_key_value(df1)
     url_dict2 = extract_key_value(df2)

@@ -2,11 +2,14 @@ import pandas as pd
 import joblib
 
 from sklearn.metrics import accuracy_score, classification_report
+from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from xgboost import XGBClassifier
 
 import warnings
 import os
+
+from config.basic import TEST_DATA_SIZE_RATE
 
 warnings.filterwarnings("ignore")
 PROJ_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -19,11 +22,8 @@ def extract_features(df, features):
     return feats
 
 
-def extract_feats_and_labels(user_data_path, features, real_data=None):
-    if real_data is not None:
-        df = real_data
-    else:
-        df = pd.read_excel(user_data_path, sheet_name='Sheet1')
+def extract_feats_and_labels(user_data_path, features):
+    df = pd.read_excel(user_data_path, sheet_name='Sheet1')
     if len(df) == 0:
         raise Exception("用户流量数据集为空")
 
@@ -31,16 +31,16 @@ def extract_feats_and_labels(user_data_path, features, real_data=None):
     feature_list = []
     for user_index, group in user_groups:
         user_type = None
-        if 'type' in group.columns:
-            user_type = group['type'].iloc[0]
+        if 'user_type' in group.columns:
+            user_type = group['user_type'].iloc[0]
         features = extract_features(group, features)
         features['user_index'] = user_index
-        features['type'] = user_type
+        features['user_type'] = user_type
         feature_list.append(features)
     feature_df = pd.DataFrame(feature_list)
 
-    feats = feature_df.drop(columns=['user_index', 'type'])
-    labels = feature_df['type']
+    feats = feature_df.drop(columns=['user_index', 'user_type'])
+    labels = feature_df['user_type']
     return feats, labels
 
 
@@ -70,6 +70,25 @@ def train_and_save_xgboost_model(train_path, test_path, model_path, scaler_path,
     return report
 
 
-def data_splitting():
-    # TODO
-    pass
+def data_splitting(simulated_data_path, train_path, test_path):
+    df = pd.read_csv(simulated_data_path)
+    normal_users = df[df['user_type'] == 0]['user_index'].unique()
+    malicious_users = df[df['user_type'] == 1]['user_index'].unique()
+
+
+    train_normal_users, test_normal_users = train_test_split(normal_users, test_size=TEST_DATA_SIZE_RATE,
+                                                             random_state=42)
+    train_malicious_users, test_malicious_users = train_test_split(malicious_users, test_size=TEST_DATA_SIZE_RATE,
+                                                                   random_state=42)
+
+    train_users = list(train_normal_users) + list(train_malicious_users)
+    test_users = list(test_normal_users) + list(test_malicious_users)
+
+    train_users = sorted(train_users, key=lambda x: df[df['user_index'] == x].index.min())
+    test_users = sorted(test_users, key=lambda x: df[df['user_index'] == x].index.min())
+
+    train_df = pd.concat([df[df['user_index'] == user] for user in train_users])
+    test_df = pd.concat([df[df['user_index'] == user] for user in test_users])
+
+    train_df.to_excel(train_path, index=False, sheet_name='Sheet1')
+    test_df.to_excel(test_path, index=False, sheet_name='Sheet1')

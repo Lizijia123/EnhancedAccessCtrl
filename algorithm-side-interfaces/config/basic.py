@@ -40,3 +40,8 @@ def url_decoding(url):
 
 # ["deepseek-v3"] #"gpt-4o-mini", # "qwen-max",  "llama3.3-70b-instruct"
 LLM_MODEL_NAME = "llama3.3-70b-instruct"
+
+
+DEEP_URL_THRESHOLD = 5
+
+TEST_DATA_SIZE_RATE = 0.2

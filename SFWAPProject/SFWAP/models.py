@@ -73,24 +73,26 @@ class LoginCredential(models.Model):
     def __str__(self):
         return f"{self.user_role} - {self.username}"
 
-
-class DetectFeature(models.Model):
-    name = models.CharField(max_length=20)
-    description = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
-
-
 def validate_string_list(value):
     return all(isinstance(s, str) and 1 <= len(s) <= 100 for s in value) and len(value) > 0
 
-
-class SeqOccurTimeFeature(DetectFeature):
-    string_list = models.JSONField(validators=[validate_string_list])
+class DetectFeature(models.Model):
+    # 定义类型选择，包含 DetectFeature 和 SeqOccurTimeFeature
+    TYPE_CHOICES = (
+        ('DetectFeature', 'DetectFeature'),
+        ('SeqOccurTimeFeature', 'SeqOccurTimeFeature'),
+    )
+    # 类型字段，默认值为 DetectFeature
+    feature_type = models.CharField(max_length=20, choices=TYPE_CHOICES, default='DetectFeature')
+    name = models.CharField(max_length=20)
+    description = models.CharField(max_length=100)
+    # 新增 string_list 字段，只在 SeqOccurTimeFeature 类型中使用
+    string_list = models.JSONField(blank=True, null=True, validators=[validate_string_list])
 
     def __str__(self):
-        return f"SeqOccurTimeFeature - {self.name}"
+        if self.feature_type == 'SeqOccurTimeFeature':
+            return f"SeqOccurTimeFeature - {self.name}"
+        return self.name
 
 
 class TargetApplication(models.Model):
@@ -175,14 +177,14 @@ class DetectionRecord(models.Model):
     traffic_data_list = models.ManyToManyField(TrafficData)
     detection_result = models.CharField(max_length=20, choices=DETECTION_RESULT_CHOICES)
 
-    def clean(self):
-        from django.core.exceptions import ValidationError
-        if self.traffic_data_list.count() == 0:
-            raise ValidationError("traffic_data_list cannot be empty.")
+    # def clean(self):
+    #     from django.core.exceptions import ValidationError
+    #     if self.traffic_data_list.count() == 0:
+    #         raise ValidationError("traffic_data_list cannot be empty.")
 
-    def save(self, *args, **kwargs):
-        self.full_clean()
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     self.full_clean()
+    #     super().save(*args, **kwargs)
 
     def __str__(self):
         return f"DetectionRecord - {self.app.APP_name} ({self.started_at} - {self.ended_at})"

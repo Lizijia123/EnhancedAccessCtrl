@@ -696,7 +696,7 @@ def api_discovery_notification(request):
 def get_feature_list(feature_list_field):
     feature_list = []
     for feature in feature_list_field.all():
-        if isinstance(feature, SeqOccurTimeFeature):
+        if feature.feature_type == 'SeqOccurTimeFeature':
             feature_data = {
                 'id': feature.id,
                 'name': feature.name,
@@ -758,11 +758,12 @@ def detect_feature(request):
                             status=400)
                     if feature_id:
                         try:
-                            feature = SeqOccurTimeFeature.objects.get(id=feature_id)
-                        except SeqOccurTimeFeature.DoesNotExist:
-                            feature = SeqOccurTimeFeature()
+                            feature = DetectFeature.objects.get(id=feature_id)
+                        except DetectFeature.DoesNotExist:
+                            feature = DetectFeature()
                     else:
-                        feature = SeqOccurTimeFeature()
+                        feature = DetectFeature()
+                    feature.feature_type = feature_type
                     feature.string_list = string_list
                 elif feature_type == 'DetectFeature':
                     if feature_id:
@@ -786,6 +787,7 @@ def detect_feature(request):
             target_app.detect_feature_list.clear()
             for feature in updated_features:
                 feature.save()
+                # print(feature.feature_type)
                 target_app.detect_feature_list.add(feature)
             return JsonResponse({'message': 'Detect features updated successfully'}, status=200)
         except json.JSONDecodeError:
@@ -896,6 +898,7 @@ def detection_config(request):
 
 
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def start_detection(request):
     app_id = request.query_params.get('app_id')
     if not app_id:
@@ -905,8 +908,8 @@ def start_detection(request):
     except TargetApplication.DoesNotExist:
         return JsonResponse({'error': 'Target application not found or you do not have permission'}, status=404)
 
-    if target_app.detect_state == 'STARTED':
-        return JsonResponse({'error': 'The detection is already started'}, status=409)
+    # if target_app.detect_state == 'STARTED':
+    #     return JsonResponse({'error': 'The detection is already started'}, status=409)
     if target_app.enhanced_detection_enabled is None or target_app.combined_data_duration is None:
         return JsonResponse({'error': 'You cannot start the detection until the detection configration is finished'},
                             status=409)
@@ -925,12 +928,13 @@ def start_detection(request):
         response = requests.post(detection_start_url, json=data)
         result = response.json()
         info = result.get('info')
+        error = result.get('error')
         if response.status_code != 200:
-            return JsonResponse({'error': 'Detection start failed: ' + info}, status=500)
+            return JsonResponse({'error': 'Detection start failed: ' + error}, status=500)
         else:
             target_app.detect_state = 'STARTED'
             target_app.save(update_fields=['detect_state'])
-            return JsonResponse({'message': 'Detection start successful'}, status=200)
+            return JsonResponse({'message': 'Detection started successfully'}, status=200)
     except requests.RequestException as e:
         return JsonResponse({'error': f'Detection start failed: {str(e)}'}, status=500)
     except ValueError:
@@ -938,6 +942,7 @@ def start_detection(request):
 
 
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def pause_detection(request):
     app_id = request.query_params.get('app_id')
     if not app_id:
@@ -947,20 +952,21 @@ def pause_detection(request):
     except TargetApplication.DoesNotExist:
         return JsonResponse({'error': 'Target application not found or you do not have permission'}, status=404)
 
-    if not target_app.detect_state == 'STARTED':
-        return JsonResponse({'error': 'Target application is not started'}, status=409)
+    # if not target_app.detect_state == 'STARTED':
+    #     return JsonResponse({'error': 'Target application is not started'}, status=409)
 
     detection_pause_url = f'http://{target_app.SFWAP_address}/detection/pause'
     try:
         response = requests.get(detection_pause_url)
         result = response.json()
         info = result.get('info')
+        error = result.get('error')
         if response.status_code != 200:
-            return JsonResponse({'error': 'Detection pause failed: ' + info}, status=500)
+            return JsonResponse({'error': 'Detection pause failed: ' + error}, status=500)
         else:
             target_app.detect_state = 'PAUSED'
             target_app.save(update_fields=['detect_state'])
-            return JsonResponse({'message': 'Detection pause successful'}, status=200)
+            return JsonResponse({'message': 'Detection paused successfully'}, status=200)
     except requests.RequestException as e:
         return JsonResponse({'error': 'Detection pause failed: ' + str(e)}, status=500)
     except ValueError:

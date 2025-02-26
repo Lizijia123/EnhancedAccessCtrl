@@ -5,7 +5,6 @@ class LoginFailedException(Exception):
 class ConfigInvalidException(Exception):
     pass
 
-
 class VerifyingLoginException(Exception):
     pass
 

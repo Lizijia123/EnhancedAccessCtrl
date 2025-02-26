@@ -5,15 +5,27 @@ import os
 from urllib.parse import unquote_plus
 
 from mitmproxy import http
-import enhanced_detector
-from config.log import LOGGER
+import logging
+import os
+# 配置日志
+logging.basicConfig(
+    level=logging.INFO,  # 设置日志级别为 INFO，意味着 INFO 及以上级别的日志将被记录
+    format='%(asctime)s - %(levelname)s - %(message)s',  # 日志的格式，包括时间、日志级别和消息
+    handlers=[
+        logging.FileHandler(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'app_log.log')),  # 使用 FileHandler 将日志输出到名为 app.log 的文件
+        logging.StreamHandler()  # 使用 StreamHandler 将日志输出到标准输出
+    ]
+)
+
+# 创建一个日志记录器
+LOGGER = logging.getLogger(__name__)
 
 # 定义 CSV 文件的列名，增加新的属性
 csv_headers = [
     'timestamp', 'api_endpoint', 'http_method', 'request_body_size',
     'response_body_size', 'response_status', 'execution_time',
     'request_time', 'method', 'url', 'header', 'data',
-    'status_code', 'response_headers', 'response_body', 'DETECTING'
+    'status_code', 'response_headers', 'response_body'
 ]
 
 # 打开 CSV 文件并写入表头
@@ -68,6 +80,12 @@ def sanitize_data(data):
 MARK_HEADER = 'X-Mitmproxy-Processed'
 
 def request(flow: http.HTTPFlow) -> None:
+    # 忽略证书验证
+    flow.request.ssl_verification = False
+    # 屏蔽所有 HTTPS 请求
+    if flow.request.scheme == "https":
+        return 
+
     if MARK_HEADER in flow.request.headers:
         # 如果请求已经被标记，说明是经过 mitmproxy 处理的，直接放行
         return
@@ -117,20 +135,18 @@ def request(flow: http.HTTPFlow) -> None:
 
     # 为了方便后续在响应中关联请求信息，将请求时间存储在 flow 对象中
     if timestamp and method and request_url:
-        with enhanced_detector.detection_lock:
-            flow.request.custom_data = {
-                'timestamp': timestamp,
-                'api_endpoint': api_endpoint,
-                'http_method': method,
-                'request_body_size': request_body_size,
-                'request_time': timestamp,
-                'method': method,
-                'url': request_url,
-                'header': request_headers,
-                'data': request_body,
-                'DETECTING': enhanced_detector.DETECTING,
-                'request_start_time': request_start_time
-            }
+        flow.request.custom_data = {
+            'timestamp': timestamp,
+            'api_endpoint': api_endpoint,
+            'http_method': method,
+            'request_body_size': request_body_size,
+            'request_time': timestamp,
+            'method': method,
+            'url': request_url,
+            'header': request_headers,
+            'data': request_body,
+            'request_start_time': request_start_time
+        }
 
 
 def response(flow: http.HTTPFlow) -> None:
@@ -176,23 +192,13 @@ def response(flow: http.HTTPFlow) -> None:
         'status_code': status_code,
         'response_headers': response_headers,
         'response_body': response_body,
-        'DETECTING': request_data.get('DETECTING')
     }
 
     # 处理数据中的换行符
     for key, value in csv_data.items():
         csv_data[key] = sanitize_data(value)
 
-    try:
-        # 打开 CSV 文件并追加写入数据
-        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'traffic.csv'), 'a', newline='') as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=csv_headers, quoting=csv.QUOTE_ALL, escapechar='\\')
-            writer.writerow(csv_data)
+    import requests
+    response = requests.post(url='http://127.0.0.1:5000/handle_traffic_data', json={'traffic_data': csv_data})
+    response.raise_for_status()
 
-        # 当 DETECTING 为 "ON" 时，将数据添加到流量窗口并检查窗口
-        if request_data.get('DETECTING') == "ON":
-            with enhanced_detector.window_lock:
-                enhanced_detector.TRAFFIC_WINDOW.append(csv_data)
-                enhanced_detector.check_window()
-    except Exception as e:
-        LOGGER.error(f"Error writing to traffic.csv: {e}")

@@ -1,21 +1,21 @@
 import csv
 import json
+import logging
 import os.path
 import subprocess
+import sys
 import threading
-import time
-from os.path import dirname
-from urllib.parse import urlparse
-from datetime import datetime
-from mitmproxy.tools.main import mitmproxy
-
+import pandas as pd
+import traceback
 import requests
-from flask import Flask, request, jsonify
-from transformers.utils.chat_template_utils import BASIC_TYPES
 
 import algorithm.api_discovery
 import config.basic
-import enhanced_detector
+
+from urllib.parse import urlparse
+from datetime import datetime
+from flask import Flask, request, jsonify
+from transformers.utils.chat_template_utils import BASIC_TYPES
 from algorithm import traffic_data_generation
 from algorithm.entity.api import API
 from algorithm.entity.feature import SeqOccurTimeFeature, BASIC_FEATURES, BASIC_FEATURE_DESCRIPTIONS
@@ -23,7 +23,11 @@ from algorithm.model_training import *
 from config.log import LOGGER
 import pandas as pd
 
+
 app = Flask(__name__)
+
+logger = logging.getLogger('werkzeug')
+logger.disabled = True
 
 MANUAL_API_DISCOVERY_STARTED_AT = None
 MANUAL_API_DISCOVERY_ENDED_AT = None
@@ -164,7 +168,7 @@ def auto_api_discovery():
 def start_manual_api_discovery():
     global MANUAL_API_DISCOVERY_STARTED_AT, MANUAL_API_DISCOVERY_ENDED_AT
     with api_discovery_lock:
-        MANUAL_API_DISCOVERY_STARTED_AT = datetime.now()
+        MANUAL_API_DISCOVERY_STARTED_AT = datetime.utcnow()
         MANUAL_API_DISCOVERY_ENDED_AT = None
 
     data = request.get_json()
@@ -185,10 +189,10 @@ def finish_manual_api_discovery():
             return jsonify({'error': 'Manual API discovery has not started'}), 409
         if MANUAL_API_DISCOVERY_ENDED_AT is not None:
             return jsonify({'error': 'Manual API discovery has ended'}), 409
-        MANUAL_API_DISCOVERY_ENDED_AT = datetime.now()
+        MANUAL_API_DISCOVERY_ENDED_AT = datetime.utcnow()
 
     fields_to_record = ['method', 'url', 'header', 'data']
-    output_file = os.path.join(os.path.abspath(__file__), 'algorithm', 'crawl_log', 'manual_API_discovery_traffic_log.csv')
+    output_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'algorithm', 'crawl_log', 'manual_API_discovery_traffic_log.csv')
     file_exists = False
     try:
         with file_operation_lock:
@@ -196,18 +200,41 @@ def finish_manual_api_discovery():
                 file_exists = True
     except FileNotFoundError:
         pass
+    csv.field_size_limit(sys.maxsize)
     with file_operation_lock:
         with open(output_file, 'a', newline='') as outfile:
             writer = csv.DictWriter(outfile, fieldnames=fields_to_record)  # type: ignore
             if not file_exists:
                 writer.writeheader()
-            with open('traffic.csv', 'r', newline='', encoding='utf-8') as infile:
-                reader = csv.DictReader(infile)
-                for row in reader:
-                    request_time = datetime.strptime(row['request_time'], '%Y-%m-%d %H:%M:%S')
-                    if MANUAL_API_DISCOVERY_STARTED_AT <= request_time <= MANUAL_API_DISCOVERY_ENDED_AT:  # type: ignore
-                        data_to_write = {field: row.get(field) for field in fields_to_record}
-                        writer.writerow(data_to_write)
+            # 读取文件并过滤空字符
+
+            LOGGER.info(MANUAL_API_DISCOVERY_STARTED_AT)
+            LOGGER.info(MANUAL_API_DISCOVERY_ENDED_AT)
+
+            def is_csv_empty(file_path):
+                if not os.path.exists(file_path):
+                    return True
+                with open(file_path, 'r', newline='', encoding='utf-8') as file:
+                    for line in file:
+                        if line.strip():
+                            return False
+                return True
+
+            with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'traffic.csv'), 'r', newline='', encoding='utf-8') as infile:
+                clean_lines = (line.replace('\x00', '') for line in infile)
+                reader = csv.DictReader(clean_lines)
+                output_csv_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'algorithm', 'crawl_log',
+                               'manual_API_discovery_traffic_log.csv')
+
+                with open(output_csv_path, 'a', newline='', encoding='utf-8') as outfile:
+                    writer = csv.DictWriter(outfile, fieldnames=fields_to_record)
+                    if is_csv_empty(output_csv_path):
+                        writer.writeheader()
+                    for row in reader:
+                        request_time = datetime.strptime(row['request_time'], '%Y-%m-%d %H:%M:%S')
+                        if MANUAL_API_DISCOVERY_STARTED_AT <= request_time <= MANUAL_API_DISCOVERY_ENDED_AT:
+                            data_to_write = {field: row.get(field) for field in fields_to_record}
+                            writer.writerow(data_to_write)
 
     with api_discovery_lock:
         MANUAL_API_DISCOVERY_STARTED_AT = None
@@ -216,7 +243,7 @@ def finish_manual_api_discovery():
     api_log = algorithm.api_discovery.extract_api_log_to_csv()
     api_list, sample_traffic_data_list = algorithm.api_discovery.api_extract(api_log)
     algorithm.api_discovery.collect_param_set(api_log, api_list)
-    with open(os.path.join(os.path.abspath(__file__), 'algorithm', 'param_set.json'), 'r') as f:
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'algorithm', 'param_set.json'), 'r') as f:
         param_set = json.load(f)
     revised_api_list = []
     revised_sample_traffic_data_list = []
@@ -236,9 +263,9 @@ def cancel_manual_api_discovery():
     global MANUAL_API_DISCOVERY_STARTED_AT, MANUAL_API_DISCOVERY_ENDED_AT
     with api_discovery_lock:
         if MANUAL_API_DISCOVERY_STARTED_AT is None:
-            return jsonify({'error': 'Manual API discovery has not started'}), 400
+            return jsonify({'error': 'Manual API discovery has not started'}), 409
         if MANUAL_API_DISCOVERY_ENDED_AT is not None:
-            return jsonify({'error': 'Manual API discovery has ended'}), 400
+            return jsonify({'error': 'Manual API discovery has ended'}), 409
         MANUAL_API_DISCOVERY_STARTED_AT = None
         MANUAL_API_DISCOVERY_ENDED_AT = None
     return jsonify({'message': 'Manual API discovery cancelled successfully'}), 200
@@ -254,6 +281,8 @@ def construct_model():
     config.basic.ACTION_STEP = target_app.get('user_behavior_cycle')
 
     try:
+        global DATA_COLLECTION_STATUS
+        print('DATA_COLLECTION_STATUS: ' + DATA_COLLECTION_STATUS)
         if DATA_COLLECTION_STATUS == 'NOT_STARTED':
             thread = threading.Thread(target=async_data_collect, args=(data,))
             thread.start()
@@ -271,50 +300,51 @@ def construct_model():
                     features.append(BASIC_FEATURES[feature.get('name')])
 
             data_splitting(
-                simulated_data_path=os.path.join(os.path.abspath(__file__), 'algorithm', 'simulated_traffic_data.csv'),
-                train_path=os.path.join(os.path.abspath(__file__), 'data', 'train.xlsx'),
-                test_path=os.path.join(os.path.abspath(__file__), 'data', 'test.xlsx')
+                simulated_data_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'algorithm', 'simulated_traffic_data.csv'),
+                train_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'algorithm', 'data', 'train.xlsx'),
+                test_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'algorithm', 'data', 'test.xlsx')
             )
             algorithm.entity.feature.APP_FEATURES = features
             report = train_and_save_xgboost_model(
                 features=features,
-                train_path=os.path.join(os.path.abspath(__file__), 'data', 'train.xlsx'),
-                test_path=os.path.join(os.path.abspath(__file__), 'data', 'test.xlsx'),
-                model_path=os.path.join(os.path.abspath(__file__), 'model', 'model.pkl'),
-                scaler_path=os.path.join(os.path.abspath(__file__), 'model', 'scaler.pkl')
+                train_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'algorithm', 'data', 'train.xlsx'),
+                test_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'algorithm', 'data', 'test.xlsx'),
+                model_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'algorithm', 'model', 'model.pkl'),
+                scaler_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'algorithm', 'model', 'scaler.pkl')
             )
             return jsonify({"report": report, "error_API_list": ERROR_APIS}), 200
     except Exception as e:
+        traceback.print_exc()
         return jsonify({"error": str(e)}), 500
 
 
 # 启动检测
 @app.route('/detection/start', methods=['POST'])
 def start_detection():
+    print(config.basic.LOGIN_CREDENTIALS)
     data = request.get_json()
     config.basic.COMBINED_DATA_DURATION = data.get('combined_data_duration')
-
-    with enhanced_detector.detection_lock:
-        if enhanced_detector.DETECTING == 'ON':
-            return jsonify({'error': 'Detection has already started'}), 409
-        enhanced_detector.DETECTING = "ON"
+    import enhanced_detector
+    if enhanced_detector.read_detection_status() == 'ON':
+        return jsonify({'error': 'Detection has already started'}), 409
+    enhanced_detector.write_detection_status("ON")
     return jsonify({"info": "Detection has started successfully"}), 200
 
 
 # 暂停检测
 @app.route('/detection/pause', methods=['GET'])
 def pause_detection():
-    with enhanced_detector.detection_lock:
-        if enhanced_detector.DETECTING == 'OFF':
-            return jsonify({'error': 'Detection has already paused'}), 400
-        enhanced_detector.DETECTING = "OFF"
+    import enhanced_detector
+    if enhanced_detector.read_detection_status() == 'OFF':
+        return jsonify({'error': 'Detection has already paused'}), 409
+    enhanced_detector.write_detection_status('OFF')
     return jsonify({'info': 'Detection has paused successfully'}), 200
 
 
 @app.route('/detection/records', methods=['GET'])
 def get_detection_records():
     # 模拟获取检测记录逻辑，返回示例数据
-    records = json.load(open(os.path.join(os.path.abspath(__file__), 'detect_records.json'), encoding='utf-8'))
+    records = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'detect_records.json'), encoding='utf-8'))
     return jsonify({'records': records}), 200
 
 
@@ -479,6 +509,7 @@ def async_data_collect(data):
 @app.route('/data_collect', methods=['POST'])
 def data_collect():
     global DATA_COLLECTION_STATUS, current_thread
+    print('DATA_COLLECTION_STATUS: ' + DATA_COLLECTION_STATUS)
     if DATA_COLLECTION_STATUS == "IN_PROGRESS":
         STOP_FLAG.set()
         if current_thread:
@@ -494,6 +525,13 @@ def data_collect_status():
     global DATA_COLLECTION_STATUS
     return jsonify({"status": DATA_COLLECTION_STATUS}), 200
 
+@app.route('/handle_traffic_data', methods=['POST'])
+def handle_traffic_data():
+    traffic_data = request.get_json().get('traffic_data')
+    from enhanced_detector import handle_csv_data
+    handle_csv_data(traffic_data)
+    return jsonify({"message": "Traffic data handled"}), 200
+
 
 @app.route('/basic_features', methods=['GET'])
 def get_basic_detect_features():
@@ -504,51 +542,25 @@ def get_basic_detect_features():
     } for feature_name in BASIC_FEATURE_DESCRIPTIONS]}), 200
 
 
-# 启动 mitmproxy 的函数
 def start_mitmproxy():
     try:
-        # 启动 mitmproxy 并指定脚本，监听 0.0.0.0:8080
-        subprocess.run(['mitmdump', '-s', 'traffic_collector.py', '--listen-host', '0.0.0.0'])
+        with open('mitmproxy.log', 'w') as log_file:
+            subprocess.run(['mitmdump', '-s', 'traffic_collector.py', '--listen-host', '0.0.0.0', '-vvv'],
+                           stdout=log_file, stderr=log_file)
     except Exception as e:
         print(f"Error starting mitmproxy: {e}")
 
-# 在项目启动时启动 mitmproxy
 mitmproxy_thread = threading.Thread(target=start_mitmproxy)
 mitmproxy_thread.start()
 
-# 配置端口转发
-# sudo iptables -t nat -F
-# sudo iptables -t nat -A PREROUTING ! -s [YOUR_SERVER_IP] -p tcp --dport 5230 -j REDIRECT --to-port 8080
-# sudo iptables -t nat -A OUTPUT ! -s [YOUR_SERVER_IP] -p tcp -d 127.0.0.1 --dport 5230 -j REDIRECT --to-port 8080
-# sudo netfilter-persistent save
-
-# import time
-# time.sleep(5)  # 等待 5 秒，确保 mitmproxy 已经启动
-
-# # 向 mitmproxy 发起测试请求
-# def send_test_request():
-#     try:
-#         proxy = {
-#             'http': 'http://127.0.0.1:8080',
-#             'https': 'http://127.0.0.1:8080'
-#         }
-#         url = 'http://www.baidu.com'  # 测试请求的目标 URL
-#         response = requests.get(url, proxies=proxy)
-#         print(f"Response status code: {response.status_code}")
-#         print(f"Response text: {response.text[:200]}")  # 只打印前 200 个字符
-#     except Exception as e:
-#         print(f"Error sending test request: {e}")
-
-# # 发起测试请求
-# send_test_request()
-# send_test_request()
-# send_test_request()
-# send_test_request()
-# send_test_request()
-# send_test_request()
-# send_test_request()
-# send_test_request()
 
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
+
+# cd 当前目录
+# sudo iptables -t nat -F
+# sudo iptables -t nat -A PREROUTING ! -s 49.234.6.241 -p tcp --dport 5230 -j REDIRECT --to-port 8080
+# sudo iptables -t nat -A OUTPUT ! -s 49.234.6.241 -p tcp -d 127.0.0.1 --dport 5230 -j REDIRECT --to-port 8080
+# sudo netfilter-persistent save
+# /bin/python3 ./app.py

@@ -1,11 +1,10 @@
 import json
 import random
+import config.basic
 
 from algorithm.brain import Brain
-from config.basic import *
 from config.log import LOGGER
 from config.role import APIS_OF_USER_ROLES
-import config.basic
 
 
 class Agent:
@@ -17,7 +16,7 @@ class Agent:
 
     @classmethod
     def cinit(cls, api_list, api_knowledge, app_knowledge):
-        cls.brain = Brain(LLM_MODEL_NAME, api_knowledge, app_knowledge)
+        cls.brain = Brain(config.basic.LLM_MODEL_NAME, api_knowledge, app_knowledge)
         cls.apis = api_list
 
     def __init__(self, role, action_step, malicious=False, unlogged=False):
@@ -47,12 +46,12 @@ class Agent:
 
         for index in range(len(self.api_sequence)):
             if self.api_malicious_seq[index] == 0:
-                self.action_type_seq.append(NORMAL)
+                self.action_type_seq.append(config.basic.NORMAL)
             else:
                 if self.api_sequence[index] in APIS_OF_USER_ROLES[self.role]:
-                    self.action_type_seq.append(VERTICAL_AUTH_OVERREACH)
+                    self.action_type_seq.append(config.basic.VERTICAL_AUTH_OVERREACH)
                 else:
-                    self.action_type_seq.append(HORIZONTAL_AUTH_OVERREACH)
+                    self.action_type_seq.append(config.basic.HORIZONTAL_AUTH_OVERREACH)
 
     @classmethod
     def deserialize(cls, data):

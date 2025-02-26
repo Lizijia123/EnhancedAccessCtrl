@@ -3,21 +3,21 @@ import random
 import json
 import pandas as pd
 
+import config.basic
+
+
+from urllib.parse import urlparse, parse_qs, quote
+
 from algorithm.exception import *
+from algorithm.traffic_data_generation import fetch_cookie
 from algorithm.url_crawler import BasicURLScraper
 from algorithm.web_element_crawler import WebElementCrawler
-from config.basic import url_decoding
-from config.api_log_filtering import NON_API_KEYS
-import config.basic
-from config.crawling import *
-from algorithm.login import *
-from config.api_matching import API_MATCHES
 from algorithm.api_discovery_algorithm.api_discovery import extract_api_list
 from algorithm.entity.api import API
-from os.path import dirname
-from urllib.parse import urlparse, parse_qs, quote
+from config.basic import URL_SAMPLE, WEB_ELEMENT_CRAWLING_MAX_TIME_PER_URL, url_decoding
+from config.api_log_filtering import NON_API_KEYS
+from config.api_matching import API_MATCHES
 from config.log import LOGGER
-import config.basic
 
 param_set = {}
 
@@ -179,28 +179,32 @@ def api_extract(api_crawl_log):
 
 
 def gen_crawl_log():
-    LOGGER.info("Verifying user login...")
+    LOGGER.info("Fetching user cookies..")
     try:
-        sessions = [login(cred['username'], cred['password'], cred['role']) for cred in config.basic.LOGIN_CREDENTIALS]
+        cookie_lists = [fetch_cookie(cred['username'], unlogged=(cred['username'] == 'unlogged_in_user')) 
+                        for cred in config.basic.LOGIN_CREDENTIALS]
+        usernames = [cred['username'] for cred in config.basic.LOGIN_CREDENTIALS]
     except Exception as e:
         raise VerifyingLoginException(e)
 
     LOGGER.info("Fetching urls...")
     try:
-        url_set = []
-        for session in sessions:
-            url_set.append(BasicURLScraper(base_url=config.basic.APP_URL, session=session).crawl())
+        url_lists = []
+        for cookie_list in cookie_lists:
+            url_lists.append(BasicURLScraper(base_url=config.basic.APP_URL, cookie_list=cookie_list).crawl())
     except Exception as e:
         raise UrlCrawlingException(e)
 
     LOGGER.info("Crawling web elements...")
     try:
-        for i in range(len(url_set)):
-            urls = random.sample(list(url_set[i]), min(len(url_set[i]), URL_SAMPLE))
+        for i in range(len(url_lists)):
+            urls = random.sample(list(url_lists[i]), min(len(url_lists[i]), URL_SAMPLE))
             for url in urls:
                 crawler = WebElementCrawler()
-                crawler.crawl_from(url, session=sessions[i], uname=sessions[i]['uname'],
-                                   time_out=WEB_ELEMENT_CRAWLING_MAX_TIME_PER_URL)
+                cookies = {}
+                for cookie in cookie_lists[i]:
+                    cookies[cookie['name']] = cookie['value']
+                crawler.crawl_from(url, cookies=cookies, uname=usernames[i], time_out=WEB_ELEMENT_CRAWLING_MAX_TIME_PER_URL)
     except Exception as e:
         raise WebElementCrawlingException(e)
 
@@ -253,13 +257,13 @@ def extract_api_log_to_csv():
         if pd.read_csv(manual_traffic_log_path).shape[0] >= 2:
             manual_traffic_log = pd.read_csv(manual_traffic_log_path)
 
-    LOGGER.info(domain)
-    LOGGER.info(url_log)
+    # LOGGER.info(domain)
+    # LOGGER.info(url_log)
     url_log = url_log[url_log['URL'].str.contains(domain)] if url_log is not None else None
     web_element_log = web_element_log[web_element_log['url'].str.contains(domain)] \
         if web_element_log is not None else None
-    manual_traffic_log = manual_traffic_log[manual_traffic_log['url'].str.contains(domain)] \
-        if manual_traffic_log is not None else None
+    # manual_traffic_log = manual_traffic_log[manual_traffic_log['url'].str.contains(domain)] \
+    #     if manual_traffic_log is not None else None
 
     if config.basic.URL_ENCODING_CONVERT:
         url_log['URL'] = url_log['URL'].apply(url_decoding) if url_log is not None else None
@@ -273,9 +277,9 @@ def extract_api_log_to_csv():
     manual_traffic_log = manual_traffic_log[manual_traffic_log['url'].apply(not_matches_static)] \
         if manual_traffic_log is not None else None
     
-    LOGGER.info(url_log)
+    # LOGGER.info(url_log)
 
-    if url_log is not None:
+    if url_log is not None and not url_log.empty:
         url_log['method'] = url_log['Method'].apply(lambda x: x[0].upper() + x[1:].lower() if pd.notnull(x) else x)
         url_log['url'] = url_log['URL']
         url_log['header'] = url_log['Headers']
@@ -286,7 +290,7 @@ def extract_api_log_to_csv():
     else:
         url_log = pd.DataFrame(columns=['method', 'url', 'header', 'data', 'time', 'type'])
 
-    if web_element_log is not None:
+    if web_element_log is not None and not web_element_log.empty:
         web_element_log['method'] = (web_element_log['method'].apply(
             lambda x: x[0].upper() + x[1:].lower() if pd.notnull(x) else x))
         web_element_log['header'] = web_element_log['header'].apply(convert_to_dict)
@@ -296,7 +300,8 @@ def extract_api_log_to_csv():
     else:
         web_element_log = pd.DataFrame(columns=['method', 'url', 'header', 'data', 'time', 'type'])
 
-    if manual_traffic_log is not None:
+    LOGGER.info(manual_traffic_log)
+    if manual_traffic_log is not None and not manual_traffic_log.empty:
         manual_traffic_log['method'] = manual_traffic_log['method'].apply(
             lambda x: x[0].upper() + x[1:].lower() if pd.notnull(x) else x)
         manual_traffic_log['time'] = 0

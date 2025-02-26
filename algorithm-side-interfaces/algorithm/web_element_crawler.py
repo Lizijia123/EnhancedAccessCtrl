@@ -4,19 +4,18 @@ import threading
 import pandas as pd
 import os
 
+from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
-from browsermobproxy import Server
-from selenium import webdriver
 from selenium.webdriver.edge.service import Service
 from selenium.webdriver.edge.options import Options
-from config.basic import BROWSERMOB_PROXY_PATH, EDGE_DRIVER_PATH
 from selenium.webdriver.support.wait import WebDriverWait
-from urllib.parse import urlparse
-
+from selenium.webdriver.support import expected_conditions as EC
+from browsermobproxy import Server
 
 from config.log import LOGGER
-from selenium.webdriver.support import expected_conditions as EC
+from config.basic import BROWSERMOB_PROXY_PATH, EDGE_DRIVER_PATH
+
 
 scanned_elements = set()
 visited_elements = set()
@@ -177,7 +176,7 @@ class WebElementCrawler(object):
                     self.wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, 'a, button, .clickable')))
                     break
 
-    def crawl_from(self, url, session, uname, time_out=3600):
+    def crawl_from(self, url, cookies, uname, time_out=3600):
         """
         以某个用户的身份，从url开始，探测式爬虫一段时间，并记录流量
         """
@@ -196,17 +195,7 @@ class WebElementCrawler(object):
         self.proxy.new_har("selenium_traffic", options={"captureHeaders": True, "captureContent": True})
 
         self.driver.get(url)
-        parsed_url = urlparse(url)
-        domain = parsed_url.netloc
-        if ':' in domain:
-            domain = domain.split(':')[0]
-        for name, value in session.cookies.get_dict().items():
-            cookie = {
-                'name': name,
-                'value': value,
-                'domain': domain,
-                'path': '/'
-            }
+        for cookie in cookies:
             self.driver.add_cookie(cookie)
         self.driver.refresh()
 

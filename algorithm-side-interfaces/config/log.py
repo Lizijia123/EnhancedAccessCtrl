@@ -13,8 +13,8 @@ logging.basicConfig(
 # 创建一个日志记录器
 LOGGER = logging.getLogger(__name__)
 
-# 示例日志记录
-LOGGER.info('This is an info message.')
-LOGGER.warning('This is a warning message.')
+# # 示例日志记录
+# LOGGER.info('This is an info message.')
+# LOGGER.warning('This is a warning message.')
 
 # sudo /bin/python3 /home/ubuntu/graduation-design/EnhancedAccessCtrl/algorithm-side-interfaces/app.py

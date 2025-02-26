@@ -1,21 +1,20 @@
 import pandas as pd
 import joblib
+# import warnings
+# warnings.filterwarnings("ignore")
 
-from sklearn.metrics import accuracy_score, classification_report
+from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from xgboost import XGBClassifier
 
-import warnings
-import os
-
 from config.basic import TEST_DATA_SIZE_RATE
-
-warnings.filterwarnings("ignore")
-PROJ_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 def extract_features(df, features):
+    print(df)
+    print(features)
+    
     feats = {}
     for feature in features:
         feats[feature.signature] = feature.get_val(df)
@@ -26,6 +25,9 @@ def extract_feats_and_labels(user_data_path, features):
     df = pd.read_excel(user_data_path, sheet_name='Sheet1')
     if len(df) == 0:
         raise Exception("用户流量数据集为空")
+    
+    import config.log
+    config.log.LOGGER.info(features)
 
     user_groups = df.groupby('user_index')
     feature_list = []
@@ -33,10 +35,10 @@ def extract_feats_and_labels(user_data_path, features):
         user_type = None
         if 'user_type' in group.columns:
             user_type = group['user_type'].iloc[0]
-        features = extract_features(group, features)
-        features['user_index'] = user_index
-        features['user_type'] = user_type
-        feature_list.append(features)
+        feature = extract_features(group, features)
+        feature['user_index'] = user_index
+        feature['user_type'] = user_type
+        feature_list.append(feature)
     feature_df = pd.DataFrame(feature_list)
 
     feats = feature_df.drop(columns=['user_index', 'user_type'])
@@ -45,6 +47,9 @@ def extract_feats_and_labels(user_data_path, features):
 
 
 def train_and_save_xgboost_model(train_path, test_path, model_path, scaler_path, features):
+
+    import config.log
+    config.log.LOGGER.info(features)
     # 读取测试数据并提取特征
     X_train, y_train = extract_feats_and_labels(train_path, features=features)
 

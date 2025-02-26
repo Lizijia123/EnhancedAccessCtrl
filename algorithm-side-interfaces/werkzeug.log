@@ -1,0 +1,39 @@
+2025-02-26 21:13:20,193 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.0.16.2:5000
+2025-02-26 21:13:20,193 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-26 21:13:20,194 - INFO -  * Restarting with stat
+2025-02-26 21:13:22,470 - WARNING -  * Debugger is active!
+2025-02-26 21:13:22,471 - INFO -  * Debugger PIN: 284-479-535
+2025-02-26 21:13:30,070 - INFO - 127.0.0.1 - - [26/Feb/2025 21:13:30] "POST /handle_traffic_data HTTP/1.1" 200 -
+2025-02-26 21:13:30,123 - INFO - 127.0.0.1 - - [26/Feb/2025 21:13:30] "POST /handle_traffic_data HTTP/1.1" 200 -
+2025-02-26 21:13:34,896 - INFO - 127.0.0.1 - - [26/Feb/2025 21:13:34] "POST /handle_traffic_data HTTP/1.1" 200 -
+2025-02-26 21:13:35,750 - INFO - 127.0.0.1 - - [26/Feb/2025 21:13:35] "POST /handle_traffic_data HTTP/1.1" 200 -
+2025-02-26 21:13:35,755 - INFO - 127.0.0.1 - - [26/Feb/2025 21:13:35] "POST /handle_traffic_data HTTP/1.1" 200 -
+2025-02-26 21:13:38,973 - INFO - 127.0.0.1 - - [26/Feb/2025 21:13:38] "POST /handle_traffic_data HTTP/1.1" 200 -
+2025-02-26 21:13:41,328 - INFO - 127.0.0.1 - - [26/Feb/2025 21:13:41] "POST /handle_traffic_data HTTP/1.1" 200 -
+2025-02-26 21:13:41,876 - INFO - 127.0.0.1 - - [26/Feb/2025 21:13:41] "POST /handle_traffic_data HTTP/1.1" 200 -
+2025-02-26 21:13:46,943 - INFO - 127.0.0.1 - - [26/Feb/2025 21:13:46] "POST /handle_traffic_data HTTP/1.1" 200 -
+2025-02-26 21:13:48,595 - INFO - 127.0.0.1 - - [26/Feb/2025 21:13:48] "POST /handle_traffic_data HTTP/1.1" 200 -
+2025-02-26 21:13:49,233 - INFO - 127.0.0.1 - - [26/Feb/2025 21:13:49] "POST /handle_traffic_data HTTP/1.1" 200 -
+2025-02-26 21:13:53,522 - INFO - 127.0.0.1 - - [26/Feb/2025 21:13:53] "POST /handle_traffic_data HTTP/1.1" 200 -
+2025-02-26 21:13:54,852 - INFO - 127.0.0.1 - - [26/Feb/2025 21:13:54] "POST /handle_traffic_data HTTP/1.1" 200 -
+2025-02-26 21:13:55,925 - INFO - 127.0.0.1 - - [26/Feb/2025 21:13:55] "POST /handle_traffic_data HTTP/1.1" 200 -
+2025-02-26 21:13:56,524 - INFO - 127.0.0.1 - - [26/Feb/2025 21:13:56] "POST /handle_traffic_data HTTP/1.1" 200 -
+2025-02-26 21:13:58,517 - INFO - 127.0.0.1 - - [26/Feb/2025 21:13:58] "POST /handle_traffic_data HTTP/1.1" 200 -
+2025-02-26 21:13:58,638 - INFO - 127.0.0.1 - - [26/Feb/2025 21:13:58] "POST /handle_traffic_data HTTP/1.1" 200 -
+2025-02-26 21:13:58,737 - INFO - 127.0.0.1 - - [26/Feb/2025 21:13:58] "POST /handle_traffic_data HTTP/1.1" 200 -
+2025-02-26 21:14:00,103 - INFO - 127.0.0.1 - - [26/Feb/2025 21:14:00] "POST /handle_traffic_data HTTP/1.1" 200 -
+2025-02-26 21:14:00,867 - INFO - 127.0.0.1 - - [26/Feb/2025 21:14:00] "POST /handle_traffic_data HTTP/1.1" 200 -
+2025-02-26 21:14:01,428 - INFO - 127.0.0.1 - - [26/Feb/2025 21:14:01] "POST /handle_traffic_data HTTP/1.1" 200 -
+2025-02-26 21:14:01,731 - INFO - 127.0.0.1 - - [26/Feb/2025 21:14:01] "POST /handle_traffic_data HTTP/1.1" 200 -
+2025-02-26 21:14:02,364 - INFO - 127.0.0.1 - - [26/Feb/2025 21:14:02] "POST /handle_traffic_data HTTP/1.1" 200 -
+2025-02-26 21:14:02,367 - INFO - 127.0.0.1 - - [26/Feb/2025 21:14:02] "POST /handle_traffic_data HTTP/1.1" 200 -
+2025-02-26 21:14:04,062 - INFO - 127.0.0.1 - - [26/Feb/2025 21:14:04] "POST /handle_traffic_data HTTP/1.1" 200 -
+2025-02-26 21:14:04,254 - INFO - 127.0.0.1 - - [26/Feb/2025 21:14:04] "POST /handle_traffic_data HTTP/1.1" 200 -
+2025-02-26 21:14:04,261 - INFO - 127.0.0.1 - - [26/Feb/2025 21:14:04] "POST /handle_traffic_data HTTP/1.1" 200 -
+2025-02-26 21:14:05,188 - INFO - 127.0.0.1 - - [26/Feb/2025 21:14:05] "POST /handle_traffic_data HTTP/1.1" 200 -
+2025-02-26 21:14:06,351 - INFO - 127.0.0.1 - - [26/Feb/2025 21:14:06] "POST /handle_traffic_data HTTP/1.1" 200 -
+2025-02-26 21:14:06,368 - INFO - 127.0.0.1 - - [26/Feb/2025 21:14:06] "POST /handle_traffic_data HTTP/1.1" 200 -
+2025-02-26 21:14:06,726 - INFO - 127.0.0.1 - - [26/Feb/2025 21:14:06] "POST /handle_traffic_data HTTP/1.1" 200 -

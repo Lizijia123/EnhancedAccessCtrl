@@ -2,23 +2,20 @@ import datetime
 import json
 import os
 import random
-from urllib.parse import urlparse, urlsplit
-
 import pandas as pd
-import requests
-from selenium import webdriver
 
 import algorithm.entity.api
-from algorithm.agent import Agent, save_agents_to_file, load_agents_from_file
-from algorithm.exception import UnameNotFindException
-from algorithm.login import login
-from algorithm.loginer import LOGINER
 import config.basic
-import config.crawling
-from config.log import LOGGER
-from config.traffic_data import *
+
+from selenium import webdriver
+from urllib.parse import urlparse, urlsplit
 from selenium.webdriver.edge.options import Options
 from selenium.webdriver.edge.service import Service
+
+from algorithm.agent import Agent, save_agents_to_file, load_agents_from_file
+from config.loginer import Loginer
+from config.log import LOGGER
+
 
 
 def call_api(api, url, data, cookie_list):
@@ -93,40 +90,21 @@ def fetch_cookie(uname, unlogged):
     service = None
 
     if not unlogged:
-        auth_list = config.crawling.AUTH
-        pwd = ''
-        for role in auth_list:
-            find = False
-            for auth_item in auth_list[role]:
-                if uname == auth_item['uname']:
-                    find = True
-                    pwd = auth_item['pwd']
-                    break
-            if find:
+        for credential in config.basic.LOGIN_CREDENTIALS:
+            if credential['username'] == uname:
+                pwd = credential['password']
                 break
 
-        # 创建 Edge 浏览器服务
         service = Service(config.basic.EDGE_DRIVER_PATH)
-
-        # 创建 Edge 浏览器选项并开启无头模式
         edge_options = Options()
         edge_options.add_argument('--headless')
-
         try:
-            # 创建浏览器实例
             driver = webdriver.Edge(service=service, options=edge_options)
-
-            LOGGER.info('hello')
-
-            # 获取登录器实例并执行登录操作
-            loginer = LOGINER(driver)
-            cookie_list = loginer.login(uname, pwd, admin=(uname == config.basic.ADMIN_UNAME))
+            cookie_list = Loginer(driver).login(uname, pwd, admin=(uname == config.basic.ADMIN_UNAME))
             LOGGER.info(f"Fetched cookie: {uname}, {cookie_list}")
-
         except Exception as e:
             print(f"An error occurred while fetching cookies: {e}")
         finally:
-            # 确保浏览器实例和服务被正确关闭和停止
             if driver:
                 driver.quit()
             if service:
@@ -134,21 +112,6 @@ def fetch_cookie(uname, unlogged):
 
     return cookie_list
 
-
-def get_session(uname, unlogged):
-    cookie_list = []
-    if unlogged:
-        return requests.Session()
-
-    pwd = ''
-    role = ''
-    for credential in config.auth.LOGIN_CREDENTIALS:
-        if credential['username'] == uname:
-            pwd = credential['password']
-            role = credential['user_role']
-    if pwd == '':
-        raise UnameNotFindException()
-    return login(uname, pwd, role)
 
 
 def param_injection_for_api_seq(api_title_seq, uname, unlogged, action_type_seq, malicious):
@@ -190,6 +153,7 @@ def param_injection_for_api_seq(api_title_seq, uname, unlogged, action_type_seq,
     param_cache.clear()
 
     api_title_info_map = {f'API_{str(api.index)}': api for api in Agent.apis}
+    LOGGER.info(api_title_info_map)
     api_seq = [(api_title_info_map[title] if title in api_title_info_map else api_title_info_map[random.choice(list(api_title_info_map.keys()))]) for title in api_title_seq]
 
     traffic_data_seq = []
@@ -313,13 +277,13 @@ def gen_data_set(user_api_set, api_knowledge, app_knowledge):
     algorithm.entity.api.save_apis_to_json(user_api_set)
 
     users = []
-    for role in NORMAL_USER_NUM:
+    for role in config.basic.NORMAL_USER_NUM:
         unlogged = True if role == 'unlogged_in_user' else False
-        for i in range(NORMAL_USER_NUM[role]):
+        for i in range(config.basic.NORMAL_USER_NUM[role]):
             users.append(Agent(role=role, action_step=config.basic.ACTION_STEP, malicious=False, unlogged=unlogged))
-    for role in MALICIOUS_USER_NUM:
+    for role in config.basic.MALICIOUS_USER_NUM:
         unlogged = True if role == 'unlogged_in_user' else False
-        for i in range(MALICIOUS_USER_NUM[role]):
+        for i in range(config.basic.MALICIOUS_USER_NUM[role]):
             users.append(Agent(role=role, action_step=config.basic.ACTION_STEP, malicious=True, unlogged=unlogged))
     random.shuffle(users)
 

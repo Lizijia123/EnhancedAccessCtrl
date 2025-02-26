@@ -1,3 +1,4 @@
+# enhanced_detector.py
 import json
 import os
 import threading
@@ -10,7 +11,7 @@ import pandas as pd
 import algorithm.entity.feature
 from algorithm.api_discovery import recognize_api
 from algorithm.model_training import extract_features
-from config.basic import COMBINED_DATA_DURATION
+import config.basic
 
 # 定义锁
 detection_lock = threading.Lock()
@@ -103,6 +104,6 @@ def check_window():
             start_time = datetime.strptime(TRAFFIC_WINDOW[0]['request_time'], '%Y-%m-%d %H:%M:%S')
             end_time = datetime.strptime(TRAFFIC_WINDOW[-1]['request_time'], '%Y-%m-%d %H:%M:%S')
             duration = (end_time - start_time).total_seconds()
-            if duration >= COMBINED_DATA_DURATION:
+            if duration >= config.basic.COMBINED_DATA_DURATION:
                 anomaly_detection(TRAFFIC_WINDOW)
                 TRAFFIC_WINDOW = []

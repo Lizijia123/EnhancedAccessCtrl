@@ -1,6 +1,7 @@
 import csv
 import datetime
 import json
+import os
 from urllib.parse import unquote_plus
 
 from mitmproxy import http
@@ -11,14 +12,14 @@ from config.log import LOGGER
 csv_headers = [
     'timestamp', 'api_endpoint', 'http_method', 'request_body_size',
     'response_body_size', 'response_status', 'execution_time',
-    'request_time', 'method', 'request_url', 'request_headers', 'request_body',
+    'request_time', 'method', 'url', 'header', 'data',
     'status_code', 'response_headers', 'response_body', 'DETECTING'
 ]
 
 # 打开 CSV 文件并写入表头
 try:
     with open('traffic.csv', 'w', newline='') as csvfile:
-        writer = csv.DictWriter(csvfile, fieldnames=csv_headers) # type: ignore
+        writer = csv.DictWriter(csvfile, fieldnames=csv_headers, quoting=csv.QUOTE_ALL, escapechar='\\')
         writer.writeheader()
 except Exception as e:
     LOGGER.error(f"Failed to write header to traffic.csv: {e}")
@@ -54,7 +55,25 @@ def urlencoded_to_json(urlencoded_data):
         return {}
 
 
+def sanitize_data(data):
+    """
+    处理字符串中的换行符、单引号和双引号
+    """
+    if isinstance(data, str):
+        data = data.replace('\n', '\\n').replace('\r', '\\r')
+        data = data.replace('"', '\\"').replace("'", "\\'")
+    return data
+
+
+MARK_HEADER = 'X-Mitmproxy-Processed'
+
 def request(flow: http.HTTPFlow) -> None:
+    if MARK_HEADER in flow.request.headers:
+        # 如果请求已经被标记，说明是经过 mitmproxy 处理的，直接放行
+        return
+    # 标记请求为已处理
+    flow.request.headers[MARK_HEADER] = 'true'
+    
     try:
         # 记录请求时间（UTC 时间戳）
         timestamp = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
@@ -81,7 +100,14 @@ def request(flow: http.HTTPFlow) -> None:
         if 'urlencoded' in request_headers.get('Content-Type', ''):
             request_body = urlencoded_to_json(request_body)
         else:
-            request_body = json.loads(request_body) if request_body != '' else {}
+            try:
+                if request_body.strip():
+                    request_body = json.loads(request_body)
+                else:
+                    request_body = {}
+            except json.JSONDecodeError:
+                LOGGER.error(f'Error parsing traffic data of the application: Invalid JSON data')
+                request_body = {}
     except Exception as e:
         LOGGER.error(f'Error parsing traffic data of the application: {e}')
         request_body = {}
@@ -124,7 +150,7 @@ def response(flow: http.HTTPFlow) -> None:
         response_body = flow.response.text if flow.response.text else ''
         response_body_size = len(response_body.encode('utf-8'))
     except Exception as e:
-        LOGGER.error(f"Error getting response information: {e}")
+        LOGGER.info(f"Error getting response information: {e}")
         return
 
     # 计算 API 执行时间（毫秒）
@@ -145,18 +171,22 @@ def response(flow: http.HTTPFlow) -> None:
         'request_time': request_data.get('request_time'),
         'method': request_data.get('method'),
         'url': request_data.get('url'),
-        'header': str(request_data.get('header')),
+        'header': request_data.get('header'),
         'data': request_data.get('data'),
         'status_code': status_code,
-        'response_headers': str(response_headers),
+        'response_headers': response_headers,
         'response_body': response_body,
         'DETECTING': request_data.get('DETECTING')
     }
 
+    # 处理数据中的换行符
+    for key, value in csv_data.items():
+        csv_data[key] = sanitize_data(value)
+
     try:
         # 打开 CSV 文件并追加写入数据
-        with open('traffic.csv', 'a', newline='') as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=csv_headers) # type: ignore
+        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'traffic.csv'), 'a', newline='') as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=csv_headers, quoting=csv.QUOTE_ALL, escapechar='\\')
             writer.writerow(csv_data)
 
         # 当 DETECTING 为 "ON" 时，将数据添加到流量窗口并检查窗口

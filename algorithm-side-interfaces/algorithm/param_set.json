@@ -1,0 +1,32 @@
+{
+  "API_309": {
+    "path_variables": {
+      "3": [
+        "21"
+      ]
+    },
+    "query_params": {},
+    "request_data": {},
+    "sample": [
+      {
+        "url": "http://47.97.114.24:5230/api/v1/memo/21",
+        "data": null
+      }
+    ]
+  },
+  "API_308": {
+    "path_variables": {
+      "3": [
+        "16"
+      ]
+    },
+    "query_params": {},
+    "request_data": {},
+    "sample": [
+      {
+        "url": "http://47.97.114.24:5230/api/v1/resource/16",
+        "data": null
+      }
+    ]
+  }
+}

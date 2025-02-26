@@ -3,8 +3,7 @@ import os
 from urllib.parse import urlparse
 
 from config.api_matching import API_MATCHES
-from config.basic import APP_URL
-
+import config.basic
 
 class API:
     def __init__(self, info, index=None):
@@ -17,7 +16,7 @@ class API:
         self.sample_headers = info['sample_headers']
 
     def matches(self, method, url):
-        parsed_url = urlparse(APP_URL)
+        parsed_url = urlparse(config.basic.APP_URL)
         pre_path = f"{parsed_url.scheme}://{parsed_url.netloc}"
 
         return API_MATCHES(

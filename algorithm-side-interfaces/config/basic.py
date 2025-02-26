@@ -13,12 +13,12 @@ NORMAL = 0
 VERTICAL_AUTH_OVERREACH = 1
 HORIZONTAL_AUTH_OVERREACH = 2
 
-BROWSERMOB_PROXY_PATH = 'B:\\browsermob-proxy-2.1.4-bin\\browsermob-proxy-2.1.4\\bin\\browsermob-proxy.bat'
-EDGE_DRIVER_PATH = 'C:\\Users\\hp\\miniconda3\\msedgedriver.exe'
+BROWSERMOB_PROXY_PATH = '/home/ubuntu/browsermob-proxy-2.1.4/bin/browsermob-proxy'
+EDGE_DRIVER_PATH = '/home/ubuntu/msedgedriver'
 
 BRAIN_MAX_FORMAT_RETRY = 5
 
-PARAM_INJECTION_MAX_RETRY = 10
+PARAM_INJECTION_MAX_RETRY = 1
 PARAM_INJECTION_SAMPLE_RATE = 0.1
 PARAM_INJECTION_CACHE_RATE = 0.3
 

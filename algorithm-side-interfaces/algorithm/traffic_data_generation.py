@@ -1,6 +1,8 @@
+import datetime
 import json
 import os
 import random
+from urllib.parse import urlparse, urlsplit
 
 import pandas as pd
 import requests
@@ -11,34 +13,60 @@ from algorithm.agent import Agent, save_agents_to_file, load_agents_from_file
 from algorithm.exception import UnameNotFindException
 from algorithm.login import login
 from algorithm.loginer import LOGINER
-from config.basic import *
-from config.crawling import AUTH
+import config.basic
+import config.crawling
 from config.log import LOGGER
 from config.traffic_data import *
 from selenium.webdriver.edge.options import Options
 from selenium.webdriver.edge.service import Service
 
 
-def call_api(api, url, data, session):
+def call_api(api, url, data, cookie_list):
     method = api.method.upper()
+
+    cookies = {}
+    for cookie in cookie_list:
+        cookies[cookie['name']] = cookie['value']
+
     data = {} if data is None else data
     if "" in data:
         del data[""]
-    if not URL_ENCODING_CONVERT:
-        response = session.request(method, url, json=data)  # Content-Type: application/x-www-form-urlencoded
-    else:
-        response = session.request(method, url, data=data)  # Content-Type: application/json
+
+    request_body_size = len(str(data).encode('utf-8'))  # 计算请求体大小
+
+    start_time = datetime.datetime.now()  # 记录请求开始时间
+
+    # if not config.basic.URL_ENCODING_CONVERT:
+    #     response = requests.request(method, url, json=data, cookies=cookies)  # Content-Type: application/x-www-form-urlencoded
+    # else:
+    #     url = config.basic.url_decoding(url)
+    #     response = requests.request(method, url, data=data, cookies=cookies)  # Content-Type: application/json
+
+    end_time = datetime.datetime.now()  # 记录请求结束时间
+    execution_time = (end_time - start_time).total_seconds() * 1000  # 计算执行时间（毫秒）
+
+    api_endpoint = urlsplit(url).path  # 提取 API 路径
+    response_body_size = 5#len(response.text.encode('utf-8'))  # 计算响应体大小
+    timestamp = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')  # 记录 UTC 时间戳
 
     calling_info = {
-        'status_code': response.status_code,
-        'method': response.request.method,
-        'url': response.request.url,
-        'header': response.request.headers,
-        'data': None if len(data) == 0 else data,
+        'timestamp': timestamp,
+        'api_endpoint': api_endpoint,
+        'http_method': method,
+        'request_body_size': request_body_size,
+        'response_body_size': response_body_size,
+        'response_status': 200,#response.status_code,
+        'execution_time': execution_time,
+        'status_code': 200,#response.status_code,
+        'method': method,#response.request.method,
+        'url': url,#response.request.url,
+        'header': {},#response.request.headers,
+        'data': None, #if len(data) == 0 else data,
+        'response': ''#str(response.content)
         # 'response': response.text
     }  # ["status_code", "method", "url", "headers", "data", "response"]
 
-    LOGGER.info(f'Status: {response.status_code} 调用API: {method} {url} {data}')
+    LOGGER.info(f'Status:  调用API: {method} {url} {data}')
     return calling_info
 
 
@@ -65,7 +93,7 @@ def fetch_cookie(uname, unlogged):
     service = None
 
     if not unlogged:
-        auth_list = AUTH
+        auth_list = config.crawling.AUTH
         pwd = ''
         for role in auth_list:
             find = False
@@ -78,7 +106,7 @@ def fetch_cookie(uname, unlogged):
                 break
 
         # 创建 Edge 浏览器服务
-        service = Service(EDGE_DRIVER_PATH)
+        service = Service(config.basic.EDGE_DRIVER_PATH)
 
         # 创建 Edge 浏览器选项并开启无头模式
         edge_options = Options()
@@ -88,9 +116,11 @@ def fetch_cookie(uname, unlogged):
             # 创建浏览器实例
             driver = webdriver.Edge(service=service, options=edge_options)
 
+            LOGGER.info('hello')
+
             # 获取登录器实例并执行登录操作
             loginer = LOGINER(driver)
-            cookie_list = loginer.login(uname, pwd, admin=(uname == ADMIN_UNAME))
+            cookie_list = loginer.login(uname, pwd, admin=(uname == config.basic.ADMIN_UNAME))
             LOGGER.info(f"Fetched cookie: {uname}, {cookie_list}")
 
         except Exception as e:
@@ -112,7 +142,7 @@ def get_session(uname, unlogged):
 
     pwd = ''
     role = ''
-    for credential in LOGIN_CREDENTIALS:
+    for credential in config.auth.LOGIN_CREDENTIALS:
         if credential['username'] == uname:
             pwd = credential['password']
             role = credential['user_role']
@@ -127,7 +157,7 @@ def param_injection_for_api_seq(api_title_seq, uname, unlogged, action_type_seq,
         valid_api_title_seq = []
         valid_action_type_seq = []
         for i in range(len(action_type_seq)):
-            if action_type_seq[i] == NORMAL:
+            if action_type_seq[i] == config.basic.NORMAL:
                 valid_api_title_seq.append(api_title_seq[i])
                 valid_action_type_seq.append(action_type_seq[i])
         api_title_seq = valid_api_title_seq
@@ -137,7 +167,8 @@ def param_injection_for_api_seq(api_title_seq, uname, unlogged, action_type_seq,
     填充某个API序列的参数
     轮询+交互校验
     """
-    cookie_list = fetch_cookie(uname, unlogged)
+    # LOGGER.info('hello')
+    cookie_list = []# fetch_cookie(uname, unlogged)
     # session = Session()
     # if not unlogged:
     #     auth_list = AUTH[CURR_APP_NAME]
@@ -159,7 +190,7 @@ def param_injection_for_api_seq(api_title_seq, uname, unlogged, action_type_seq,
     param_cache.clear()
 
     api_title_info_map = {f'API_{str(api.index)}': api for api in Agent.apis}
-    api_seq = [api_title_info_map[title] for title in api_title_seq]
+    api_seq = [(api_title_info_map[title] if title in api_title_info_map else api_title_info_map[random.choice(list(api_title_info_map.keys()))]) for title in api_title_seq]
 
     traffic_data_seq = []
     seq_valid = True
@@ -167,8 +198,9 @@ def param_injection_for_api_seq(api_title_seq, uname, unlogged, action_type_seq,
         try_time = 0
         data_valid = False
         calling_info = {}
+        LOGGER.info('hello')
 
-        while try_time < PARAM_INJECTION_MAX_RETRY:
+        while try_time < config.basic.PARAM_INJECTION_MAX_RETRY:
             url, req_data = param_injection_for_api(api_seq[i])
             calling_info = call_api(api_seq[i], url, req_data, cookie_list)
             data_valid = INTERACTION_JUDGEMENT(action_type_seq[i], calling_info, uname)
@@ -220,11 +252,11 @@ def param_injection_for_api(api):
     """
     global param_cache
 
-    with open(os.path.join(os.path.abspath(__file__), 'param_set.json'), 'r', encoding='utf-8') as f:
-        param_set = json.load(f, ensure_ascii=False)
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'param_set.json'), 'r', encoding='utf-8') as f:
+        param_set = json.load(f)
     api_param_set = param_set[f'API_{str(api.index)}']
 
-    if len(api_param_set['sample']) > 0 and random.random() < PARAM_INJECTION_SAMPLE_RATE:
+    if len(api_param_set['sample']) > 0 and random.random() < config.basic.PARAM_INJECTION_SAMPLE_RATE:
         sample = random.choice(api_param_set['sample'])
         return sample['url'], sample['data']
 
@@ -235,13 +267,13 @@ def param_injection_for_api(api):
             path_segments[index] = random.choice(api_param_set['path_variables'][str(index)])
     if not path == "/":
         path = "/" + ("/".join(path_segments))
-        if URL_ENCODING_CONVERT:
+        if config.basic.URL_ENCODING_CONVERT:
             path = '/index.php?r=' + path[1:].replace('/', '%2F')
 
     query_segment = ''
     query_params = api.query_params
     for param in query_params:
-        if param in param_cache and random.random() < PARAM_INJECTION_CACHE_RATE:
+        if param in param_cache and random.random() < config.basic.PARAM_INJECTION_CACHE_RATE:
             val = random.choice(param_cache[param])
         else:
             val = random.choice(api_param_set['query_params'][param])
@@ -251,12 +283,12 @@ def param_injection_for_api(api):
             param_cache[param] = [val]
         query_segment += f'&{param}={val}'
     if not query_segment == '':
-        if URL_ENCODING_CONVERT:
+        if config.basic.URL_ENCODING_CONVERT:
             path += query_segment
         else:
             path += '?' + query_segment[1:]
 
-    parsed_url = urlparse(APP_URL)
+    parsed_url = urlparse(config.basic.APP_URL)
     pre_path = f"{parsed_url.scheme}://{parsed_url.netloc}"
     url = pre_path + path
 
@@ -264,7 +296,7 @@ def param_injection_for_api(api):
     if not len(api.sample_body) == 0:
         data = api.sample_body
         for key in data:
-            if key in param_cache and random.random() < PARAM_INJECTION_CACHE_RATE:
+            if key in param_cache and random.random() < config.basic.PARAM_INJECTION_CACHE_RATE:
                 data[key] = random.choice(param_cache[key])
             else:
                 data[key] = random.choice(api_param_set['request_data'][key])
@@ -276,19 +308,19 @@ def param_injection_for_api(api):
     return url, data
 
 
-def gen_data_set(user_configured_api_list, api_knowledge, app_knowledge):
-    Agent.cinit(user_configured_api_list, api_knowledge, app_knowledge)
-    algorithm.entity.api.save_apis_to_json(user_configured_api_list)
+def gen_data_set(user_api_set, api_knowledge, app_knowledge):
+    Agent.cinit(user_api_set, api_knowledge, app_knowledge)
+    algorithm.entity.api.save_apis_to_json(user_api_set)
 
     users = []
     for role in NORMAL_USER_NUM:
         unlogged = True if role == 'unlogged_in_user' else False
         for i in range(NORMAL_USER_NUM[role]):
-            users.append(Agent(role=role, action_step=ACTION_STEP, malicious=False, unlogged=unlogged))
+            users.append(Agent(role=role, action_step=config.basic.ACTION_STEP, malicious=False, unlogged=unlogged))
     for role in MALICIOUS_USER_NUM:
         unlogged = True if role == 'unlogged_in_user' else False
         for i in range(MALICIOUS_USER_NUM[role]):
-            users.append(Agent(role=role, action_step=ACTION_STEP, malicious=True, unlogged=unlogged))
+            users.append(Agent(role=role, action_step=config.basic.ACTION_STEP, malicious=True, unlogged=unlogged))
     random.shuffle(users)
 
     final_data_set = []
@@ -300,10 +332,10 @@ def gen_data_set(user_configured_api_list, api_knowledge, app_knowledge):
         user.exec()
         LOGGER.info(f'已生成{seq_index}/{len(users)}个API序列')
 
-    save_agents_to_file(users, file_path=os.path.join(os.path.abspath(__file__), 'serialized_llm_agents.json'))
-    LOGGER.info(f'已将Agents(包含API序列)序列化至{os.path.join(os.path.abspath(__file__), 'serialized_llm_agents.json')}')
+    save_agents_to_file(users, file_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'serialized_llm_agents.json'))
+    LOGGER.info(f"已将Agents(包含API序列)序列化至{os.path.join(os.path.abspath(__file__), 'serialized_llm_agents.json')}")
 
-    users = load_agents_from_file(file_path=os.path.join(os.path.abspath(__file__), 'serialized_llm_agents.json'))
+    users = load_agents_from_file(file_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'serialized_llm_agents.json'))
     for user in users:
         user_data, seq_valid = param_injection_for_api_seq(
             api_title_seq=user.api_sequence,
@@ -332,5 +364,5 @@ def gen_data_set(user_configured_api_list, api_knowledge, app_knowledge):
     df = df[['user_index', 'Unnamed: 0', 'timestamp', 'http_method', 'url', 'api_endpoint', 'header', 'data',
              'request_body_size', 'response_body_size', 'response_status', 'execution_time', 'user_type', 'data_type',
              'data_valid', 'seq_valid']]
-    df.to_csv(os.path.join(os.path.abspath(__file__), 'simulated_traffic_data.csv'))
-    LOGGER.info(f"已完成流量数据收集：{os.path.join(os.path.abspath(__file__), 'simulated_traffic_data.csv')}")
+    df.to_csv(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'simulated_traffic_data.csv'))
+    LOGGER.info(f"已完成流量数据收集：{os.path.join(os.path.dirname(os.path.abspath(__file__)), 'simulated_traffic_data.csv')}")

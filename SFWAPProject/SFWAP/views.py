@@ -15,15 +15,15 @@ from rest_framework.permissions import IsAuthenticated
 from django.utils import timezone
 from .models import TargetApplication, API, PathSegment, RequestParam, RequestDataField
 from django.core.exceptions import ValidationError
-from .tasks import handle_api_discovery_notification
 
 
 @csrf_exempt
 def register(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        email = request.POST.get('email')
+
+        username = json.loads(request.body).get('username')
+        password = json.loads(request.body).get('password')
+        email = json.loads(request.body).get('email')
 
         if not username or not password or not email:
             return JsonResponse({'error': 'Missing required fields'}, status=400)
@@ -46,8 +46,8 @@ def register(request):
 @csrf_exempt
 def user_login(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+        username = json.loads(request.body).get('username')
+        password = json.loads(request.body).get('password')
 
         user = authenticate(request, username=username, password=password)
 
@@ -129,7 +129,7 @@ def setup_basic_features(target_app):
                 defaults={'description': basic_feature_info['description']}
             )
             target_app.detect_feature_list.add(feature)
-            return None
+        return None
     except requests.RequestException as e:
         return JsonResponse({'error': f'Error making get basic feature list request: {str(e)}'}, status=500)
     except ValueError:
@@ -279,6 +279,8 @@ def target_app(request):
             for credential in valid_credentials:
                 credential.save()
                 target_app.login_credentials.add(credential)
+
+            setup_basic_features(target_app)
 
             return JsonResponse({
                 'message': 'Target application updated successfully',
@@ -489,7 +491,7 @@ def update_user_api_list(request):
 
         # 异步调用请求算法端进行流量数据扩增
         data_collect_url = f'http://{target_app.SFWAP_address}/data_collect'
-        data = {'API_list': API_list_model_to_view(target_app.user_API_list)}
+        data = {'API_list': API_list_model_to_view(target_app.user_API_list), 'target_app': target_app_model_to_view(target_app)}
         try:
             requests.post(data_collect_url, json=data)
         except requests.RequestException as e:
@@ -571,7 +573,7 @@ def api_discovery(request):
         return JsonResponse({'error': 'Invalid mode parameter'}, status=400)
 
 
-def save_api_list(target_app, api_list_field_name, api_list_data) -> JsonResponse or None:
+def save_api_list(target_app, api_list_field_name, api_list_data):
     valid_api_items: List[Dict] = []
     for api_data in api_list_data:
         result = validate_api(api_data)
@@ -678,17 +680,17 @@ def cancel_api_discovery(request):
 
 # 接收算法端的API发现通知，由算法端调用
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
 def api_discovery_notification(request):
     app_id = request.query_params.get('app_id')
     if not app_id:
         return JsonResponse({'error': 'Missing target application ID'}, status=400)
-    try:
-        discovery_data = request.data
-        handle_api_discovery_notification.delay(app_id, discovery_data)
-        return JsonResponse({'message': 'Notification received and processing started'}, status=200)
-    except Exception as e:
-        return JsonResponse({'error': str(e)}, status=500)
+    # try:
+    discovery_data = request.data
+    print(discovery_data)
+    handle_api_discovery_notification.delay(app_id, discovery_data)
+    return JsonResponse({'message': 'Notification received and processing started'}, status=200)
+    # except Exception as e:
+    #     return JsonResponse({'error': str(e)}, status=500)
 
 
 def get_feature_list(feature_list_field):
@@ -1123,3 +1125,52 @@ def get_detection_records_by_api(request):
             traffic_data_list.append(traffic_data_info)
 
     return JsonResponse(traffic_data_list, safe=False, status=200)
+
+
+
+
+import logging
+from celery import shared_task
+
+from .models import TargetApplication
+from django.utils import timezone
+from typing import Dict, List
+
+logger = logging.getLogger(__name__)
+
+
+@shared_task
+def handle_api_discovery_notification(app_id, discovery_data):
+    try:
+        print("=============================================================================")
+        target_app = TargetApplication.objects.get(id=app_id)
+        discovered_api_list = [] 
+        for discovered_api in discovery_data.get('discovered_API_list', []):
+            if discovered_api.get('request_method') in ('POST', 'GET', 'PUT', 'DELETE'):
+                discovered_api_list.append(discovered_api)
+
+        # 更新 discovered_API_list
+        error_response = save_api_list(target_app, 'discovered_API_list', discovered_api_list)
+        if error_response:
+            return {'errror': error_response.content}
+
+        # 更新 user_API_list
+        if len(list(target_app.user_API_list.all())) == 0:
+            error_response = save_api_list(target_app, 'user_API_list', discovered_api_list)
+            if error_response:
+                return {'error': error_response.content}
+
+        # 更新状态
+        if target_app.detect_state == 'API_LIST_TO_DISCOVER':
+            target_app.detect_state = 'API_LIST_TO_IMPROVE'
+            target_app.save(update_fields=['detect_state'])
+        target_app.last_API_discovery_at = timezone.now()
+        target_app.save(update_fields=['last_API_discovery_at'])
+
+        return {'message': 'API discovery and update successful'}
+    except TargetApplication.DoesNotExist:
+        logger.error(f"Target application with id {app_id} not found.")
+        return {'error': f"Target application with id {app_id} not found."}
+    except Exception as e:
+        logger.error(f"An error occurred during API discovery notification handling: {str(e)}")
+        return {'error': str(e)}

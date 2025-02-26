@@ -8,7 +8,7 @@ from algorithm.url_crawler import BasicURLScraper
 from algorithm.web_element_crawler import WebElementCrawler
 from config.basic import url_decoding
 from config.api_log_filtering import NON_API_KEYS
-from config.basic import URL_ENCODING_CONVERT, APP_URL, LOGIN_CREDENTIALS
+import config.basic
 from config.crawling import *
 from algorithm.login import *
 from config.api_matching import API_MATCHES
@@ -17,12 +17,13 @@ from algorithm.entity.api import API
 from os.path import dirname
 from urllib.parse import urlparse, parse_qs, quote
 from config.log import LOGGER
+import config.basic
 
 param_set = {}
 
 
 def param_set_to_file():
-    json_path = os.path.join(os.path.abspath(__file__), 'param_set.json')
+    json_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'param_set.json')
     global param_set
     with open(json_path, 'w') as json_file:
         json.dump(param_set, json_file, indent=2)
@@ -38,6 +39,7 @@ def collect_param_set(api_log, api_list):
     # api_log[['api', 'url']].to_csv(f'{CURR_APP_NAME}_api_url.csv', index=False)
 
     # api_log['api'].to_csv('index.csv', index=False)
+    LOGGER.info(api_log['api'])
     api_log.apply(collect_param, args=(api_list,), axis=1)
     param_set_to_file()
     pass
@@ -156,11 +158,11 @@ def api_extract(api_crawl_log):
             elif type(sample_traffic_data['data']) is dict:
                 sample_body = sample_traffic_data['data']
         sample_headers = {}
-        if not pd.isna(sample_traffic_data['headers']):
-            if type(sample_traffic_data['headers']) is str:
-                sample_headers = eval(sample_traffic_data['headers'].replace('true', 'True').replace('false', 'False'))
-            elif type(sample_traffic_data['headers']) is dict:
-                sample_headers = sample_traffic_data['headers']
+        if not pd.isna(sample_traffic_data['header']):
+            if type(sample_traffic_data['header']) is str:
+                sample_headers = eval(sample_traffic_data['header'].replace('true', 'True').replace('false', 'False'))
+            elif type(sample_traffic_data['header']) is dict:
+                sample_headers = sample_traffic_data['header']
         api_info = {
             'method': item['method'],
             'path': path,
@@ -179,7 +181,7 @@ def api_extract(api_crawl_log):
 def gen_crawl_log():
     LOGGER.info("Verifying user login...")
     try:
-        sessions = [login(cred['username'], cred['password'], cred['role']) for cred in LOGIN_CREDENTIALS]
+        sessions = [login(cred['username'], cred['password'], cred['role']) for cred in config.basic.LOGIN_CREDENTIALS]
     except Exception as e:
         raise VerifyingLoginException(e)
 
@@ -187,7 +189,7 @@ def gen_crawl_log():
     try:
         url_set = []
         for session in sessions:
-            url_set.append(BasicURLScraper(base_url=APP_URL, session=session).crawl())
+            url_set.append(BasicURLScraper(base_url=config.basic.APP_URL, session=session).crawl())
     except Exception as e:
         raise UrlCrawlingException(e)
 
@@ -226,14 +228,16 @@ def convert_to_dict(header_str):
 
 
 def extract_api_log_to_csv():
-    domain = urlparse(APP_URL).netloc
+    domain = urlparse(config.basic.APP_URL).netloc
+    # LOGGER.info("DOMAIN"+domain)
     if ':' in domain:
         domain = domain.split(':')[0]
+    # LOGGER.info(domain)
 
     LOGGER.info(f'从爬虫记录中提取API流量...')
-    url_log_path = os.path.join(os.path.abspath(__file__), 'crawl_log', 'url_crawl_log.csv')
-    web_element_log_path = os.path.join(os.path.abspath(__file__), 'crawl_log', 'web_element_crawl_log.csv')
-    manual_traffic_log_path = os.path.join(os.path.abspath(__file__), 'crawl_log', 'manual_API_discovery_traffic_log.csv')
+    url_log_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'crawl_log', 'url_crawl_log.csv')
+    web_element_log_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'crawl_log', 'web_element_crawl_log.csv')
+    manual_traffic_log_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'crawl_log', 'manual_API_discovery_traffic_log.csv')
 
     url_log = None
     web_element_log = None
@@ -249,13 +253,15 @@ def extract_api_log_to_csv():
         if pd.read_csv(manual_traffic_log_path).shape[0] >= 2:
             manual_traffic_log = pd.read_csv(manual_traffic_log_path)
 
+    LOGGER.info(domain)
+    LOGGER.info(url_log)
     url_log = url_log[url_log['URL'].str.contains(domain)] if url_log is not None else None
     web_element_log = web_element_log[web_element_log['url'].str.contains(domain)] \
         if web_element_log is not None else None
     manual_traffic_log = manual_traffic_log[manual_traffic_log['url'].str.contains(domain)] \
         if manual_traffic_log is not None else None
 
-    if URL_ENCODING_CONVERT:
+    if config.basic.URL_ENCODING_CONVERT:
         url_log['URL'] = url_log['URL'].apply(url_decoding) if url_log is not None else None
         web_element_log['url'] = web_element_log['url'].apply(url_decoding) if web_element_log is not None else None
         manual_traffic_log['url'] = manual_traffic_log['url'].apply(url_decoding) \
@@ -266,6 +272,8 @@ def extract_api_log_to_csv():
         if web_element_log is not None else None
     manual_traffic_log = manual_traffic_log[manual_traffic_log['url'].apply(not_matches_static)] \
         if manual_traffic_log is not None else None
+    
+    LOGGER.info(url_log)
 
     if url_log is not None:
         url_log['method'] = url_log['Method'].apply(lambda x: x[0].upper() + x[1:].lower() if pd.notnull(x) else x)
@@ -302,6 +310,6 @@ def extract_api_log_to_csv():
     index_list = pd.Series(list(range(len(api_log))))
     api_log.insert(0, 'Unnamed: 0', index_list)
 
-    api_log.to_csv(os.path.join(os.path.abspath(__file__), 'crawl_log', 'API_crawl_log.csv'), index=False)
-    LOGGER.info(f'已将api_log保存至{os.path.join(os.path.abspath(__file__), 'crawl_log', 'API_crawl_log.csv')}')
+    api_log.to_csv(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'crawl_log', 'API_crawl_log.csv'), index=False)
+    LOGGER.info(f"已将api_log保存至{os.path.join(os.path.abspath(__file__), 'crawl_log', 'API_crawl_log.csv')}")
     return api_log

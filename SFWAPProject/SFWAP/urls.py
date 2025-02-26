@@ -17,6 +17,8 @@ urlpatterns = [
     path('api/discovery/cancel', cancel_api_discovery, name='cancel_api_discovery'),
     path('api/discovery/notification/', api_discovery_notification, name='api_discovery_notification'),
 
+    path('api/discovery/status/', get_auto_API_discovery_status, name='api_discovery_status'),
+
     path('detection/features/', detect_feature, name='detect_feature'),
     path('model/construct/', construct_model, name='construct_model'),
 

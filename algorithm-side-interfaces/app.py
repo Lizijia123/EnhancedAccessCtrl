@@ -7,6 +7,7 @@ import time
 from os.path import dirname
 from urllib.parse import urlparse
 from datetime import datetime
+from mitmproxy.tools.main import mitmproxy
 
 import requests
 from flask import Flask, request, jsonify
@@ -17,7 +18,7 @@ import config.basic
 import enhanced_detector
 from algorithm import traffic_data_generation
 from algorithm.entity.api import API
-from algorithm.entity.feature import SeqOccurTimeFeature, BASIC_FEATURES, APP_FEATURES, BASIC_FEATURE_DESCRIPTIONS
+from algorithm.entity.feature import SeqOccurTimeFeature, BASIC_FEATURES, BASIC_FEATURE_DESCRIPTIONS
 from algorithm.model_training import *
 from config.log import LOGGER
 import pandas as pd
@@ -99,14 +100,18 @@ def get_api_discovery_status():
 def async_api_discovery(data, backend_notification_url):
     global api_discovery_in_progress
     try:
-        time.sleep(20)
+        # time.sleep(20)
         # algorithm.api_discovery.gen_crawl_log()
 
+        # LOGGER.info("APP_URL"+config.basic.APP_URL)
         api_log = algorithm.api_discovery.extract_api_log_to_csv()
         api_list, sample_traffic_data_list = algorithm.api_discovery.api_extract(api_log)
+        # LOGGER.info("APP_URL"+config.basic.APP_URL)
+        # print("APP_URL"+config.basic.APP_URL)
+        LOGGER.info(api_list)
         algorithm.api_discovery.collect_param_set(api_log, api_list)
 
-        with open(os.path.join(os.path.abspath(__file__), 'algorithm', 'param_set.json'), 'r') as f:
+        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'algorithm', 'param_set.json'), 'r') as f:
             param_set = json.load(f)
 
         revised_api_list = []
@@ -148,7 +153,7 @@ def auto_api_discovery():
     config.basic.ACTION_STEP = data.get('user_behavior_cycle')
 
     # TODO
-    backend_notification_url = f'http://backend_host/api/api/discovery/notification/?app_id={app_id}'
+    backend_notification_url = f'http://49.234.6.241:8000/api/api/discovery/notification/?app_id={app_id}'
     api_discovery_in_progress = True
     thread = threading.Thread(target=async_api_discovery, args=(data, backend_notification_url))
     thread.start()
@@ -196,7 +201,7 @@ def finish_manual_api_discovery():
             writer = csv.DictWriter(outfile, fieldnames=fields_to_record)  # type: ignore
             if not file_exists:
                 writer.writeheader()
-            with open('traffic.csv', 'r') as infile:
+            with open('traffic.csv', 'r', newline='', encoding='utf-8') as infile:
                 reader = csv.DictReader(infile)
                 for row in reader:
                     request_time = datetime.strptime(row['request_time'], '%Y-%m-%d %H:%M:%S')
@@ -329,7 +334,7 @@ def api_matches(api_info, api_log_row):
     row_segments = (row_path + '/').split('/')[1:-1]
     if len(sample_segments) != len(row_segments):
         return False
-    user_configured_api_segments = api_info['path_segments']
+    user_configured_api_segments = api_info['path_segment_list']
     if len(user_configured_api_segments) != len(sample_segments):
         return False
     for i in range(len(sample_segments)):
@@ -350,7 +355,14 @@ def async_data_collect(data):
     ERROR_APIS.clear()
     DATA_COLLECTION_STATUS = "IN_PROGRESS"
     try:
+        target_app = data.get('target_app')
+        config.basic.APP_URL = target_app.get('APP_url')
+        config.basic.APP_DESCRIPTION = target_app.get('description')
+        config.basic.LOGIN_CREDENTIALS = target_app.get('login_credentials')
+        config.basic.ACTION_STEP = target_app.get('user_behavior_cycle')
+
         user_configured_api_list = data.get('API_list')
+        LOGGER.info(str(user_configured_api_list))
         api_log = algorithm.api_discovery.extract_api_log_to_csv()
         user_api_set = []
         knowledge_set = []
@@ -360,7 +372,7 @@ def async_data_collect(data):
                 break
             user_configured_api_info = user_configured_api_list[i]
             request_method = user_configured_api_info.get('request_method')
-            path_segments = user_configured_api_info.get('path_segments')
+            path_segments = user_configured_api_info.get('path_segment_list')
             sample_traffic_data = next(
                 (row for index, row in api_log.iterrows() if api_matches(user_configured_api_info, row)), None)
             if sample_traffic_data is None:
@@ -373,7 +385,7 @@ def async_data_collect(data):
 
             variable_indexes = []
             for j in range(len(path_segments)):
-                if user_configured_api_info['path_segments'][j]['is_path_variable']:
+                if user_configured_api_info['path_segment_list'][j]['is_path_variable']:
                     variable_indexes.append(j)
 
             query_params = [item['name'] for item in user_configured_api_info['request_param_list']]
@@ -416,7 +428,7 @@ def async_data_collect(data):
                 'sample_headers': sample_headers
             }, index=str(user_configured_api_info.get('id'))))
             knowledge_set.append({
-                'function_description': user_configured_api_info.get('description'),
+                'function_description': user_configured_api_info.get('function_description'),
                 'permission_info': user_configured_api_info.get('permission_info'),
             })
 
@@ -449,14 +461,16 @@ def async_data_collect(data):
                 "roles": roles,
 
             }
-            traffic_data_generation.gen_data_set(user_configured_api_list, api_knowledge, app_knowledge)
+
+            LOGGER.info(str([api.index for api in user_api_set])+ str(api_knowledge)+str(app_knowledge))
+            traffic_data_generation.gen_data_set(user_api_set, api_knowledge, app_knowledge)
 
         if STOP_FLAG.is_set():
             DATA_COLLECTION_STATUS = "TERMINATED"
         else:
             DATA_COLLECTION_STATUS = "COMPLETED"
     except Exception as e:
-        LOGGER.error(f"Error in data collection: {e}")
+        LOGGER.error(f"Error in data collection: {e.with_traceback(10)}")
         DATA_COLLECTION_STATUS = "ERROR"
     finally:
         STOP_FLAG.clear()
@@ -493,15 +507,48 @@ def get_basic_detect_features():
 # 启动 mitmproxy 的函数
 def start_mitmproxy():
     try:
-        # 启动 mitmproxy 并指定脚本
-        subprocess.run(['mitmproxy', '-s', 'traffic_collector.py'])
+        # 启动 mitmproxy 并指定脚本，监听 0.0.0.0:8080
+        subprocess.run(['mitmdump', '-s', 'traffic_collector.py', '--listen-host', '0.0.0.0'])
     except Exception as e:
         print(f"Error starting mitmproxy: {e}")
-
 
 # 在项目启动时启动 mitmproxy
 mitmproxy_thread = threading.Thread(target=start_mitmproxy)
 mitmproxy_thread.start()
+
+# 配置端口转发
+# sudo iptables -t nat -F
+# sudo iptables -t nat -A PREROUTING ! -s [YOUR_SERVER_IP] -p tcp --dport 5230 -j REDIRECT --to-port 8080
+# sudo iptables -t nat -A OUTPUT ! -s [YOUR_SERVER_IP] -p tcp -d 127.0.0.1 --dport 5230 -j REDIRECT --to-port 8080
+# sudo netfilter-persistent save
+
+# import time
+# time.sleep(5)  # 等待 5 秒，确保 mitmproxy 已经启动
+
+# # 向 mitmproxy 发起测试请求
+# def send_test_request():
+#     try:
+#         proxy = {
+#             'http': 'http://127.0.0.1:8080',
+#             'https': 'http://127.0.0.1:8080'
+#         }
+#         url = 'http://www.baidu.com'  # 测试请求的目标 URL
+#         response = requests.get(url, proxies=proxy)
+#         print(f"Response status code: {response.status_code}")
+#         print(f"Response text: {response.text[:200]}")  # 只打印前 200 个字符
+#     except Exception as e:
+#         print(f"Error sending test request: {e}")
+
+# # 发起测试请求
+# send_test_request()
+# send_test_request()
+# send_test_request()
+# send_test_request()
+# send_test_request()
+# send_test_request()
+# send_test_request()
+# send_test_request()
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)

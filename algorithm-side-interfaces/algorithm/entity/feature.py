@@ -90,7 +90,7 @@ class SeqOccurTimeFeature(Feature):
     def __init__(self, keyword_list):
         super().__init__()
         self.keyword_list = keyword_list
-        self.signature = f'SeqOccurTime_{str(hashlib.sha256(''.join(self.keyword_list).encode()).hexdigest())}'
+        self.signature = f"SeqOccurTime_{str(hashlib.sha256(''.join(self.keyword_list).encode()).hexdigest())}"
 
     @overrides
     def get_val(self, data_seq):

@@ -6,31 +6,15 @@ WEB_ELEMENT_CRAWLING_MAX_TIME_PER_URL = 3600
 AUTH = {
     'admin': [
         {
-            'uname': 'admin',
+            'uname': 'adminuser',
             'pwd': '202501'
         }
     ],
     'ordinary_user': [
         {
-            'uname': 'userA',
+            'uname': 'normaluser',
             'pwd': '202501'
-        },
-        {
-            'uname': 'userB',
-            'pwd': '202501'
-        },
-        {
-            'uname': 'userC',
-            'pwd': '202501'
-        },
-        {
-            'uname': 'userD',
-            'pwd': '202501'
-        },
-        {
-            'uname': 'userE',
-            'pwd': '202501'
-        },
+        }
     ]
 }
 

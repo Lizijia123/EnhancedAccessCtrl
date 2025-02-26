@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from config.basic import APP_URL, URL_ENCODING_CONVERT
+import config.basic
 
 login_wait_time = 5
 page_elements = {
@@ -89,7 +89,7 @@ class Loginer:
 
     def login(self, uname, pwd, admin=False):
         self.driver.delete_all_cookies()
-        self.driver.get(APP_URL)
+        self.driver.get(config.basic.APP_URL)
 
         self._wait_for('to_login_btn')
         self._element('to_login_btn').click()
@@ -111,7 +111,7 @@ class HumhubLoginer(Loginer):
 
     def login(self, uname, pwd, admin=False):
         self.driver.delete_all_cookies()
-        self.driver.get(APP_URL)
+        self.driver.get(config.basic.APP_URL)
 
         self._wait_for('uname_input')
         self._wait_for('pwd_input')

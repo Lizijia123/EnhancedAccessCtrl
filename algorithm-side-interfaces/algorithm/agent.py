@@ -5,6 +5,7 @@ from algorithm.brain import Brain
 from config.basic import *
 from config.log import LOGGER
 from config.role import APIS_OF_USER_ROLES
+import config.basic
 
 
 class Agent:
@@ -37,7 +38,8 @@ class Agent:
             action_step=self.action_step,
         )
         # 选取当前用户的用户名，后续基于此用户名的cookie进行参数填充并生成具体流量
-        self.uname = random.choice([item['username'] for item in LOGIN_CREDENTIALS if item['user_role'] == self.role])
+        LOGGER.info(config.basic.LOGIN_CREDENTIALS)
+        self.uname = random.choice([item['username'] for item in config.basic.LOGIN_CREDENTIALS if item['user_role'] == self.role])
 
     def exec(self):
         self.api_sequence.clear()

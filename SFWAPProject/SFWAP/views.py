@@ -528,7 +528,7 @@ def get_auto_API_discovery_status(request):
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def api_discovery(request):
+def start_api_discovery(request):
     app_id = request.query_params.get('app_id')
     if not app_id:
         return JsonResponse({'error': 'Missing target application ID'}, status=400)
@@ -547,7 +547,6 @@ def api_discovery(request):
     if mode == 'AUTO':
         try:
             response = requests.post(f'http://{sfwap_address}/api_discovery', json=target_app_model_to_view(target_app))
-
             return JsonResponse(response.json(), status=response.status_code)
         except requests.RequestException as e:
             return JsonResponse({'error': f'Error making auto API discovery start request to SFWAP-Detector: {str(e)}'},
@@ -796,6 +795,27 @@ def detect_feature(request):
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
+def get_data_collection_status(request):
+    app_id = request.query_params.get('app_id')
+    if not app_id:
+        return JsonResponse({'error': 'Missing target application ID'}, status=400)
+    try:
+        target_app = TargetApplication.objects.get(id=app_id, user=request.user)
+    except TargetApplication.DoesNotExist:
+        return JsonResponse({'error': 'Target application not found or you do not have permission'}, status=404)
+    try:
+        response = requests.get(f'http://{target_app.SFWAP_address}/data_collect_status')
+        return JsonResponse(response.json(), status=response.status_code)
+    except requests.RequestException as e:
+        return JsonResponse(
+            {'error': f'Error making auto data collection state query request to SFWAP-Detector: {str(e)}'},
+            status=500)
+    except ValueError:
+        return JsonResponse({'error': 'Invalid JSON response from SFWAP-Detector'}, status=500)
+    
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
 # 点击模型构建按钮时调用；如果是102状态码则客户端轮询直到生成report
 def construct_model(request):
     app_id = request.query_params.get('app_id')
@@ -830,6 +850,7 @@ def construct_model(request):
     try:
         response = requests.post(url, json=data)
         result = response.json()
+        print(result)
         error = result.get('error')
         if error:
             return JsonResponse({'error': 'Model construction error: ' + error}, status=500)
@@ -927,7 +948,6 @@ def start_detection(request):
     try:
         response = requests.post(detection_start_url, json=data)
         result = response.json()
-        info = result.get('info')
         error = result.get('error')
         if response.status_code != 200:
             return JsonResponse({'error': 'Detection start failed: ' + error}, status=500)
@@ -959,7 +979,6 @@ def pause_detection(request):
     try:
         response = requests.get(detection_pause_url)
         result = response.json()
-        info = result.get('info')
         error = result.get('error')
         if response.status_code != 200:
             return JsonResponse({'error': 'Detection pause failed: ' + error}, status=500)
@@ -989,8 +1008,10 @@ def get_detection_records_by_combination(request):
     records_url = f'http://{target_app.SFWAP_address}/detection/records'
     try:
         response = requests.get(records_url)
-        response.raise_for_status()
         records_data = response.json().get('records')
+        error = response.json().get('error')
+        if error:
+            return JsonResponse({'error': error}, status=500)
     except requests.RequestException as e:
         return JsonResponse({'error': f'Error fetching detection records: {str(e)}'}, status=500)
     except ValueError:

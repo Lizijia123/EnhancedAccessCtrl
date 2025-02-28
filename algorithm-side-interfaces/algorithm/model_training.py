@@ -1,3 +1,5 @@
+
+
 import pandas as pd
 import joblib
 # import warnings
@@ -12,8 +14,8 @@ from config.basic import TEST_DATA_SIZE_RATE
 
 
 def extract_features(df, features):
-    print(df)
-    print(features)
+    import config.log
+    config.log.LOGGER.info(f"Extracting features... Size of feature_list: {str(len(features))}")
     
     feats = {}
     for feature in features:
@@ -24,10 +26,7 @@ def extract_features(df, features):
 def extract_feats_and_labels(user_data_path, features):
     df = pd.read_excel(user_data_path, sheet_name='Sheet1')
     if len(df) == 0:
-        raise Exception("用户流量数据集为空")
-    
-    import config.log
-    config.log.LOGGER.info(features)
+        raise Exception("Empty train or test dataset")
 
     user_groups = df.groupby('user_index')
     feature_list = []
@@ -47,9 +46,8 @@ def extract_feats_and_labels(user_data_path, features):
 
 
 def train_and_save_xgboost_model(train_path, test_path, model_path, scaler_path, features):
-
     import config.log
-    config.log.LOGGER.info(features)
+    config.log.LOGGER.info(f"Training model... Size of feature_list: {str(len(features))}")
     # 读取测试数据并提取特征
     X_train, y_train = extract_feats_and_labels(train_path, features=features)
 
@@ -72,6 +70,7 @@ def train_and_save_xgboost_model(train_path, test_path, model_path, scaler_path,
     y_pred = model.predict(X_test_scaled)
     # accuracy = accuracy_score(y_test, y_pred)
     report = classification_report(y_test, y_pred)
+    config.log.LOGGER.info("Model constructed.")
     return report
 
 
@@ -97,3 +96,4 @@ def data_splitting(simulated_data_path, train_path, test_path):
 
     train_df.to_excel(train_path, index=False, sheet_name='Sheet1')
     test_df.to_excel(test_path, index=False, sheet_name='Sheet1')
+

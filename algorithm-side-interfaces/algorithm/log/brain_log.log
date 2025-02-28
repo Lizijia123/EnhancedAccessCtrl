@@ -4436,3 +4436,73 @@ Your response MUST be in the following JSON format, and you MUST NOT include any
 }
 ```
 2025-02-26 22:03:26,950 - INFO - gen_api_seq()方法返回: seq=['API_1'], malicious_sign_seq=[0]
+2025-02-28 11:26:04,797 - INFO - gen_api_seq()方法参数: malicious=False, role=admin, action_step=1
+2025-02-28 11:26:06,000 - INFO - Query: Assume you are a admin .
+You need to generate an API call sequence with approximately 1 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_1"],
+  "malicious_sign_seq": [0]
+}
+```
+2025-02-28 11:26:06,000 - INFO - gen_api_seq()方法返回: seq=['API_1'], malicious_sign_seq=[0]
+2025-02-28 11:26:06,001 - INFO - gen_api_seq()方法参数: malicious=True, role=ordinary_user, action_step=1
+2025-02-28 11:26:07,380 - INFO - Query: Assume you are a ordinary_user .
+You need to generate an API call sequence with approximately 1 steps.
+However, you will attempt privilege escalation by making unauthorized API calls.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_1", "API_8"],
+  "malicious_sign_seq": [0, 1]
+}
+```
+2025-02-28 11:26:07,381 - INFO - gen_api_seq()方法返回: seq=['API_1', 'API_8'], malicious_sign_seq=[0, 1]
+2025-02-28 11:26:07,381 - INFO - gen_api_seq()方法参数: malicious=False, role=ordinary_user, action_step=1
+2025-02-28 11:26:08,567 - INFO - Query: Assume you are a ordinary_user .
+You need to generate an API call sequence with approximately 1 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_1"],
+  "malicious_sign_seq": [0]
+}
+```
+2025-02-28 11:26:08,567 - INFO - gen_api_seq()方法返回: seq=['API_1'], malicious_sign_seq=[0]
+2025-02-28 11:26:08,568 - INFO - gen_api_seq()方法参数: malicious=True, role=unlogged_in_user, action_step=1
+2025-02-28 11:26:09,752 - INFO - Query: Assume you are a unlogged_in_user who has logged in to the application.
+You need to generate an API call sequence with approximately 1 steps.
+However, you will attempt privilege escalation by making unauthorized API calls.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_1"],
+  "malicious_sign_seq": [1]
+}
+```
+2025-02-28 11:26:09,752 - INFO - gen_api_seq()方法返回: seq=['API_1'], malicious_sign_seq=[1]

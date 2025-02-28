@@ -155,9 +155,9 @@ def auto_api_discovery():
     config.basic.APP_DESCRIPTION = data.get('description')
     config.basic.LOGIN_CREDENTIALS = data.get('login_credentials')
     config.basic.ACTION_STEP = data.get('user_behavior_cycle')
-
+    
     # TODO
-    backend_notification_url = f'http://49.234.6.241:8000/api/api/discovery/notification/?app_id={app_id}'
+    backend_notification_url = f'http://49.234.6.241:8000/api/api-discovery/notification/?app_id={app_id}'
     api_discovery_in_progress = True
     thread = threading.Thread(target=async_api_discovery, args=(data, backend_notification_url))
     thread.start()
@@ -273,6 +273,7 @@ def cancel_manual_api_discovery():
 
 @app.route('/construct_model', methods=['POST'])
 def construct_model():
+    LOGGER.info('Trying to construct model...')
     data = request.get_json()
     target_app = data.get('target_app')
     config.basic.APP_URL = target_app.get('APP_url')
@@ -282,13 +283,13 @@ def construct_model():
 
     try:
         global DATA_COLLECTION_STATUS
-        print('DATA_COLLECTION_STATUS: ' + DATA_COLLECTION_STATUS)
+        LOGGER.info('DATA_COLLECTION_STATUS: ' + DATA_COLLECTION_STATUS)
         if DATA_COLLECTION_STATUS == 'NOT_STARTED':
             thread = threading.Thread(target=async_data_collect, args=(data,))
             thread.start()
-            return jsonify({'message': 'Data collection is ongoing, please try again later'}), 102
+            return jsonify({'message': 'Data collection is ongoing, please try again later'}), 200
         elif DATA_COLLECTION_STATUS == 'IN_PROGRESS':
-            return jsonify({'message': 'Data collection is ongoing, please try again later'}), 102
+            return jsonify({'message': 'Data collection is ongoing, please try again later'}), 200
         else:
             detection_feature_list = data.get('detection_feature_list')
 
@@ -321,14 +322,14 @@ def construct_model():
 # 启动检测
 @app.route('/detection/start', methods=['POST'])
 def start_detection():
-    print(config.basic.LOGIN_CREDENTIALS)
     data = request.get_json()
     config.basic.COMBINED_DATA_DURATION = data.get('combined_data_duration')
     import enhanced_detector
     if enhanced_detector.read_detection_status() == 'ON':
         return jsonify({'error': 'Detection has already started'}), 409
     enhanced_detector.write_detection_status("ON")
-    return jsonify({"info": "Detection has started successfully"}), 200
+    LOGGER.info(f"Detection started. Combined data duration: {config.basic.COMBINED_DATA_DURATION}")
+    return jsonify({"message": "Detection has started successfully"}), 200
 
 
 # 暂停检测
@@ -338,17 +339,20 @@ def pause_detection():
     if enhanced_detector.read_detection_status() == 'OFF':
         return jsonify({'error': 'Detection has already paused'}), 409
     enhanced_detector.write_detection_status('OFF')
-    return jsonify({'info': 'Detection has paused successfully'}), 200
+    LOGGER.info(f"Detection paused.")
+    return jsonify({'message': 'Detection has paused successfully'}), 200
 
 
 @app.route('/detection/records', methods=['GET'])
 def get_detection_records():
-    # 模拟获取检测记录逻辑，返回示例数据
-    records = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'detect_records.json'), encoding='utf-8'))
+    try:
+        records = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'detect_records.json'), encoding='utf-8'))
+    except Exception as e:
+        return jsonify({'error': f'Error to load detection records. {e}'}), 500
     return jsonify({'records': records}), 200
 
 
-def api_matches(api_info, api_log_row):
+def api_log_matches_user_configured_api_info(api_info, api_log_row):
     if not api_info.get('request_method').upper() == api_log_row['method'].upper():
         return False
     sample_url = api_info.get('sample_url')
@@ -379,7 +383,6 @@ def api_matches(api_info, api_log_row):
     return True
 
 
-# 异步执行的数据收集函数
 def async_data_collect(data):
     global DATA_COLLECTION_STATUS, ERROR_APIS
     ERROR_APIS.clear()
@@ -404,7 +407,7 @@ def async_data_collect(data):
             request_method = user_configured_api_info.get('request_method')
             path_segments = user_configured_api_info.get('path_segment_list')
             sample_traffic_data = next(
-                (row for index, row in api_log.iterrows() if api_matches(user_configured_api_info, row)), None)
+                (row for index, row in api_log.iterrows() if api_log_matches_user_configured_api_info(user_configured_api_info, row)), None)
             if sample_traffic_data is None:
                 ERROR_APIS.append(user_configured_api_info)
                 continue
@@ -489,7 +492,6 @@ def async_data_collect(data):
                     "There are no example malicious seqs"
                 ],
                 "roles": roles,
-
             }
 
             LOGGER.info(str([api.index for api in user_api_set])+ str(api_knowledge)+str(app_knowledge))
@@ -550,8 +552,8 @@ def start_mitmproxy():
     except Exception as e:
         print(f"Error starting mitmproxy: {e}")
 
-mitmproxy_thread = threading.Thread(target=start_mitmproxy)
-mitmproxy_thread.start()
+# mitmproxy_thread = threading.Thread(target=start_mitmproxy)
+# mitmproxy_thread.start()
 
 
 

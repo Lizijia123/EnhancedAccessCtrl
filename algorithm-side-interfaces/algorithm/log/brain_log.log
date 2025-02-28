@@ -4506,3 +4506,175 @@ Your response MUST be in the following JSON format, and you MUST NOT include any
 }
 ```
 2025-02-28 11:26:09,752 - INFO - gen_api_seq()方法返回: seq=['API_1'], malicious_sign_seq=[1]
+2025-02-28 11:52:22,774 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-02-28 11:52:23,938 - INFO - Query: Assume you are a unlogged_in_user who has logged in to the application.
+You need to generate an API call sequence with approximately 1 steps.
+However, you will attempt privilege escalation by making unauthorized API calls.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_1"],
+  "malicious_sign_seq": [1]
+}
+```
+2025-02-28 11:52:23,939 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[1] ==========
+2025-02-28 11:52:23,939 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-02-28 11:52:25,143 - INFO - Query: Assume you are a ordinary_user .
+You need to generate an API call sequence with approximately 1 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_1"],
+  "malicious_sign_seq": [0]
+}
+```
+2025-02-28 11:52:25,144 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-02-28 11:52:25,144 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-02-28 11:52:26,512 - INFO - Query: Assume you are a ordinary_user .
+You need to generate an API call sequence with approximately 1 steps.
+However, you will attempt privilege escalation by making unauthorized API calls.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_1", "API_8"],
+  "malicious_sign_seq": [0, 1]
+}
+```
+2025-02-28 11:52:26,513 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_8'], malicious_sign_seq=[0, 1] ==========
+2025-02-28 11:52:26,513 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-02-28 11:52:27,743 - INFO - Query: Assume you are a admin .
+You need to generate an API call sequence with approximately 1 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_1"],
+  "malicious_sign_seq": [0]
+}
+```
+2025-02-28 11:52:27,746 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-02-28 11:58:05,203 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-02-28 11:58:06,371 - INFO - Query: Assume you are a admin .
+You need to generate an API call sequence with approximately 1 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_1"],
+  "malicious_sign_seq": [0]
+}
+```
+2025-02-28 11:58:06,371 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-02-28 11:58:06,372 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-02-28 11:58:07,669 - INFO - Query: Assume you are a ordinary_user .
+You need to generate an API call sequence with approximately 1 steps.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_1"],
+  "malicious_sign_seq": [0]
+}
+```
+2025-02-28 11:58:07,669 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-02-28 11:58:07,670 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-02-28 11:58:08,940 - INFO - Query: Assume you are a unlogged_in_user who has logged in to the application.
+You need to generate an API call sequence with approximately 1 steps.
+However, you will attempt privilege escalation by making unauthorized API calls.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_1"],
+  "malicious_sign_seq": [1]
+}
+```
+2025-02-28 11:58:08,940 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[1] ==========
+2025-02-28 11:58:08,941 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-02-28 11:58:10,411 - INFO - Query: Assume you are a ordinary_user .
+You need to generate an API call sequence with approximately 1 steps.
+However, you will attempt privilege escalation by making unauthorized API calls.
+Your response MUST be in the following JSON format, and you MUST NOT include any explanations:
+```json
+{
+  "api_seq": ["API_1", "API_3", "API_5"],
+  "malicious_sign_seq": [0, 1, 0]
+}
+```
+, Answer: ```json
+{
+  "api_seq": ["API_1", "API_8"],
+  "malicious_sign_seq": [0, 1]
+}
+```
+2025-02-28 11:58:10,411 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_8'], malicious_sign_seq=[0, 1] ==========
+2025-02-28 12:03:00,961 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-02-28 12:03:02,358 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_8'], malicious_sign_seq=[0, 1] ==========
+2025-02-28 12:03:02,359 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-02-28 12:03:03,536 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-02-28 12:03:03,537 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-02-28 12:03:04,821 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[1] ==========
+2025-02-28 12:03:04,821 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-02-28 12:03:05,979 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-02-28 12:05:05,200 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-02-28 12:05:06,367 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[1] ==========
+2025-02-28 12:05:06,367 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-02-28 12:05:07,636 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-02-28 12:05:07,637 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-02-28 12:05:08,853 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-02-28 12:05:08,853 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-02-28 12:05:10,239 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_8'], malicious_sign_seq=[0, 1] ==========
+2025-02-28 12:07:25,722 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-02-28 12:07:27,101 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_8'], malicious_sign_seq=[0, 1] ==========
+2025-02-28 12:07:27,102 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-02-28 12:07:28,351 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[1] ==========
+2025-02-28 12:07:28,352 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-02-28 12:07:29,533 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-02-28 12:07:29,533 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-02-28 12:07:30,804 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-02-28 12:10:58,887 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-02-28 12:11:00,321 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_8'], malicious_sign_seq=[0, 1] ==========
+2025-02-28 12:11:00,321 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-02-28 12:11:01,465 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-02-28 12:11:01,466 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-02-28 12:11:02,584 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-02-28 12:11:02,584 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-02-28 12:11:03,722 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[1] ==========

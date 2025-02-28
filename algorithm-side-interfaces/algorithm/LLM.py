@@ -16,7 +16,7 @@ class BaseClient:
         self.api_key = os.getenv(api_key_env)
 
         if not self.api_key:
-            raise ValueError(f"API Key 未找到，请设置环境变量 {api_key_env}")
+            raise ValueError(f"API Key unfound，please set up the environment variable: {api_key_env}")
 
         self.base_url = base_url
 
@@ -27,7 +27,7 @@ class BaseClient:
             try:
                 return func(*args, **kwargs)  # 调用成功，直接返回结果
             except Exception as e:
-                print(f"第 {attempt} 次尝试失败，错误: {str(e)}，等待 {wait_time} 秒后重试...")
+                print(f"Failed attempting {attempt} times，Error: {str(e)}，Retrying {wait_time} seconds later...")
                 time.sleep(wait_time)
 
         print("thinking failure...")
@@ -106,7 +106,7 @@ class LlamaClient(BaseClient):
         if response.status_code == 200:
             return response.output.choices[0].message.content
         else:
-            raise Exception(f"请求失败: {response.status_code}, 错误代码: {response.code}, 错误信息: {response.message}")
+            raise Exception(f"Failed to request LLM: {response.status_code}, Error code: {response.code}, Error message: {response.message}")
 
 
 # 示例用法

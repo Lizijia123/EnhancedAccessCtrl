@@ -63,7 +63,7 @@ def call_api(api, url, data, cookie_list):
         # 'response': response.text
     }  # ["status_code", "method", "url", "headers", "data", "response"]
 
-    LOGGER.info(f'Status:  调用API: {method} {url} {data}')
+    LOGGER.info(f'Status:  Calling API: {method} {url} {data}')
     return calling_info
 
 
@@ -103,7 +103,7 @@ def fetch_cookie(uname, unlogged):
             cookie_list = Loginer(driver).login(uname, pwd, admin=(uname == config.basic.ADMIN_UNAME))
             LOGGER.info(f"Fetched cookie: {uname}, {cookie_list}")
         except Exception as e:
-            print(f"An error occurred while fetching cookies: {e}")
+            LOGGER.info(f"An error occurred while fetching cookies: {e}")
         finally:
             if driver:
                 driver.quit()
@@ -153,7 +153,7 @@ def param_injection_for_api_seq(api_title_seq, uname, unlogged, action_type_seq,
     param_cache.clear()
 
     api_title_info_map = {f'API_{str(api.index)}': api for api in Agent.apis}
-    LOGGER.info(api_title_info_map)
+    # LOGGER.info(api_title_info_map)
     api_seq = [(api_title_info_map[title] if title in api_title_info_map else api_title_info_map[random.choice(list(api_title_info_map.keys()))]) for title in api_title_seq]
 
     traffic_data_seq = []
@@ -162,7 +162,7 @@ def param_injection_for_api_seq(api_title_seq, uname, unlogged, action_type_seq,
         try_time = 0
         data_valid = False
         calling_info = {}
-        LOGGER.info('hello')
+        # LOGGER.info('hello')
 
         while try_time < config.basic.PARAM_INJECTION_MAX_RETRY:
             url, req_data = param_injection_for_api(api_seq[i])
@@ -174,7 +174,7 @@ def param_injection_for_api_seq(api_title_seq, uname, unlogged, action_type_seq,
         if not data_valid:
             seq_valid = False
 
-        LOGGER.info(f'轮询次数：{try_time}；单条数据合法性：{data_valid}；组合流量数据合法性：{seq_valid}')
+        LOGGER.info(f'Param injection attempting time：{try_time}；Single traffic data valid：{data_valid}；Traffic data combination valid：{seq_valid}')
 
         # calling_info = {
         #     'timestamp': timestamp,
@@ -276,6 +276,7 @@ def gen_data_set(user_api_set, api_knowledge, app_knowledge):
     Agent.cinit(user_api_set, api_knowledge, app_knowledge)
     algorithm.entity.api.save_apis_to_json(user_api_set)
 
+    LOGGER.info("Generating simulated API sequences...")
     users = []
     for role in config.basic.NORMAL_USER_NUM:
         unlogged = True if role == 'unlogged_in_user' else False
@@ -294,11 +295,12 @@ def gen_data_set(user_api_set, api_knowledge, app_knowledge):
     for user in users:
         seq_index += 1
         user.exec()
-        LOGGER.info(f'已生成{seq_index}/{len(users)}个API序列')
+        LOGGER.info(f'API sequence {seq_index}/{len(users)} generated')
 
     save_agents_to_file(users, file_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'serialized_llm_agents.json'))
-    LOGGER.info(f"已将Agents(包含API序列)序列化至{os.path.join(os.path.abspath(__file__), 'serialized_llm_agents.json')}")
+    LOGGER.info(f"API sequences serialized to {os.path.join(os.path.abspath(__file__), 'serialized_llm_agents.json')}")
 
+    LOGGER.info("Generating simulated traffic data set...")
     users = load_agents_from_file(file_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'serialized_llm_agents.json'))
     for user in users:
         user_data, seq_valid = param_injection_for_api_seq(
@@ -319,7 +321,7 @@ def gen_data_set(user_api_set, api_knowledge, app_knowledge):
         final_data_set.extend(user_data)
         user_index += 1
         LOGGER.info(
-            f'已完成{user_index}/{len(users)}个用户的流量数据收集：user: {user.uname} malicious: {user.malicious}')
+            f'Simulated traffic data for {user_index}/{len(users)} user collected：user: {user.uname} malicious: {user.malicious}')
 
     df = pd.DataFrame(final_data_set,
                       columns=['timestamp', 'http_method', 'url', 'api_endpoint', 'header', 'data',
@@ -329,4 +331,4 @@ def gen_data_set(user_api_set, api_knowledge, app_knowledge):
              'request_body_size', 'response_body_size', 'response_status', 'execution_time', 'user_type', 'data_type',
              'data_valid', 'seq_valid']]
     df.to_csv(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'simulated_traffic_data.csv'))
-    LOGGER.info(f"已完成流量数据收集：{os.path.join(os.path.dirname(os.path.abspath(__file__)), 'simulated_traffic_data.csv')}")
+    LOGGER.info(f"All simulated traffic data collected：{os.path.join(os.path.dirname(os.path.abspath(__file__)), 'simulated_traffic_data.csv')}")

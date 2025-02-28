@@ -24,7 +24,7 @@ import fasttext.util
 
 def init_drain3():
     config = TemplateMinerConfig()
-    config.load(os.path.join(os.path.abspath(__file__), 'api-discovery.ini'))
+    config.load(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'api-discovery.ini'))
     config.profiling_enabled = True
     template_miner = TemplateMiner(config=config)
     return template_miner

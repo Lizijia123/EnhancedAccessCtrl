@@ -1,6 +1,6 @@
 ,user_index,Unnamed: 0,timestamp,http_method,url,api_endpoint,header,data,request_body_size,response_body_size,response_status,execution_time,user_type,data_type,data_valid,seq_valid
-0,0,0,2025-02-28 03:26:09,DELETE,http://49.234.6.241:5230/api/v1/resource/16,/api/v1/resource/16,{},,2,5,200,0.004,0,0,True,True
-1,1,1,2025-02-28 03:26:09,DELETE,http://49.234.6.241:5230/api/v1/memo/21,/api/v1/memo/21,{},,2,5,200,0.004,1,0,True,False
-2,1,2,2025-02-28 03:26:09,DELETE,http://47.97.114.24:5230/api/v1/resource/16,/api/v1/resource/16,{},,2,5,200,0.003,1,1,False,False
-3,2,3,2025-02-28 03:26:09,DELETE,http://49.234.6.241:5230/api/v1/memo/21,/api/v1/memo/21,{},,2,5,200,0.004,0,0,True,True
-4,3,4,2025-02-28 03:26:09,DELETE,http://49.234.6.241:5230/api/v1/memo/21,/api/v1/memo/21,{},,2,5,200,0.003,1,1,False,False
+0,0,0,2025-02-28 04:11:03,DELETE,http://49.234.6.241:5230/api/v1/memo/21,/api/v1/memo/21,{},,2,5,200,0.005,1,0,True,False
+1,0,1,2025-02-28 04:11:03,DELETE,http://49.234.6.241:5230/api/v1/resource/16,/api/v1/resource/16,{},,2,5,200,0.003,1,1,False,False
+2,1,2,2025-02-28 04:11:03,DELETE,http://49.234.6.241:5230/api/v1/memo/21,/api/v1/memo/21,{},,2,5,200,0.004,0,0,True,True
+3,2,3,2025-02-28 04:11:03,DELETE,http://49.234.6.241:5230/api/v1/resource/16,/api/v1/resource/16,{},,2,5,200,0.003,0,0,True,True
+4,3,4,2025-02-28 04:11:03,DELETE,http://47.97.114.24:5230/api/v1/memo/21,/api/v1/memo/21,{},,2,5,200,0.003,1,1,False,False

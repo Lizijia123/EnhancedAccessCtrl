@@ -37,7 +37,7 @@ class Agent:
             action_step=self.action_step,
         )
         # 选取当前用户的用户名，后续基于此用户名的cookie进行参数填充并生成具体流量
-        LOGGER.info(config.basic.LOGIN_CREDENTIALS)
+        # LOGGER.info(config.basic.LOGIN_CREDENTIALS)
         self.uname = random.choice([item['username'] for item in config.basic.LOGIN_CREDENTIALS if item['user_role'] == self.role])
 
     def exec(self):

@@ -84,7 +84,7 @@ class Brain:
             ]
 
             answer = self.client.Think(messages)
-            self.logger.info(f"Query: {prompt}, Answer: {answer}")
+            # self.logger.info(f"Query: {prompt}, Answer: {answer}")
 
             # 调用专门的解析方法
             return self._parse_llm_response_for_api_seq(answer)
@@ -117,7 +117,7 @@ class Brain:
             return [], []  # 返回空列表，防止 unpack 失败
 
     def gen_api_seq(self, malicious, role, action_step):
-        self.logger.info(f"gen_api_seq()方法参数: malicious={malicious}, role={role}, action_step={action_step}")
+        self.logger.info(f"========== Called gen_api_seq() with params: malicious={malicious}, role={role}, action_step={action_step} ==========")
 
         """生成 API 调用序列，确保返回 3 个值"""
         # if role not in self.auth_info_set:
@@ -153,5 +153,5 @@ class Brain:
             self.logger.error(f"Invalid LLM response format: seq={seq}, malicious_sign_seq={malicious_sign_seq}")
             seq, malicious_sign_seq = [], []  # **防止 `NoneType` 错误**
 
-        self.logger.info(f"gen_api_seq()方法返回: seq={seq}, malicious_sign_seq={malicious_sign_seq}")
+        self.logger.info(f"========== Method gen_api_seq() returned: seq={seq}, malicious_sign_seq={malicious_sign_seq} ==========")
         return seq, malicious_sign_seq

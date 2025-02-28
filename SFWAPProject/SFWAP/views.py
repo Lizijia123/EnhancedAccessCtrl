@@ -856,7 +856,7 @@ def construct_model(request):
             return JsonResponse({'error': 'Model construction error: ' + error}, status=500)
         message = result.get('message')
         if message:
-            return JsonResponse({'message': message}, status=102)
+            return JsonResponse({'message': message}, status=409)
 
         report = result.get('report')
         error_API_list = result.get('error_API_list')

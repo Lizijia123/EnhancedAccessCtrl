@@ -112,7 +112,7 @@ def async_api_discovery(data, backend_notification_url):
         api_list, sample_traffic_data_list = algorithm.api_discovery.api_extract(api_log)
         # LOGGER.info("APP_URL"+config.basic.APP_URL)
         # print("APP_URL"+config.basic.APP_URL)
-        LOGGER.info(api_list)
+        # LOGGER.info(api_list)
         algorithm.api_discovery.collect_param_set(api_log, api_list)
 
         with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'algorithm', 'param_set.json'), 'r') as f:
@@ -208,8 +208,8 @@ def finish_manual_api_discovery():
                 writer.writeheader()
             # 读取文件并过滤空字符
 
-            LOGGER.info(MANUAL_API_DISCOVERY_STARTED_AT)
-            LOGGER.info(MANUAL_API_DISCOVERY_ENDED_AT)
+            # LOGGER.info(MANUAL_API_DISCOVERY_STARTED_AT)
+            # LOGGER.info(MANUAL_API_DISCOVERY_ENDED_AT)
 
             def is_csv_empty(file_path):
                 if not os.path.exists(file_path):
@@ -395,7 +395,7 @@ def async_data_collect(data):
         config.basic.ACTION_STEP = target_app.get('user_behavior_cycle')
 
         user_configured_api_list = data.get('API_list')
-        LOGGER.info(str(user_configured_api_list))
+        # LOGGER.info(str(user_configured_api_list))
         api_log = algorithm.api_discovery.extract_api_log_to_csv()
         user_api_set = []
         knowledge_set = []
@@ -494,7 +494,7 @@ def async_data_collect(data):
                 "roles": roles,
             }
 
-            LOGGER.info(str([api.index for api in user_api_set])+ str(api_knowledge)+str(app_knowledge))
+            # LOGGER.info(str([api.index for api in user_api_set])+ str(api_knowledge)+str(app_knowledge))
             traffic_data_generation.gen_data_set(user_api_set, api_knowledge, app_knowledge)
 
         if STOP_FLAG.is_set():
@@ -511,7 +511,7 @@ def async_data_collect(data):
 @app.route('/data_collect', methods=['POST'])
 def data_collect():
     global DATA_COLLECTION_STATUS, current_thread
-    print('DATA_COLLECTION_STATUS: ' + DATA_COLLECTION_STATUS)
+    # LOGGER.info('DATA_COLLECTION_STATUS: ' + DATA_COLLECTION_STATUS)
     if DATA_COLLECTION_STATUS == "IN_PROGRESS":
         STOP_FLAG.set()
         if current_thread:
@@ -550,7 +550,7 @@ def start_mitmproxy():
             subprocess.run(['mitmdump', '-s', 'traffic_collector.py', '--listen-host', '0.0.0.0', '-vvv'],
                            stdout=log_file, stderr=log_file)
     except Exception as e:
-        print(f"Error starting mitmproxy: {e}")
+        LOGGER.info(f"Error starting mitmproxy: {e}")
 
 # mitmproxy_thread = threading.Thread(target=start_mitmproxy)
 # mitmproxy_thread.start()

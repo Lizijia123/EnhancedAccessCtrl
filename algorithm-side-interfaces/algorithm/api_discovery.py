@@ -27,7 +27,7 @@ def param_set_to_file():
     global param_set
     with open(json_path, 'w') as json_file:
         json.dump(param_set, json_file, indent=2)
-    LOGGER.info(f'已将可取参数集合记录至{json_path}')
+    LOGGER.info(f'Saved available param set to {json_path}')
 
 
 def collect_param_set(api_log, api_list):
@@ -39,10 +39,9 @@ def collect_param_set(api_log, api_list):
     # api_log[['api', 'url']].to_csv(f'{CURR_APP_NAME}_api_url.csv', index=False)
 
     # api_log['api'].to_csv('index.csv', index=False)
-    LOGGER.info(api_log['api'])
+    # LOGGER.info(api_log['api'])
     api_log.apply(collect_param, args=(api_list,), axis=1)
     param_set_to_file()
-    pass
 
 
 def recognize_api(record, api_list):
@@ -126,7 +125,7 @@ def collect_param(record, api_list):
 
 def api_extract(api_crawl_log):
     API_sample_traffic_data_list = []
-    LOGGER.info('利用API发现，提取API列表...')
+    LOGGER.info('Extracting API list with API discovery algorithm...')
     API_discovery_result = extract_api_list(api_crawl_log)
     api_info_list = []
     index = 0
@@ -238,7 +237,7 @@ def extract_api_log_to_csv():
         domain = domain.split(':')[0]
     # LOGGER.info(domain)
 
-    LOGGER.info(f'从爬虫记录中提取API流量...')
+    LOGGER.info(f'Extracting API logs from auto crawling logs and manual logs...')
     url_log_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'crawl_log', 'url_crawl_log.csv')
     web_element_log_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'crawl_log', 'web_element_crawl_log.csv')
     manual_traffic_log_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'crawl_log', 'manual_API_discovery_traffic_log.csv')
@@ -300,7 +299,7 @@ def extract_api_log_to_csv():
     else:
         web_element_log = pd.DataFrame(columns=['method', 'url', 'header', 'data', 'time', 'type'])
 
-    LOGGER.info(manual_traffic_log)
+    # LOGGER.info(manual_traffic_log)
     if manual_traffic_log is not None and not manual_traffic_log.empty:
         manual_traffic_log['method'] = manual_traffic_log['method'].apply(
             lambda x: x[0].upper() + x[1:].lower() if pd.notnull(x) else x)
@@ -316,5 +315,5 @@ def extract_api_log_to_csv():
     api_log.insert(0, 'Unnamed: 0', index_list)
 
     api_log.to_csv(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'crawl_log', 'API_crawl_log.csv'), index=False)
-    LOGGER.info(f"已将api_log保存至{os.path.join(os.path.abspath(__file__), 'crawl_log', 'API_crawl_log.csv')}")
+    LOGGER.info(f"Saved API logs to {os.path.join(os.path.abspath(__file__), 'crawl_log', 'API_crawl_log.csv')}")
     return api_log

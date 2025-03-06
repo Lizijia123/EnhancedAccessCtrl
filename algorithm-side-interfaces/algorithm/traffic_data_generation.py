@@ -2,6 +2,7 @@ import datetime
 import json
 import os
 import random
+import threading
 import pandas as pd
 
 import algorithm.entity.api
@@ -271,6 +272,8 @@ def param_injection_for_api(api):
 
     return url, data
 
+# 定义线程退出标志
+STOP_FLAG = threading.Event()
 
 def gen_data_set(user_api_set, api_knowledge, app_knowledge):
     Agent.cinit(user_api_set, api_knowledge, app_knowledge)
@@ -293,6 +296,8 @@ def gen_data_set(user_api_set, api_knowledge, app_knowledge):
     data_index = 0
     seq_index = 0
     for user in users:
+        if STOP_FLAG.is_set():
+            return
         seq_index += 1
         user.exec()
         LOGGER.info(f'API sequence {seq_index}/{len(users)} generated')
@@ -303,6 +308,8 @@ def gen_data_set(user_api_set, api_knowledge, app_knowledge):
     LOGGER.info("Generating simulated traffic data set...")
     users = load_agents_from_file(file_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'serialized_llm_agents.json'))
     for user in users:
+        if STOP_FLAG.is_set():
+            return
         user_data, seq_valid = param_injection_for_api_seq(
             api_title_seq=user.api_sequence,
             uname=user.uname,

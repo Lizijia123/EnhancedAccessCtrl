@@ -74,7 +74,6 @@ def gen_data_set():
             malicious=user.malicious
         )
         for i in range(len(user_data)):
-            # method, url, header, data, data_valid
             user_data[i].append(seq_valid)  # seq_valid
             user_data[i].append(1 if user.malicious else 0)  # user_type
             user_data[i].append(0 if user.action_type_seq[i] == 0 else 1)  # data_type
@@ -86,14 +85,69 @@ def gen_data_set():
         LOGGER.info(f'已完成{user_index}/{len(users)}个用户的流量数据收集：user: {user.uname} malicious: {user.malicious}')
 
     df = pd.DataFrame(final_data_set,
-                      columns=['timestamp', 'http_method', 'url', 'api_endpoint', 'header', 'data', 
-                               'request_body_size', 'response_body_size', 'response_status', 'execution_time', 
+                      columns=['username', 'timestamp', 'http_method', 'url', 'api_endpoint', 'header', 'data', 
+                               'request_body_size', 'response_body_size', 'originial_status', 'revised_status', 'execution_time', 
                                'data_valid', 'seq_valid', 'user_type', 'data_type', 'user_index', 'Unnamed: 0'])
-    df = df[['user_index', 'Unnamed: 0', 'timestamp', 'http_method', 'url', 'api_endpoint', 'header', 'data', 
-             'request_body_size', 'response_body_size', 'response_status', 'execution_time', 'user_type', 'data_type', 'data_valid', 'seq_valid']]
+    df = df[['user_index', 'username', 'Unnamed: 0', 'timestamp', 'http_method', 'url', 'api_endpoint', 'header', 'data', 
+             'request_body_size', 'response_body_size', 'originial_status', 'revised_status', 'execution_time', 'user_type', 'data_type', 'data_valid', 'seq_valid']]
     df.to_csv(f'{dirname(__file__)}/simulated_traffic_data/{CURR_APP_NAME}.csv', index=False)
-    LOGGER.info(f'已完成{CURR_APP_NAME}的流量数据收集：{dirname(__file__)}/simulated_traffic_data/{CURR_APP_NAME}.csv')
+    LOGGER.info(f'已完成{CURR_APP_NAME}的初始流量数据收集：{dirname(__file__)}/simulated_traffic_data/{CURR_APP_NAME}.csv')
+    return df
 
+
+def filter_data_sequences(data, ratio):
+    # 按照 username 和 user_type 进行分组
+    groups = data.groupby(['username', 'user_type'])
+    # 计算每个分组的数据序列个数
+    sequence_counts = groups['user_index'].nunique()
+    # 计算总数据序列个数
+    total_sequences = sequence_counts.sum()
+    # 若总数据序列个数为 0，直接返回空 DataFrame
+    if total_sequences == 0:
+        return pd.DataFrame(columns=data.columns)
+    # 计算每个分组的数据序列个数比例
+    ratios = sequence_counts / total_sequences
+    # 假设我们要将数据序列个数缩减到原来的 50%，可以根据实际需求调整
+    target_total_sequences = int(total_sequences * ratio)
+    # 计算每个分组需要缩减后的数据序列个数
+    target_counts = (ratios * target_total_sequences).astype(int)
+
+    reduced_data = []
+    for (username, user_type), group in groups:
+        # 获取当前分组的数据序列个数
+        current_count = sequence_counts[(username, user_type)]
+        # 获取当前分组需要缩减后的数据序列个数
+        target_count = target_counts[(username, user_type)]
+        # 若当前分组数据序列个数为 0 或者目标个数为 0，跳过该分组
+        if current_count == 0 or target_count == 0:
+            continue
+        # 按 user_index 对数据进行分组，每个 user_index 代表一个数据序列
+        sequences = group.groupby('user_index')
+        # 计算每个数据序列中不合法单条数据的占比
+        invalid_ratios = sequences['data_valid'].apply(lambda x: (x == False).sum() / len(x))
+        # 按照不合法单条数据占比从高到低排序
+        sorted_sequences = invalid_ratios.sort_values(ascending=False).index
+        # 选择需要保留的数据序列
+        selected_sequences = sorted_sequences[current_count - target_count:]
+        # 筛选出需要保留的数据
+        selected_data = group[group['user_index'].isin(selected_sequences)]
+        reduced_data.append(selected_data)
+
+    # 若缩减后没有数据，返回空 DataFrame
+    if len(reduced_data) == 0:
+        result = pd.DataFrame(columns=data.columns)
+    # 合并所有分组的缩减后数据
+    result = pd.concat(reduced_data)
+    result.to_csv(f'{dirname(__file__)}/simulated_traffic_data/{CURR_APP_NAME}_final.csv', index=False)
+    LOGGER.info(f'已完成{CURR_APP_NAME}的筛选后流量数据收集：{dirname(__file__)}/simulated_traffic_data/{CURR_APP_NAME}_final.csv')
+
+    return result
 
 if __name__ == '__main__':
-    gen_data_set()
+    # 生成两倍用户量的数据集
+    ori_data = gen_data_set()
+
+    # # 筛选出一倍用户量的数据集，优先筛选更合法的流量序列，且保持筛选前后各种类型用户的流量序列数的比例不变
+    # final_data = filter_data_sequences(ori_data, ratio=0.5)
+
+

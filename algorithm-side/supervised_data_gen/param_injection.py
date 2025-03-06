@@ -113,10 +113,17 @@ def param_injection_for_api_seq(api_title_seq, uname, unlogged, action_type_seq,
         while try_time < PARAM_INJECTION_MAX_RETRY:
             url, req_data = param_injection_for_api(api_seq[i])
             calling_info = call_api(api_seq[i], url, req_data, cookie_list)
-            data_valid = INTERACTION_JUDGEMENT[CURR_APP_NAME](action_type_seq[i], calling_info, uname)
+            data_valid, revised_status_code = INTERACTION_JUDGEMENT[CURR_APP_NAME](action_type_seq[i], calling_info, uname, api_title_seq[i], malicious)
+            if data_valid is None:
+                break
+            calling_info['original_status'] = int(str(calling_info['response_status']))
+            calling_info['revised_status'] = int(revised_status_code)
             if data_valid:
                 break
             try_time += 1
+        if data_valid is None:
+            continue
+
         if not data_valid:
             seq_valid = False
 
@@ -139,6 +146,7 @@ def param_injection_for_api_seq(api_title_seq, uname, unlogged, action_type_seq,
         # }
 
         traffic_data_seq.append([
+            uname,
             calling_info['timestamp'],
             calling_info['http_method'].upper(),
             calling_info['url'],
@@ -147,12 +155,21 @@ def param_injection_for_api_seq(api_title_seq, uname, unlogged, action_type_seq,
             calling_info['data'],
             calling_info['request_body_size'],
             calling_info['response_body_size'],
-            calling_info['response_status'],
+            calling_info['original_status'],
+            calling_info['revised_status'],
             calling_info['execution_time'],
             data_valid
         ])
 
     param_cache.clear()
+
+    if not seq_valid:
+        invalid_data_num = 0
+        for i in range(len(traffic_data_seq)):
+            if not traffic_data_seq[i][-1]:
+                invalid_data_num += 1
+        if invalid_data_num == 1:
+            seq_valid = True
     return traffic_data_seq, seq_valid
 
 

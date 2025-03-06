@@ -15,9 +15,9 @@ NORMAL_USER_NUM = {
         'unlogged_in_user': 0
     },
     'memos': {
-        'admin': 1,#18,
-        'ordinary_user': 1,#126,
-        'unlogged_in_user': 1#36
+        'admin': 3,#18,
+        'ordinary_user': 3,#126,
+        'unlogged_in_user': 3#36
     },
     'collegeerp': {
         'admin': 1,#18,
@@ -35,8 +35,8 @@ MALICIOUS_USER_NUM = {
     },
     'memos': {
         'admin': 0,
-        'ordinary_user': 1,#17,
-        'unlogged_in_user': 1,#3
+        'ordinary_user': 2,#17,
+        'unlogged_in_user': 2,#3
     },
     'collegeerp': {
         'admin': 0,

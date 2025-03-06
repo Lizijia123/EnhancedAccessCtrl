@@ -1,7 +1,7 @@
 from urllib import parse
 from urllib.parse import unquote
 
-CURR_APP_NAME = 'collegeerp'
+CURR_APP_NAME = 'humhub'
 model_names = ["gpt-4o-mini", "qwen-max", "deepseek-r1", "llama3.3-70b-instruct"]
 LLM_MODEL_NAME = "llama3.3-70b-instruct"
 

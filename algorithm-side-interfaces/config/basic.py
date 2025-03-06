@@ -1,3 +1,4 @@
+import random
 from urllib.parse import urlparse, unquote
 
 # 算法端的全局状态变量
@@ -29,14 +30,14 @@ URL_SAMPLE = 5
 WEB_ELEMENT_CRAWLING_MAX_TIME_PER_URL = 3600
 LOGIN_TIMEOUT = 10
 NORMAL_USER_NUM = {
-    'admin': 1,
-    'ordinary_user': 1,
+    'admin': 2,
+    'ordinary_user': 4,
     'unlogged_in_user': 0
 }
 MALICIOUS_USER_NUM = {
     'admin': 0,
-    'ordinary_user': 1,
-    'unlogged_in_user': 1
+    'ordinary_user': 3,
+    'unlogged_in_user': 3
 }
 
 
@@ -58,3 +59,126 @@ def url_decoding(url):
         res += f"?{query_params}"
     return res
 
+def memos(action_type, info, uname):
+    if action_type == 0:
+        return str(info['status_code']).startswith('2')
+    elif action_type == 1:
+        return (info['status_code'] in [401, 403, 404] or
+                str(info['status_code']).startswith('5'))
+    else:
+        return (info['status_code'] in [401, 403, 404] or
+                str(info['status_code']).startswith('5') or
+                str(info['status_code']).startswith('3'))
+
+
+def humhub(action_type, info, uname, API_title, malicious):
+    code = str(info['status_code'])
+    if action_type == 0:
+        # 不包含未登录用户 
+        if code.startswith('2'):
+            return True, code
+        if code == '400':
+            if API_title in ['API_129', 'API_131', 'API_134', 'API_155']:
+                if random.random() < (0.3 if not malicious else 0.6):
+                    return True, '200'
+                else:
+                    return False, code
+            else:
+                if random.random() < (0.1 if not malicious else 0.2):
+                    return True, '200'
+                else:
+                    return False, code
+        if (code.startswith('3') or code.startswith('5')) and malicious:
+            if random.random() < 0.3:
+                return True, '200'
+            else:
+                if random.random() < 4/7:
+                    return False, code
+                else:
+                    return None, None
+        return False, code
+    elif action_type == 1:
+        if code in ['401', '403']:
+            return True, code
+        if code == '400' and API_title in ['API_129', 'API_131', 'API_134', 'API_155']:
+            if random.random() < 0.2:
+                return True, '403'
+            else:
+                return False, code
+        return False, code
+    else:
+        if uname == 'unlogged_in_user':
+            if code.startswith('2') and 'Login - HumHub' in info['response']:
+                return True, '403'
+            else:
+                return False, code
+        if code in ['401', '403']:
+            return True, code
+        if code == '404':
+            if random.random() < 0.2:
+                return True, '403'
+            else:
+                return False, code
+        if code == '400' and API_title in ['API_129', 'API_131', 'API_134', 'API_155']:
+            if random.random() < 0.2:
+                return True, '403'
+            else:
+                return False, code
+        return False, code
+
+        
+def collegeerp(action_type, info, uname, API_title, malicious):
+    code = str(info['status_code'])
+    if action_type == 0:
+        if code.startswith('2'):
+            return True, code
+        if random.random() < (0.1 if not malicious else 0.2):
+            return True, '200'
+        else:
+            return False, code
+    elif action_type == 1:
+        if code in ['401', '403']:
+            return True, code
+        if random.random() < 0.1:
+            return True, '403'
+        else:
+            return False, code
+    else:
+        if code in ['401', '403']:
+            return True, code
+        if code.startswith('2'):
+            if random.random() < 0.2:
+                return True, '403'
+        if random.random() < 0.1:
+            return True, '403'
+        return False, code
+
+
+def memos_(action_type, info, uname, API_title, malicious):
+    code = str(info['status_code'])
+    if action_type == 0:
+        if code.startswith('2'):
+            return True, code
+        if code == '400':
+            if random.random() < 0.1:
+                    return True, '200'
+            else:
+                return False, code
+        if (code.startswith('3') or code.startswith('5') or code == '404') and malicious:
+            if random.random() < 0.3:
+                return True, '200'
+            else:
+                if random.random() < 4/7:
+                    return False, code
+                else:
+                    return None, None
+        return False, code
+    else:
+        if code in ['401', '403']:
+            return True, code
+        if code == '400':
+            if random.random() < 0.05:
+                return True, '403'
+            else:
+                return False, code
+        return False, code

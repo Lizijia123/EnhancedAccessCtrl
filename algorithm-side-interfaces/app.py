@@ -33,8 +33,8 @@ MANUAL_API_DISCOVERY_STARTED_AT = None
 MANUAL_API_DISCOVERY_ENDED_AT = None
 DATA_COLLECTION_STATUS = 'NOT_STARTED'
 
-# 定义线程退出标志
-STOP_FLAG = threading.Event()
+# # 定义线程退出标志
+# STOP_FLAG = threading.Event()
 # 存储当前运行的线程
 current_thread = None
 
@@ -401,7 +401,7 @@ def async_data_collect(data):
         knowledge_set = []
 
         for i in range(len(user_configured_api_list)):
-            if STOP_FLAG.is_set():
+            if traffic_data_generation.STOP_FLAG.is_set():
                 break
             user_configured_api_info = user_configured_api_list[i]
             request_method = user_configured_api_info.get('request_method')
@@ -465,9 +465,9 @@ def async_data_collect(data):
                 'permission_info': user_configured_api_info.get('permission_info'),
             })
 
-            if STOP_FLAG.is_set():
+            if traffic_data_generation.STOP_FLAG.is_set():
                 break
-        if not STOP_FLAG.is_set():
+        if not traffic_data_generation.STOP_FLAG.is_set():
             algorithm.api_discovery.collect_param_set(api_log, user_api_set)
 
             api_knowledge = []
@@ -497,7 +497,7 @@ def async_data_collect(data):
             # LOGGER.info(str([api.index for api in user_api_set])+ str(api_knowledge)+str(app_knowledge))
             traffic_data_generation.gen_data_set(user_api_set, api_knowledge, app_knowledge)
 
-        if STOP_FLAG.is_set():
+        if traffic_data_generation.STOP_FLAG.is_set():
             DATA_COLLECTION_STATUS = "TERMINATED"
         else:
             DATA_COLLECTION_STATUS = "COMPLETED"
@@ -505,7 +505,7 @@ def async_data_collect(data):
         LOGGER.error(f"Error in data collection: {e.with_traceback(10)}")
         DATA_COLLECTION_STATUS = "ERROR"
     finally:
-        STOP_FLAG.clear()
+        traffic_data_generation.STOP_FLAG.clear()
 
 
 @app.route('/data_collect', methods=['POST'])
@@ -513,7 +513,7 @@ def data_collect():
     global DATA_COLLECTION_STATUS, current_thread
     # LOGGER.info('DATA_COLLECTION_STATUS: ' + DATA_COLLECTION_STATUS)
     if DATA_COLLECTION_STATUS == "IN_PROGRESS":
-        STOP_FLAG.set()
+        traffic_data_generation.STOP_FLAG.set()
         if current_thread:
             current_thread.join()
     data = request.get_json()

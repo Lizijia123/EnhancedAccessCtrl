@@ -129,4 +129,11 @@ BASIC_FEATURE_DESCRIPTIONS = {
     'UniquePageVisitCount': 'UniquePageVisitCount'
 }
 
-APP_FEATURES = []
+APP_FEATURES = [
+    MeanUrlParamsCount(),
+    RepeatUrlVisitCount(),
+    DeepPageVisitRate(),
+    MeanUrlPathDepth(),
+    MeanUrlLength(),
+    UniquePageVisitCount()
+]

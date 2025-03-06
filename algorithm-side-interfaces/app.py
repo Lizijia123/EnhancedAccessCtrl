@@ -10,6 +10,9 @@ import traceback
 import requests
 
 import algorithm.api_discovery
+import algorithm.entity
+import algorithm.entity.feature
+import config.api_log_filtering
 import config.basic
 
 from urllib.parse import urlparse
@@ -45,6 +48,27 @@ ERROR_APIS = []
 # 定义锁
 api_discovery_lock = threading.Lock()
 file_operation_lock = threading.Lock()
+
+def write_app_id(id):
+    try:
+        with open('app_id.txt', 'w') as file:
+            file.write(str(id))
+    except Exception as e:
+        LOGGER.error(f"Error writing app_id to file: {e}")
+
+def read_app_id():
+    try:
+        with open('app_id.txt', 'r') as file:
+            return str(file.read().strip())
+    except Exception as e:
+        LOGGER.error(f"Error reading app_id from file: {e}")
+
+def write_detection_duration(duration):
+    try:
+        with open('detection_duration.txt', 'w') as file:
+            file.write(str(duration))
+    except Exception as e:
+        LOGGER.error(f"Error writing detection status to file: {e}")
 
 
 def compile_to_api_discovery_result(api_list, sample_traffic_data_list):
@@ -150,6 +174,7 @@ def auto_api_discovery():
     app_id = data.get('id')
     if not app_id:
         return jsonify({"error": "Missing target application ID"}), 400
+    write_app_id(app_id)
 
     config.basic.APP_URL = data.get('APP_url')
     config.basic.APP_DESCRIPTION = data.get('description')
@@ -323,12 +348,12 @@ def construct_model():
 @app.route('/detection/start', methods=['POST'])
 def start_detection():
     data = request.get_json()
-    config.basic.COMBINED_DATA_DURATION = data.get('combined_data_duration')
+    write_detection_duration(int(data.get('combined_data_duration')))
     import enhanced_detector
     if enhanced_detector.read_detection_status() == 'ON':
         return jsonify({'error': 'Detection has already started'}), 409
-    enhanced_detector.write_detection_status("ON")
-    LOGGER.info(f"Detection started. Combined data duration: {config.basic.COMBINED_DATA_DURATION}")
+    enhanced_detector.write_detection_status('ON')
+    LOGGER.info(f"Detection started. Combined data duration: {data.get('combined_data_duration')}")
     return jsonify({"message": "Detection has started successfully"}), 200
 
 
@@ -527,12 +552,28 @@ def data_collect_status():
     global DATA_COLLECTION_STATUS
     return jsonify({"status": DATA_COLLECTION_STATUS}), 200
 
-@app.route('/handle_traffic_data', methods=['POST'])
-def handle_traffic_data():
-    traffic_data = request.get_json().get('traffic_data')
-    from enhanced_detector import handle_csv_data
-    handle_csv_data(traffic_data)
-    return jsonify({"message": "Traffic data handled"}), 200
+# @app.route('/handle_traffic_data', methods=['POST'])
+# def handle_traffic_data():
+#     traffic_data = request.get_json().get('traffic_data')
+#     from enhanced_detector import handle_csv_data
+#     handle_csv_data(traffic_data)
+#     return jsonify({"message": "Traffic data handled"}), 200
+
+
+@app.route('/detect_traffic_data_seq', methods=['POST'])
+def detect_traffic_data_seq():
+    traffic_data_seq = request.get_json().get('traffic_data_seq')
+    app_data_seq = []
+    netloc = urlparse(config.basic.APP_URL).netloc
+    for traffic_data in traffic_data_seq:
+        if netloc in traffic_data['url']:
+            if True not in [(key in traffic_data['url']) for key in config.api_log_filtering.NON_API_KEYS]:
+                app_data_seq.append(traffic_data)
+    from enhanced_detector import anomaly_detection
+    anomaly_detection(app_data_seq)
+    LOGGER.info(f'A new detect record generated; Traffic data size: {len(app_data_seq)}')
+    return jsonify({"message": "Traffic data sequence detection finished"}), 200
+    
 
 
 @app.route('/basic_features', methods=['GET'])
@@ -547,14 +588,48 @@ def get_basic_detect_features():
 def start_mitmproxy():
     try:
         with open('mitmproxy.log', 'w') as log_file:
-            subprocess.run(['mitmdump', '-s', 'traffic_collector.py', '--listen-host', '0.0.0.0', '-vvv'],
+            subprocess.run(['mitmdump', '-s', 'traffic_collector.py', '--listen-host', '0.0.0.0', 
+                            '--listen-port', '8888', '-vvv'],
                            stdout=log_file, stderr=log_file)
     except Exception as e:
         LOGGER.info(f"Error starting mitmproxy: {e}")
 
-# mitmproxy_thread = threading.Thread(target=start_mitmproxy)
-# mitmproxy_thread.start()
+mitmproxy_thread = threading.Thread(target=start_mitmproxy)
+mitmproxy_thread.start()
 
+
+def load_target_app():
+    app_id = read_app_id()
+    if app_id == '-1':
+        return
+    response = requests.get(f'http://49.234.6.241:8000/api/load_target_app/?app_id={app_id}')
+    if response.status_code == 200:
+        data = response.json()
+        target_app = data.get('target_app')
+        config.basic.APP_URL = target_app.get('APP_url')
+        config.basic.APP_DESCRIPTION = target_app.get('description')
+        config.basic.LOGIN_CREDENTIALS = target_app.get('login_credentials')
+        config.basic.ACTION_STEP = target_app.get('user_behavior_cycle')
+
+        detect_state = target_app.get('detect_state')
+        import enhanced_detector
+        enhanced_detector.write_detection_status('ON' if detect_state == 'STARTED' else 'OFF')
+
+        combined_data_duration = target_app.get('combined_data_duration')
+        write_detection_duration(int(combined_data_duration))
+
+        detection_feature_list = data.get('detection_feature_list')
+        features = []
+        for feature in detection_feature_list:
+            if feature.get('type') == 'SeqOccurTimeFeature':
+                features.append(SeqOccurTimeFeature(feature.get('string_list')))
+            else:
+                features.append(BASIC_FEATURES[feature.get('name')])
+        algorithm.entity.feature.APP_FEATURES = features
+    
+    LOGGER.info(f'Loaded target app: App_id: {app_id}, Detect_state: {detect_state}, Combined_data_duration: {combined_data_duration}, Feature size: {len(detection_feature_list)}')
+        
+load_target_app()  
 
 
 if __name__ == '__main__':
@@ -562,7 +637,12 @@ if __name__ == '__main__':
 
 # cd 当前目录
 # sudo iptables -t nat -F
-# sudo iptables -t nat -A PREROUTING ! -s 49.234.6.241 -p tcp --dport 5230 -j REDIRECT --to-port 8080
-# sudo iptables -t nat -A OUTPUT ! -s 49.234.6.241 -p tcp -d 127.0.0.1 --dport 5230 -j REDIRECT --to-port 8080
+# sudo iptables -t nat -A PREROUTING ! -s 49.234.6.241 -p tcp --dport 5230 -j REDIRECT --to-port 8888
+# sudo iptables -t nat -A OUTPUT ! -s 49.234.6.241 -p tcp -d 127.0.0.1 --dport 5230 -j REDIRECT --to-port 8888
 # sudo netfilter-persistent save
+
+# redis-server
+# celery -A traffic_collector.celery worker --loglevel=info
 # /bin/python3 ./app.py
+
+# sudo docker run -d --name memos -p 5230:5230 -v ~/.memos/:/var/opt/memos neosmemo/memos:stable

@@ -701,3 +701,156 @@ Not Found: /api/client/update
 Not Found: /
 [06/Mar/2025 02:29:53] "GET / HTTP/1.1" 404 2498
 [06/Mar/2025 02:31:41,739] - Broken pipe from ('198.235.24.139', 61158)
+[06/Mar/2025 03:50:31] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[06/Mar/2025 03:50:31] "  /*à     Cookie: mstshash=Administr" 400 -
+Not Found: /
+[06/Mar/2025 03:55:25] "GET / HTTP/1.0" 404 2498
+[06/Mar/2025 03:57:43] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[06/Mar/2025 03:57:43] "  /*à     Cookie: mstshash=Administr" 400 -
+[06/Mar/2025 04:20:05] "GET /api/target-app/?id=1 HTTP/1.1" 200 1109
+[06/Mar/2025 04:20:08] "GET /api/target-app/?id=1 HTTP/1.1" 200 1109
+[06/Mar/2025 04:20:50] "GET /api/detection/record/combination?app_id=1 HTTP/1.1" 301 0
+Internal Server Error: /api/detection/record/combination/
+[06/Mar/2025 04:20:51] "GET /api/detection/record/combination/?app_id=1 HTTP/1.1" 500 313
+[06/Mar/2025 04:26:23] "PUT /api/detection/features/?app_id=1 HTTP/1.1" 200 51
+[06/Mar/2025 04:26:40] "GET /api/detection/record/combination?app_id=1 HTTP/1.1" 301 0
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 07:17:54) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 07:17:11) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 07:19:33) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 07:17:55) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:27:30) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:24:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:28:23) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:27:30) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:28:53) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:28:23) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:31:54) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:28:53) while time zone support is active.
+  warnings.warn(
+[06/Mar/2025 04:26:40] "GET /api/detection/record/combination/?app_id=1 HTTP/1.1" 200 77929
+[06/Mar/2025 04:27:24] "GET /api/detection/record/combination?app_id=1 HTTP/1.1" 301 0
+[06/Mar/2025 04:27:24] "GET /api/detection/record/combination/?app_id=1 HTTP/1.1" 200 77929
+[06/Mar/2025 04:27:55] "PUT /api/user-api-list/?app_id=1 HTTP/1.1" 200 74
+[06/Mar/2025 04:28:19] "PUT /api/user-api-list/?app_id=1 HTTP/1.1" 200 74
+[06/Mar/2025 04:28:21] "PUT /api/user-api-list/?app_id=1 HTTP/1.1" 200 74
+[06/Mar/2025 04:29:34] "PUT /api/user-api-list/?app_id=1 HTTP/1.1" 200 74
+[06/Mar/2025 04:29:36] "PUT /api/user-api-list/?app_id=1 HTTP/1.1" 200 74
+[06/Mar/2025 04:29:37] "PUT /api/user-api-list/?app_id=1 HTTP/1.1" 200 74
+Unauthorized: /api/detection/features/
+[06/Mar/2025 04:30:15] "GET /api/detection/features/?app_id=1 HTTP/1.1" 401 58
+Not Found: /
+[06/Mar/2025 04:30:38] "GET / HTTP/1.1" 404 2498
+[06/Mar/2025 04:31:22] "GET /api/model-construct/?app_id=1 HTTP/1.1" 200 414
+Not Found: /favicon.ico
+[06/Mar/2025 04:31:34] "GET /favicon.ico HTTP/1.1" 404 2549
+Not Found: /http:/api.ipify.org/
+Not Found: /www.shadowserver.org:443
+[06/Mar/2025 04:32:20] "CONNECT www.shadowserver.org:443 HTTP/1.1" 404 1882
+Unauthorized: /api/user-api-list/
+[06/Mar/2025 04:34:36] "GET /api/user-api-list/?app_id=1 HTTP/1.1" 401 58
+[06/Mar/2025 04:34:36] code 400, message Bad request version ('}')
+[06/Mar/2025 04:34:36] "ÿ             ñ%   { "Ret" : 100, "SessionID" : "0x0" }" 400 -
+[06/Mar/2025 04:34:43] "GET /api/detection/record/combination?app_id=1 HTTP/1.1" 301 0
+Unauthorized: /api/detection/record/combination/
+[06/Mar/2025 04:34:43] "GET /api/detection/record/combination/?app_id=1 HTTP/1.1" 401 58
+Unauthorized: /api/target-app/
+[06/Mar/2025 04:43:23] "GET /api/target-app/?id=1 HTTP/1.1" 401 5094
+[06/Mar/2025 04:43:24] "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+[06/Mar/2025 04:43:24] "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+[06/Mar/2025 04:43:24] "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+[06/Mar/2025 04:43:24] "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+[06/Mar/2025 04:43:24] "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+[06/Mar/2025 04:57:50] code 400, message Bad request syntax ('nil')
+[06/Mar/2025 04:57:50] "nil" 400 -
+Not Found: /
+[06/Mar/2025 04:57:51] "GET / HTTP/1.0" 404 2493
+Not Found: /
+[06/Mar/2025 04:57:51] "GET / HTTP/1.1" 404 2498
+Not Found: /favicon.ico
+[06/Mar/2025 04:57:51] "GET /favicon.ico HTTP/1.1" 404 2549
+[06/Mar/2025 05:06:13] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[06/Mar/2025 05:06:13] "  /*à     Cookie: mstshash=Administr" 400 -
+Not Found: /
+[06/Mar/2025 05:17:16] "GET / HTTP/1.1" 404 2498
+[06/Mar/2025 05:17:59] code 400, message Bad request version ('À\x13À')
+[06/Mar/2025 05:17:59] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /
+[06/Mar/2025 05:18:00] "GET / HTTP/1.1" 404 2498
+Not Found: /favicon.ico
+[06/Mar/2025 05:18:01] "GET /favicon.ico HTTP/1.1" 404 2549
+[06/Mar/2025 05:19:26] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[06/Mar/2025 05:19:26] "  /*à     Cookie: mstshash=Administr" 400 -
+Unauthorized: /api/detection/record/combination/
+[06/Mar/2025 05:20:14] "GET /api/detection/record/combination/?app_id=1 HTTP/1.1" 401 5337
+[06/Mar/2025 05:20:14] "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+[06/Mar/2025 05:20:14] "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+[06/Mar/2025 05:20:14] "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+[06/Mar/2025 05:20:14] "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+[06/Mar/2025 05:20:14] "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+[06/Mar/2025 05:36:30] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[06/Mar/2025 05:36:30] "  /*à     Cookie: mstshash=Administr" 400 -
+Not Found: /
+[06/Mar/2025 06:13:28] "GET / HTTP/1.0" 404 2498
+[06/Mar/2025 06:31:58] "GET /api/detection/record/combination?app_id=1 HTTP/1.1" 301 0
+Unauthorized: /api/detection/record/combination/
+[06/Mar/2025 06:31:58] "GET /api/detection/record/combination/?app_id=1 HTTP/1.1" 401 5337
+[06/Mar/2025 06:31:58] "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+[06/Mar/2025 06:31:58] "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+[06/Mar/2025 06:31:58] "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+[06/Mar/2025 06:31:59] "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+[06/Mar/2025 06:31:59] "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+
+Restarting celery worker (/home/ubuntu/.local/bin/celery -A SFWAPProject worker --loglevel=info)
+
+worker: Warm shutdown (MainProcess)
+ 
+ -------------- celery@VM-16-2-ubuntu v5.4.0 (opalescent)
+--- ***** ----- 
+-- ******* ---- Linux-5.15.0-130-generic-x86_64-with-glibc2.35 2025-03-06 07:15:45
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         SFWAPProject:0x7fb64b7b34c0
+- ** ---------- .> transport:   redis://localhost:6379/0
+- ** ---------- .> results:     redis://localhost:6379/0
+- *** --- * --- .> concurrency: 2 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+
+[tasks]
+  . SFWAP.views.handle_api_discovery_notification
+
+[2025-03-06 07:15:45,956: WARNING/MainProcess] /home/ubuntu/.local/lib/python3.10/site-packages/celery/worker/consumer/consumer.py:508: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2025-03-06 07:15:45,959: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 2.00 seconds... (1/100)
+
+[2025-03-06 07:15:47,962: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 4.00 seconds... (2/100)
+
+[2025-03-06 07:15:51,966: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 6.00 seconds... (3/100)
+
+[2025-03-06 07:15:57,972: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 8.00 seconds... (4/100)
+
+[2025-03-06 07:16:05,980: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 111 connecting to localhost:6379. Connection refused..
+Trying again in 10.00 seconds... (5/100)
+

@@ -7,7 +7,6 @@ import joblib
 import pandas as pd
 from datetime import datetime
 
-import config.basic
 import algorithm.entity.feature
 from config.log import LOGGER
 from algorithm.api_discovery import recognize_api
@@ -47,37 +46,37 @@ def read_detection_status():
         return 'OFF'
 
 
-def handle_csv_data(csv_data):
-    if urlparse(config.basic.APP_URL).netloc not in csv_data['url']:
-        return
-    csv_headers = [
-        'timestamp', 'api_endpoint', 'http_method', 'request_body_size',
-        'response_body_size', 'response_status', 'execution_time',
-        'request_time', 'method', 'url', 'header', 'data',
-        'status_code', 'response_headers', 'response_body'
-    ]
-    try:
-        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'traffic.csv'), 'a', newline='') as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=csv_headers, quoting=csv.QUOTE_ALL, escapechar='\\')
-            writer.writerow(csv_data)
-    except Exception as e:
-        LOGGER.error(f"Error writing to traffic.csv: {e}")
+# def handle_csv_data(csv_data):
+#     if urlparse(config.basic.APP_URL).netloc not in csv_data['url']:
+#         return
+#     csv_headers = [
+#         'timestamp', 'api_endpoint', 'http_method', 'request_body_size',
+#         'response_body_size', 'response_status', 'execution_time',
+#         'request_time', 'method', 'url', 'header', 'data',
+#         'status_code', 'response_headers', 'response_body'
+#     ]
+#     try:
+#         with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'traffic.csv'), 'a', newline='') as csvfile:
+#             writer = csv.DictWriter(csvfile, fieldnames=csv_headers, quoting=csv.QUOTE_ALL, escapechar='\\')
+#             writer.writerow(csv_data)
+#     except Exception as e:
+#         LOGGER.error(f"Error writing to traffic.csv: {e}")
         
-    status = read_detection_status()
-    LOGGER.info(f"Detect Status: {status}; Handling a new traffic data; Combination data duration: {str(config.basic.COMBINED_DATA_DURATION)}; ")
-    LOGGER.info(f"Detect Feature Size: " + str(len(algorithm.entity.feature.APP_FEATURES)))
-    if read_detection_status() == "ON":
-        global TRAFFIC_WINDOW
-        TRAFFIC_WINDOW.append(csv_data)
-        print('Current detect window size: ' + str(len(TRAFFIC_WINDOW)))
-        if len(TRAFFIC_WINDOW) >= 2:
-            start_time = datetime.strptime(TRAFFIC_WINDOW[0]['request_time'], '%Y-%m-%d %H:%M:%S')
-            end_time = datetime.strptime(TRAFFIC_WINDOW[-1]['request_time'], '%Y-%m-%d %H:%M:%S')
-            duration = (end_time - start_time).total_seconds()
-            if duration >= config.basic.COMBINED_DATA_DURATION:
-                anomaly_detection(TRAFFIC_WINDOW)
-                TRAFFIC_WINDOW = []
-                LOGGER.info('A new detect record generated')
+#     status = read_detection_status()
+#     LOGGER.info(f"Detect Status: {status}; Handling a new traffic data; Combination data duration: {str(config.basic.COMBINED_DATA_DURATION)}; ")
+#     LOGGER.info(f"Detect Feature Size: " + str(len(algorithm.entity.feature.APP_FEATURES)))
+#     if read_detection_status() == "ON":
+#         global TRAFFIC_WINDOW
+#         TRAFFIC_WINDOW.append(csv_data)
+#         print('Current detect window size: ' + str(len(TRAFFIC_WINDOW)))
+#         if len(TRAFFIC_WINDOW) >= 2:
+#             start_time = datetime.strptime(TRAFFIC_WINDOW[0]['request_time'], '%Y-%m-%d %H:%M:%S')
+#             end_time = datetime.strptime(TRAFFIC_WINDOW[-1]['request_time'], '%Y-%m-%d %H:%M:%S')
+#             duration = (end_time - start_time).total_seconds()
+#             if duration >= config.basic.COMBINED_DATA_DURATION:
+#                 anomaly_detection(TRAFFIC_WINDOW)
+#                 TRAFFIC_WINDOW = []
+#                 LOGGER.info('A new detect record generated')
 
 def xgboost_user_classification(model_path, scaler_path, real_data):
     global XGBOOST_MODEL, XGBOOST_SCALER
@@ -86,7 +85,7 @@ def xgboost_user_classification(model_path, scaler_path, real_data):
     if XGBOOST_SCALER is None:
         XGBOOST_SCALER = joblib.load(scaler_path)
     
-    print([extract_features(real_data, features=algorithm.entity.feature.APP_FEATURES)])
+    LOGGER.info([extract_features(real_data, features=algorithm.entity.feature.APP_FEATURES)])
     return XGBOOST_MODEL.predict(XGBOOST_SCALER.fit_transform(
         pd.DataFrame([extract_features(real_data, features=algorithm.entity.feature.APP_FEATURES)])
     ))[0]
@@ -109,6 +108,8 @@ def anomaly_detection(window_data):
     # 这里只是简单模拟，实际中需要实现具体的异常检测逻辑
     # with open('anomaly_detection_result.txt', 'a') as f:
     #     f.write(f"Anomaly detection result for window: {window_data}\n")
+
+    LOGGER.info(f"Detecting for a new traffic data sequence; Detect Feature Size: " + str(len(algorithm.entity.feature.APP_FEATURES)))
 
     df = pd.DataFrame(window_data)
     detection_result = xgboost_user_classification(

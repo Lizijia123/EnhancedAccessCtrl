@@ -1154,6 +1154,21 @@ def get_detection_records_by_api(request):
     return JsonResponse(traffic_data_list, safe=False, status=200)
 
 
+@api_view(['GET'])
+def load_target_app(request):
+    app_id = request.query_params.get('app_id')
+    if not app_id:
+        return JsonResponse({'error': 'Missing target application ID'}, status=400)
+    try:
+        target_app = TargetApplication.objects.get(id=app_id)
+        return JsonResponse({
+            'target_app': target_app_model_to_view(target_app),
+            'detection_feature_list': get_feature_list(target_app.detect_feature_list)
+        }, status=200)
+    except TargetApplication.DoesNotExist:
+        return JsonResponse({'error': 'Target application not found'}, status=404)
+
+
 
 
 import logging

@@ -29,4 +29,6 @@ urlpatterns = [
 
     path('detection/record/combination/', get_detection_records_by_combination, name='get_detection_records_by_combination'),
     path('detection/record/api/', get_detection_records_by_api, name='get_detection_records_by_api'),
+
+    path('load_target_app/', load_target_app, name='load_target_app'),
 ]

@@ -2,12 +2,24 @@ import csv
 import datetime
 import json
 import os
+import threading
+import time
 from urllib.parse import unquote_plus
 
 from mitmproxy import http
 import logging
 import os
-# 配置日志
+
+from celery import Celery
+import redis
+import requests
+from enhanced_detector import read_detection_status
+
+# 初始化 Celery 实例，指定 Redis 作为消息队列
+celery = Celery('tasks', broker='redis://localhost:6379/0')
+# 连接到 Redis 服务器
+redis_client = redis.Redis(host='localhost', port=6379, db=0)
+
 logging.basicConfig(
     level=logging.INFO,  # 设置日志级别为 INFO，意味着 INFO 及以上级别的日志将被记录
     format='%(asctime)s - %(levelname)s - %(message)s',  # 日志的格式，包括时间、日志级别和消息
@@ -16,9 +28,8 @@ logging.basicConfig(
         logging.StreamHandler()  # 使用 StreamHandler 将日志输出到标准输出
     ]
 )
-
-# 创建一个日志记录器
 LOGGER = logging.getLogger(__name__)
+
 
 # 定义 CSV 文件的列名，增加新的属性
 csv_headers = [
@@ -35,6 +46,15 @@ try:
         writer.writeheader()
 except Exception as e:
     LOGGER.error(f"Failed to write header to traffic.csv: {e}")
+
+
+
+def read_detection_duration():
+    try:
+        with open('detection_duration.txt', 'r') as file:
+            return int(file.read().strip())
+    except Exception as e:
+        LOGGER.error(f"Error reading detection status from file: {e}")
 
 
 def urlencoded_to_json(urlencoded_data):
@@ -176,7 +196,7 @@ def response(flow: http.HTTPFlow) -> None:
         execution_time = None
 
     # 准备要写入 CSV 文件的数据
-    csv_data = {
+    traffic_data = {
         'timestamp': request_data.get('timestamp'),
         'api_endpoint': request_data.get('api_endpoint'),
         'http_method': request_data.get('http_method'),
@@ -195,10 +215,47 @@ def response(flow: http.HTTPFlow) -> None:
     }
 
     # 处理数据中的换行符
-    for key, value in csv_data.items():
-        csv_data[key] = sanitize_data(value)
+    for key, value in traffic_data.items():
+        traffic_data[key] = sanitize_data(value)
 
-    import requests
-    response = requests.post(url='http://127.0.0.1:5000/handle_traffic_data', json={'traffic_data': csv_data})
-    response.raise_for_status()
+    try:
+        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'traffic.csv'), 'a', newline='') as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=csv_headers, quoting=csv.QUOTE_ALL, escapechar='\\')
+            writer.writerow(traffic_data)
+    except Exception as e:
+        LOGGER.error(f"Error writing to traffic.csv: {e}")
 
+    try:
+        if read_detection_status() == 'ON':
+            # 将流量数据转换为字符串并存储到 Redis 队列
+            redis_client.lpush('traffic_data_queue', str(traffic_data))
+            LOGGER.info(f"Successfully sent a traffic data to Redis: Method: {traffic_data['method']}, URL: {traffic_data['url']}")
+    except Exception as e:
+        LOGGER.error(f"Failed to send traffic data to Redis: {e}")
+
+
+# Celery 定时任务，每隔一段时间消费消息队列里的所有流量数据
+@celery.task
+def consume_traffic_periodically():
+    while True:
+        time.sleep(read_detection_duration())
+        traffic_sequence = []
+        while True:
+            data = redis_client.rpop('traffic_data_queue')
+            if not data:
+                break
+            traffic_sequence.append(eval(data.decode()))
+        if len(traffic_sequence) > 0:
+            requests.post('http://127.0.0.1:5000/detect_traffic_data_seq', json={'traffic_data_seq': traffic_sequence})
+
+# 启动 Celery 定时任务的函数
+def start_periodic_task():
+    consume_traffic_periodically.delay()
+
+# 启动定时任务线程
+task_thread = threading.Thread(target=start_periodic_task)
+task_thread.daemon = True
+task_thread.start()
+
+# redis-server
+# celery -A traffic_collector.celery worker --loglevel=info

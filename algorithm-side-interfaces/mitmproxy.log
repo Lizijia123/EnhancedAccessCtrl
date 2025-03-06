@@ -1,0 +1,112 @@
+[17:37:03.278] Loading script traffic_collector.py
+[17:37:05.786] 
+def consume_traffic_periodically():
+    return 1
+
+[17:37:05.786] 
+def consume_traffic_periodically():
+    return 1
+
+[17:37:05.789] HTTP(S) proxy listening at *:8888.
+[17:39:24.588][192.3.208.15:60140] client connect
+[17:39:24.592] Error parsing traffic data of the application: Invalid JSON data
+[17:39:24.597][192.3.208.15:60140] server connect 49.234.6.241:5230
+[17:39:24.605] Successfully sent a traffic data to Redis: Method: POST, URL: http://49.234.6.241:5230/memos.api.v1.InboxService/ListInboxes
+192.3.208.15:60140: POST http://49.234.6.241:5230/memos.api.v1.InboxService/ListInboxes
+    Host: 49.234.6.241:5230
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 Edg/133.0.0.0
+    Content-Length: 5
+    Accept: */*
+    Accept-Encoding: gzip, deflate
+    Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+    Content-Type: application/grpc-web+proto
+    Cookie: Admin-Token=admin-token; memos.access-token=eyJhbGciOiJIUzI1NiIsImtpZCI6InYxIiwidHlwIjoiSldUIn0.eyJuYW1lIjoiIiwiaXNzIjoibWVtb3MiLCJzdWIiOiIzIiwiYXVkIjpbInVzZXIuYWNjZXNzLXRva2VuIl0sImV4cCI6NDg5NDg1MTMxOCwiaWF0IjoxNzQxMjUxMzE4fQ.q3sFLaxrE0V2KVYYcveNsoGdOTWquN6HDN2YFtHr-0c
+    Origin: http://49.234.6.241:5230
+    Referer: http://49.234.6.241:5230/
+    X-Grpc-Web: 1
+    X-Mitmproxy-Processed: true
+ << 200 OK 26b
+    Access-Control-Allow-Credentials: true
+    Access-Control-Allow-Origin: http://49.234.6.241:5230
+    Access-Control-Expose-Headers: Vary, Access-Control-Allow-Origin, Access-Control-Allow-Credentials, Date, Content-Type, grpc-status, grpc-message
+    Content-Type: application/grpc-web+proto
+    Vary: Origin
+    Transfer-Encoding: chunked
+[17:40:05.245] Error parsing traffic data of the application: Invalid JSON data
+[17:40:05.259] Successfully sent a traffic data to Redis: Method: POST, URL: http://49.234.6.241:5230/memos.api.v1.ResourceService/ListResources
+192.3.208.15:60140: POST http://49.234.6.241:5230/memos.api.v1.ResourceService/ListResources
+    Host: 49.234.6.241:5230
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 Edg/133.0.0.0
+    Content-Length: 5
+    Accept: */*
+    Accept-Encoding: gzip, deflate
+    Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+    Content-Type: application/grpc-web+proto
+    Cookie: Admin-Token=admin-token; memos.access-token=eyJhbGciOiJIUzI1NiIsImtpZCI6InYxIiwidHlwIjoiSldUIn0.eyJuYW1lIjoiIiwiaXNzIjoibWVtb3MiLCJzdWIiOiIzIiwiYXVkIjpbInVzZXIuYWNjZXNzLXRva2VuIl0sImV4cCI6NDg5NDg1MTMxOCwiaWF0IjoxNzQxMjUxMzE4fQ.q3sFLaxrE0V2KVYYcveNsoGdOTWquN6HDN2YFtHr-0c
+    Origin: http://49.234.6.241:5230
+    Referer: http://49.234.6.241:5230/resources
+    X-Grpc-Web: 1
+    X-Mitmproxy-Processed: true
+ << 200 OK 26b
+    Access-Control-Allow-Credentials: true
+    Access-Control-Allow-Origin: http://49.234.6.241:5230
+    Access-Control-Expose-Headers: Access-Control-Allow-Origin, Access-Control-Allow-Credentials, Date, Content-Type, Vary, grpc-status, grpc-message
+    Content-Type: application/grpc-web+proto
+    Vary: Origin
+    Transfer-Encoding: chunked
+[17:41:19.730][192.3.208.15:60140] client disconnect
+[17:41:19.730][192.3.208.15:60140] closing transports...
+[17:41:19.730][192.3.208.15:60140] server disconnect 49.234.6.241:5230
+[17:41:19.731][192.3.208.15:60140] transports closed!
+[17:44:24.580][192.3.208.15:35028] client connect
+[17:44:24.585] Error parsing traffic data of the application: Invalid JSON data
+[17:44:24.590][192.3.208.15:35028] server connect 49.234.6.241:5230
+[17:44:24.598] Successfully sent a traffic data to Redis: Method: POST, URL: http://49.234.6.241:5230/memos.api.v1.InboxService/ListInboxes
+192.3.208.15:35028: POST http://49.234.6.241:5230/memos.api.v1.InboxService/ListInboxes
+    Host: 49.234.6.241:5230
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 Edg/133.0.0.0
+    Content-Length: 5
+    Accept: */*
+    Accept-Encoding: gzip, deflate
+    Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+    Content-Type: application/grpc-web+proto
+    Cookie: Admin-Token=admin-token; memos.access-token=eyJhbGciOiJIUzI1NiIsImtpZCI6InYxIiwidHlwIjoiSldUIn0.eyJuYW1lIjoiIiwiaXNzIjoibWVtb3MiLCJzdWIiOiIzIiwiYXVkIjpbInVzZXIuYWNjZXNzLXRva2VuIl0sImV4cCI6NDg5NDg1MTMxOCwiaWF0IjoxNzQxMjUxMzE4fQ.q3sFLaxrE0V2KVYYcveNsoGdOTWquN6HDN2YFtHr-0c
+    Origin: http://49.234.6.241:5230
+    Referer: http://49.234.6.241:5230/resources
+    X-Grpc-Web: 1
+    X-Mitmproxy-Processed: true
+ << 200 OK 26b
+    Access-Control-Allow-Credentials: true
+    Access-Control-Allow-Origin: http://49.234.6.241:5230
+    Access-Control-Expose-Headers: Access-Control-Allow-Origin, Access-Control-Allow-Credentials, Date, Content-Type, Vary, grpc-status, grpc-message
+    Content-Type: application/grpc-web+proto
+    Vary: Origin
+    Transfer-Encoding: chunked
+[17:45:54.923][192.3.208.15:35028] client disconnect
+[17:45:54.923][192.3.208.15:35028] closing transports...
+[17:45:54.924][192.3.208.15:35028] server disconnect 49.234.6.241:5230
+[17:45:54.924][192.3.208.15:35028] transports closed!
+[17:49:24.583][192.3.208.15:57970] client connect
+[17:49:24.586] Error parsing traffic data of the application: Invalid JSON data
+[17:49:24.591][192.3.208.15:57970] server connect 49.234.6.241:5230
+[17:49:24.597] Successfully sent a traffic data to Redis: Method: POST, URL: http://49.234.6.241:5230/memos.api.v1.InboxService/ListInboxes
+192.3.208.15:57970: POST http://49.234.6.241:5230/memos.api.v1.InboxService/ListInboxes
+    Host: 49.234.6.241:5230
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 Edg/133.0.0.0
+    Content-Length: 5
+    Accept: */*
+    Accept-Encoding: gzip, deflate
+    Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+    Content-Type: application/grpc-web+proto
+    Cookie: Admin-Token=admin-token; memos.access-token=eyJhbGciOiJIUzI1NiIsImtpZCI6InYxIiwidHlwIjoiSldUIn0.eyJuYW1lIjoiIiwiaXNzIjoibWVtb3MiLCJzdWIiOiIzIiwiYXVkIjpbInVzZXIuYWNjZXNzLXRva2VuIl0sImV4cCI6NDg5NDg1MTMxOCwiaWF0IjoxNzQxMjUxMzE4fQ.q3sFLaxrE0V2KVYYcveNsoGdOTWquN6HDN2YFtHr-0c
+    Origin: http://49.234.6.241:5230
+    Referer: http://49.234.6.241:5230/resources
+    X-Grpc-Web: 1
+    X-Mitmproxy-Processed: true
+ << 200 OK 26b
+    Access-Control-Allow-Credentials: true
+    Access-Control-Allow-Origin: http://49.234.6.241:5230
+    Access-Control-Expose-Headers: Access-Control-Allow-Credentials, Date, Content-Type, Vary, Access-Control-Allow-Origin, grpc-status, grpc-message
+    Content-Type: application/grpc-web+proto
+    Vary: Origin
+    Transfer-Encoding: chunked

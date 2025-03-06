@@ -310,9 +310,9 @@ def construct_model():
         global DATA_COLLECTION_STATUS
         LOGGER.info('DATA_COLLECTION_STATUS: ' + DATA_COLLECTION_STATUS)
         if DATA_COLLECTION_STATUS == 'NOT_STARTED':
-            thread = threading.Thread(target=async_data_collect, args=(data,))
-            thread.start()
-            return jsonify({'message': 'Data collection is ongoing, please try again later'}), 200
+            # thread = threading.Thread(target=async_data_collect, args=(data,))
+            # thread.start()
+            return jsonify({'message': 'Model construction is not avilable until data collection finished'}), 200
         elif DATA_COLLECTION_STATUS == 'IN_PROGRESS':
             return jsonify({'message': 'Data collection is ongoing, please try again later'}), 200
         else:
@@ -508,14 +508,12 @@ def async_data_collect(data):
             for credential in credentials:
                 if credential['user_role'] not in roles:
                     roles.append(credential['user_role'])
+            
+            example_API_seqs = data.get('example_API_seqs')
             app_knowledge = {
                 "func_description": config.basic.APP_DESCRIPTION,
-                "normal_seqs": [
-                    "There are no example normal seqs"
-                ],
-                "malicious_seqs": [
-                    "There are no example malicious seqs"
-                ],
+                "normal_seqs": ["There are no example normal seqs"] if not example_API_seqs else example_API_seqs['normal_seqs'],
+                "malicious_seqs": ["There are no example malicious seqs"] if not example_API_seqs else example_API_seqs['malicious_seqs'],
                 "roles": roles,
             }
 
@@ -594,8 +592,8 @@ def start_mitmproxy():
     except Exception as e:
         LOGGER.info(f"Error starting mitmproxy: {e}")
 
-mitmproxy_thread = threading.Thread(target=start_mitmproxy)
-mitmproxy_thread.start()
+# mitmproxy_thread = threading.Thread(target=start_mitmproxy)
+# mitmproxy_thread.start()
 
 
 def load_target_app():
@@ -626,6 +624,11 @@ def load_target_app():
             else:
                 features.append(BASIC_FEATURES[feature.get('name')])
         algorithm.entity.feature.APP_FEATURES = features
+
+        if target_app.get('last_API_discovery_at') is not None:
+            global DATA_COLLECTION_STATUS
+            DATA_COLLECTION_STATUS = 'COMPLETED'
+
     
     LOGGER.info(f'Loaded target app: App_id: {app_id}, Detect_state: {detect_state}, Combined_data_duration: {combined_data_duration}, Feature size: {len(detection_feature_list)}')
         

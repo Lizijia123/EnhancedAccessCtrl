@@ -441,6 +441,113 @@ def validate_api(api_data):
     }
 
 
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def update_user_api_list_v1(request):
+    app_id = request.query_params.get('app_id')
+    if not app_id:
+        return JsonResponse({'error': 'Missing target application ID'}, status=400)
+    try:
+        target_app = TargetApplication.objects.get(id=app_id, user=request.user)
+    except TargetApplication.DoesNotExist:
+        return JsonResponse({'error': 'Target application not found or you do not have permission'}, status=404)
+    if target_app.last_API_discovery_at is None:
+        return JsonResponse({'error': 'The target application has never had API discovery'}, status=409)
+    if target_app.detect_state == 'STARTED':
+        return JsonResponse({'error': 'You cannot update the API list during detection'}, status=409)
+
+    try:
+        data = json.loads(request.body)
+        user_api_list_data = data.get('user_API_list', [])
+        api_id_list = []
+        new_api_id_list = []
+        valid_api_items: List[Dict] = []
+        for api_data in user_api_list_data:
+            result = validate_api(api_data)
+            if isinstance(result, JsonResponse):
+                return result
+            valid_api_items.append(result)
+            api_id_list.append(api_data.get('id'))
+
+        with transaction.atomic():
+            for api in target_app.user_API_list.all():
+                api.path_segment_list.all().delete()
+                api.request_param_list.all().delete()
+                api.request_data_fields.all().delete()
+                api.delete()
+            target_app.user_API_list.clear()
+
+            for valid_api_item in valid_api_items:
+                valid_api_item['api'].save()
+                new_api_id_list.append(valid_api_item['api'].id)
+                for segment in valid_api_item['path_segments']:
+                    segment.save()
+                for param in valid_api_item['request_params']:
+                    param.save()
+                for field in valid_api_item['request_data_fields']:
+                    field.save()
+                valid_api_item['api'].path_segment_list.set(valid_api_item['path_segments'])
+                valid_api_item['api'].request_param_list.set(valid_api_item['request_params'])
+                valid_api_item['api'].request_data_fields.set(valid_api_item['request_data_fields'])
+                target_app.user_API_list.add(valid_api_item['api'])
+        
+        id_map = {str(api_id_list[i]):str(new_api_id_list[i]) for i in range(len(api_id_list))}
+
+
+        revised_API_seqs = {
+            'normal_seqs': [],
+            'malicious_seqs': []
+        }
+        example_API_seqs = data.get('example_API_seqs')
+        if example_API_seqs:
+            for seq in example_API_seqs['normal_seqs']:
+                api_items = []
+                for seq_item in seq["seq"]:
+                    api_str = f"API_{id_map[seq_item['id']]}({seq_item['description']})"
+                    api_items.append(api_str)
+                combined_api_str = "; ".join(api_items)
+                final_str = f'Role: {seq["role"]}; {combined_api_str}'
+                revised_API_seqs['normal_seqs'].append(final_str)
+            for seq in example_API_seqs['malicious_seqs']:
+                api_items = []
+                for seq_item in seq["seq"]:
+                    api_str = f"API_{id_map[seq_item['id']]}({seq_item['description']})"
+                    api_items.append(api_str)
+                combined_api_str = "; ".join(api_items)
+                final_str = f'Role: {seq["role"]}; {combined_api_str}'
+                revised_API_seqs['malicious_seqs'].append(final_str)
+        # {
+        #     'normal_seqs': [
+        #         {'role':'','seq':[{"id":1,"description":""}, {"id":1,"description":""}]},
+        #         {'role':'','seq':[{"id":1,"description":""}, {"id":1,"description":""}]}
+        #     ], 
+        #     'malicious_seqs': [
+        #         {'role':'','seq':[{"id":1,"description":""}, {"id":1,"description":""}]},
+        #         {'role':'','seq':[{"id":1,"description":""}, {"id":1,"description":""}]}
+        #     ], 
+        # }
+
+        # 异步调用请求算法端进行流量数据扩增
+        data_collect_url = f'http://{target_app.SFWAP_address}/data_collect'
+        data = {
+            'API_list': API_list_model_to_view(target_app.user_API_list), 
+            'target_app': target_app_model_to_view(target_app),
+        }
+        if example_API_seqs:
+            data['example_API_seqs'] = revised_API_seqs
+
+        try:
+            requests.post(data_collect_url, json=data)
+        except requests.RequestException as e:
+            return JsonResponse({'error': f'Error making data collection request to SFWAP-Detector: {str(e)}'},
+                                status=500)
+
+        return JsonResponse({'message': 'User API list updated successfully, Data collection started'}, status=200)
+    except json.JSONDecodeError:
+        return JsonResponse({'error': 'Invalid JSON data'}, status=400)
+
+
+
 # 前端页面中，更新API_list时，不能增加新的API，否则不能保证可以收集新API的参数集合。如果需要新增API，需先调用API发现并保证API发现结果包含新API
 # PUT /api/user-api-list {'user_API_list':[{...},{...}]}
 @api_view(['PUT'])
@@ -501,6 +608,31 @@ def update_user_api_list(request):
         return JsonResponse({'message': 'User API list updated successfully, Data collection started'}, status=200)
     except json.JSONDecodeError:
         return JsonResponse({'error': 'Invalid JSON data'}, status=400)
+
+
+# @api_view(['GET'])
+# @permission_classes([IsAuthenticated])
+# def data_collect(request):
+#     app_id = request.query_params.get('app_id')
+#     if not app_id:
+#         return JsonResponse({'error': 'Missing target application ID'}, status=400)
+#     try:
+#         target_app = TargetApplication.objects.get(id=app_id, user=request.user)
+#         data_collect_url = f'http://{target_app.SFWAP_address}/data_collect'
+#         # {'normal_seqs': ["",], 'malicious_seqs':["",]}
+#         data = {
+#             'API_list': API_list_model_to_view(target_app.user_API_list), 
+#             'target_app': target_app_model_to_view(target_app),
+#             'example_API_seqs': json.loads(request.body).get('example_API_seqs')
+#         }
+#         try:
+#             requests.post(data_collect_url, json=data)
+#         except requests.RequestException as e:
+#             return JsonResponse({'error': f'Error making data collection request to SFWAP-Detector: {str(e)}'},
+#                                 status=500)
+#     except TargetApplication.DoesNotExist:
+#         return JsonResponse({'error': 'Target application not found or you do not have permission'}, status=404)
+    
 
 
 @api_view(['GET'])

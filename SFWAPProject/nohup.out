@@ -988,3 +988,954 @@ you should set broker_connection_retry_on_startup to True.
 [06/Mar/2025 12:25:51] "PUT /api/user-api-list/?app_id=1 HTTP/1.1" 200 74
 Conflict: /api/model-construct/
 [06/Mar/2025 12:25:54] "GET /api/model-construct/?app_id=1 HTTP/1.1" 409 65
+[06/Mar/2025 12:28:34] "GET /api/model-construct/?app_id=1 HTTP/1.1" 200 414
+[06/Mar/2025 12:28:46] "GET /api/detection/record/combination?app_id=1 HTTP/1.1" 301 0
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 07:17:54) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 07:17:11) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 07:19:33) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 07:17:55) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:27:30) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:24:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:28:23) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:27:30) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:28:53) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:28:23) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:31:54) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:28:53) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:41:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:41:00) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:41:00) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:41:01) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:41:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:41:22) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:41:12) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:41:12) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:41:13) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:41:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:41:15) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:41:16) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:41:17) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:41:18) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:41:19) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:41:20) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:41:21) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:41:22) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:41:34) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:41:25) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:41:25) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:41:26) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:41:27) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:41:29) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:41:30) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:41:31) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:41:34) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:43:07) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:43:05) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:43:05) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:43:07) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:44:03) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:44:03) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:44:03) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:44:18) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:44:17) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:44:17) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:44:18) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:54:33) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:54:32) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:54:32) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:54:33) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:55:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:54:48) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:54:48) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:54:49) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:54:50) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:54:51) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:54:52) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:54:53) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:54:54) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:54:56) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:55:13) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:55:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:55:20) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:55:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:55:18) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:55:19) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 08:55:20) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:35:31) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:34:06) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 09:34:06) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 09:34:21) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 09:34:22) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 09:34:23) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 09:34:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 09:35:31) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:39:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:39:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 09:39:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:40:05) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:40:05) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 09:40:05) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:44:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:44:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 09:44:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:49:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:49:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 09:49:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:57:12) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:57:12) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 09:57:12) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:01:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:01:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 10:01:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:01:36) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:01:33) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 10:01:33) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 10:01:34) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 10:01:35) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 10:01:36) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:02:23) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:02:07) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 10:02:07) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 10:02:08) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 10:02:09) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 10:02:10) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 10:02:11) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 10:02:12) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 10:02:13) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 10:02:20) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 10:02:22) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 10:02:23) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:02:50) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:02:25) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 10:02:25) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 10:02:49) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 10:02:50) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:03:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:03:00) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 10:03:00) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 10:03:01) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 10:03:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:07:46) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:07:46) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 10:07:46) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:08:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:07:59) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 10:07:59) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 10:08:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:13:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:13:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 10:13:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:18:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:18:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 10:18:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:23:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:23:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 10:23:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:28:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:28:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 10:28:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:33:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:33:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField TrafficData.accessed_at received a naive datetime (2025-03-06 10:33:02) while time zone support is active.
+  warnings.warn(
+[06/Mar/2025 12:28:50] "GET /api/detection/record/combination/?app_id=1 HTTP/1.1" 200 231119
+[06/Mar/2025 12:29:23] "GET /api/target-app/?id=1 HTTP/1.1" 200 1109
+[06/Mar/2025 12:34:20] "GET /api/target-app/?id=1 HTTP/1.1" 200 1109
+[06/Mar/2025 12:34:27] "GET /api/detection/record/combination?app_id=1 HTTP/1.1" 301 0
+Unauthorized: /api/detection/record/combination/
+[06/Mar/2025 12:34:27] "GET /api/detection/record/combination/?app_id=1 HTTP/1.1" 401 5337
+[06/Mar/2025 12:34:27] "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+[06/Mar/2025 12:34:27] "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+[06/Mar/2025 12:34:27] "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+[06/Mar/2025 12:34:27] "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+[06/Mar/2025 12:34:27] "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+[06/Mar/2025 12:34:51] "GET /api/detection/record/combination?app_id=1 HTTP/1.1" 301 0
+Unauthorized: /api/detection/record/combination/
+[06/Mar/2025 12:34:51] "GET /api/detection/record/combination/?app_id=1 HTTP/1.1" 401 58
+[06/Mar/2025 12:37:40] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[06/Mar/2025 12:37:40] "  /*à     Cookie: mstshash=Administr" 400 -
+[06/Mar/2025 12:40:36] "GET /api/target-app/?id=1 HTTP/1.1" 200 1109
+[06/Mar/2025 12:48:01] "GET /api/target-app/?id=1 HTTP/1.1" 200 1109
+Not Found: /
+[06/Mar/2025 13:04:42] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[06/Mar/2025 13:11:37] "GET / HTTP/1.0" 404 2498
+Not Found: /
+[06/Mar/2025 13:31:33] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[06/Mar/2025 13:34:55] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[06/Mar/2025 14:26:14] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[06/Mar/2025 15:49:44] "GET / HTTP/1.1" 404 2498
+Not Found: /http:/passport.baidu.com/
+[06/Mar/2025 16:34:50] "GET http://passport.baidu.com/ HTTP/1.1" 404 1884
+[06/Mar/2025 16:34:56] code 400, message Bad request syntax ('\x04\x01\x00Pg)§ê\x00')
+[06/Mar/2025 16:34:56] " Pg)§ê " 400 -
+[06/Mar/2025 16:35:30] code 400, message Bad request syntax ('\x05\x01\x00')
+[06/Mar/2025 16:35:30] " " 400 -
+[06/Mar/2025 17:04:31,149] - Broken pipe from ('167.94.138.184', 58550)
+[06/Mar/2025 17:04:35] code 400, message Bad request syntax ('\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03ëQ|"\'\x83ý4Ç°\x86\xadñk¿·F¥ÓszÖ\x92V')
+[06/Mar/2025 17:04:35] You're accessing the development server over HTTPS, but it only supports HTTP.
+[06/Mar/2025 17:04:51,917] - Broken pipe from ('167.94.138.184', 37096)
+[06/Mar/2025 17:05:16] code 400, message Bad request syntax ('ZG\x00\x00\x00\x05\x00+\x0e\x01\x00')
+[06/Mar/2025 17:05:16] "ZG    + " 400 -
+Not Found: /
+[06/Mar/2025 17:37:41] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[06/Mar/2025 17:44:20] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[06/Mar/2025 17:44:23] "GET / HTTP/1.1" 404 2498
+[06/Mar/2025 18:14:23] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[06/Mar/2025 18:14:23] "  /*à     Cookie: mstshash=Administr" 400 -
+Not Found: /
+[06/Mar/2025 18:40:02] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[06/Mar/2025 19:52:33] "GET / HTTP/1.1" 404 2498
+[06/Mar/2025 21:03:39,884] - Broken pipe from ('87.251.64.11', 64559)
+[06/Mar/2025 21:20:30] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[06/Mar/2025 21:20:30] "  /*à     Cookie: mstshash=Administr" 400 -
+Not Found: /
+[06/Mar/2025 22:10:33] "GET / HTTP/1.1" 404 2498
+[06/Mar/2025 22:11:22] code 400, message Bad request version ('À\x14À')
+[06/Mar/2025 22:11:22] You're accessing the development server over HTTPS, but it only supports HTTP.
+[06/Mar/2025 22:11:49,169] - Broken pipe from ('199.45.155.106', 58856)
+[06/Mar/2025 22:11:55,767] - Broken pipe from ('199.45.155.106', 56098)
+Not Found: /
+[06/Mar/2025 23:54:42] "GET / HTTP/1.1" 404 2498
+[07/Mar/2025 00:00:50] code 400, message Bad request version ('\x00\x9eÌ¨Ìª\x003\x00=\x00\x16À')
+[07/Mar/2025 00:00:50] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /
+[07/Mar/2025 00:01:01] "GET / HTTP/1.1" 404 2498
+Not Found: /favicon.ico
+[07/Mar/2025 00:01:20] "GET /favicon.ico HTTP/1.1" 404 2549
+Not Found: /robots.txt
+[07/Mar/2025 00:01:20] "GET /robots.txt HTTP/1.1" 404 2546
+Not Found: /sitemap.xml
+[07/Mar/2025 00:01:21] "GET /sitemap.xml HTTP/1.1" 404 2549
+[07/Mar/2025 00:01:32] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[07/Mar/2025 00:01:32] "  /*à     Cookie: mstshash=Administr" 400 -
+Not Found: /http:/passport.baidu.com/
+[07/Mar/2025 00:37:39] "GET http://passport.baidu.com/ HTTP/1.1" 404 1884
+[07/Mar/2025 00:37:57] code 400, message Bad request syntax ('\x05\x01\x00')
+[07/Mar/2025 00:37:57] " " 400 -
+Not Found: /
+[07/Mar/2025 00:44:05] "GET / HTTP/1.1" 404 2498
+[07/Mar/2025 01:03:21] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[07/Mar/2025 01:03:21] "  /*à     Cookie: mstshash=Administr" 400 -
+Not Found: /
+[07/Mar/2025 01:13:01] "GET / HTTP/1.1" 404 2498
+[07/Mar/2025 01:25:43] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[07/Mar/2025 01:25:43] "  /*à     Cookie: mstshash=Administr" 400 -
+Not Found: /
+[07/Mar/2025 01:54:11] "GET / HTTP/1.1" 404 2498
+[07/Mar/2025 02:07:32] code 400, message Bad HTTP/0.9 request type ('\x00\x00\x00')
+[07/Mar/2025 02:07:32] "    c                           " 400 -
+Not Found: /
+[07/Mar/2025 02:20:30] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[07/Mar/2025 02:32:37] "GET / HTTP/1.1" 404 2498
+[07/Mar/2025 02:32:43] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[07/Mar/2025 02:32:43] "  /*à     Cookie: mstshash=Administr" 400 -
+[07/Mar/2025 02:33:00,702] - Broken pipe from ('205.210.31.11', 59086)
+Not Found: /
+[07/Mar/2025 02:38:42] "GET / HTTP/1.1" 404 2498
+[07/Mar/2025 03:04:01] code 400, message Bad request version ('U¾~+ÃWÎi\x939Ì·QTKþ\x01ÏËv\x87zh¾\x9dT³è§')
+[07/Mar/2025 03:04:01] You're accessing the development server over HTTPS, but it only supports HTTP.
+[07/Mar/2025 03:04:02] code 400, message Bad request version ('À(À$À\x14À')
+[07/Mar/2025 03:04:02] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /
+[07/Mar/2025 03:38:27] "GET / HTTP/1.1" 404 2498
+[07/Mar/2025 03:43:27] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[07/Mar/2025 03:43:27] "  /*à     Cookie: mstshash=Administr" 400 -
+[07/Mar/2025 03:51:01] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[07/Mar/2025 03:51:01] "  /*à     Cookie: mstshash=Administr" 400 -
+Not Found: /
+[07/Mar/2025 03:59:50] "GET / HTTP/1.1" 404 2498
+[07/Mar/2025 04:38:39] code 400, message Bad request version ('À\x14À')
+[07/Mar/2025 04:38:39] You're accessing the development server over HTTPS, but it only supports HTTP.
+[07/Mar/2025 04:38:39] code 400, message Bad request version ('À\x14À')
+[07/Mar/2025 04:38:39] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /
+[07/Mar/2025 04:38:40] "GET / HTTP/1.1" 404 2498
+Not Found: /login
+[07/Mar/2025 04:38:40] "GET /login HTTP/1.1" 404 2531
+Not Found: /http:/pingjs.qq.com/ping.js
+[07/Mar/2025 05:00:29] "GET http://pingjs.qq.com/ping.js HTTP/1.1" 404 1882
+[07/Mar/2025 05:00:29,301] - Broken pipe from ('89.248.164.165', 57848)
+Not Found: /
+[07/Mar/2025 05:23:59] "GET / HTTP/1.1" 404 2498
+[07/Mar/2025 05:25:49] code 400, message Bad HTTP/0.9 request type ('l\x00')
+[07/Mar/2025 05:25:49] "l          " 400 -
+Not Found: /
+[07/Mar/2025 05:25:50] "GET / HTTP/1.0" 404 2507
+[07/Mar/2025 05:26:39] code 400, message Bad request version ("ÄÔwjî\x00>\x13\x02\x13\x03\x13\x01À,À0\x00\x9fÌ©Ì¨ÌªÀ+À/\x00\x9eÀ$À(\x00kÀ#À'\x00gÀ")
+[07/Mar/2025 05:26:39] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /
+[07/Mar/2025 05:26:40] "GET / HTTP/1.1" 404 2498
+Not Found: /favicon.ico
+[07/Mar/2025 05:26:44] "GET /favicon.ico HTTP/1.1" 404 2549
+Not Found: /
+[07/Mar/2025 05:31:13] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[07/Mar/2025 05:37:53] "GET / HTTP/1.1" 404 2498
+[07/Mar/2025 05:52:01] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[07/Mar/2025 05:52:01] "  /*à     Cookie: mstshash=Administr" 400 -
+Not Found: /
+[07/Mar/2025 06:40:09] "GET / HTTP/1.1" 404 2498
+Not Found: /portal
+[07/Mar/2025 06:57:04] "POST /portal HTTP/1.1" 404 2535
+[07/Mar/2025 08:12:24] code 400, message Bad request version ('À\x14À')
+[07/Mar/2025 08:12:24] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /
+[07/Mar/2025 08:27:46] "GET / HTTP/1.1" 404 2498
+Not Found: /favicon.ico
+[07/Mar/2025 08:28:09] "GET /favicon.ico HTTP/1.1" 404 2549
+Not Found: /portal
+[07/Mar/2025 09:27:00] "GET /portal HTTP/1.1" 404 2534
+Not Found: /
+[07/Mar/2025 10:17:46] "GET / HTTP/1.1" 404 2498
+Not Found: /favicon.ico
+[07/Mar/2025 10:17:59] "GET /favicon.ico HTTP/1.1" 404 2549
+Not Found: /http:/api.ipify.org/
+Not Found: /www.shadowserver.org:443
+[07/Mar/2025 10:18:05] "CONNECT www.shadowserver.org:443 HTTP/1.1" 404 1882
+Not Found: /
+[07/Mar/2025 10:19:02] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[07/Mar/2025 11:20:27] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[07/Mar/2025 13:01:20] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[07/Mar/2025 13:21:02] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[07/Mar/2025 13:38:13] "GET / HTTP/1.1" 404 2498
+[07/Mar/2025 13:38:47,498] - Broken pipe from ('205.210.31.186', 64220)
+[07/Mar/2025 14:06:35] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[07/Mar/2025 14:06:35] "  /*à     Cookie: mstshash=Administr" 400 -
+Not Found: /http:/pingjs.qq.com/ping.js
+[07/Mar/2025 14:15:34] "GET http://pingjs.qq.com/ping.js HTTP/1.1" 404 1882
+[07/Mar/2025 14:15:34,861] - Broken pipe from ('89.248.164.165', 54490)
+Not Found: /
+[07/Mar/2025 14:18:41] "GET / HTTP/1.1" 404 2498
+[07/Mar/2025 14:18:42] code 505, message Invalid HTTP version (2.0)
+[07/Mar/2025 14:18:42] "PRI * HTTP/2.0" 505 -
+Not Found: /favicon.ico
+[07/Mar/2025 14:18:46] "GET /favicon.ico HTTP/1.1" 404 2549
+[07/Mar/2025 14:18:46] code 400, message Bad request version ('À\x14À')
+[07/Mar/2025 14:18:46] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /
+[07/Mar/2025 14:20:56] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[07/Mar/2025 15:05:49] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[07/Mar/2025 16:13:50] "GET / HTTP/1.1" 404 2498
+[07/Mar/2025 16:45:52] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[07/Mar/2025 16:45:52] "  /*à     Cookie: mstshash=Administr" 400 -
+[07/Mar/2025 18:05:46] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[07/Mar/2025 18:05:46] "  /*à     Cookie: mstshash=Administr" 400 -
+Not Found: /
+[07/Mar/2025 18:08:11] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[07/Mar/2025 18:14:16] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[07/Mar/2025 18:14:22] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[07/Mar/2025 18:44:53] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[07/Mar/2025 19:44:03] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[07/Mar/2025 20:02:28] "GET / HTTP/1.0" 404 2498
+[07/Mar/2025 20:23:48] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[07/Mar/2025 20:23:48] "  /*à     Cookie: mstshash=Administr" 400 -
+Not Found: /
+[07/Mar/2025 21:03:21] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[07/Mar/2025 22:07:46] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[07/Mar/2025 22:28:48] "GET / HTTP/1.0" 404 2498
+Not Found: /
+[07/Mar/2025 22:31:37] "GET / HTTP/1.1" 404 2498
+[07/Mar/2025 22:36:22] code 400, message Bad request syntax ('SSH-2.0-Go')
+[07/Mar/2025 22:36:22] "SSH-2.0-Go" 400 -
+Not Found: /
+[07/Mar/2025 22:45:02] "GET / HTTP/1.0" 404 2498
+[07/Mar/2025 23:18:34] code 400, message Bad request version ('À\x14À')
+[07/Mar/2025 23:18:34] You're accessing the development server over HTTPS, but it only supports HTTP.
+[07/Mar/2025 23:18:34] code 400, message Bad request version ('À\x14À')
+[07/Mar/2025 23:18:34] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /
+[07/Mar/2025 23:18:35] "GET / HTTP/1.1" 404 2498
+Not Found: /login
+[07/Mar/2025 23:18:35] "GET /login HTTP/1.1" 404 2531
+Not Found: /
+[07/Mar/2025 23:26:07] "GET / HTTP/1.1" 404 2498
+[07/Mar/2025 23:26:07,765] - Broken pipe from ('111.7.96.148', 18250)
+Not Found: /
+[07/Mar/2025 23:26:32] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[08/Mar/2025 00:05:01] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[08/Mar/2025 00:10:00] "GET / HTTP/1.1" 404 2498
+[08/Mar/2025 00:13:01] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[08/Mar/2025 00:13:01] "  /*à     Cookie: mstshash=Administr" 400 -
+[08/Mar/2025 00:52:17] "GET /api/target-app/?id=1 HTTP/1.1" 200 1109
+[08/Mar/2025 00:52:34] "PUT /api/target-app/?id=1 HTTP/1.1" 200 1179
+Unauthorized: /api/target-app/
+[08/Mar/2025 01:02:46] "GET /api/target-app/?id=1 HTTP/1.1" 401 58
+[08/Mar/2025 01:35:48] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[08/Mar/2025 01:35:48] "  /*à     Cookie: mstshash=Administr" 400 -
+Not Found: /
+[08/Mar/2025 02:12:25] "GET / HTTP/1.1" 404 2498
+[08/Mar/2025 02:22:12] code 400, message Bad HTTP/0.9 request type ('\x00\x00\x00')
+[08/Mar/2025 02:22:12] "    c                           " 400 -
+[08/Mar/2025 02:37:26] code 400, message Bad request version ('}')
+[08/Mar/2025 02:37:26] "ÿ             ñ%   { "Ret" : 100, "SessionID" : "0x0" }" 400 -
+Not Found: /
+[08/Mar/2025 02:47:45] "GET / HTTP/1.1" 404 2498
+[08/Mar/2025 02:48:46,724] - Broken pipe from ('205.210.31.100', 65012)
+[08/Mar/2025 02:58:49] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[08/Mar/2025 02:58:49] "  /*à     Cookie: mstshash=Administr" 400 -
+Not Found: /
+[08/Mar/2025 03:57:59] "GET / HTTP/1.1" 404 2498
+Unauthorized: /api/target-app/
+[08/Mar/2025 03:59:06] "GET /api/target-app/?id=1 HTTP/1.1" 401 5094
+[08/Mar/2025 03:59:07] "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+[08/Mar/2025 03:59:07] "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+[08/Mar/2025 03:59:07] "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+[08/Mar/2025 03:59:07] "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+[08/Mar/2025 03:59:07] "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+Not Found: /
+[08/Mar/2025 04:19:13] "GET / HTTP/1.1" 404 2498
+[08/Mar/2025 04:28:39] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[08/Mar/2025 04:28:39] "  /*à     Cookie: mstshash=Administr" 400 -
+[08/Mar/2025 04:46:12] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[08/Mar/2025 04:46:12] "  /*à     Cookie: mstshash=Administr" 400 -
+Not Found: /
+[08/Mar/2025 06:03:08] "GET / HTTP/1.1" 404 2498
+[08/Mar/2025 06:14:50] code 400, message Bad request syntax ('MGLNDD_49.234.6.241_8000')
+[08/Mar/2025 06:14:50] "MGLNDD_49.234.6.241_8000" 400 -
+Not Found: /
+[08/Mar/2025 06:15:34] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[08/Mar/2025 06:16:40] "GET / HTTP/1.1" 404 2498
+Not Found: /favicon.ico
+[08/Mar/2025 06:17:02] "GET /favicon.ico HTTP/1.1" 404 2549
+Not Found: /http:/api.ipify.org/
+Not Found: /www.shadowserver.org:443
+[08/Mar/2025 06:17:17] "CONNECT www.shadowserver.org:443 HTTP/1.1" 404 1882
+[08/Mar/2025 06:43:05] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[08/Mar/2025 06:43:05] "  /*à     Cookie: mstshash=Administr" 400 -
+Not Found: /customer/js/lang_zh_tw.js
+[08/Mar/2025 07:13:09] "GET /customer/js/lang_zh_tw.js HTTP/1.1" 404 2591
+Not Found: /login/stylesheets/theme.css
+[08/Mar/2025 07:13:09] "GET /login/stylesheets/theme.css HTTP/1.1" 404 2597
+Not Found: /public/stylesheets/theme.css
+[08/Mar/2025 07:13:09] "GET /public/stylesheets/theme.css HTTP/1.1" 404 2600
+Not Found: /chs/js/lang_zh_tw.js
+[08/Mar/2025 07:13:09] "GET /chs/js/lang_zh_tw.js HTTP/1.1" 404 2576
+Not Found: /ips/index.php
+Not Found: /index.php
+[08/Mar/2025 07:13:09] "GET /ips/index.php HTTP/1.1" 404 2555
+[08/Mar/2025 07:13:09] "GET /index.php HTTP/1.1" 404 2543
+Not Found: /index.php
+[08/Mar/2025 07:13:09] "GET /index.php HTTP/1.1" 404 2543
+Not Found: /
+[08/Mar/2025 07:13:09] "GET / HTTP/1.1" 404 2498
+Not Found: /stylesheets/theme.css
+[08/Mar/2025 07:13:09] "GET /stylesheets/theme.css HTTP/1.1" 404 2579
+Not Found: /ips/index.php
+[08/Mar/2025 07:27:32] "GET /ips/index.php HTTP/1.1" 404 2555
+[08/Mar/2025 07:27:34] "GET /api/detection/record/combination?app_id=1 HTTP/1.1" 301 0
+Unauthorized: /api/detection/record/combination/
+[08/Mar/2025 07:27:34] "GET /api/detection/record/combination/?app_id=1 HTTP/1.1" 401 5337
+[08/Mar/2025 07:27:34] "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+[08/Mar/2025 07:27:34] "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3426
+[08/Mar/2025 07:27:34] "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+[08/Mar/2025 07:27:34] "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1152
+[08/Mar/2025 07:27:34] "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+[08/Mar/2025 07:27:34] "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121457
+[08/Mar/2025 07:27:34] "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 39680
+[08/Mar/2025 07:27:34] "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+[08/Mar/2025 07:27:34] "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+[08/Mar/2025 07:27:34] "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+[08/Mar/2025 07:27:34] "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+[08/Mar/2025 07:27:34] "GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 200 87533
+Not Found: /favicon.ico
+[08/Mar/2025 07:27:34] "GET /favicon.ico HTTP/1.1" 404 2549
+[08/Mar/2025 07:31:19] "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+Not Found: /
+[08/Mar/2025 07:35:27] "GET / HTTP/1.1" 404 2498
+[08/Mar/2025 07:36:31] "GET /api/detection/record/combination?app_id=1 HTTP/1.1" 301 0
+Unauthorized: /api/detection/record/combination/
+[08/Mar/2025 07:36:31] "GET /api/detection/record/combination/?app_id=1 HTTP/1.1" 401 58
+Unauthorized: /api/detection/record/combination/
+[08/Mar/2025 07:39:51] "GET /api/detection/record/combination/?app_id=1 HTTP/1.1" 401 58
+Not Found: /
+[08/Mar/2025 07:43:13] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[08/Mar/2025 07:45:56] "GET / HTTP/1.1" 404 2498
+[08/Mar/2025 07:46:37] "POST /api/api-token-auth/ HTTP/1.1" 200 52
+[08/Mar/2025 07:47:07] "GET /api/target-app/?id=1 HTTP/1.1" 200 1109
+[08/Mar/2025 07:51:57] "OPTIONS /api/api-token-auth/ HTTP/1.1" 200 425
+[08/Mar/2025 07:54:20] "OPTIONS /api/api-token-auth/ HTTP/1.1" 200 425
+[08/Mar/2025 08:07:09] "GET /api/api-lists/?app_id=1 HTTP/1.1" 200 21484
+[08/Mar/2025 08:07:17] "GET /api/target-app-list/ HTTP/1.1" 200 1111
+Unauthorized: /api/api-lists/
+[08/Mar/2025 08:15:23] "GET /api/api-lists/?app_id=1 HTTP/1.1" 401 58
+Unauthorized: /api/target-app-list/
+[08/Mar/2025 08:17:11] "GET /api/target-app-list/ HTTP/1.1" 401 5126
+[08/Mar/2025 08:17:11] "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+[08/Mar/2025 08:17:11] "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+[08/Mar/2025 08:17:11] "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+[08/Mar/2025 08:17:11] "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+[08/Mar/2025 08:17:11] "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+[08/Mar/2025 08:33:28] "GET /api/model-construct/data-collection-status/?app_id=1 HTTP/1.1" 200 23
+[08/Mar/2025 08:36:36] "PUT /api/detection/config/?app_id=1 HTTP/1.1" 200 49
+Not Found: /
+[08/Mar/2025 08:36:57] "GET / HTTP/1.1" 404 2498
+Unauthorized: /api/model-construct/data-collection-status/
+[08/Mar/2025 08:44:09] "GET /api/model-construct/data-collection-status/?app_id=1 HTTP/1.1" 401 58
+Not Found: /http:/pingjs.qq.com/ping.js
+[08/Mar/2025 08:46:14] "GET http://pingjs.qq.com/ping.js HTTP/1.1" 404 1882
+[08/Mar/2025 08:46:14,362] - Broken pipe from ('89.248.164.165', 38568)
+[08/Mar/2025 08:46:47] code 400, message Bad request syntax ('nil')
+[08/Mar/2025 08:46:47] "nil" 400 -
+[08/Mar/2025 08:50:21] "GET /api/model-construct/?app_id=1 HTTP/1.1" 200 414
+[08/Mar/2025 08:56:02] "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+Unauthorized: /api/detection/record/combination/
+[08/Mar/2025 09:09:54] "GET /api/detection/record/combination/?app_id=1 HTTP/1.1" 401 5337
+[08/Mar/2025 09:09:54] "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+[08/Mar/2025 09:09:54] "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+[08/Mar/2025 09:09:54] "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+[08/Mar/2025 09:09:54] "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+[08/Mar/2025 09:09:54] "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+Unauthorized: /api/model-construct/
+[08/Mar/2025 09:24:22] "GET /api/model-construct/?app_id=1 HTTP/1.1" 401 5146
+[08/Mar/2025 09:24:22] "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+[08/Mar/2025 09:24:22] "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+[08/Mar/2025 09:24:22] "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+[08/Mar/2025 09:24:22] "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+[08/Mar/2025 09:24:22] "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+[08/Mar/2025 09:56:53] code 400, message Bad request syntax ('SSH-2.0-OpenSSH')
+[08/Mar/2025 09:56:53] "SSH-2.0-OpenSSH" 400 -
+Unauthorized: /api/target-app/
+[08/Mar/2025 09:57:33] "GET /api/target-app/?id=1 HTTP/1.1" 401 58
+[08/Mar/2025 10:15:49] "GET /api/detection/record/combination?app_id=1 HTTP/1.1" 301 0
+Unauthorized: /api/detection/record/combination/
+[08/Mar/2025 10:15:49] "GET /api/detection/record/combination/?app_id=1 HTTP/1.1" 401 5337
+[08/Mar/2025 10:15:50] "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+[08/Mar/2025 10:15:50] "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+[08/Mar/2025 10:15:50] "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+[08/Mar/2025 10:15:50] "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+[08/Mar/2025 10:15:50] "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+Not Found: /
+[08/Mar/2025 10:18:12] "GET / HTTP/1.1" 404 2498
+Method Not Allowed: /api/api-token-auth/
+[08/Mar/2025 10:24:03] "GET /api/api-token-auth/ HTTP/1.1" 405 40
+Unauthorized: /api/api-lists/
+[08/Mar/2025 10:30:50] "GET /api/api-lists/?app_id=1 HTTP/1.1" 401 5104
+[08/Mar/2025 10:30:51] "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+[08/Mar/2025 10:30:51] "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+[08/Mar/2025 10:30:51] "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+[08/Mar/2025 10:30:51] "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+[08/Mar/2025 10:30:51] "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+Not Found: /
+[08/Mar/2025 11:14:06] "GET / HTTP/1.0" 404 2498
+Unauthorized: /api/model-construct/data-collection-status/
+[08/Mar/2025 11:35:11] "GET /api/model-construct/data-collection-status/?app_id=1 HTTP/1.1" 401 5447
+[08/Mar/2025 11:35:11] "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+[08/Mar/2025 11:35:11] "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+[08/Mar/2025 11:35:11] "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+[08/Mar/2025 11:35:12] "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+[08/Mar/2025 11:35:12] "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+[08/Mar/2025 11:56:30] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03$\x87\x08Æ\x17ÕY\x88\x14ü\x13\x16½%\x97?Þ\x13\x04¤½\x9dx8²±Ñ×\x05Z*w\x00\x00\x1aÀ/À+À\x11À\x07À\x13À')
+[08/Mar/2025 11:56:30] You're accessing the development server over HTTPS, but it only supports HTTP.
+[08/Mar/2025 12:38:03] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[08/Mar/2025 12:38:03] "  /*à     Cookie: mstshash=Administr" 400 -
+[08/Mar/2025 12:45:33] code 400, message Bad request syntax ('nil')
+[08/Mar/2025 12:45:33] "nil" 400 -
+Not Found: /
+[08/Mar/2025 12:45:33] "GET / HTTP/1.0" 404 2493
+Not Found: /
+[08/Mar/2025 12:45:33] "GET / HTTP/1.1" 404 2498
+Not Found: /favicon.ico
+[08/Mar/2025 12:45:34] "GET /favicon.ico HTTP/1.1" 404 2549
+[08/Mar/2025 12:46:23] code 400, message Bad request syntax ('nil')
+[08/Mar/2025 12:46:23] "nil" 400 -
+Not Found: /
+[08/Mar/2025 12:46:23] "GET / HTTP/1.0" 404 2493
+Not Found: /
+[08/Mar/2025 12:46:24] "GET / HTTP/1.1" 404 2498
+Not Found: /favicon.ico
+[08/Mar/2025 12:46:24] "GET /favicon.ico HTTP/1.1" 404 2549
+Not Found: /
+[08/Mar/2025 13:18:17] "GET / HTTP/1.1" 404 2498
+[08/Mar/2025 13:18:17] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[08/Mar/2025 13:18:17] "  /*à     Cookie: mstshash=Administr" 400 -
+Not Found: /
+[08/Mar/2025 13:25:23] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[08/Mar/2025 13:41:06] "GET / HTTP/1.1" 404 2498
+[08/Mar/2025 13:53:16] "PUT /api/target-app/?id=1 HTTP/1.1" 200 1179
+[08/Mar/2025 13:53:56] "GET /api/target-app-list/ HTTP/1.1" 200 1111
+Not Found: /
+[08/Mar/2025 14:21:50] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[08/Mar/2025 15:07:05] "GET / HTTP/1.1" 404 2498
+[08/Mar/2025 15:15:44] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[08/Mar/2025 15:15:44] "  /*à     Cookie: mstshash=Administr" 400 -
+[08/Mar/2025 15:16:54] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[08/Mar/2025 15:16:54] "  /*à     Cookie: mstshash=Administr" 400 -
+[08/Mar/2025 15:42:11] "GET /api/target-app-list/ HTTP/1.1" 200 1111
+Unauthorized: /api/target-app-list/
+[08/Mar/2025 15:47:49] "GET /api/target-app-list/ HTTP/1.1" 401 5126
+[08/Mar/2025 15:47:49] "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+[08/Mar/2025 15:47:49] "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+[08/Mar/2025 15:47:49] "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+[08/Mar/2025 15:47:49] "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+[08/Mar/2025 15:47:49] "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+[08/Mar/2025 15:48:12] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[08/Mar/2025 15:48:12] "  /*à     Cookie: mstshash=Administr" 400 -
+[08/Mar/2025 15:59:11] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[08/Mar/2025 15:59:11] "  /*à     Cookie: mstshash=Administr" 400 -
+Not Found: /
+[08/Mar/2025 18:06:25] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[08/Mar/2025 18:14:24] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[08/Mar/2025 18:14:26] "GET / HTTP/1.1" 404 2498
+[08/Mar/2025 19:32:57] code 400, message Bad request version ('À\x14À')
+[08/Mar/2025 19:32:57] You're accessing the development server over HTTPS, but it only supports HTTP.
+[08/Mar/2025 19:32:58] code 400, message Bad request version ('À\x14À')
+[08/Mar/2025 19:32:58] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /
+[08/Mar/2025 19:32:58] "GET / HTTP/1.1" 404 2498
+Not Found: /login
+[08/Mar/2025 19:32:59] "GET /login HTTP/1.1" 404 2531
+Not Found: /
+[08/Mar/2025 19:55:34] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[08/Mar/2025 20:33:30] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[08/Mar/2025 20:55:25] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[08/Mar/2025 21:31:23] "GET / HTTP/1.1" 404 2498
+Not Found: /start/index.html
+[08/Mar/2025 21:49:35] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x03\x00\x9c\x01\x00\x00\x98\x03\x03gÌ»o\x90Yw\x84\x05ªRÆöwÅ£\x9aq5»O\x91á')
+[08/Mar/2025 21:49:35] You're accessing the development server over HTTPS, but it only supports HTTP.
+[08/Mar/2025 21:49:35] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x03\x00\x9c\x01\x00\x00\x98\x03\x03gÌ»oÆp\x05\x8a{ó\x99*üä{é\x13ü\x18¢nÔ?cTÐÀe')
+Not Found: /pscc/
+[08/Mar/2025 21:49:35] "HEAD /start/index.html HTTP/1.1" 404 0
+[08/Mar/2025 21:49:35] You're accessing the development server over HTTPS, but it only supports HTTP.
+[08/Mar/2025 21:49:35] "HEAD /pscc/ HTTP/1.1" 404 0
+Not Found: /
+[08/Mar/2025 22:36:29] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[09/Mar/2025 00:03:39] "GET / HTTP/1.1" 404 2498
+[09/Mar/2025 01:16:26] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[09/Mar/2025 01:16:26] "  /*à     Cookie: mstshash=Administr" 400 -
+[09/Mar/2025 01:22:40] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[09/Mar/2025 01:22:40] "  /*à     Cookie: mstshash=Administr" 400 -
+Not Found: /.env
+[09/Mar/2025 01:51:51] "GET /.env HTTP/1.1" 404 2528
+Not Found: /
+[09/Mar/2025 02:01:50] "GET / HTTP/1.0" 404 2498
+Not Found: /
+[09/Mar/2025 02:05:33] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[09/Mar/2025 02:37:25] "GET / HTTP/1.1" 404 2498
+[09/Mar/2025 02:38:13,043] - Broken pipe from ('205.210.31.239', 58146)
+Not Found: /
+[09/Mar/2025 03:00:47] "GET / HTTP/1.1" 404 2498
+[09/Mar/2025 03:11:42] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[09/Mar/2025 03:11:42] "  /*à     Cookie: mstshash=Administr" 400 -
+Not Found: /
+[09/Mar/2025 03:23:08] "GET / HTTP/1.1" 404 2498
+Not Found: /
+[09/Mar/2025 03:23:10] "GET / HTTP/1.1" 404 2498
+Not Found: /favicon.ico
+[09/Mar/2025 03:23:11] "GET /favicon.ico HTTP/1.1" 404 2549
+[09/Mar/2025 03:23:12] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00ò\x01\x00\x00î\x03\x03À¶¤\x92')
+[09/Mar/2025 03:23:12] You're accessing the development server over HTTPS, but it only supports HTTP.
+[09/Mar/2025 03:23:13] code 400, message Bad request version ('À\x13À')
+[09/Mar/2025 03:23:13] You're accessing the development server over HTTPS, but it only supports HTTP.
+Unauthorized: /api/target-app-list/
+[09/Mar/2025 03:47:47] "OPTIONS /api/target-app-list/?page=1&limit=20 HTTP/1.1" 401 58
+Unauthorized: /api/target-app-list/
+[09/Mar/2025 03:47:50] "OPTIONS /api/target-app-list/?page=1&limit=20 HTTP/1.1" 401 58
+[09/Mar/2025 03:51:47] "GET /api/api-lists/?app_id=1 HTTP/1.1" 200 21484
+Unauthorized: /api/api-lists/
+[09/Mar/2025 03:52:00] "GET /api/api-lists/?app_id=1 HTTP/1.1" 401 27
+[09/Mar/2025 03:56:25] "GET /api/target-app/?id=1 HTTP/1.1" 200 1109
+Unauthorized: /api/target-app-list/
+[09/Mar/2025 03:57:42] "GET /api/target-app-list/?page=1&limit=20 HTTP/1.1" 401 5214
+[09/Mar/2025 03:57:43] "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+[09/Mar/2025 03:57:43] "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+[09/Mar/2025 03:57:43] "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+[09/Mar/2025 03:57:43] "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+[09/Mar/2025 03:57:43] "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+[09/Mar/2025 03:59:23] code 400, message Bad request version ('À\x13À')
+[09/Mar/2025 03:59:23] You're accessing the development server over HTTPS, but it only supports HTTP.
+[09/Mar/2025 04:12:27] "GET /api/api-discovery/status/?app_id=1 HTTP/1.1" 200 37
+Conflict: /api/api-discovery/cancel/
+[09/Mar/2025 04:13:19] "GET /api/api-discovery/cancel/?app_id=1&mode=MANUAL HTTP/1.1" 409 49
+Conflict: /api/api-discovery/finish/
+[09/Mar/2025 04:13:24] "GET /api/api-discovery/finish/?app_id=1&mode=MANUAL HTTP/1.1" 409 49
+[09/Mar/2025 04:13:47] "GET /api/api-discovery/start/?app_id=1&mode=AUTO HTTP/1.1" 200 54
+Performing system checks...
+
+System check identified no issues (0 silenced).
+March 06, 2025 - 12:24:48
+Django version 5.1.6, using settings 'SFWAPProject.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+{'error_API_list': [], 'report': '              precision    recall  f1-score   support\n\n           0       1.00      1.00      1.00         2\n           1       1.00      1.00      1.00         2\n\n    accuracy                           1.00         4\n   macro avg       1.00      1.00      1.00         4\nweighted avg       1.00      1.00      1.00         4\n'}
+{'error_API_list': [], 'report': '              precision    recall  f1-score   support\n\n           0       1.00      1.00      1.00         2\n           1       1.00      1.00      1.00         2\n\n    accuracy                           1.00         4\n   macro avg       1.00      1.00      1.00         4\nweighted avg       1.00      1.00      1.00         4\n'}
+{'error_API_list': [], 'report': '              precision    recall  f1-score   support\n\n           0       1.00      1.00      1.00         2\n           1       1.00      1.00      1.00         2\n\n    accuracy                           1.00         4\n   macro avg       1.00      1.00      1.00         4\nweighted avg       1.00      1.00      1.00         4\n'}
+{'message': 'Data collection is ongoing, please try again later'}
+{'error_API_list': [], 'report': '              precision    recall  f1-score   support\n\n           0       0.50      1.00      0.67         2\n           1       0.00      0.00      0.00         2\n\n    accuracy                           0.50         4\n   macro avg       0.25      0.50      0.33         4\nweighted avg       0.25      0.50      0.33         4\n'}
+{'error_API_list': [], 'report': '              precision    recall  f1-score   support\n\n           0       0.50      1.00      0.67         2\n           1       0.00      0.00      0.00         2\n\n    accuracy                           0.50         4\n   macro avg       0.25      0.50      0.33         4\nweighted avg       0.25      0.50      0.33         4\n'}
+{'discovered_API_list': [{'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/memo/20', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'memo', 'is_path_variable': False}, {'name': '<NUM>', 'is_path_variable': True}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/o/r/15?thumbnail=1', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'o', 'is_path_variable': False}, {'name': 'r', 'is_path_variable': False}, {'name': '<NUM>', 'is_path_variable': True}], 'request_param_list': [{'name': 'thumbnail', 'is_necessary': True}], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/m/31', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'm', 'is_path_variable': False}, {'name': '<NUM>', 'is_path_variable': True}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': '[EMPTY]', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/status', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'status', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/logo.webp', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'logo.webp', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/user/me', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'user', 'is_path_variable': False}, {'name': 'me', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/memo/all?limit=20', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'memo', 'is_path_variable': False}, {'name': 'all', 'is_path_variable': False}], 'request_param_list': [{'name': 'limit', 'is_necessary': True}], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/idp', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'idp', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/memo?rowStatus=NORMAL&limit=20', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'memo', 'is_path_variable': False}], 'request_param_list': [{'name': 'rowStatus', 'is_necessary': True}, {'name': 'limit', 'is_necessary': True}], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/user/name/userA', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'user', 'is_path_variable': False}, {'name': 'name', 'is_path_variable': False}, {'name': 'userA', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/tag?', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'tag', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/memo/stats?creatorUsername=userA', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'memo', 'is_path_variable': False}, {'name': 'stats', 'is_path_variable': False}], 'request_param_list': [{'name': 'creatorUsername', 'is_necessary': True}], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'https://api.github.com/repos/usememos/memos/tags', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'repos', 'is_path_variable': False}, {'name': 'usememos', 'is_path_variable': False}, {'name': 'memos', 'is_path_variable': False}, {'name': 'tags', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/tag/suggestion', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'tag', 'is_path_variable': False}, {'name': 'suggestion', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/resource?limit=20', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'resource', 'is_path_variable': False}], 'request_param_list': [{'name': 'limit', 'is_necessary': True}], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/auth', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'auth', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/user/name/userB', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'user', 'is_path_variable': False}, {'name': 'name', 'is_path_variable': False}, {'name': 'userB', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'https://github.com/usememos/memos/releases', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'usememos', 'is_path_variable': False}, {'name': 'memos', 'is_path_variable': False}, {'name': 'releases', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/user/name/userC', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'user', 'is_path_variable': False}, {'name': 'name', 'is_path_variable': False}, {'name': 'userC', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'https://github.com/usememos/memos', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'usememos', 'is_path_variable': False}, {'name': 'memos', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'https://api.github.com/repos/usememos/memos', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'repos', 'is_path_variable': False}, {'name': 'usememos', 'is_path_variable': False}, {'name': 'memos', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': '[EMPTY]', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/user/name/', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'user', 'is_path_variable': False}, {'name': 'name', 'is_path_variable': False}, {'name': '[EMPTY]', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/user/name/userD', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'user', 'is_path_variable': False}, {'name': 'name', 'is_path_variable': False}, {'name': 'userD', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/user/name/userE', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'user', 'is_path_variable': False}, {'name': 'name', 'is_path_variable': False}, {'name': 'userE', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/u/3/rss.xml', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'u', 'is_path_variable': False}, {'name': '<NUM>', 'is_path_variable': True}, {'name': 'rss.xml', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/user/name/admin', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'user', 'is_path_variable': False}, {'name': 'name', 'is_path_variable': False}, {'name': 'admin', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/user', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'user', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/system/setting', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'system', 'is_path_variable': False}, {'name': 'setting', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v2/system/info', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v2', 'is_path_variable': False}, {'name': 'system', 'is_path_variable': False}, {'name': 'info', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/storage', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'storage', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://49.234.6.241:5230/full-logo.webp', 'sample_request_data': {}, 'request_method': 'GET', 'path_segments': [{'name': 'full-logo.webp', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/memo/19/organizer', 'sample_request_data': {'pinned': True}, 'request_method': 'POST', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'memo', 'is_path_variable': False}, {'name': '<NUM>', 'is_path_variable': True}, {'name': 'organizer', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': [{'name': 'pinned', 'type': 'Number'}]}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/auth/signin', 'sample_request_data': {'username': 'userA', 'password': '202501'}, 'request_method': 'POST', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'auth', 'is_path_variable': False}, {'name': 'signin', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': [{'name': 'username', 'type': 'String'}, {'name': 'password', 'type': 'String'}]}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/memo', 'sample_request_data': {'content': 'A1', 'visibility': 'PRIVATE', 'resourceIdList': [], 'relationList': []}, 'request_method': 'POST', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'memo', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': [{'name': 'content', 'type': 'String'}, {'name': 'visibility', 'type': 'String'}, {'name': 'resourceIdList', 'type': 'List'}, {'name': 'relationList', 'type': 'List'}]}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/resource/blob', 'sample_request_data': {}, 'request_method': 'POST', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'resource', 'is_path_variable': False}, {'name': 'blob', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/tag', 'sample_request_data': {'name': 'HaHa'}, 'request_method': 'POST', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'tag', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': [{'name': 'name', 'type': 'String'}]}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/tag/delete', 'sample_request_data': {'name': 'HaHa'}, 'request_method': 'POST', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'tag', 'is_path_variable': False}, {'name': 'delete', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': [{'name': 'name', 'type': 'String'}]}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/user/setting', 'sample_request_data': {'key': 'telegram-user-id', 'value': '""'}, 'request_method': 'POST', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'user', 'is_path_variable': False}, {'name': 'setting', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': [{'name': 'key', 'type': 'String'}, {'name': 'value', 'type': 'String'}]}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/auth/signout', 'sample_request_data': {}, 'request_method': 'POST', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'auth', 'is_path_variable': False}, {'name': 'signout', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/resource', 'sample_request_data': {'filename': 'aa', 'externalLink': 'htp:', 'type': 'image/*', 'downloadToLocal': False}, 'request_method': 'POST', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'resource', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': [{'name': 'filename', 'type': 'String'}, {'name': 'externalLink', 'type': 'String'}, {'name': 'type', 'type': 'String'}, {'name': 'downloadToLocal', 'type': 'Number'}]}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/user', 'sample_request_data': {'username': 'new', 'password': '202501', 'role': 'USER'}, 'request_method': 'POST', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'user', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': [{'name': 'username', 'type': 'String'}, {'name': 'password', 'type': 'String'}, {'name': 'role', 'type': 'String'}]}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/system/setting', 'sample_request_data': {'name': 'allow-signup', 'value': 'True'}, 'request_method': 'POST', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'system', 'is_path_variable': False}, {'name': 'setting', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': [{'name': 'name', 'type': 'String'}, {'name': 'value', 'type': 'String'}]}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/system/vacuum', 'sample_request_data': {}, 'request_method': 'POST', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'system', 'is_path_variable': False}, {'name': 'vacuum', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://49.234.6.241:5230/memos.api.v1.AuthService/GetAuthStatus', 'sample_request_data': {}, 'request_method': 'POST', 'path_segments': [{'name': 'memos.api.v1.AuthService', 'is_path_variable': False}, {'name': 'GetAuthStatus', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://49.234.6.241:5230/memos.api.v1.UserService/GetUserSetting', 'sample_request_data': {}, 'request_method': 'POST', 'path_segments': [{'name': 'memos.api.v1.UserService', 'is_path_variable': False}, {'name': 'GetUserSetting', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://49.234.6.241:5230/memos.api.v1.InboxService/ListInboxes', 'sample_request_data': {}, 'request_method': 'POST', 'path_segments': [{'name': 'memos.api.v1.InboxService', 'is_path_variable': False}, {'name': 'ListInboxes', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://49.234.6.241:5230/memos.api.v1.MemoService/ListMemos', 'sample_request_data': {}, 'request_method': 'POST', 'path_segments': [{'name': 'memos.api.v1.MemoService', 'is_path_variable': False}, {'name': 'ListMemos', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://49.234.6.241:5230/memos.api.v1.UserService/ListShortcuts', 'sample_request_data': {}, 'request_method': 'POST', 'path_segments': [{'name': 'memos.api.v1.UserService', 'is_path_variable': False}, {'name': 'ListShortcuts', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://49.234.6.241:5230/memos.api.v1.UserService/GetUserStats', 'sample_request_data': {}, 'request_method': 'POST', 'path_segments': [{'name': 'memos.api.v1.UserService', 'is_path_variable': False}, {'name': 'GetUserStats', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://49.234.6.241:5230/memos.api.v1.ResourceService/ListResources', 'sample_request_data': {}, 'request_method': 'POST', 'path_segments': [{'name': 'memos.api.v1.ResourceService', 'is_path_variable': False}, {'name': 'ListResources', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://49.234.6.241:5230/memos.api.v1.UserService/ListAllUserStats', 'sample_request_data': {}, 'request_method': 'POST', 'path_segments': [{'name': 'memos.api.v1.UserService', 'is_path_variable': False}, {'name': 'ListAllUserStats', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://49.234.6.241:5230/memos.api.v1.UserService/GetUserByUsername', 'sample_request_data': {}, 'request_method': 'POST', 'path_segments': [{'name': 'memos.api.v1.UserService', 'is_path_variable': False}, {'name': 'GetUserByUsername', 'is_path_variable': False}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/memo/21', 'sample_request_data': {}, 'request_method': 'DELETE', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'memo', 'is_path_variable': False}, {'name': '<NUM>', 'is_path_variable': True}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/resource/16', 'sample_request_data': {}, 'request_method': 'DELETE', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'resource', 'is_path_variable': False}, {'name': '<NUM>', 'is_path_variable': True}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/user/9', 'sample_request_data': {}, 'request_method': 'DELETE', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'user', 'is_path_variable': False}, {'name': '<NUM>', 'is_path_variable': True}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/memo/19', 'sample_request_data': {}, 'request_method': 'PATCH', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'memo', 'is_path_variable': False}, {'name': '<NUM>', 'is_path_variable': True}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/user/2', 'sample_request_data': {}, 'request_method': 'PATCH', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'user', 'is_path_variable': False}, {'name': '<NUM>', 'is_path_variable': True}], 'request_param_list': [], 'request_data_fields': []}, {'function_description': 'Please fill in the function description', 'permission_info': 'Please fill in the permission info', 'sample_url': 'http://47.97.114.24:5230/api/v1/resource/16', 'sample_request_data': {}, 'request_method': 'PATCH', 'path_segments': [{'name': 'api', 'is_path_variable': False}, {'name': 'v1', 'is_path_variable': False}, {'name': 'resource', 'is_path_variable': False}, {'name': '<NUM>', 'is_path_variable': True}], 'request_param_list': [], 'request_data_fields': []}]}[09/Mar/2025 04:13:48] "POST /api/api-discovery/notification/?app_id=1 HTTP/1.1" 200 59
+[2025-03-09 04:13:48,826: INFO/MainProcess] Task SFWAP.views.handle_api_discovery_notification[cffb7a73-b88e-4353-8835-2c47c6e57c08] received
+[2025-03-09 04:13:48,828: WARNING/ForkPoolWorker-2] =============================================================================
+[2025-03-09 04:13:48,986: INFO/ForkPoolWorker-2] Task SFWAP.views.handle_api_discovery_notification[cffb7a73-b88e-4353-8835-2c47c6e57c08] succeeded in 0.15811650099931285s: {'message': 'API discovery and update successful'}
+Unauthorized: /api/api-discovery/status/
+[09/Mar/2025 04:15:33] "GET /api/api-discovery/status/?app_id=1 HTTP/1.1" 401 58
+Unauthorized: /api/api-discovery/start/
+[09/Mar/2025 04:20:03] "GET /api/api-discovery/start/?app_id=1&mode=AUTO HTTP/1.1" 401 58
+Unauthorized: /api/api-lists/
+[09/Mar/2025 04:25:36] "GET /api/api-lists/?app_id=1 HTTP/1.1" 401 5104
+[09/Mar/2025 04:25:36] "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+[09/Mar/2025 04:25:36] "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+[09/Mar/2025 04:25:36] "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+[09/Mar/2025 04:25:37] "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+[09/Mar/2025 04:25:37] "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+Unauthorized: /api/api-discovery/finish/
+[09/Mar/2025 04:27:07] "GET /api/api-discovery/finish/?app_id=1&mode=MANUAL HTTP/1.1" 401 58
+[09/Mar/2025 04:32:18] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[09/Mar/2025 04:32:18] "  /*à     Cookie: mstshash=Administr" 400 -
+Unauthorized: /api/target-app/
+[09/Mar/2025 04:37:38] "GET /api/target-app/?id=1 HTTP/1.1" 401 5094
+[09/Mar/2025 04:37:38] "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+[09/Mar/2025 04:37:39] "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+[09/Mar/2025 04:37:39] "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+[09/Mar/2025 04:37:39] "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+[09/Mar/2025 04:37:39] "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+Not Found: /
+[09/Mar/2025 04:46:20] "GET / HTTP/1.1" 404 2498
+Unauthorized: /api/api-discovery/status/
+[09/Mar/2025 04:50:54] "GET /api/api-discovery/status/?app_id=1 HTTP/1.1" 401 5261
+[09/Mar/2025 04:50:54] "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+[09/Mar/2025 04:50:54] "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+[09/Mar/2025 04:50:54] "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+[09/Mar/2025 04:50:54] "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+[09/Mar/2025 04:50:54] "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+[2025-03-09 04:59:22,240: INFO/MainProcess] Task SFWAP.views.handle_api_discovery_notification[59ad2773-576c-4500-97aa-a4f6a93ecb7d] received
+[2025-03-09 04:59:22,241: WARNING/ForkPoolWorker-2] =============================================================================
+[2025-03-09 04:59:22,535: INFO/ForkPoolWorker-2] Task SFWAP.views.handle_api_discovery_notification[59ad2773-576c-4500-97aa-a4f6a93ecb7d] succeeded in 0.2940514530055225s: {'message': 'API discovery and update successful'}
+[2025-03-09 04:59:24,363: INFO/MainProcess] Task SFWAP.views.handle_api_discovery_notification[0d52cc4a-a30d-48b1-beea-42d2230568d0] received
+[2025-03-09 04:59:24,365: WARNING/ForkPoolWorker-2] =============================================================================
+[2025-03-09 04:59:24,636: INFO/ForkPoolWorker-2] Task SFWAP.views.handle_api_discovery_notification[0d52cc4a-a30d-48b1-beea-42d2230568d0] succeeded in 0.27133240399416536s: {'message': 'API discovery and update successful'}
+[2025-03-09 06:05:08,620: INFO/MainProcess] Task SFWAP.views.handle_api_discovery_notification[656b7702-ccce-4134-a617-14fd179f06a0] received
+[2025-03-09 06:05:08,623: WARNING/ForkPoolWorker-2] =============================================================================
+[2025-03-09 06:05:08,889: INFO/ForkPoolWorker-2] Task SFWAP.views.handle_api_discovery_notification[656b7702-ccce-4134-a617-14fd179f06a0] succeeded in 0.2666719150147401s: {'message': 'API discovery and update successful'}
+Watching for file changes with StatReloader
+[09/Mar/2025 06:26:12] "GET /api/user-info/ HTTP/1.1" 200 48
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+---------------------------------以下是老哥们的测试----------------------------------
+Not Found: /
+[09/Mar/2025 06:43:15] "GET / HTTP/1.1" 404 2498

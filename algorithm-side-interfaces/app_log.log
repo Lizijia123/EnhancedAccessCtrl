@@ -137,3 +137,199 @@
 2025-03-06 20:26:05,964 - INFO - Param injection attempting time：0；Single traffic data valid：True；Traffic data combination valid：True
 2025-03-06 20:26:05,964 - INFO - Simulated traffic data for 12/12 user collected：user: normaluser malicious: False
 2025-03-06 20:26:05,967 - INFO - All simulated traffic data collected：/home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/algorithm-side-interfaces/algorithm/simulated_traffic_data.csv
+2025-03-06 20:28:34,180 - INFO - Trying to construct model...
+2025-03-06 20:28:34,180 - INFO - DATA_COLLECTION_STATUS: COMPLETED
+2025-03-06 20:28:34,208 - INFO - Training model... Size of feature_list: 7
+2025-03-06 20:28:34,216 - INFO - Extracting features... Size of feature_list: 7
+2025-03-06 20:28:34,218 - INFO - Extracting features... Size of feature_list: 7
+2025-03-06 20:28:34,218 - INFO - Extracting features... Size of feature_list: 7
+2025-03-06 20:28:34,220 - INFO - Extracting features... Size of feature_list: 7
+2025-03-06 20:28:34,221 - INFO - Extracting features... Size of feature_list: 7
+2025-03-06 20:28:34,222 - INFO - Extracting features... Size of feature_list: 7
+2025-03-06 20:28:34,223 - INFO - Extracting features... Size of feature_list: 7
+2025-03-06 20:28:34,224 - INFO - Extracting features... Size of feature_list: 7
+2025-03-06 20:28:34,325 - INFO - Extracting features... Size of feature_list: 7
+2025-03-06 20:28:34,326 - INFO - Extracting features... Size of feature_list: 7
+2025-03-06 20:28:34,327 - INFO - Extracting features... Size of feature_list: 7
+2025-03-06 20:28:34,328 - INFO - Extracting features... Size of feature_list: 7
+2025-03-06 20:28:34,342 - INFO - Model constructed.
+2025-03-08 16:50:21,253 - INFO - Trying to construct model...
+2025-03-08 16:50:21,253 - INFO - DATA_COLLECTION_STATUS: COMPLETED
+2025-03-08 16:50:21,282 - INFO - Training model... Size of feature_list: 6
+2025-03-08 16:50:21,290 - INFO - Extracting features... Size of feature_list: 6
+2025-03-08 16:50:21,291 - INFO - Extracting features... Size of feature_list: 6
+2025-03-08 16:50:21,292 - INFO - Extracting features... Size of feature_list: 6
+2025-03-08 16:50:21,293 - INFO - Extracting features... Size of feature_list: 6
+2025-03-08 16:50:21,294 - INFO - Extracting features... Size of feature_list: 6
+2025-03-08 16:50:21,295 - INFO - Extracting features... Size of feature_list: 6
+2025-03-08 16:50:21,296 - INFO - Extracting features... Size of feature_list: 6
+2025-03-08 16:50:21,297 - INFO - Extracting features... Size of feature_list: 6
+2025-03-08 16:50:21,332 - INFO - Extracting features... Size of feature_list: 6
+2025-03-08 16:50:21,334 - INFO - Extracting features... Size of feature_list: 6
+2025-03-08 16:50:21,335 - INFO - Extracting features... Size of feature_list: 6
+2025-03-08 16:50:21,336 - INFO - Extracting features... Size of feature_list: 6
+2025-03-08 16:50:21,347 - INFO - Model constructed.
+2025-03-09 12:13:47,157 - INFO - Extracting API logs from auto crawling logs and manual logs...
+2025-03-09 12:13:47,222 - INFO - Saved API logs to /home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/algorithm-side-interfaces/algorithm/api_discovery.py/crawl_log/API_crawl_log.csv
+2025-03-09 12:13:47,222 - INFO - Extracting API list with API discovery algorithm...
+2025-03-09 12:13:47,286 - INFO - Starting Drain3 template miner
+2025-03-09 12:13:47,289 - INFO - Starting Drain3 template miner
+2025-03-09 12:13:47,290 - INFO - Starting Drain3 template miner
+2025-03-09 12:13:47,291 - INFO - Starting Drain3 template miner
+2025-03-09 12:13:47,292 - INFO - Starting Drain3 template miner
+2025-03-09 12:13:48,680 - INFO - Saved available param set to /home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/algorithm-side-interfaces/algorithm/param_set.json
+2025-03-09 12:59:20,569 - INFO - Extracting API logs from auto crawling logs and manual logs...
+2025-03-09 12:59:20,618 - INFO - Saved API logs to /home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/algorithm-side-interfaces/algorithm/api_discovery.py/crawl_log/API_crawl_log.csv
+2025-03-09 12:59:20,618 - INFO - Extracting API list with API discovery algorithm...
+2025-03-09 12:59:20,679 - INFO - Starting Drain3 template miner
+2025-03-09 12:59:20,682 - INFO - Starting Drain3 template miner
+2025-03-09 12:59:20,684 - INFO - Starting Drain3 template miner
+2025-03-09 12:59:20,684 - INFO - Starting Drain3 template miner
+2025-03-09 12:59:20,685 - INFO - Starting Drain3 template miner
+2025-03-09 12:59:22,154 - INFO - Saved available param set to /home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/algorithm-side-interfaces/algorithm/param_set.json
+2025-03-09 12:59:22,738 - INFO - Extracting API logs from auto crawling logs and manual logs...
+2025-03-09 12:59:22,781 - INFO - Saved API logs to /home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/algorithm-side-interfaces/algorithm/api_discovery.py/crawl_log/API_crawl_log.csv
+2025-03-09 12:59:22,781 - INFO - Extracting API list with API discovery algorithm...
+2025-03-09 12:59:22,842 - INFO - Starting Drain3 template miner
+2025-03-09 12:59:22,845 - INFO - Starting Drain3 template miner
+2025-03-09 12:59:22,847 - INFO - Starting Drain3 template miner
+2025-03-09 12:59:22,847 - INFO - Starting Drain3 template miner
+2025-03-09 12:59:22,848 - INFO - Starting Drain3 template miner
+2025-03-09 12:59:24,331 - INFO - Saved available param set to /home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/algorithm-side-interfaces/algorithm/param_set.json
+2025-03-09 14:04:56,858 - INFO - Extracting API logs from auto crawling logs and manual logs...
+2025-03-09 14:04:56,912 - INFO - Saved API logs to /home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/algorithm-side-interfaces/algorithm/api_discovery.py/crawl_log/API_crawl_log.csv
+2025-03-09 14:04:56,961 - INFO - Saved available param set to /home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/algorithm-side-interfaces/algorithm/param_set.json
+2025-03-09 14:04:56,962 - INFO - Generating simulated API sequences...
+2025-03-09 14:04:56,962 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-09 14:04:58,384 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_8'], malicious_sign_seq=[0, 1] ==========
+2025-03-09 14:04:58,385 - INFO - API sequence 1/12 generated
+2025-03-09 14:04:58,385 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-03-09 14:04:59,695 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-09 14:04:59,695 - INFO - API sequence 2/12 generated
+2025-03-09 14:04:59,695 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-09 14:05:00,907 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-09 14:05:00,907 - INFO - API sequence 3/12 generated
+2025-03-09 14:05:00,907 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-09 14:05:02,174 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[1] ==========
+2025-03-09 14:05:02,174 - INFO - API sequence 4/12 generated
+2025-03-09 14:05:02,174 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-09 14:05:03,323 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-09 14:05:03,324 - INFO - API sequence 5/12 generated
+2025-03-09 14:05:03,324 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-09 14:05:04,840 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_8'], malicious_sign_seq=[0, 1] ==========
+2025-03-09 14:05:04,840 - INFO - API sequence 6/12 generated
+2025-03-09 14:05:04,840 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-03-09 14:05:05,966 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-09 14:05:05,967 - INFO - API sequence 7/12 generated
+2025-03-09 14:05:05,967 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-09 14:05:06,950 - INFO - Extracting API logs from auto crawling logs and manual logs...
+2025-03-09 14:05:06,996 - INFO - Saved API logs to /home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/algorithm-side-interfaces/algorithm/api_discovery.py/crawl_log/API_crawl_log.csv
+2025-03-09 14:05:06,996 - INFO - Extracting API list with API discovery algorithm...
+2025-03-09 14:05:07,062 - INFO - Starting Drain3 template miner
+2025-03-09 14:05:07,064 - INFO - Starting Drain3 template miner
+2025-03-09 14:05:07,066 - INFO - Starting Drain3 template miner
+2025-03-09 14:05:07,067 - INFO - Starting Drain3 template miner
+2025-03-09 14:05:07,067 - INFO - Starting Drain3 template miner
+2025-03-09 14:05:07,256 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-09 14:05:07,256 - INFO - API sequence 8/12 generated
+2025-03-09 14:05:07,256 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-09 14:05:08,429 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[1] ==========
+2025-03-09 14:05:08,429 - INFO - API sequence 9/12 generated
+2025-03-09 14:05:08,429 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-09 14:05:08,541 - INFO - Saved available param set to /home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/algorithm-side-interfaces/algorithm/param_set.json
+2025-03-09 14:05:09,584 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-09 14:05:09,584 - INFO - API sequence 10/12 generated
+2025-03-09 14:05:09,584 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-09 14:05:10,751 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[1] ==========
+2025-03-09 14:05:10,752 - INFO - API sequence 11/12 generated
+2025-03-09 14:05:10,752 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-09 14:05:12,245 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_8'], malicious_sign_seq=[0, 1] ==========
+2025-03-09 14:05:12,245 - INFO - API sequence 12/12 generated
+2025-03-09 14:05:12,247 - INFO - API sequences serialized to /home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/algorithm-side-interfaces/algorithm/traffic_data_generation.py/serialized_llm_agents.json
+2025-03-09 14:05:12,247 - INFO - Generating simulated traffic data set...
+2025-03-09 14:05:12,250 - INFO - Status:  Calling API: DELETE http://49.234.6.241:5230/api/v1/resource/16 {}
+2025-03-09 14:05:12,250 - INFO - Param injection attempting time：0；Single traffic data valid：True；Traffic data combination valid：True
+2025-03-09 14:05:12,252 - INFO - Status:  Calling API: DELETE http://49.234.6.241:5230/api/v1/resource/16 {}
+2025-03-09 14:05:12,253 - INFO - Param injection attempting time：1；Single traffic data valid：False；Traffic data combination valid：False
+2025-03-09 14:05:12,253 - INFO - Simulated traffic data for 1/12 user collected：user: normaluser malicious: True
+2025-03-09 14:05:12,255 - INFO - Status:  Calling API: DELETE http://49.234.6.241:5230/api/v1/memo/21 {}
+2025-03-09 14:05:12,256 - INFO - Param injection attempting time：0；Single traffic data valid：True；Traffic data combination valid：True
+2025-03-09 14:05:12,256 - INFO - Simulated traffic data for 2/12 user collected：user: adminuser malicious: False
+2025-03-09 14:05:12,258 - INFO - Status:  Calling API: DELETE http://47.97.114.24:5230/api/v1/resource/16 {}
+2025-03-09 14:05:12,259 - INFO - Param injection attempting time：0；Single traffic data valid：True；Traffic data combination valid：True
+2025-03-09 14:05:12,259 - INFO - Simulated traffic data for 3/12 user collected：user: normaluser malicious: False
+2025-03-09 14:05:12,262 - INFO - Status:  Calling API: DELETE http://49.234.6.241:5230/api/v1/memo/21 {}
+2025-03-09 14:05:12,262 - INFO - Param injection attempting time：1；Single traffic data valid：False；Traffic data combination valid：False
+2025-03-09 14:05:12,262 - INFO - Simulated traffic data for 4/12 user collected：user: unloggeduser malicious: True
+2025-03-09 14:05:12,265 - INFO - Status:  Calling API: DELETE http://49.234.6.241:5230/api/v1/memo/21 {}
+2025-03-09 14:05:12,265 - INFO - Param injection attempting time：0；Single traffic data valid：True；Traffic data combination valid：True
+2025-03-09 14:05:12,265 - INFO - Simulated traffic data for 5/12 user collected：user: normaluser malicious: False
+2025-03-09 14:05:12,268 - INFO - Status:  Calling API: DELETE http://49.234.6.241:5230/api/v1/memo/21 {}
+2025-03-09 14:05:12,268 - INFO - Param injection attempting time：0；Single traffic data valid：True；Traffic data combination valid：True
+2025-03-09 14:05:12,270 - INFO - Status:  Calling API: DELETE http://49.234.6.241:5230/api/v1/resource/16 {}
+2025-03-09 14:05:12,271 - INFO - Param injection attempting time：1；Single traffic data valid：False；Traffic data combination valid：False
+2025-03-09 14:05:12,271 - INFO - Simulated traffic data for 6/12 user collected：user: normaluser malicious: True
+2025-03-09 14:05:12,273 - INFO - Status:  Calling API: DELETE http://49.234.6.241:5230/api/v1/resource/16 {}
+2025-03-09 14:05:12,274 - INFO - Param injection attempting time：0；Single traffic data valid：True；Traffic data combination valid：True
+2025-03-09 14:05:12,274 - INFO - Simulated traffic data for 7/12 user collected：user: adminuser malicious: False
+2025-03-09 14:05:12,277 - INFO - Status:  Calling API: DELETE http://49.234.6.241:5230/api/v1/memo/21 {}
+2025-03-09 14:05:12,277 - INFO - Param injection attempting time：0；Single traffic data valid：True；Traffic data combination valid：True
+2025-03-09 14:05:12,277 - INFO - Simulated traffic data for 8/12 user collected：user: normaluser malicious: False
+2025-03-09 14:05:12,279 - INFO - Status:  Calling API: DELETE http://49.234.6.241:5230/api/v1/memo/21 {}
+2025-03-09 14:05:12,280 - INFO - Param injection attempting time：1；Single traffic data valid：False；Traffic data combination valid：False
+2025-03-09 14:05:12,280 - INFO - Simulated traffic data for 9/12 user collected：user: unloggeduser malicious: True
+2025-03-09 14:05:12,283 - INFO - Status:  Calling API: DELETE http://49.234.6.241:5230/api/v1/resource/16 {}
+2025-03-09 14:05:12,283 - INFO - Param injection attempting time：0；Single traffic data valid：True；Traffic data combination valid：True
+2025-03-09 14:05:12,283 - INFO - Simulated traffic data for 10/12 user collected：user: normaluser malicious: False
+2025-03-09 14:05:12,286 - INFO - Status:  Calling API: DELETE http://49.234.6.241:5230/api/v1/resource/16 {}
+2025-03-09 14:05:12,286 - INFO - Param injection attempting time：1；Single traffic data valid：False；Traffic data combination valid：False
+2025-03-09 14:05:12,286 - INFO - Simulated traffic data for 11/12 user collected：user: unloggeduser malicious: True
+2025-03-09 14:05:12,289 - INFO - Status:  Calling API: DELETE http://47.97.114.24:5230/api/v1/resource/16 {}
+2025-03-09 14:05:12,289 - INFO - Param injection attempting time：0；Single traffic data valid：True；Traffic data combination valid：True
+2025-03-09 14:05:12,292 - INFO - Status:  Calling API: DELETE http://49.234.6.241:5230/api/v1/resource/16 {}
+2025-03-09 14:05:12,292 - INFO - Param injection attempting time：1；Single traffic data valid：False；Traffic data combination valid：False
+2025-03-09 14:05:12,292 - INFO - Simulated traffic data for 12/12 user collected：user: normaluser malicious: True
+2025-03-09 14:05:12,302 - INFO - All simulated traffic data collected：/home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/algorithm-side-interfaces/algorithm/simulated_traffic_data.csv
+2025-03-09 14:05:24,702 - INFO - Extracting API logs from auto crawling logs and manual logs...
+2025-03-09 14:05:24,745 - INFO - Saved API logs to /home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/algorithm-side-interfaces/algorithm/api_discovery.py/crawl_log/API_crawl_log.csv
+2025-03-09 14:05:24,745 - INFO - Extracting API list with API discovery algorithm...
+2025-03-09 14:05:24,806 - INFO - Starting Drain3 template miner
+2025-03-09 14:05:24,809 - INFO - Starting Drain3 template miner
+2025-03-09 14:05:24,810 - INFO - Starting Drain3 template miner
+2025-03-09 14:05:24,811 - INFO - Starting Drain3 template miner
+2025-03-09 14:05:24,811 - INFO - Starting Drain3 template miner
+2025-03-09 14:05:26,252 - INFO - Saved available param set to /home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/algorithm-side-interfaces/algorithm/param_set.json
+2025-03-09 14:06:13,466 - INFO - Trying to construct model...
+2025-03-09 14:06:13,467 - INFO - DATA_COLLECTION_STATUS: COMPLETED
+2025-03-09 14:06:13,503 - INFO - Training model... Size of feature_list: 6
+2025-03-09 14:06:13,511 - INFO - Extracting features... Size of feature_list: 6
+2025-03-09 14:06:13,512 - INFO - Extracting features... Size of feature_list: 6
+2025-03-09 14:06:13,513 - INFO - Extracting features... Size of feature_list: 6
+2025-03-09 14:06:13,514 - INFO - Extracting features... Size of feature_list: 6
+2025-03-09 14:06:13,515 - INFO - Extracting features... Size of feature_list: 6
+2025-03-09 14:06:13,516 - INFO - Extracting features... Size of feature_list: 6
+2025-03-09 14:06:13,518 - INFO - Extracting features... Size of feature_list: 6
+2025-03-09 14:06:13,519 - INFO - Extracting features... Size of feature_list: 6
+2025-03-09 14:06:13,557 - INFO - Extracting features... Size of feature_list: 6
+2025-03-09 14:06:13,558 - INFO - Extracting features... Size of feature_list: 6
+2025-03-09 14:06:13,560 - INFO - Extracting features... Size of feature_list: 6
+2025-03-09 14:06:13,561 - INFO - Extracting features... Size of feature_list: 6
+2025-03-09 14:06:13,572 - INFO - Model constructed.
+2025-03-09 14:06:23,335 - INFO - Trying to construct model...
+2025-03-09 14:06:23,336 - INFO - DATA_COLLECTION_STATUS: COMPLETED
+2025-03-09 14:06:23,373 - INFO - Training model... Size of feature_list: 6
+2025-03-09 14:06:23,382 - INFO - Extracting features... Size of feature_list: 6
+2025-03-09 14:06:23,383 - INFO - Extracting features... Size of feature_list: 6
+2025-03-09 14:06:23,385 - INFO - Extracting features... Size of feature_list: 6
+2025-03-09 14:06:23,386 - INFO - Extracting features... Size of feature_list: 6
+2025-03-09 14:06:23,387 - INFO - Extracting features... Size of feature_list: 6
+2025-03-09 14:06:23,389 - INFO - Extracting features... Size of feature_list: 6
+2025-03-09 14:06:23,390 - INFO - Extracting features... Size of feature_list: 6
+2025-03-09 14:06:23,391 - INFO - Extracting features... Size of feature_list: 6
+2025-03-09 14:06:23,441 - INFO - Extracting features... Size of feature_list: 6
+2025-03-09 14:06:23,442 - INFO - Extracting features... Size of feature_list: 6
+2025-03-09 14:06:23,444 - INFO - Extracting features... Size of feature_list: 6
+2025-03-09 14:06:23,445 - INFO - Extracting features... Size of feature_list: 6
+2025-03-09 14:06:23,457 - INFO - Model constructed.
+2025-03-09 14:07:12,514 - INFO - Detection started. Combined data duration: 30
+2025-03-09 14:07:20,383 - INFO - Detection paused.

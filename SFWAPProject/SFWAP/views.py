@@ -16,6 +16,25 @@ from django.utils import timezone
 from .models import TargetApplication, API, PathSegment, RequestParam, RequestDataField
 from django.core.exceptions import ValidationError
 
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.response import Response
+from django.contrib.auth.models import User
+
+@api_view(['GET'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def get_user_info(request):
+    user = request.user
+    user_info = {
+        'id': user.id,
+        'username': user.username,
+        'email': user.email
+        # 你可以根据需要添加更多用户信息字段
+    }
+    return Response(user_info)
+
 
 @csrf_exempt
 def register(request):
@@ -26,21 +45,36 @@ def register(request):
         email = json.loads(request.body).get('email')
 
         if not username or not password or not email:
-            return JsonResponse({'error': 'Missing required fields'}, status=400)
+            return JsonResponse({
+                'code': 400,
+                'error': 'Missing required fields'
+            }, status=400)
 
         if User.objects.filter(username=username).exists():
-            return JsonResponse({'error': 'Username already exists'}, status=400)
+            return JsonResponse({
+                'code': 400,
+                'error': 'Username already exists'
+            }, status=400)
 
         if User.objects.filter(email=email).exists():
-            return JsonResponse({'error': 'Email already exists'}, status=400)
+            return JsonResponse({
+                'code': 400,
+                'error': 'Email already exists'
+            }, status=400)
 
         hashed_password = make_password(password)
         user = User(username=username, email=email, password=hashed_password)
         user.save()
 
-        return JsonResponse({'message': 'User registered successfully'}, status=201)
+        return JsonResponse({
+            'code': 201,
+            'message': 'User registered successfully'
+        }, status=201)
 
-    return JsonResponse({'error': 'Invalid request method'}, status=405)
+    return JsonResponse({
+        'code': 405,
+        'error': 'Invalid request method'
+    }, status=405)
 
 
 @csrf_exempt
@@ -53,20 +87,35 @@ def user_login(request):
 
         if user is not None:
             login(request, user)
-            return JsonResponse({'message': 'User logged in successfully'}, status=200)
+            return JsonResponse({
+                'code': 200,
+                'message': 'User logged in successfully'
+            }, status=200)
         else:
-            return JsonResponse({'error': 'Invalid username or password'}, status=401)
+            return JsonResponse({
+                'code': 401,
+                'error': 'Invalid username or password'
+            }, status=401)
 
-    return JsonResponse({'error': 'Invalid request method'}, status=405)
+    return JsonResponse({
+        'code': 405,
+        'error': 'Invalid request method'
+    }, status=405)
 
 
 @csrf_exempt
 def user_logout(request):
     if request.method == 'POST':
         logout(request)
-        return JsonResponse({'message': 'User logged out successfully'}, status=200)
+        return JsonResponse({
+            'code': 200,
+            'message': 'User logged out successfully'
+        }, status=200)
 
-    return JsonResponse({'error': 'Invalid request method'}, status=405)
+    return JsonResponse({
+        'code': 405,
+        'error': 'Invalid request method'
+    }, status=405)
 
 
 def target_app_model_to_view(target_app):
@@ -109,9 +158,18 @@ def get_target_app_list(request):
         target_apps_info = []
         for target_app in target_apps:
             target_apps_info.append(target_app_model_to_view(target_app))
-        return JsonResponse(target_apps_info, safe=False, status=200)
+        return JsonResponse({
+            'code': 200,
+            'data': {
+                'target_app_list': target_apps_info,
+                'total': len(target_apps_info)
+            }
+        }, safe=False, status=200)
     except Exception as e:
-        return JsonResponse({'error': str(e)}, status=500)
+        return JsonResponse({
+            'code': 500,
+            'error': str(e)
+        }, status=500)
 
 
 def setup_basic_features(target_app):
@@ -131,11 +189,20 @@ def setup_basic_features(target_app):
             target_app.detect_feature_list.add(feature)
         return None
     except requests.RequestException as e:
-        return JsonResponse({'error': f'Error making get basic feature list request: {str(e)}'}, status=500)
+        return JsonResponse({
+            'code': 500,
+            'error': f'Error making get basic feature list request: {str(e)}'
+        }, status=500)
     except ValueError:
-        return JsonResponse({'error': 'Invalid JSON response from getting basic feature list'}, status=500)
+        return JsonResponse({
+            'code': 500,
+            'error': 'Invalid JSON response from getting basic feature list'
+        }, status=500)
     except Exception as e:
-        return JsonResponse({'error': str(e)}, status=500)
+        return JsonResponse({
+            'code': 500,
+            'error': str(e)
+        }, status=500)
 
 
 @api_view(['GET', 'POST', 'PUT', 'DELETE'])
@@ -144,12 +211,21 @@ def target_app(request):
     if request.method == 'GET':
         app_id = request.query_params.get('id')
         if not app_id:
-            return JsonResponse({'error': 'Missing target application ID'}, status=400)
+            return JsonResponse({
+                'code': 400,
+                'error': 'Missing target application ID'
+            }, status=400)
         try:
             target_app = TargetApplication.objects.get(id=app_id, user=request.user)
-            return JsonResponse(target_app_model_to_view(target_app), status=200)
+            return JsonResponse({
+                'code': 200,
+                'data': target_app_model_to_view(target_app)
+            }, status=200)
         except TargetApplication.DoesNotExist:
-            return JsonResponse({'error': 'Target application not found or you do not have permission'}, status=404)
+            return JsonResponse({
+                'code': 404,
+                'error': 'Target application not found or you do not have permission'
+            }, status=404)
 
     elif request.method == 'POST':
         try:
@@ -163,9 +239,15 @@ def target_app(request):
             is_draft = data.get('is_draft')
             if not all([APP_name, APP_url, user_behavior_cycle, SFWAP_address, description,
                         len(login_credentials_data) >= 2]):
-                return JsonResponse({'error': 'Missing required fields or insufficient login credentials'}, status=400)
+                return JsonResponse({
+                    'code': 400,
+                    'error': 'Missing required fields or insufficient login credentials'
+                }, status=400)
             if TargetApplication.objects.filter(APP_name=APP_name).exists():
-                return JsonResponse({'error': 'APP_name already exists'}, status=400)
+                return JsonResponse({
+                    'code': 400,
+                    'error': 'APP_name already exists'
+                }, status=400)
 
             detect_state = 'BASIC_INFO_TO_CONFIGURE' if is_draft else 'API_LIST_TO_DISCOVER'
 
@@ -182,7 +264,10 @@ def target_app(request):
             try:
                 target_app.full_clean()
             except ValidationError as e:
-                return JsonResponse({'error': str(e)}, status=400)
+                return JsonResponse({
+                    'code': 400,
+                    'error': str(e)
+                }, status=400)
 
             valid_credentials = []
             for credential_data in login_credentials_data:
@@ -190,7 +275,10 @@ def target_app(request):
                 username = credential_data.get('username')
                 password = credential_data.get('password')
                 if not all([user_role, username, password]):
-                    return JsonResponse({'error': 'Missing fields in login credential'}, status=400)
+                    return JsonResponse({
+                        'code': 400,
+                        'error': 'Missing fields in login credential'
+                    }, status=400)
                 credential = LoginCredential(
                     user_role=user_role,
                     username=username,
@@ -200,7 +288,10 @@ def target_app(request):
                     credential.full_clean()
                     valid_credentials.append(credential)
                 except ValidationError as e:
-                    return JsonResponse({'error': f'Invalid login credential data: {str(e)}'}, status=400)
+                    return JsonResponse({
+                        'code': 400,
+                        'error': f'Invalid login credential data: {str(e)}'
+                    }, status=400)
 
             target_app.save()
             for credential in valid_credentials:
@@ -212,24 +303,37 @@ def target_app(request):
                 return basic_feature_setup_res
 
             return JsonResponse({
+                'code': 200,
                 'message': 'Target application created successfully',
-                'target_app': target_app_model_to_view(target_app)
+                'data': target_app_model_to_view(target_app)
             }, status=200)
 
         except ValidationError as e:
-            return JsonResponse({'error': str(e)}, status=400)
+            return JsonResponse({
+                'code': 400,
+                'error': str(e)
+            }, status=400)
         except json.JSONDecodeError:
-            return JsonResponse({'error': 'Invalid JSON data'}, status=400)
+            return JsonResponse({
+                'code': 400,
+                'error': 'Invalid JSON data'
+            }, status=400)
 
     elif request.method == 'PUT':
         try:
             app_id = request.query_params.get('id')
             if not app_id:
-                return JsonResponse({'error': 'Missing target application ID'}, status=400)
+                return JsonResponse({
+                    'code': 400,
+                    'error': 'Missing target application ID'
+                }, status=400)
             try:
                 target_app = TargetApplication.objects.get(id=app_id, user=request.user)
             except TargetApplication.DoesNotExist:
-                return JsonResponse({'error': 'Target application not found or you do not have permission'}, status=404)
+                return JsonResponse({
+                    'code': 404,
+                    'error': 'Target application not found or you do not have permission'
+                }, status=404)
 
             data = json.loads(request.body)
             APP_name = data.get('APP_name', target_app.APP_name)
@@ -240,9 +344,15 @@ def target_app(request):
             login_credentials_data = data.get('login_credentials')
 
             if TargetApplication.objects.filter(APP_name=APP_name).exclude(id=app_id).exists():
-                return JsonResponse({'error': 'APP_name already exists'}, status=400)
+                return JsonResponse({
+                    'code': 400,
+                    'error': 'APP_name already exists'
+                }, status=400)
             if not login_credentials_data or len(login_credentials_data) < 2:
-                return JsonResponse({'error': 'Insufficient login credentials'}, status=400)
+                return JsonResponse({
+                    'code': 400,
+                    'error': 'Insufficient login credentials'
+                }, status=400)
 
             target_app.APP_name = APP_name
             target_app.APP_url = APP_url
@@ -253,7 +363,10 @@ def target_app(request):
             try:
                 target_app.full_clean()
             except ValidationError as e:
-                return JsonResponse({'error': str(e)}, status=400)
+                return JsonResponse({
+                    'code': 400,
+                    'error': str(e)
+                }, status=400)
 
             valid_credentials = []
             for credential_data in login_credentials_data:
@@ -261,7 +374,10 @@ def target_app(request):
                 username = credential_data.get('username')
                 password = credential_data.get('password')
                 if not all([user_role, username, password]):
-                    return JsonResponse({'error': 'Missing fields in login credential'}, status=400)
+                    return JsonResponse({
+                        'code': 400,
+                        'error': 'Missing fields in login credential'
+                    }, status=400)
 
                 credential = LoginCredential(
                     user_role=user_role,
@@ -272,7 +388,10 @@ def target_app(request):
                     credential.full_clean()
                     valid_credentials.append(credential)
                 except ValidationError as e:
-                    return JsonResponse({'error': f'Invalid login credential data: {str(e)}'}, status=400)
+                    return JsonResponse({
+                        'code': 400,
+                        'error': f'Invalid login credential data: {str(e)}'
+                    }, status=400)
 
             target_app.login_credentials.all().delete()
             target_app.save()
@@ -283,27 +402,46 @@ def target_app(request):
             setup_basic_features(target_app)
 
             return JsonResponse({
+                'code': 200,
                 'message': 'Target application updated successfully',
-                'target_app': target_app_model_to_view(target_app)
+                'data': target_app_model_to_view(target_app)
             }, status=200)
         except ValidationError as e:
-            return JsonResponse({'error': str(e)}, status=400)
+            return JsonResponse({
+                'code': 400,
+                'error': str(e)
+            }, status=400)
         except json.JSONDecodeError:
-            return JsonResponse({'error': 'Invalid JSON data'}, status=400)
+            return JsonResponse({
+                'code': 400,
+                'error': 'Invalid JSON data'
+            }, status=400)
 
     elif request.method == 'DELETE':
         app_id = request.query_params.get('id')
         if not app_id:
-            return JsonResponse({'error': 'Missing target application ID'}, status=400)
+            return JsonResponse({
+                'code': 400,
+                'error': 'Missing target application ID'
+            }, status=400)
 
         try:
             target_app = TargetApplication.objects.get(id=app_id, user=request.user)
             target_app.delete()
-            return JsonResponse({'message': 'Target application deleted successfully'}, status=200)
+            return JsonResponse({
+                'code': 200,
+                'message': 'Target application deleted successfully'
+            }, status=200)
         except TargetApplication.DoesNotExist:
-            return JsonResponse({'error': 'Target application not found or you do not have permission'}, status=404)
+            return JsonResponse({
+                'code': 404,
+                'error': 'Target application not found or you do not have permission'
+            }, status=404)
 
-    return JsonResponse({'error': 'Invalid request method'}, status=405)
+    return JsonResponse({
+        'code': 405,
+        'error': 'Invalid request method'
+    }, status=405)
 
 
 def API_list_model_to_view(api_list_field):
@@ -347,17 +485,28 @@ def API_list_model_to_view(api_list_field):
 def get_api_lists(request):
     app_id = request.query_params.get('app_id')
     if not app_id:
-        return JsonResponse({'error': 'Missing target application ID'}, status=400)
+        return JsonResponse({
+            'code': 400,
+            'error': 'Missing target application ID'
+        }, status=400)
     try:
         target_app = TargetApplication.objects.get(id=app_id, user=request.user)
         discovered_API_list = API_list_model_to_view(target_app.discovered_API_list)
         user_API_list = API_list_model_to_view(target_app.user_API_list)
         return JsonResponse({
-            'discovered_API_list': discovered_API_list,
-            'user_API_list': user_API_list
+            'code': 200,
+            'data':{
+                'discovered_API_list': discovered_API_list,
+                'discovered_API_list_total': len(discovered_API_list),
+                'user_API_list': user_API_list,
+                'user_API_list_total': len(user_API_list)
+            }
         }, status=200)
     except TargetApplication.DoesNotExist:
-        return JsonResponse({'error': 'Target application not found or you do not have permission'}, status=404)
+        return JsonResponse({
+            'code': 404,
+            'error': 'Target application not found or you do not have permission'
+        }, status=404)
 
 
 def validate_api(api_data):
@@ -365,6 +514,7 @@ def validate_api(api_data):
     permission_info = api_data.get('permission_info')
     if not function_description or not permission_info:
         return JsonResponse({
+            'code': 400,
             'error': 'Each API must have non - empty function_description and permission_info'
         }, status=400)
 
@@ -382,7 +532,10 @@ def validate_api(api_data):
     try:
         api.full_clean()
     except ValidationError as e:
-        return JsonResponse({'error': f'Invalid API data: {str(e)}'}, status=400)
+        return JsonResponse({
+            'code': 400,
+            'error': f'Invalid API data: {str(e)}'
+        }, status=400)
 
     path_segment_list_data = api_data.get('path_segment_list', [])
     path_segments = []
@@ -391,6 +544,7 @@ def validate_api(api_data):
         is_path_variable = segment_data.get('is_path_variable')
         if not name or is_path_variable is None:
             return JsonResponse({
+                'code': 400,
                 'error': 'Each path segment must have a non - empty name and a valid is_path_variable value'
             }, status=400)
         segment = PathSegment(name=name, is_path_variable=is_path_variable)
@@ -398,7 +552,10 @@ def validate_api(api_data):
             segment.full_clean()
             path_segments.append(segment)
         except ValidationError as e:
-            return JsonResponse({'error': f'Invalid path segment data: {str(e)}'}, status=400)
+            return JsonResponse({
+                'code': 400,
+                'error': f'Invalid path segment data: {str(e)}'
+            }, status=400)
 
     request_param_list_data = api_data.get('request_param_list', [])
     request_params = []
@@ -407,6 +564,7 @@ def validate_api(api_data):
         is_necessary = param_data.get('is_necessary')
         if not name or is_necessary is None:
             return JsonResponse({
+                'code': 400,
                 'error': 'Each request param must have a non - empty name and a valid is_necessary value'
             }, status=400)
         param = RequestParam(name=name, is_necessary=is_necessary)
@@ -414,7 +572,10 @@ def validate_api(api_data):
             param.full_clean()
             request_params.append(param)
         except ValidationError as e:
-            return JsonResponse({'error': f'Invalid request param data: {str(e)}'}, status=400)
+            return JsonResponse({
+                'code': 400,
+                'error': f'Invalid request param data: {str(e)}'
+            }, status=400)
 
     request_data_fields_data = api_data.get('request_data_fields', [])
     request_data_fields = []
@@ -423,6 +584,7 @@ def validate_api(api_data):
         type_ = field_data.get('type')
         if not name or not type_ or type_ not in ['String', 'Number', 'Boolean', 'List', 'Object']:
             return JsonResponse({
+                'code': 400,
                 'error': 'Each request data field must have a non - empty name and a valid type (String, Number, Boolean, List, Object)'
             }, status=400)
         field = RequestDataField(name=name, type=type_)
@@ -430,7 +592,10 @@ def validate_api(api_data):
             field.full_clean()
             request_data_fields.append(field)
         except ValidationError as e:
-            return JsonResponse({'error': f'Invalid request data field data: {str(e)}'}, status=400)
+            return JsonResponse({
+                'code': 400,
+                'error': f'Invalid request data field data: {str(e)}'
+            }, status=400)
 
     # 不直接设置多对多关系，将关联对象存储在字典中
     return {
@@ -446,15 +611,27 @@ def validate_api(api_data):
 def update_user_api_list_v1(request):
     app_id = request.query_params.get('app_id')
     if not app_id:
-        return JsonResponse({'error': 'Missing target application ID'}, status=400)
+        return JsonResponse({
+            'code': 400,
+            'error': 'Missing target application ID'
+        }, status=400)
     try:
         target_app = TargetApplication.objects.get(id=app_id, user=request.user)
     except TargetApplication.DoesNotExist:
-        return JsonResponse({'error': 'Target application not found or you do not have permission'}, status=404)
+        return JsonResponse({
+            'code': 404,
+            'error': 'Target application not found or you do not have permission'
+        }, status=404)
     if target_app.last_API_discovery_at is None:
-        return JsonResponse({'error': 'The target application has never had API discovery'}, status=409)
+        return JsonResponse({
+            'code': 409,
+            'error': 'The target application has never had API discovery'
+        }, status=409)
     if target_app.detect_state == 'STARTED':
-        return JsonResponse({'error': 'You cannot update the API list during detection'}, status=409)
+        return JsonResponse({
+            'code': 409,
+            'error': 'You cannot update the API list during detection'
+        }, status=409)
 
     try:
         data = json.loads(request.body)
@@ -539,12 +716,20 @@ def update_user_api_list_v1(request):
         try:
             requests.post(data_collect_url, json=data)
         except requests.RequestException as e:
-            return JsonResponse({'error': f'Error making data collection request to SFWAP-Detector: {str(e)}'},
-                                status=500)
+            return JsonResponse({
+                'code': 500,
+                'error': f'Error making data collection request to SFWAP-Detector: {str(e)}'
+            },status=500)
 
-        return JsonResponse({'message': 'User API list updated successfully, Data collection started'}, status=200)
+        return JsonResponse({
+            'code': 200,
+            'message': 'User API list updated successfully, Data collection started'
+        }, status=200)
     except json.JSONDecodeError:
-        return JsonResponse({'error': 'Invalid JSON data'}, status=400)
+        return JsonResponse({
+            'code': 400,
+            'error': 'Invalid JSON data'
+        }, status=400)
 
 
 
@@ -555,15 +740,27 @@ def update_user_api_list_v1(request):
 def update_user_api_list(request):
     app_id = request.query_params.get('app_id')
     if not app_id:
-        return JsonResponse({'error': 'Missing target application ID'}, status=400)
+        return JsonResponse({
+            'code': 400,
+            'error': 'Missing target application ID'
+        }, status=400)
     try:
         target_app = TargetApplication.objects.get(id=app_id, user=request.user)
     except TargetApplication.DoesNotExist:
-        return JsonResponse({'error': 'Target application not found or you do not have permission'}, status=404)
+        return JsonResponse({
+            'code': 404,
+            'error': 'Target application not found or you do not have permission'
+        }, status=404)
     if target_app.last_API_discovery_at is None:
-        return JsonResponse({'error': 'The target application has never had API discovery'}, status=409)
+        return JsonResponse({
+            'code': 409,
+            'error': 'The target application has never had API discovery'
+        }, status=409)
     if target_app.detect_state == 'STARTED':
-        return JsonResponse({'error': 'You cannot update the API list during detection'}, status=409)
+        return JsonResponse({
+            'code': 409,
+            'error': 'You cannot update the API list during detection'
+        }, status=409)
 
     try:
         data = json.loads(request.body)
@@ -602,12 +799,19 @@ def update_user_api_list(request):
         try:
             requests.post(data_collect_url, json=data)
         except requests.RequestException as e:
-            return JsonResponse({'error': f'Error making data collection request to SFWAP-Detector: {str(e)}'},
-                                status=500)
-
-        return JsonResponse({'message': 'User API list updated successfully, Data collection started'}, status=200)
+            return JsonResponse({
+                'code': 500,
+                'error': f'Error making data collection request to SFWAP-Detector: {str(e)}'
+            }, status=500)
+        return JsonResponse({
+            'code': 200,
+            'message': 'User API list updated successfully, Data collection started'
+        }, status=200)
     except json.JSONDecodeError:
-        return JsonResponse({'error': 'Invalid JSON data'}, status=400)
+        return JsonResponse({
+            'code': 400,
+            'error': 'Invalid JSON data'
+        }, status=400)
 
 
 # @api_view(['GET'])
@@ -642,20 +846,33 @@ def update_user_api_list(request):
 def get_auto_API_discovery_status(request):
     app_id = request.query_params.get('app_id')
     if not app_id:
-        return JsonResponse({'error': 'Missing target application ID'}, status=400)
+        return JsonResponse({
+            'code': 400,
+            'error': 'Missing target application ID'
+        }, status=400)
     try:
         target_app = TargetApplication.objects.get(id=app_id, user=request.user)
     except TargetApplication.DoesNotExist:
-        return JsonResponse({'error': 'Target application not found or you do not have permission'}, status=404)
+        return JsonResponse({
+            'code': 404,
+            'error': 'Target application not found or you do not have permission'
+        }, status=404)
     try:
         response = requests.get(f'http://{target_app.SFWAP_address}/api_discovery/status')
-        return JsonResponse(response.json(), status=response.status_code)
+        return JsonResponse({
+            'code': response.status_code,
+            'data': response.json()
+        }, status=response.status_code)
     except requests.RequestException as e:
-        return JsonResponse(
-            {'error': f'Error making auto API discovery state query request to SFWAP-Detector: {str(e)}'},
-            status=500)
+        return JsonResponse({
+            'code': 500,
+            'error': f'Error making auto API discovery state query request to SFWAP-Detector: {str(e)}'
+        }, status=500)
     except ValueError:
-        return JsonResponse({'error': 'Invalid JSON response from SFWAP-Detector'}, status=500)
+        return JsonResponse({
+            'code': 500,
+            'error': 'Invalid JSON response from SFWAP-Detector'
+        }, status=500)
 
 
 @api_view(['GET'])
@@ -663,45 +880,76 @@ def get_auto_API_discovery_status(request):
 def start_api_discovery(request):
     app_id = request.query_params.get('app_id')
     if not app_id:
-        return JsonResponse({'error': 'Missing target application ID'}, status=400)
+        return JsonResponse({
+            'code': 400,
+            'error': 'Missing target application ID'
+        }, status=400)
     try:
         target_app = TargetApplication.objects.get(id=app_id, user=request.user)
     except TargetApplication.DoesNotExist:
-        return JsonResponse({'error': 'Target application not found or you do not have permission'}, status=404)
+        return JsonResponse({
+            'code': 404,
+            'error': 'Target application not found or you do not have permission'
+        }, status=404)
 
     if target_app.is_draft:
-        return JsonResponse({'error': 'API discovery is not available for staged target apps'}, status=409)
+        return JsonResponse({
+            'code': 409,
+            'error': 'API discovery is not available for staged target apps'
+        }, status=409)
     if target_app.detect_state == 'STARTED':
-        return JsonResponse({'error': 'You cannot do the API discovery during detection'}, status=409)
+        return JsonResponse({
+            'code': 409,
+            'error': 'You cannot do the API discovery during detection'
+        }, status=409)
 
     sfwap_address = target_app.SFWAP_address
     mode = request.query_params.get('mode')
     if mode == 'AUTO':
         try:
             response = requests.post(f'http://{sfwap_address}/api_discovery', json=target_app_model_to_view(target_app))
-            return JsonResponse(response.json(), status=response.status_code)
+            return JsonResponse({
+                'code': response.status_code,
+                'data': response.json()
+            }, status=response.status_code)
         except requests.RequestException as e:
-            return JsonResponse({'error': f'Error making auto API discovery start request to SFWAP-Detector: {str(e)}'},
-                                status=500)
+            return JsonResponse({
+                'code': 500,
+                'error': f'Error making auto API discovery start request to SFWAP-Detector: {str(e)}'
+            }, status=500)
         except ValueError:
-            return JsonResponse({'error': 'Invalid JSON response from SFWAP-Detector'}, status=500)
+            return JsonResponse({
+                'code': 500,
+                'error': 'Invalid JSON response from SFWAP-Detector'
+            }, status=500)
     elif mode == 'MANUAL':
         if target_app.last_API_discovery_at is None:
-            return JsonResponse(
-                {'error': 'You cannot do the manual API discovery until any auto API discovery is finished'},
-                status=409)
+            return JsonResponse({
+                'code': 409,
+                'error': 'You cannot do the manual API discovery until any auto API discovery is finished'
+            }, status=409)
         try:
             response = requests.post(f'http://{sfwap_address}/api_discovery/start',
                                      json=target_app_model_to_view(target_app))
-            return JsonResponse(response.json(), status=response.status_code)
+            return JsonResponse({
+                'code': response.status_code,
+                'data': response.json()
+            }, status=response.status_code)
         except requests.RequestException as e:
-            return JsonResponse(
-                {'error': f'Error making manual API discovery start request to SFWAP-Detector: {str(e)}'},
-                status=500)
+            return JsonResponse({
+                'code': 500,
+                'error': f'Error making manual API discovery start request to SFWAP-Detector: {str(e)}'
+            }, status=500)
         except ValueError:
-            return JsonResponse({'error': 'Invalid JSON response from SFWAP-Detector'}, status=500)
+            return JsonResponse({
+                'code': 500,
+                'error': 'Invalid JSON response from SFWAP-Detector'
+            }, status=500)
     else:
-        return JsonResponse({'error': 'Invalid mode parameter'}, status=400)
+        return JsonResponse({
+            'code': 400,
+            'error': 'Invalid mode parameter'
+        }, status=400)
 
 
 def save_api_list(target_app, api_list_field_name, api_list_data):
@@ -742,20 +990,33 @@ def save_api_list(target_app, api_list_field_name, api_list_data):
 def finish_api_discovery(request):
     app_id = request.query_params.get('app_id')
     if not app_id:
-        return JsonResponse({'error': 'Missing target application ID'}, status=400)
+        return JsonResponse({
+            'code': 400,
+            'error': 'Missing target application ID'
+        }, status=400)
     try:
         target_app = TargetApplication.objects.get(id=app_id, user=request.user)
     except TargetApplication.DoesNotExist:
-        return JsonResponse({'error': 'Target application not found or you do not have permission'}, status=404)
+        return JsonResponse({
+            'code': 404,
+            'error': 'Target application not found or you do not have permission'
+        }, status=404)
 
     if target_app.last_API_discovery_at is None:
-        return JsonResponse(
-            {'error': 'You cannot do the manual API discovery until any auto API discovery is finished'},
-            status=409)
+        return JsonResponse({
+            'code': 409,
+            'error': 'You cannot do the manual API discovery until any auto API discovery is finished'
+        }, status=409)
     if target_app.is_draft:
-        return JsonResponse({'error': 'API discovery is not available for staged target apps'}, status=409)
+        return JsonResponse({
+            'code': 409,
+            'error': 'API discovery is not available for staged target apps'
+        }, status=409)
     if target_app.detect_state == 'STARTED':
-        return JsonResponse({'error': 'You cannot do the API discovery during detection'}, status=409)
+        return JsonResponse({
+            'code': 409,
+            'error': 'You cannot do the API discovery during detection'
+        }, status=409)
 
     sfwap_address = target_app.SFWAP_address
     try:
@@ -769,13 +1030,20 @@ def finish_api_discovery(request):
         target_app.last_API_discovery_at = timezone.now()
         target_app.save(update_fields=['last_API_discovery_at'])
 
-        return JsonResponse(response.json(), status=response.status_code)
+        return JsonResponse({
+            'code': response.status_code,
+            'data': response.json()
+        }, status=response.status_code)
     except requests.RequestException as e:
-        return JsonResponse({'error': f'Error making manual API discovery stop request to SFWAP-Detector: {str(e)}'},
-                            status=500)
+        return JsonResponse({
+            'code': 500,
+            'error': f'Error making manual API discovery stop request to SFWAP-Detector: {str(e)}'
+        }, status=500)
     except Exception as e:
-        return JsonResponse({'error': f'An error occurred during handling manual API discoveries: {str(e)}'},
-                            status=500)
+        return JsonResponse({
+            'code': 500,
+            'error': f'An error occurred during handling manual API discoveries: {str(e)}'
+        }, status=500)
 
 
 @api_view(['GET'])
@@ -783,30 +1051,51 @@ def finish_api_discovery(request):
 def cancel_api_discovery(request):
     app_id = request.query_params.get('app_id')
     if not app_id:
-        return JsonResponse({'error': 'Missing target application ID'}, status=400)
+        return JsonResponse({
+            'code': 400,
+            'error': 'Missing target application ID'
+        }, status=400)
     try:
         target_app = TargetApplication.objects.get(id=app_id, user=request.user)
     except TargetApplication.DoesNotExist:
-        return JsonResponse({'error': 'Target application not found or you do not have permission'}, status=404)
+        return JsonResponse({
+            'code': 404,
+            'error': 'Target application not found or you do not have permission'
+        }, status=404)
 
     if target_app.last_API_discovery_at is None:
-        return JsonResponse(
-            {'error': 'You cannot do the manual API discovery until any auto API discovery is finished'},
-            status=409)
+        return JsonResponse({
+            'code': 409,
+            'error': 'You cannot do the manual API discovery until any auto API discovery is finished'
+        }, status=409)
     if target_app.is_draft:
-        return JsonResponse({'error': 'API discovery is not available for staged target apps'}, status=409)
+        return JsonResponse({
+            'code': 409,
+            'error': 'API discovery is not available for staged target apps'
+        }, status=409)
     if target_app.detect_state == 'STARTED':
-        return JsonResponse({'error': 'You cannot do the API discovery during detection'}, status=409)
+        return JsonResponse({
+            'code': 409,
+            'error': 'You cannot do the API discovery during detection'
+        }, status=409)
 
     sfwap_address = target_app.SFWAP_address
     try:
         response = requests.get(f'http://{sfwap_address}/api_discovery/cancel')
-        return JsonResponse(response.json(), status=response.status_code)
+        return JsonResponse({
+            'code': response.status_code,
+            'data': response.json()
+        }, status=response.status_code)
     except requests.RequestException as e:
-        return JsonResponse({'error': f'Error making manual API discovery cancel request to SFWAP-Detector: {str(e)}'},
-                            status=500)
+        return JsonResponse({
+            'code': 500,
+            'error': f'Error making manual API discovery cancel request to SFWAP-Detector: {str(e)}'
+        }, status=500)
     except ValueError:
-        return JsonResponse({'error': 'Invalid JSON response from SFWAP-Detector'}, status=500)
+        return JsonResponse({
+            'code': 500,
+            'error': 'Invalid JSON response from SFWAP-Detector'
+        }, status=500)
 
 
 # 接收算法端的API发现通知，由算法端调用
@@ -814,12 +1103,18 @@ def cancel_api_discovery(request):
 def api_discovery_notification(request):
     app_id = request.query_params.get('app_id')
     if not app_id:
-        return JsonResponse({'error': 'Missing target application ID'}, status=400)
+        return JsonResponse({
+            'code': 400,
+            'error': 'Missing target application ID'
+        }, status=400)
     # try:
     discovery_data = request.data
     print(discovery_data)
     handle_api_discovery_notification.delay(app_id, discovery_data)
-    return JsonResponse({'message': 'Notification received and processing started'}, status=200)
+    return JsonResponse({
+        'code': 200,
+        'message': 'Notification received and processing started'
+    }, status=200)
     # except Exception as e:
     #     return JsonResponse({'error': str(e)}, status=500)
 
@@ -853,19 +1148,34 @@ def get_feature_list(feature_list_field):
 def detect_feature(request):
     app_id = request.query_params.get('app_id')
     if not app_id:
-        return JsonResponse({'error': 'Missing target application ID'}, status=400)
+        return JsonResponse({
+            'code': 400,
+            'error': 'Missing target application ID'
+        }, status=400)
     try:
         target_app = TargetApplication.objects.get(id=app_id, user=request.user)
     except TargetApplication.DoesNotExist:
-        return JsonResponse({'error': 'Target application not found or you do not have permission'}, status=404)
+        return JsonResponse({
+            'code': 404,
+            'error': 'Target application not found or you do not have permission'
+        }, status=404)
 
     if request.method == 'GET':
         feature_list = get_feature_list(target_app.detect_feature_list)
-        return JsonResponse({'detect_feature_list': feature_list}, status=200)
+        return JsonResponse({
+            'code': 200,
+            'data': {
+                'detect_feature_list': feature_list,
+                'total': len(feature_list)
+            }
+        }, status=200)
 
     elif request.method == 'PUT':
         if target_app.detect_state == 'STARTED':
-            return JsonResponse({'error': 'You cannot update the detect feature list during detection'}, status=409)
+            return JsonResponse({
+                'code': 409,
+                'error': 'You cannot update the detect feature list during detection'
+            }, status=409)
         try:
             data = json.loads(request.body)
             feature_list = data.get('detect_feature_list', [])
@@ -877,16 +1187,18 @@ def detect_feature(request):
                 description = feature_data.get('description')
                 feature_type = feature_data.get('type')
                 if not name or not description:
-                    return JsonResponse(
-                        {'error': f'Name and description are required for feature with data: {feature_data}'},
-                        status=400)
+                    return JsonResponse({
+                        'code': 400,
+                        'error': f'Name and description are required for feature with data: {feature_data}'
+                    }, status=400)
 
                 if feature_type == 'SeqOccurTimeFeature':
                     string_list = feature_data.get('string_list')
                     if not string_list:
-                        return JsonResponse(
-                            {'error': f'string_list is required for SeqOccurTimeFeature with data: {feature_data}'},
-                            status=400)
+                        return JsonResponse({
+                            'code': 400,
+                            'error': f'string_list is required for SeqOccurTimeFeature with data: {feature_data}'
+                        }, status=400)
                     if feature_id:
                         try:
                             feature = DetectFeature.objects.get(id=feature_id)
@@ -905,7 +1217,10 @@ def detect_feature(request):
                     else:
                         feature = DetectFeature()
                 else:
-                    return JsonResponse({'error': f'Invalid feature type in data: {feature_data}'}, status=400)
+                    return JsonResponse({
+                        'code': 400,
+                        'error': f'Invalid feature type in data: {feature_data}'
+                    }, status=400)
 
                 feature.name = name
                 feature.description = description
@@ -913,16 +1228,25 @@ def detect_feature(request):
                     feature.full_clean()
                     updated_features.append(feature)
                 except ValidationError as e:
-                    return JsonResponse({'error': str(e)}, status=400)
+                    return JsonResponse({
+                        'code': 400,
+                        'error': str(e)
+                    }, status=400)
 
             target_app.detect_feature_list.clear()
             for feature in updated_features:
                 feature.save()
                 # print(feature.feature_type)
                 target_app.detect_feature_list.add(feature)
-            return JsonResponse({'message': 'Detect features updated successfully'}, status=200)
+            return JsonResponse({
+                'code': 200,
+                'message': 'Detect features updated successfully'
+            }, status=200)
         except json.JSONDecodeError:
-            return JsonResponse({'error': 'Invalid JSON data'}, status=400)
+            return JsonResponse({
+                'code': 400,
+                'error': 'Invalid JSON data'
+            }, status=400)
 
 
 @api_view(['GET'])
@@ -930,42 +1254,68 @@ def detect_feature(request):
 def get_data_collection_status(request):
     app_id = request.query_params.get('app_id')
     if not app_id:
-        return JsonResponse({'error': 'Missing target application ID'}, status=400)
+        return JsonResponse({
+            'code': 400,
+            'error': 'Missing target application ID'
+        }, status=400)
     try:
         target_app = TargetApplication.objects.get(id=app_id, user=request.user)
     except TargetApplication.DoesNotExist:
-        return JsonResponse({'error': 'Target application not found or you do not have permission'}, status=404)
+        return JsonResponse({
+            'code': 404,
+            'error': 'Target application not found or you do not have permission'
+        }, status=404)
     try:
         response = requests.get(f'http://{target_app.SFWAP_address}/data_collect_status')
-        return JsonResponse(response.json(), status=response.status_code)
+        return JsonResponse({
+            'code':response.status_code, 
+            'data':response.json()
+        }, status=response.status_code)
     except requests.RequestException as e:
-        return JsonResponse(
-            {'error': f'Error making auto data collection state query request to SFWAP-Detector: {str(e)}'},
-            status=500)
+        return JsonResponse({
+            'code': 500,
+            'error': f'Error making auto data collection state query request to SFWAP-Detector: {str(e)}'
+        }, status=500)
     except ValueError:
-        return JsonResponse({'error': 'Invalid JSON response from SFWAP-Detector'}, status=500)
+        return JsonResponse({
+            'code': 500,
+            'error': 'Invalid JSON response from SFWAP-Detector'
+        }, status=500)
     
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-# 点击模型构建按钮时调用；如果是102状态码则客户端轮询直到生成report
 def construct_model(request):
     app_id = request.query_params.get('app_id')
     if not app_id:
-        return JsonResponse({'error': 'Missing target application ID'}, status=400)
+        return JsonResponse({
+            'code': 400,
+            'error': 'Missing target application ID'
+        }, status=400)
 
     try:
         target_app = TargetApplication.objects.get(id=app_id, user=request.user)
     except TargetApplication.DoesNotExist:
-        return JsonResponse({'error': 'Target application not found or you do not have permission'}, status=404)
+        return JsonResponse({
+            'code': 404,
+            'error': 'Target application not found or you do not have permission'
+        }, status=404)
 
     if target_app.is_draft:
-        return JsonResponse({'error': 'Model construction is not available for staged target apps'}, status=409)
+        return JsonResponse({
+            'code': 409,
+            'error': 'Model construction is not available for staged target apps'
+        }, status=409)
     if target_app.last_API_discovery_at is None:
-        return JsonResponse({'error': 'Model construction is not available until the API discovery is finished'},
-                            status=409)
+        return JsonResponse({
+            'code': 409,
+            'error': 'Model construction is not available until the API discovery is finished'
+        }, status=409)
     if target_app.detect_state == 'STARTED':
-        return JsonResponse({'error': 'Model construction is not available during detection'}, status=409)
+        return JsonResponse({
+            'code': 409,
+            'error': 'Model construction is not available during detection'
+        }, status=409)
 
     user_API_list = API_list_model_to_view(target_app.user_API_list)
     detection_feature_list = get_feature_list(target_app.detect_feature_list)
@@ -982,13 +1332,19 @@ def construct_model(request):
     try:
         response = requests.post(url, json=data)
         result = response.json()
-        print(result)
+        # print(result)
         error = result.get('error')
         if error:
-            return JsonResponse({'error': 'Model construction error: ' + error}, status=500)
+            return JsonResponse({
+                'code': 500,
+                'error': 'Model construction error: ' + error
+            }, status=500)
         message = result.get('message')
         if message:
-            return JsonResponse({'message': message}, status=409)
+            return JsonResponse({
+                'code': 409,
+                'error': message
+            }, status=409)
 
         report = result.get('report')
         error_API_list = result.get('error_API_list')
@@ -998,13 +1354,24 @@ def construct_model(request):
         if target_app.detect_state == 'API_LIST_TO_IMPROVE':
             target_app.detect_state = 'MODEL_FEATURES_TO_CONFIGURE'
             target_app.save(update_fields=['detect_state'])
-        return JsonResponse(
-            {'message': 'Model construction successful', 'report': report, 'error_API_list': error_API_list},
-            status=200)
+        return JsonResponse({
+            'code': 200,
+            'message': 'Model construction successful', 
+            'data': {
+                'report': report, 
+                'error_API_list': error_API_list
+            }
+        }, status=200)
     except requests.RequestException as e:
-        return JsonResponse({'error': f'Error making model construction request: {str(e)}'}, status=500)
+        return JsonResponse({
+            'code': 500,
+            'error': f'Error making model construction request: {str(e)}'
+        }, status=500)
     except ValueError:
-        return JsonResponse({'error': 'Invalid JSON response from model construction'}, status=500)
+        return JsonResponse({
+            'code': 500,
+            'error': 'Invalid JSON response from model construction'
+        }, status=500)
 
 
 @api_view(['GET', 'PUT'])
@@ -1012,42 +1379,70 @@ def construct_model(request):
 def detection_config(request):
     app_id = request.query_params.get('app_id')
     if not app_id:
-        return JsonResponse({'error': 'Missing target application ID'}, status=400)
+        return JsonResponse({
+            'code': 400,
+            'error': 'Missing target application ID'
+        }, status=400)
     try:
         target_app = TargetApplication.objects.get(id=app_id, user=request.user)
     except TargetApplication.DoesNotExist:
-        return JsonResponse({'error': 'Target application not found or you do not have permission'}, status=404)
+        return JsonResponse({
+            'code': 404,
+            'error': 'Target application not found or you do not have permission'
+        }, status=404)
 
     if request.method == 'GET':
         return JsonResponse({
-            'enhanced_detection_enabled': target_app.enhanced_detection_enabled,
-            'combined_data_duration': target_app.combined_data_duration
-        })
+            'code': 200,
+            'data': {
+                'enhanced_detection_enabled': target_app.enhanced_detection_enabled,
+                'combined_data_duration': target_app.combined_data_duration
+            }
+        }, status=200)
     elif request.method == 'PUT':
         if target_app.detect_state == 'STARTED':
-            return JsonResponse({'error': 'You cannot edit the detection config during the detection'}, status=409)
+            return JsonResponse({
+                'code': 409,
+                'error': 'You cannot edit the detection config during the detection'
+            }, status=409)
         if target_app.last_model_construction_at is None:
-            return JsonResponse({'error': 'You cannot edit the detection config until the model construction finished'},
-                                status=409)
+            return JsonResponse({
+                'code': 409,
+                'error': 'You cannot edit the detection config until the model construction finished'
+            }, status=409)
         if target_app.last_API_discovery_at is None:
-            return JsonResponse({'error': 'You cannot edit the detection config until the API discovery finished'},
-                                status=409)
+            return JsonResponse({
+                'code': 409,
+                'error': 'You cannot edit the detection config until the API discovery finished'
+            }, status=409)
         if target_app.is_draft:
-            return JsonResponse({'error': 'Detection configuration is not available for staged targets'}, status=409)
+            return JsonResponse({
+                'code': 409,
+                'error': 'Detection configuration is not available for staged targets'
+            }, status=409)
 
         data = json.loads(request.body)
         enhanced_detection_enabled = data.get('enhanced_detection_enabled')
         combined_data_duration = data.get('combined_data_duration')
         if not all([enhanced_detection_enabled, combined_data_duration]):
-            return JsonResponse({'error': 'Missing required detection configuration fields'}, status=400)
+            return JsonResponse({
+                'code': 400,
+                'error': 'Missing required detection configuration fields'
+            }, status=400)
         target_app.enhanced_detection_enabled = enhanced_detection_enabled
         target_app.combined_data_duration = combined_data_duration
         target_app.save(update_fields=['enhanced_detection_enabled', 'combined_data_duration'])
         try:
             target_app.full_clean()
-            return JsonResponse({'message': 'Detection configuration successful'}, status=200)
+            return JsonResponse({
+                'code': 200,
+                'message': 'Detection configuration successful'
+            }, status=200)
         except ValidationError as e:
-            return JsonResponse({'error': str(e)}, status=400)
+            return JsonResponse({
+                'code': 400,
+                'error': str(e)
+            }, status=400)
 
 
 @api_view(['GET'])
@@ -1055,24 +1450,40 @@ def detection_config(request):
 def start_detection(request):
     app_id = request.query_params.get('app_id')
     if not app_id:
-        return JsonResponse({'error': 'Missing target application ID'}, status=400)
+        return JsonResponse({
+            'code': 400,
+            'error': 'Missing target application ID'
+        }, status=400)
     try:
         target_app = TargetApplication.objects.get(id=app_id, user=request.user)
     except TargetApplication.DoesNotExist:
-        return JsonResponse({'error': 'Target application not found or you do not have permission'}, status=404)
+        return JsonResponse({
+            'code': 404,
+            'error': 'Target application not found or you do not have permission'
+        }, status=404)
 
     # if target_app.detect_state == 'STARTED':
     #     return JsonResponse({'error': 'The detection is already started'}, status=409)
     if target_app.enhanced_detection_enabled is None or target_app.combined_data_duration is None:
-        return JsonResponse({'error': 'You cannot start the detection until the detection configration is finished'},
-                            status=409)
+        return JsonResponse({
+            'code': 409,
+            'error': 'You cannot start the detection until the detection configration is finished'
+        }, status=409)
     if target_app.last_model_construction_at is None:
-        return JsonResponse({'error': 'You cannot start the detection until the model construction is finished'},
-                            status=409)
+        return JsonResponse({
+            'code': 409,
+            'error': 'You cannot start the detection until the model construction is finished'
+        }, status=409)
     if target_app.last_API_discovery_at is None:
-        return JsonResponse({'error': 'You cannot start the detection until the API discovery is finished'}, status=409)
+        return JsonResponse({
+            'code': 409,
+            'error': 'You cannot start the detection until the API discovery is finished'
+        }, status=409)
     if target_app.is_draft:
-        return JsonResponse({'error': 'Detection is not available for staged targets'}, status=409)
+        return JsonResponse({
+            'code': 409,
+            'error': 'Detection is not available for staged targets'
+        }, status=409)
 
     detection_start_url = f'http://{target_app.SFWAP_address}/detection/start'
     data = {'enhanced_detection_enabled': target_app.enhanced_detection_enabled,
@@ -1082,15 +1493,27 @@ def start_detection(request):
         result = response.json()
         error = result.get('error')
         if response.status_code != 200:
-            return JsonResponse({'error': 'Detection start failed: ' + error}, status=500)
+            return JsonResponse({
+                'code': 500,
+                'error': 'Detection start failed: ' + error
+            }, status=500)
         else:
             target_app.detect_state = 'STARTED'
             target_app.save(update_fields=['detect_state'])
-            return JsonResponse({'message': 'Detection started successfully'}, status=200)
+            return JsonResponse({
+                'code': 200,
+                'message': 'Detection started successfully'
+            }, status=200)
     except requests.RequestException as e:
-        return JsonResponse({'error': f'Detection start failed: {str(e)}'}, status=500)
+        return JsonResponse({
+            'code': 500,
+            'error': f'Detection start failed: {str(e)}'
+        }, status=500)
     except ValueError:
-        return JsonResponse({'error': 'Invalid JSON response from SFWAP-Detector'}, status=500)
+        return JsonResponse({
+            'code': 500,
+            'error': 'Invalid JSON response from SFWAP-Detector'
+        }, status=500)
 
 
 @api_view(['GET'])
@@ -1098,11 +1521,17 @@ def start_detection(request):
 def pause_detection(request):
     app_id = request.query_params.get('app_id')
     if not app_id:
-        return JsonResponse({'error': 'Missing target application ID'}, status=400)
+        return JsonResponse({
+            'code': 400,
+            'error': 'Missing target application ID'
+        }, status=400)
     try:
         target_app = TargetApplication.objects.get(id=app_id, user=request.user)
     except TargetApplication.DoesNotExist:
-        return JsonResponse({'error': 'Target application not found or you do not have permission'}, status=404)
+        return JsonResponse({
+            'code': 404,
+            'error': 'Target application not found or you do not have permission'
+        }, status=404)
 
     # if not target_app.detect_state == 'STARTED':
     #     return JsonResponse({'error': 'Target application is not started'}, status=409)
@@ -1113,15 +1542,27 @@ def pause_detection(request):
         result = response.json()
         error = result.get('error')
         if response.status_code != 200:
-            return JsonResponse({'error': 'Detection pause failed: ' + error}, status=500)
+            return JsonResponse({
+                'code': 500,
+                'error': 'Detection pause failed: ' + error
+            }, status=500)
         else:
             target_app.detect_state = 'PAUSED'
             target_app.save(update_fields=['detect_state'])
-            return JsonResponse({'message': 'Detection paused successfully'}, status=200)
+            return JsonResponse({
+                'code': 200,
+                'message': 'Detection paused successfully'
+            }, status=200)
     except requests.RequestException as e:
-        return JsonResponse({'error': 'Detection pause failed: ' + str(e)}, status=500)
+        return JsonResponse({
+            'code': 500,
+            'error': 'Detection pause failed: ' + str(e)
+        }, status=500)
     except ValueError:
-        return JsonResponse({'error': 'Invalid JSON response from SFWAP-Detector'}, status=500)
+        return JsonResponse({
+            'code': 500,
+            'error': 'Invalid JSON response from SFWAP-Detector'
+        }, status=500)
 
 
 @api_view(['GET'])
@@ -1129,12 +1570,18 @@ def pause_detection(request):
 def get_detection_records_by_combination(request):
     app_id = request.query_params.get('app_id')
     if not app_id:
-        return JsonResponse({'error': 'Missing target application ID'}, status=400)
+        return JsonResponse({
+            'code': 400,
+            'error': 'Missing target application ID'
+        }, status=400)
 
     try:
         target_app = TargetApplication.objects.get(id=app_id, user=request.user)
     except TargetApplication.DoesNotExist:
-        return JsonResponse({'error': 'Target application not found or you do not have permission'}, status=404)
+        return JsonResponse({
+            'code': 404,
+            'error': 'Target application not found or you do not have permission'
+        }, status=404)
 
     # 发起 HTTP 请求获取检测记录
     records_url = f'http://{target_app.SFWAP_address}/detection/records'
@@ -1143,11 +1590,20 @@ def get_detection_records_by_combination(request):
         records_data = response.json().get('records')
         error = response.json().get('error')
         if error:
-            return JsonResponse({'error': error}, status=500)
+            return JsonResponse({
+                'code': 500,
+                'error': error
+            }, status=500)
     except requests.RequestException as e:
-        return JsonResponse({'error': f'Error fetching detection records: {str(e)}'}, status=500)
+        return JsonResponse({
+            'code': 500,
+            'error': f'Error fetching detection records: {str(e)}'
+        }, status=500)
     except ValueError:
-        return JsonResponse({'error': 'Invalid JSON response from SFWAP-Detector'}, status=500)
+        return JsonResponse({
+            'code': 500,
+            'error': 'Invalid JSON response from SFWAP-Detector'
+        }, status=500)
 
     # 检查并添加不重复的检测记录和流量数据
     # [{'detection_result':'','started_at':'','ended_at':''
@@ -1249,7 +1705,13 @@ def get_detection_records_by_combination(request):
         }
         records_data.append(record_info)
 
-    return JsonResponse(records_data, safe=False, status=200)
+    return JsonResponse({
+        'code': 200,
+        'data': {
+            'detection_records': records_data,
+            'total': len(records_data)
+        }
+    }, safe=False, status=200)
 
 
 @api_view(['GET'])
@@ -1257,12 +1719,18 @@ def get_detection_records_by_combination(request):
 def get_detection_records_by_api(request):
     app_id = request.query_params.get('app_id')
     if not app_id:
-        return JsonResponse({'error': 'Missing target application ID'}, status=400)
+        return JsonResponse({
+            'code': 400,
+            'error': 'Missing target application ID'
+        }, status=400)
 
     try:
         target_app = TargetApplication.objects.get(id=app_id, user=request.user)
     except TargetApplication.DoesNotExist:
-        return JsonResponse({'error': 'Target application not found or you do not have permission'}, status=404)
+        return JsonResponse({
+            'code': 404,
+            'error': 'Target application not found or you do not have permission'
+        }, status=404)
 
     user_api_list = target_app.user_API_list.all()
     traffic_data_list = []
@@ -1283,7 +1751,13 @@ def get_detection_records_by_api(request):
             }
             traffic_data_list.append(traffic_data_info)
 
-    return JsonResponse(traffic_data_list, safe=False, status=200)
+    return JsonResponse({
+        'code': 200,
+        'data': {
+            'detection_records': traffic_data_list,
+            'total': len(traffic_data_list)
+        }
+    }, safe=False, status=200)
 
 
 @api_view(['GET'])

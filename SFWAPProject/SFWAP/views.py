@@ -1705,9 +1705,112 @@ def get_detection_records_by_combination(request):
         }
         records_data.append(record_info)
 
+
+
+    from django.db.models import Count
+    history_records = DetectionRecord.objects.filter(app=target_app)
+    total_record_count = history_records.count()
+    result_counts = history_records.values('detection_result').annotate(count=Count('id'))
+    history_record_result_percentages = {}
+    for result in result_counts:
+        history_record_result_percentages[result['detection_result']] = (result['count'] / total_record_count) * 100
+    current_time = timezone.now()
+    time_windows = [
+        ('Ten Minutes', timezone.timedelta(minutes=10)),
+        ('An Hour', timezone.timedelta(hours=1)),
+        ('Six Hours', timezone.timedelta(hours=6)),
+        ('One Day', timezone.timedelta(days=1)),
+        ('Three Days', timezone.timedelta(days=3)),
+        ('One Week', timezone.timedelta(weeks=1)),
+        ('One Month', timezone.timedelta(days=30))
+    ]
+    time_window_record_result_percentages = {}
+    for window_name, window_duration in time_windows:
+        time_window_record_result_percentages[window_name] = {}
+        start_time = current_time - window_duration
+        filtered_records = DetectionRecord.objects.filter(started_at__gte=start_time, ended_at__lte=current_time)
+        window_total_count = filtered_records.count()
+        time_window_record_result_percentages[window_name]['total'] = window_total_count
+        if window_total_count == 0:
+            continue
+        result_counts = filtered_records.values('detection_result').annotate(count=Count('id'))
+        percentages = {}
+        counts = {}
+        for result in result_counts:
+            percentages[result['detection_result']] = (result['count'] / window_total_count) * 100
+            counts[result['detection_result']] = result['count']
+        time_window_record_result_percentages[window_name]['percentages'] = percentages
+        time_window_record_result_percentages[window_name]['counts'] = counts
+    
+    history_traffic_datas = TrafficData.objects.filter(detectionrecord__in=history_records)
+    total_traffic_data_count = history_traffic_datas.count()
+    result_counts = history_traffic_datas.values('detection_result').annotate(count=Count('id'))
+    history_traffic_data_result_percentages = {}
+    for result in result_counts:
+        history_traffic_data_result_percentages[result['detection_result']] = (result['count'] / total_traffic_data_count) * 100
+    time_window_traffic_data_result_percentages = {}
+    for window_name, window_duration in time_windows:
+        time_window_traffic_data_result_percentages[window_name] = {}
+        start_time = current_time - window_duration
+        filtered_records = TrafficData.objects.filter(accessed_at__gte=start_time)
+        window_total_count = filtered_records.count()
+        time_window_traffic_data_result_percentages[window_name]['total'] = window_total_count
+        if window_total_count == 0:
+            continue
+        result_counts = filtered_records.values('detection_result').annotate(count=Count('id'))
+        percentages = {}
+        counts = {}
+        for result in result_counts:
+            percentages[result['detection_result']] = (result['count'] / window_total_count) * 100
+            counts[result['detection_result']] = result['count']
+        time_window_traffic_data_result_percentages[window_name]['percentages'] = percentages
+        time_window_traffic_data_result_percentages[window_name]['counts'] = counts
+
+    API_report = []
+    user_API_list = target_app.user_API_list.all()
+    for api in user_API_list:
+        API_traffic_datas = TrafficData.objects.filter(API=api)
+        API_traffic_data_count = API_traffic_datas.count()
+        result_counts = API_traffic_datas.values('detection_result').annotate(count=Count('id'))
+        API_traffic_data_result_percentages = {}
+        for result in result_counts:
+            API_traffic_data_result_percentages[result['detection_result']] = (result['count'] / API_traffic_data_count) * 100
+        time_window_API_traffic_data_result_percentages = {}
+        for window_name, window_duration in time_windows:
+            time_window_API_traffic_data_result_percentages[window_name] = {}
+            start_time = current_time - window_duration
+            filtered_records = TrafficData.objects.filter(accessed_at__gte=start_time, API=api)
+            window_total_count = filtered_records.count()
+            time_window_API_traffic_data_result_percentages[window_name]['total'] = window_total_count
+            if window_total_count == 0:
+                continue
+            result_counts = filtered_records.values('detection_result').annotate(count=Count('id'))
+            percentages = {}
+            counts = {}
+            for result in result_counts:
+                percentages[result['detection_result']] = (result['count'] / window_total_count) * 100
+                counts[result['detection_result']] = result['count']
+            time_window_API_traffic_data_result_percentages[window_name]['percentages'] = percentages
+            time_window_API_traffic_data_result_percentages[window_name]['counts'] = counts
+        API_report.append({
+            'API_id': api.id,
+            'method': api.request_method,
+            'sample_url': api.sample_url,
+            'time_window_API_traffic_data_result_percentages': time_window_API_traffic_data_result_percentages
+        })
+
     return JsonResponse({
         'code': 200,
         'data': {
+            'report': {
+                'total_detection_record_count': total_record_count,
+                'history_record_result_percentages': history_record_result_percentages,
+                'time_window_record_result_percentages': time_window_record_result_percentages,
+                'total_traffic_data_count': total_traffic_data_count,
+                'history_traffic_data_result_percentages': history_traffic_data_result_percentages,
+                'time_window_traffic_data_result_percentages': time_window_traffic_data_result_percentages,
+                'API_report': API_report
+            },
             'detection_records': records_data,
             'total': len(records_data)
         }

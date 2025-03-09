@@ -1939,3 +1939,1023 @@ Watching for file changes with StatReloader
 ---------------------------------以下是老哥们的测试----------------------------------
 Not Found: /
 [09/Mar/2025 06:43:15] "GET / HTTP/1.1" 404 2498
+Method Not Allowed: /api/api-token-auth/
+[09/Mar/2025 07:02:24] "GET /api/api-token-auth/ HTTP/1.1" 405 40
+Not Found: /
+[09/Mar/2025 07:18:37] "GET / HTTP/1.0" 404 2498
+[09/Mar/2025 08:04:45] code 400, message Bad request version ('\x12áT\x8b)ÛÕ¾Æ')
+[09/Mar/2025 08:04:45] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /
+[09/Mar/2025 08:04:56] "GET / HTTP/1.1" 404 2498
+Not Found: /favicon.ico
+[09/Mar/2025 08:05:14] "GET /favicon.ico HTTP/1.1" 404 2549
+Not Found: /robots.txt
+[09/Mar/2025 08:05:15] "GET /robots.txt HTTP/1.1" 404 2546
+Not Found: /sitemap.xml
+[09/Mar/2025 08:05:17] "GET /sitemap.xml HTTP/1.1" 404 2549
+Unauthorized: /api/model-construct/
+[09/Mar/2025 08:08:05] "GET /api/model-construct/?app_id=1 HTTP/1.1" 401 58
+ 
+ -------------- celery@VM-16-2-ubuntu v5.4.0 (opalescent)
+--- ***** ----- 
+-- ******* ---- Linux-5.15.0-130-generic-x86_64-with-glibc2.35 2025-03-09 08:24:43
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         SFWAPProject:0x7fe4447fe230
+- ** ---------- .> transport:   redis://localhost:6379/0
+- ** ---------- .> results:     redis://localhost:6379/0
+- *** --- * --- .> concurrency: 2 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+
+[tasks]
+  . SFWAP.views.handle_api_discovery_notification
+
+[2025-03-09 08:24:43,959: WARNING/MainProcess] /home/ubuntu/.local/lib/python3.10/site-packages/celery/worker/consumer/consumer.py:508: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2025-03-09 08:24:43,964: INFO/MainProcess] Connected to redis://localhost:6379/0
+[2025-03-09 08:24:43,965: WARNING/MainProcess] /home/ubuntu/.local/lib/python3.10/site-packages/celery/worker/consumer/consumer.py:508: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2025-03-09 08:24:43,968: INFO/MainProcess] mingle: searching for neighbors
+[2025-03-09 08:24:44,976: INFO/MainProcess] mingle: all alone
+[2025-03-09 08:24:44,986: INFO/MainProcess] celery@VM-16-2-ubuntu ready.
+Watching for file changes with StatReloader
+[09/Mar/2025 08:26:31] "GET /api/load_target_app/?app_id=1 HTTP/1.1" 200 1889
+[09/Mar/2025 08:26:33] "GET /api/load_target_app/?app_id=1 HTTP/1.1" 200 1889
+[09/Mar/2025 08:27:45] "PUT /api/detection/features/?app_id=1 HTTP/1.1" 200 64
+[09/Mar/2025 08:27:53] "GET /api/detection/record/combination?app_id=1 HTTP/1.1" 301 0
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 07:17:54) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 07:17:11) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 07:19:33) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 07:17:55) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:27:30) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:24:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:28:23) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:27:30) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:28:53) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:28:23) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:31:54) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:28:53) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:41:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:41:00) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:41:22) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:41:12) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:41:34) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:41:25) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:43:07) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:43:05) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:44:03) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:44:03) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:44:18) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:44:17) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:54:33) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:54:32) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:55:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:54:48) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:55:20) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:55:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:35:31) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:34:06) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:39:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:39:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:40:05) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:40:05) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:44:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:44:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:49:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:49:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:57:12) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:57:12) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:01:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:01:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:01:36) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:01:33) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:02:23) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:02:07) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:02:50) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:02:25) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:03:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:03:00) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:07:46) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:07:46) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:08:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:07:59) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:13:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:13:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:18:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:18:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:23:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:23:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:28:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:28:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:33:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:33:02) while time zone support is active.
+  warnings.warn(
+[09/Mar/2025 08:27:54] "GET /api/detection/record/combination/?app_id=1 HTTP/1.1" 200 231178
+[09/Mar/2025 08:28:08] "PUT /api/user-api-list/?app_id=1 HTTP/1.1" 200 87
+Conflict: /api/model-construct/
+[09/Mar/2025 08:28:15] "GET /api/model-construct/?app_id=1 HTTP/1.1" 409 76
+Unauthorized: /api/detection/record/combination/
+[09/Mar/2025 08:41:52] "GET /api/detection/record/combination/?app_id=1 HTTP/1.1" 401 10109
+[09/Mar/2025 08:41:52] "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+[09/Mar/2025 08:41:52] "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+[09/Mar/2025 08:41:52] "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+[09/Mar/2025 08:41:52] "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+[09/Mar/2025 08:41:52] "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+/home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/SFWAPProject/SFWAP/views.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+March 09, 2025 - 08:24:51
+Django version 5.1.6, using settings 'SFWAPProject.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+/home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/SFWAPProject/SFWAP/views.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+March 09, 2025 - 08:48:25
+Django version 5.1.6, using settings 'SFWAPProject.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+[09/Mar/2025 09:05:20] "GET /api/detection/record/combination?app_id=1 HTTP/1.1" 301 0
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 07:17:54) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 07:17:11) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 07:19:33) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 07:17:55) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:27:30) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:24:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:28:23) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:27:30) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:28:53) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:28:23) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:31:54) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:28:53) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:41:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:41:00) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:41:22) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:41:12) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:41:34) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:41:25) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:43:07) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:43:05) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:44:03) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:44:03) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:44:18) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:44:17) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:54:33) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:54:32) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:55:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:54:48) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:55:20) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:55:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:35:31) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:34:06) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:39:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:39:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:40:05) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:40:05) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:44:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:44:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:49:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:49:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:57:12) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:57:12) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:01:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:01:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:01:36) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:01:33) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:02:23) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:02:07) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:02:50) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:02:25) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:03:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:03:00) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:07:46) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:07:46) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:08:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:07:59) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:13:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:13:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:18:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:18:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:23:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:23:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:28:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:28:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:33:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:33:02) while time zone support is active.
+  warnings.warn(
+Internal Server Error: /api/detection/record/combination/
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/SFWAPProject/SFWAP/views.py", line 1711, in get_detection_records_by_combination
+    history_records = DetectionRecord.objects().all().filter(app=target_app)
+TypeError: 'Manager' object is not callable
+[09/Mar/2025 09:05:21] "GET /api/detection/record/combination/?app_id=1 HTTP/1.1" 500 114672
+/home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/SFWAPProject/SFWAP/views.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+March 09, 2025 - 09:05:11
+Django version 5.1.6, using settings 'SFWAPProject.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+[09/Mar/2025 09:06:33] "GET /api/detection/record/combination?app_id=1 HTTP/1.1" 301 0
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 07:17:54) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 07:17:11) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 07:19:33) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 07:17:55) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:27:30) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:24:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:28:23) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:27:30) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:28:53) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:28:23) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:31:54) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:28:53) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:41:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:41:00) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:41:22) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:41:12) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:41:34) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:41:25) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:43:07) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:43:05) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:44:03) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:44:03) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:44:18) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:44:17) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:54:33) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:54:32) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:55:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:54:48) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:55:20) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:55:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:35:31) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:34:06) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:39:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:39:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:40:05) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:40:05) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:44:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:44:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:49:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:49:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:57:12) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:57:12) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:01:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:01:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:01:36) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:01:33) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:02:23) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:02:07) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:02:50) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:02:25) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:03:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:03:00) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:07:46) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:07:46) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:08:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:07:59) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:13:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:13:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:18:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:18:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:23:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:23:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:28:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:28:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:33:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:33:02) while time zone support is active.
+  warnings.warn(
+Internal Server Error: /api/detection/record/combination/
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/SFWAPProject/SFWAP/views.py", line 1711, in get_detection_records_by_combination
+    history_records = DetectionRecord.objects().filter(app=target_app)
+TypeError: 'Manager' object is not callable
+[09/Mar/2025 09:06:33] "GET /api/detection/record/combination/?app_id=1 HTTP/1.1" 500 114660
+/home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/SFWAPProject/SFWAP/views.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+March 09, 2025 - 09:06:30
+Django version 5.1.6, using settings 'SFWAPProject.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+/home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/SFWAPProject/SFWAP/views.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+March 09, 2025 - 09:07:06
+Django version 5.1.6, using settings 'SFWAPProject.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+[09/Mar/2025 09:07:36] "GET /api/detection/record/combination?app_id=1 HTTP/1.1" 301 0
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 07:17:54) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 07:17:11) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 07:19:33) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 07:17:55) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:27:30) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:24:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:28:23) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:27:30) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:28:53) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:28:23) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:31:54) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:28:53) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:41:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:41:00) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:41:22) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:41:12) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:41:34) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:41:25) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:43:07) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:43:05) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:44:03) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:44:03) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:44:18) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:44:17) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:54:33) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:54:32) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:55:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:54:48) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:55:20) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:55:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:35:31) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:34:06) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:39:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:39:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:40:05) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:40:05) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:44:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:44:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:49:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:49:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:57:12) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:57:12) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:01:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:01:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:01:36) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:01:33) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:02:23) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:02:07) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:02:50) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:02:25) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:03:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:03:00) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:07:46) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:07:46) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:08:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:07:59) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:13:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:13:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:18:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:18:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:23:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:23:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:28:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:28:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:33:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:33:02) while time zone support is active.
+  warnings.warn(
+[09/Mar/2025 09:07:36] "GET /api/detection/record/combination/?app_id=1 HTTP/1.1" 200 232206
+/home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/SFWAPProject/SFWAP/views.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+March 09, 2025 - 09:07:34
+Django version 5.1.6, using settings 'SFWAPProject.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+[09/Mar/2025 09:21:01] "GET /api/detection/record/combination?app_id=1 HTTP/1.1" 301 0
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 07:17:54) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 07:17:11) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 07:19:33) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 07:17:55) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:27:30) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:24:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:28:23) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:27:30) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:28:53) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:28:23) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:31:54) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:28:53) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:41:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:41:00) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:41:22) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:41:12) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:41:34) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:41:25) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:43:07) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:43:05) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:44:03) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:44:03) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:44:18) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:44:17) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:54:33) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:54:32) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:55:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:54:48) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:55:20) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:55:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:35:31) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:34:06) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:39:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:39:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:40:05) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:40:05) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:44:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:44:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:49:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:49:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:57:12) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:57:12) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:01:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:01:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:01:36) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:01:33) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:02:23) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:02:07) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:02:50) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:02:25) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:03:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:03:00) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:07:46) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:07:46) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:08:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:07:59) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:13:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:13:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:18:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:18:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:23:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:23:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:28:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:28:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:33:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:33:02) while time zone support is active.
+  warnings.warn(
+[09/Mar/2025 09:21:02] "GET /api/detection/record/combination/?app_id=1 HTTP/1.1" 200 232738
+/home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/SFWAPProject/SFWAP/views.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+March 09, 2025 - 09:21:00
+Django version 5.1.6, using settings 'SFWAPProject.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+/home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/SFWAPProject/SFWAP/views.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+March 09, 2025 - 09:22:20
+Django version 5.1.6, using settings 'SFWAPProject.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+[09/Mar/2025 09:22:25] "GET /api/detection/record/combination?app_id=1 HTTP/1.1" 301 0
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 07:17:54) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 07:17:11) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 07:19:33) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 07:17:55) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:27:30) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:24:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:28:23) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:27:30) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:28:53) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:28:23) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-02-26 13:31:54) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-02-26 13:28:53) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:41:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:41:00) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:41:22) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:41:12) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:41:34) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:41:25) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:43:07) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:43:05) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:44:03) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:44:03) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:44:18) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:44:17) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:54:33) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:54:32) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:55:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:54:48) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 08:55:20) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 08:55:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:35:31) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:34:06) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:39:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:39:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:40:05) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:40:05) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:44:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:44:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:49:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:49:24) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 09:57:12) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 09:57:12) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:01:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:01:14) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:01:36) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:01:33) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:02:23) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:02:07) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:02:50) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:02:25) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:03:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:03:00) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:07:46) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:07:46) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:08:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:07:59) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:13:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:13:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:18:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:18:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:23:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:23:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:28:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:28:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.ended_at received a naive datetime (2025-03-06 10:33:02) while time zone support is active.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/django/db/models/fields/__init__.py:1665: RuntimeWarning: DateTimeField DetectionRecord.started_at received a naive datetime (2025-03-06 10:33:02) while time zone support is active.
+  warnings.warn(
+[09/Mar/2025 09:22:27] "GET /api/detection/record/combination/?app_id=1 HTTP/1.1" 200 232896
+[09/Mar/2025 09:36:09] "GET /api/model-construct/?app_id=1 HTTP/1.1" 200 437
+[09/Mar/2025 11:15:28] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[09/Mar/2025 11:15:28] "  /*à     Cookie: mstshash=Administr" 400 -
+Not Found: /
+[09/Mar/2025 11:18:31] "GET / HTTP/1.1" 404 2498
+[09/Mar/2025 12:04:27] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[09/Mar/2025 12:04:27] "  /*à     Cookie: mstshash=Administr" 400 -
+[09/Mar/2025 12:08:40] "GET /api/detection/record/combination?app_id=1 HTTP/1.1" 301 0
+Unauthorized: /api/detection/record/combination/
+[09/Mar/2025 12:08:40] "GET /api/detection/record/combination/?app_id=1 HTTP/1.1" 401 10109
+[09/Mar/2025 12:08:41] "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+[09/Mar/2025 12:08:41] "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+[09/Mar/2025 12:08:41] "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+[09/Mar/2025 12:08:41] "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+[09/Mar/2025 12:08:41] "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+Not Found: /
+[09/Mar/2025 12:26:49] "GET / HTTP/1.1" 404 2498
+[09/Mar/2025 13:10:57] code 400, message Bad request version ('À#À¬À®À+À')
+[09/Mar/2025 13:10:57] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /
+[09/Mar/2025 13:11:00] "GET / HTTP/1.1" 404 2498
+[09/Mar/2025 13:17:13] code 400, message Bad request version ('À#À¬À®À+À')
+[09/Mar/2025 13:17:13] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /favicon.ico
+[09/Mar/2025 13:17:17] "GET /favicon.ico HTTP/1.1" 404 2549

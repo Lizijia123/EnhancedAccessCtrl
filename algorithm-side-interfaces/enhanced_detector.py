@@ -134,7 +134,7 @@ def anomaly_detection(window_data):
             "header": row['header'],
             "data": row['data'],
             "status_code": row['status_code'],
-            "detection_result": "NORMAL"  # TODO
+            "detection_result": "NORMAL" if detection_result == 0 else 'MALICIOUS'  # TODO
         }
         if API_id is not None:
             traffic_data['API'] = {"id": API_id}

@@ -31,7 +31,6 @@ def get_user_info(request):
         'id': user.id,
         'username': user.username,
         'email': user.email
-        # 你可以根据需要添加更多用户信息字段
     }
     return Response(user_info)
 
@@ -670,6 +669,8 @@ def update_user_api_list_v1(request):
         
         id_map = {str(api_id_list[i]):str(new_api_id_list[i]) for i in range(len(api_id_list))}
 
+        print(id_map)
+
 
         revised_API_seqs = {
             'normal_seqs': [],
@@ -680,7 +681,7 @@ def update_user_api_list_v1(request):
             for seq in example_API_seqs['normal_seqs']:
                 api_items = []
                 for seq_item in seq["seq"]:
-                    api_str = f"API_{id_map[seq_item['id']]}({seq_item['description']})"
+                    api_str = f"API_{id_map[str(seq_item['id'])]}({seq_item['description']})"
                     api_items.append(api_str)
                 combined_api_str = "; ".join(api_items)
                 final_str = f'Role: {seq["role"]}; {combined_api_str}'
@@ -688,7 +689,7 @@ def update_user_api_list_v1(request):
             for seq in example_API_seqs['malicious_seqs']:
                 api_items = []
                 for seq_item in seq["seq"]:
-                    api_str = f"API_{id_map[seq_item['id']]}({seq_item['description']})"
+                    api_str = f"API_{id_map[str(seq_item['id'])]}({seq_item['description']})"
                     api_items.append(api_str)
                 combined_api_str = "; ".join(api_items)
                 final_str = f'Role: {seq["role"]}; {combined_api_str}'
@@ -710,7 +711,7 @@ def update_user_api_list_v1(request):
             'API_list': API_list_model_to_view(target_app.user_API_list), 
             'target_app': target_app_model_to_view(target_app),
         }
-        if example_API_seqs:
+        if example_API_seqs and len(revised_API_seqs['normal_seqs']) > 0 and len(revised_API_seqs['malicious_seqs']) > 0:
             data['example_API_seqs'] = revised_API_seqs
 
         try:
@@ -1878,6 +1879,66 @@ def load_target_app(request):
         return JsonResponse({'error': 'Target application not found'}, status=404)
 
 
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_manual_API_discovery_status(request):
+    app_id = request.query_params.get('app_id')
+    if not app_id:
+        return JsonResponse({
+            'code': 400,
+            'error': 'Missing target application ID'
+        }, status=400)
+
+    try:
+        target_app = TargetApplication.objects.get(id=app_id, user=request.user)
+    except TargetApplication.DoesNotExist:
+        return JsonResponse({
+            'code': 404,
+            'error': 'Target application not found or you do not have permission'
+        }, status=404)
+    # 发起 HTTP 请求获取检测记录
+    records_url = f'http://{target_app.SFWAP_address}/api_discovery/manual/status'
+    try:
+        response = requests.get(records_url)
+        return JsonResponse({
+            'code': 200,
+            'data': response.json()
+        }, status=200)
+    except requests.RequestException as e:
+        return JsonResponse({
+            'code': 500,
+            'error': f'Error getting manual API discovery status: {str(e)}'
+        }, status=500)
+    except ValueError:
+        return JsonResponse({
+            'code': 500,
+            'error': 'Invalid JSON response from SFWAP-Detector'
+        }, status=500)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def check_deployment(request):
+    SFWAP_address = json.loads(request.body)
+    check_url = f'http://{SFWAP_address}/check_deployment'
+    try:
+        response = requests.get(check_url)
+        response.raise_for_status()
+        return JsonResponse({
+            'code': 200,
+            'message': "The deployment is OK",
+            'data': {
+                'status': 'SUCCESS'
+            }
+        }, status=200)
+    except Exception as e:
+        return JsonResponse({
+            'code': 200,
+            'error': 'The deployment has problems',
+            'data': {
+                'status': 'FAIL'
+            }
+        }, status=200)
 
 
 import logging
@@ -1917,6 +1978,8 @@ def handle_api_discovery_notification(app_id, discovery_data):
             target_app.save(update_fields=['detect_state'])
         target_app.last_API_discovery_at = timezone.now()
         target_app.save(update_fields=['last_API_discovery_at'])
+
+        print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+target_app.discovered_API_list)
 
         return {'message': 'API discovery and update successful'}
     except TargetApplication.DoesNotExist:

@@ -14,12 +14,14 @@ urlpatterns = [
 
     path('api-lists/', get_api_lists, name='get_api_lists'),
     path('user-api-list/', update_user_api_list, name='update_user_api_list'),
+    path('v1/user-api-list/', update_user_api_list_v1, name='update_user_api_list_v1'),
 
     path('api-discovery/start/', start_api_discovery, name='api_discovery'),
     path('api-discovery/finish/', finish_api_discovery, name='finish_api_discovery'),
     path('api-discovery/cancel/', cancel_api_discovery, name='cancel_api_discovery'),
     path('api-discovery/notification/', api_discovery_notification, name='api_discovery_notification'),
     path('api-discovery/status/', get_auto_API_discovery_status, name='api_discovery_status'),
+    path('api-discovery/manual/status/', get_manual_API_discovery_status, name='get_manual_API_discovery_status'),
 
     path('model-construct/', construct_model, name='construct_model'),
     path('model-construct/data-collection-status/', get_data_collection_status, name='get_data_collection_status'),

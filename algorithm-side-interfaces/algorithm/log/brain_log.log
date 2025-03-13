@@ -142,3 +142,483 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
 2025-03-09 16:28:52,014 - INFO - ========== Method gen_api_seq() returned: seq=[], malicious_sign_seq=[] ==========
 2025-03-09 16:28:52,014 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
 2025-03-09 16:29:07,590 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[1] ==========
+2025-03-10 10:07:18,635 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-10 10:07:19,004 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/algorithm-side-interfaces/algorithm/brain.py", line 107, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-03-10 10:07:19,006 - INFO - ========== Method gen_api_seq() returned: seq=[], malicious_sign_seq=[] ==========
+2025-03-10 10:07:19,006 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 10:07:19,363 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/algorithm-side-interfaces/algorithm/brain.py", line 107, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-03-10 10:07:19,363 - INFO - ========== Method gen_api_seq() returned: seq=[], malicious_sign_seq=[] ==========
+2025-03-10 10:07:19,363 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-03-10 10:07:19,705 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/algorithm-side-interfaces/algorithm/brain.py", line 107, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-03-10 10:07:19,706 - INFO - ========== Method gen_api_seq() returned: seq=[], malicious_sign_seq=[] ==========
+2025-03-10 10:07:19,706 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-10 10:07:20,046 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/algorithm-side-interfaces/algorithm/brain.py", line 107, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-03-10 10:07:20,047 - INFO - ========== Method gen_api_seq() returned: seq=[], malicious_sign_seq=[] ==========
+2025-03-10 10:07:20,047 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-10 10:07:20,401 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/algorithm-side-interfaces/algorithm/brain.py", line 107, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-03-10 10:07:20,402 - INFO - ========== Method gen_api_seq() returned: seq=[], malicious_sign_seq=[] ==========
+2025-03-10 10:07:20,402 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-10 10:07:20,771 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/algorithm-side-interfaces/algorithm/brain.py", line 107, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-03-10 10:07:20,771 - INFO - ========== Method gen_api_seq() returned: seq=[], malicious_sign_seq=[] ==========
+2025-03-10 10:07:20,771 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-10 10:07:21,081 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/algorithm-side-interfaces/algorithm/brain.py", line 107, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-03-10 10:07:21,082 - INFO - ========== Method gen_api_seq() returned: seq=[], malicious_sign_seq=[] ==========
+2025-03-10 10:07:21,082 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-03-10 10:07:21,435 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/algorithm-side-interfaces/algorithm/brain.py", line 107, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-03-10 10:07:21,435 - INFO - ========== Method gen_api_seq() returned: seq=[], malicious_sign_seq=[] ==========
+2025-03-10 10:07:21,436 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-10 10:07:21,771 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/algorithm-side-interfaces/algorithm/brain.py", line 107, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-03-10 10:07:21,771 - INFO - ========== Method gen_api_seq() returned: seq=[], malicious_sign_seq=[] ==========
+2025-03-10 10:07:21,772 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 10:07:22,104 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/algorithm-side-interfaces/algorithm/brain.py", line 107, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-03-10 10:07:22,104 - INFO - ========== Method gen_api_seq() returned: seq=[], malicious_sign_seq=[] ==========
+2025-03-10 10:07:22,105 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 10:07:52,618 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: thinking failure...
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/algorithm-side-interfaces/algorithm/brain.py", line 107, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-03-10 10:07:52,619 - INFO - ========== Method gen_api_seq() returned: seq=[], malicious_sign_seq=[] ==========
+2025-03-10 10:07:52,619 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 10:08:07,376 - ERROR - JSON decoding error: Expecting value: line 1 column 1 (char 0)
+Raw response: 
+Traceback (most recent call last):
+  File "/home/ubuntu/graduation-design/EnhancedAccessCtrl/EnhancedAccessCtrl/algorithm-side-interfaces/algorithm/brain.py", line 107, in _parse_llm_response_for_api_seq
+    parsed_data = json.loads(json_str)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-03-10 10:08:07,376 - INFO - ========== Method gen_api_seq() returned: seq=[], malicious_sign_seq=[] ==========
+2025-03-10 10:09:22,307 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-10 10:09:23,674 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 10:09:23,675 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 10:09:25,601 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-10 10:09:25,601 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-10 10:09:28,297 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 10:09:28,298 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-10 10:09:29,458 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 10:09:29,458 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 10:09:30,538 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-10 10:09:30,539 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-10 10:09:31,869 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3', 'API_5'], malicious_sign_seq=[0, 1, 0] ==========
+2025-03-10 10:09:31,869 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-10 10:09:33,488 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3', 'API_5'], malicious_sign_seq=[0, 1, 0] ==========
+2025-03-10 10:09:33,489 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 10:09:35,492 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-10 10:09:35,493 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-10 10:09:37,031 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 10:09:37,031 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-03-10 10:09:38,079 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-10 10:09:38,079 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 10:09:40,202 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-10 10:09:40,202 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-03-10 10:09:42,644 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-10 10:22:25,296 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 10:22:26,724 - INFO - ========== Method gen_api_seq() returned: seq=['API_1721', 'API_1722'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 10:22:26,724 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-10 10:22:29,350 - INFO - ========== Method gen_api_seq() returned: seq=['API_1721', 'API_1722'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 10:22:29,350 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 10:22:41,509 - INFO - ========== Method gen_api_seq() returned: seq=['API_1721', 'API_1722'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 10:22:41,509 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-03-10 10:22:44,616 - INFO - ========== Method gen_api_seq() returned: seq=['API_1721', 'API_1722'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 10:22:44,616 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-10 10:22:46,227 - INFO - ========== Method gen_api_seq() returned: seq=['API_1721', 'API_1722'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 10:22:46,228 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 10:22:47,805 - INFO - ========== Method gen_api_seq() returned: seq=['API_1721', 'API_1722'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 10:22:47,805 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-10 10:22:49,989 - INFO - ========== Method gen_api_seq() returned: seq=['API_1721', 'API_1722'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 10:22:49,990 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-10 10:22:52,383 - INFO - ========== Method gen_api_seq() returned: seq=['API_1721', 'API_1722'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 10:22:52,383 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 10:22:55,299 - INFO - ========== Method gen_api_seq() returned: seq=['API_1721', 'API_1722'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 10:22:55,300 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-10 10:22:56,636 - INFO - ========== Method gen_api_seq() returned: seq=['API_1721', 'API_1722'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 10:22:56,636 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-10 10:22:59,855 - INFO - ========== Method gen_api_seq() returned: seq=['API_1721', 'API_1722'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 10:22:59,855 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-03-10 10:23:02,242 - INFO - ========== Method gen_api_seq() returned: seq=['API_1721', 'API_1722'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 16:50:13,515 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-10 16:50:13,515 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-10 16:50:15,159 - INFO - ========== Method gen_api_seq() returned: seq=['API_1837', 'API_1838'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 16:50:15,159 - INFO - ========== Method gen_api_seq() returned: seq=['API_1837', 'API_1838'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 16:50:15,160 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-03-10 16:50:15,160 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-03-10 16:50:16,983 - INFO - ========== Method gen_api_seq() returned: seq=['API_1837', 'API_1838'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 16:50:16,983 - INFO - ========== Method gen_api_seq() returned: seq=['API_1837', 'API_1838'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 16:50:16,983 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 16:50:16,983 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 16:50:19,224 - INFO - ========== Method gen_api_seq() returned: seq=['API_1837', 'API_1838'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 16:50:19,224 - INFO - ========== Method gen_api_seq() returned: seq=['API_1837', 'API_1838'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 16:50:19,225 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-10 16:50:19,225 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-10 16:50:24,750 - INFO - ========== Method gen_api_seq() returned: seq=['API_1837', 'API_1838'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 16:50:24,750 - INFO - ========== Method gen_api_seq() returned: seq=['API_1837', 'API_1838'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 16:50:24,751 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-10 16:50:24,751 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-10 16:50:27,530 - INFO - ========== Method gen_api_seq() returned: seq=['API_1837', 'API_1838'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 16:50:27,530 - INFO - ========== Method gen_api_seq() returned: seq=['API_1837', 'API_1838'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 16:50:27,530 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-10 16:50:27,530 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-10 16:50:32,812 - INFO - ========== Method gen_api_seq() returned: seq=['API_1837', 'API_1838'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 16:50:32,812 - INFO - ========== Method gen_api_seq() returned: seq=['API_1837', 'API_1838'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 16:50:32,812 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 16:50:32,812 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 16:50:36,911 - INFO - ========== Method gen_api_seq() returned: seq=['API_1837', 'API_1838'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 16:50:36,911 - INFO - ========== Method gen_api_seq() returned: seq=['API_1837', 'API_1838'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 16:50:36,911 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 16:50:36,911 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 16:50:39,732 - INFO - ========== Method gen_api_seq() returned: seq=['API_1837', 'API_1838'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 16:50:39,732 - INFO - ========== Method gen_api_seq() returned: seq=['API_1837', 'API_1838'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 16:50:39,732 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-10 16:50:39,732 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-10 16:50:41,739 - INFO - ========== Method gen_api_seq() returned: seq=['API_1837', 'API_1838'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 16:50:41,739 - INFO - ========== Method gen_api_seq() returned: seq=['API_1837', 'API_1838'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 16:50:41,740 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 16:50:41,740 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 16:50:44,347 - INFO - ========== Method gen_api_seq() returned: seq=['API_1837', 'API_1838'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 16:50:44,347 - INFO - ========== Method gen_api_seq() returned: seq=['API_1837', 'API_1838'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 16:50:44,348 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-03-10 16:50:44,348 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-03-10 16:50:47,964 - INFO - ========== Method gen_api_seq() returned: seq=['API_1837', 'API_1838'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 16:50:47,964 - INFO - ========== Method gen_api_seq() returned: seq=['API_1837', 'API_1838'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 16:50:47,965 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-10 16:50:47,965 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-10 16:50:52,133 - INFO - ========== Method gen_api_seq() returned: seq=['API_1837', 'API_1838'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 16:50:52,133 - INFO - ========== Method gen_api_seq() returned: seq=['API_1837', 'API_1838'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 17:09:19,125 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-10 17:09:19,125 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-10 17:09:19,125 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-10 17:09:22,089 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 17:09:22,089 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 17:09:22,089 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 17:09:22,089 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-10 17:09:22,089 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-10 17:09:22,089 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-10 17:09:25,897 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 17:09:25,897 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 17:09:25,897 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 17:09:25,897 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 17:09:25,897 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 17:09:25,897 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 17:09:29,114 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 17:09:29,114 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 17:09:29,114 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 17:09:29,114 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-03-10 17:09:29,114 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-03-10 17:09:29,114 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-03-10 17:09:32,411 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 17:09:32,411 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 17:09:32,411 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 17:09:32,412 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-03-10 17:09:32,412 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-03-10 17:09:32,412 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-03-10 17:09:36,178 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 17:09:36,178 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 17:09:36,178 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 17:09:36,179 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-10 17:09:36,179 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-10 17:09:36,179 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-10 17:09:39,441 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 17:09:39,441 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 17:09:39,441 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 17:09:39,441 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 17:09:39,441 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 17:09:39,441 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 17:09:41,192 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 17:09:41,192 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 17:09:41,192 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 17:09:41,192 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 17:09:41,192 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 17:09:41,192 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 17:09:43,865 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 17:09:43,865 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 17:09:43,865 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 17:09:43,865 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-10 17:09:43,865 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-10 17:09:43,865 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-10 17:09:45,750 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 17:09:45,750 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 17:09:45,750 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 17:09:45,750 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-10 17:09:45,750 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-10 17:09:45,750 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-10 17:09:49,317 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 17:09:49,317 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 17:09:49,317 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 17:09:49,318 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 17:09:49,318 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 17:09:49,318 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-10 17:09:51,191 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 17:09:51,191 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 17:09:51,191 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 0] ==========
+2025-03-10 17:09:51,191 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-10 17:09:51,191 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-10 17:09:51,191 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-10 17:09:54,041 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 17:09:54,041 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 1] ==========
+2025-03-10 17:09:54,041 - INFO - ========== Method gen_api_seq() returned: seq=['API_1953', 'API_1954'], malicious_sign_seq=[0, 1] ==========
+2025-03-13 11:59:18,044 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-13 11:59:19,577 - INFO - ========== Method gen_api_seq() returned: seq=['API_2069'], malicious_sign_seq=[0] ==========
+2025-03-13 11:59:19,577 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-13 11:59:22,431 - INFO - ========== Method gen_api_seq() returned: seq=['API_2069', 'API_2070'], malicious_sign_seq=[0, 1] ==========
+2025-03-13 11:59:22,432 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-13 11:59:24,078 - INFO - ========== Method gen_api_seq() returned: seq=['API_2069', 'API_2070'], malicious_sign_seq=[0, 1] ==========
+2025-03-13 11:59:24,078 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-13 11:59:25,405 - INFO - ========== Method gen_api_seq() returned: seq=['API_2069', 'API_2070'], malicious_sign_seq=[0, 1] ==========
+2025-03-13 11:59:25,415 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-13 11:59:26,914 - INFO - ========== Method gen_api_seq() returned: seq=['API_2069', 'API_2070'], malicious_sign_seq=[0, 1] ==========
+2025-03-13 11:59:26,914 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-03-13 11:59:28,476 - INFO - ========== Method gen_api_seq() returned: seq=['API_2069', 'API_2070'], malicious_sign_seq=[0, 0] ==========
+2025-03-13 11:59:28,476 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-13 11:59:31,642 - INFO - ========== Method gen_api_seq() returned: seq=['API_2069', 'API_2070'], malicious_sign_seq=[0, 1] ==========
+2025-03-13 11:59:31,658 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-03-13 11:59:32,878 - INFO - ========== Method gen_api_seq() returned: seq=['API_2069'], malicious_sign_seq=[0] ==========
+2025-03-13 11:59:32,878 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-13 11:59:34,206 - INFO - ========== Method gen_api_seq() returned: seq=['API_2069', 'API_2070'], malicious_sign_seq=[0, 0] ==========
+2025-03-13 11:59:34,206 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-13 11:59:35,863 - INFO - ========== Method gen_api_seq() returned: seq=['API_2069', 'API_2070'], malicious_sign_seq=[0, 0] ==========
+2025-03-13 11:59:35,863 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-13 11:59:38,724 - INFO - ========== Method gen_api_seq() returned: seq=['API_2069', 'API_2070'], malicious_sign_seq=[0, 1] ==========
+2025-03-13 11:59:38,724 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-13 11:59:41,194 - INFO - ========== Method gen_api_seq() returned: seq=['API_2069', 'API_2070'], malicious_sign_seq=[0, 0] ==========
+2025-03-13 17:29:03,845 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:29:03,845 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:29:07,661 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3'], malicious_sign_seq=[0, 1] ==========
+2025-03-13 17:29:07,661 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3'], malicious_sign_seq=[0, 1] ==========
+2025-03-13 17:29:07,661 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-03-13 17:29:07,661 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-03-13 17:29:08,993 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-13 17:29:08,993 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-13 17:29:08,994 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:29:08,994 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:29:10,834 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-13 17:29:10,834 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-13 17:29:10,834 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:29:10,834 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:29:12,092 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-13 17:29:12,092 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-13 17:29:12,092 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-03-13 17:29:12,092 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-03-13 17:29:13,252 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-13 17:29:13,252 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-13 17:29:13,252 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:29:13,252 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:29:15,533 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3'], malicious_sign_seq=[0, 1] ==========
+2025-03-13 17:29:15,533 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3'], malicious_sign_seq=[0, 1] ==========
+2025-03-13 17:29:15,533 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-13 17:29:15,533 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-13 17:29:17,884 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3', 'API_5'], malicious_sign_seq=[0, 1, 0] ==========
+2025-03-13 17:29:17,884 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3', 'API_5'], malicious_sign_seq=[0, 1, 0] ==========
+2025-03-13 17:29:17,885 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-13 17:29:17,885 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-13 17:29:19,586 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3'], malicious_sign_seq=[0, 1] ==========
+2025-03-13 17:29:19,586 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3'], malicious_sign_seq=[0, 1] ==========
+2025-03-13 17:29:19,586 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:29:19,586 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:29:20,768 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-13 17:29:20,768 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-13 17:29:20,768 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:29:20,768 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:29:22,630 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-13 17:29:22,630 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-13 17:29:22,630 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:29:22,630 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:29:30,355 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3'], malicious_sign_seq=[0, 1] ==========
+2025-03-13 17:29:30,355 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3'], malicious_sign_seq=[0, 1] ==========
+2025-03-13 17:29:30,355 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-13 17:29:30,355 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-13 17:29:31,840 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3'], malicious_sign_seq=[0, 1] ==========
+2025-03-13 17:29:31,840 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3'], malicious_sign_seq=[0, 1] ==========
+2025-03-13 17:31:27,866 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:31:27,866 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:31:27,866 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:31:30,311 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3', 'API_5'], malicious_sign_seq=[0, 1, 0] ==========
+2025-03-13 17:31:30,311 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3', 'API_5'], malicious_sign_seq=[0, 1, 0] ==========
+2025-03-13 17:31:30,311 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3', 'API_5'], malicious_sign_seq=[0, 1, 0] ==========
+2025-03-13 17:31:30,311 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:31:30,311 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:31:30,311 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:31:32,688 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-13 17:31:32,688 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-13 17:31:32,688 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-13 17:31:32,688 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:31:32,688 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:31:32,688 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:31:34,472 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3'], malicious_sign_seq=[0, 1] ==========
+2025-03-13 17:31:34,472 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3'], malicious_sign_seq=[0, 1] ==========
+2025-03-13 17:31:34,472 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3'], malicious_sign_seq=[0, 1] ==========
+2025-03-13 17:31:34,472 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:31:34,472 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:31:34,472 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:31:35,782 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-13 17:31:35,782 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-13 17:31:35,782 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-13 17:31:35,782 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-13 17:31:35,782 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-13 17:31:35,782 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-13 17:31:37,327 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3'], malicious_sign_seq=[0, 1] ==========
+2025-03-13 17:31:37,327 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3'], malicious_sign_seq=[0, 1] ==========
+2025-03-13 17:31:37,327 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3'], malicious_sign_seq=[0, 1] ==========
+2025-03-13 17:31:37,327 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-03-13 17:31:37,327 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-03-13 17:31:37,327 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-03-13 17:31:39,549 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-13 17:31:39,549 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-13 17:31:39,549 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-13 17:31:39,549 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:31:39,549 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:31:39,549 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:31:41,045 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-13 17:31:41,045 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-13 17:31:41,045 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-13 17:31:41,045 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:31:41,045 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:31:41,045 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:31:42,925 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-13 17:31:42,925 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-13 17:31:42,925 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-13 17:31:42,925 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-03-13 17:31:42,925 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-03-13 17:31:42,925 - INFO - ========== Called gen_api_seq() with params: malicious=False, role=admin, action_step=1 ==========
+2025-03-13 17:31:45,284 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-13 17:31:45,284 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-13 17:31:45,284 - INFO - ========== Method gen_api_seq() returned: seq=['API_1'], malicious_sign_seq=[0] ==========
+2025-03-13 17:31:45,284 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-13 17:31:45,284 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-13 17:31:45,284 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-13 17:31:46,844 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3', 'API_5'], malicious_sign_seq=[0, 1, 0] ==========
+2025-03-13 17:31:46,844 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3', 'API_5'], malicious_sign_seq=[0, 1, 0] ==========
+2025-03-13 17:31:46,844 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3', 'API_5'], malicious_sign_seq=[0, 1, 0] ==========
+2025-03-13 17:31:46,844 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:31:46,844 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:31:46,844 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=ordinary_user, action_step=1 ==========
+2025-03-13 17:31:49,297 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3'], malicious_sign_seq=[0, 1] ==========
+2025-03-13 17:31:49,297 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3'], malicious_sign_seq=[0, 1] ==========
+2025-03-13 17:31:49,297 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3'], malicious_sign_seq=[0, 1] ==========
+2025-03-13 17:31:49,297 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-13 17:31:49,297 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-13 17:31:49,297 - INFO - ========== Called gen_api_seq() with params: malicious=True, role=unlogged_in_user, action_step=1 ==========
+2025-03-13 17:32:00,249 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3', 'API_5'], malicious_sign_seq=[0, 1, 0] ==========
+2025-03-13 17:32:00,249 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3', 'API_5'], malicious_sign_seq=[0, 1, 0] ==========
+2025-03-13 17:32:00,249 - INFO - ========== Method gen_api_seq() returned: seq=['API_1', 'API_3', 'API_5'], malicious_sign_seq=[0, 1, 0] ==========

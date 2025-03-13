@@ -163,8 +163,6 @@ def param_injection_for_api_seq(api_title_seq, uname, unlogged, action_type_seq,
         try_time = 0
         data_valid = False
         calling_info = {}
-        # LOGGER.info('hello')
-# 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
         while try_time < config.basic.PARAM_INJECTION_MAX_RETRY:
             url, req_data = param_injection_for_api(api_seq[i])
             calling_info = call_api(api_seq[i], url, req_data, cookie_list)
@@ -276,6 +274,10 @@ def param_injection_for_api(api):
 STOP_FLAG = threading.Event()
 
 def gen_data_set(user_api_set, api_knowledge, app_knowledge):
+    LOGGER.info('Starting data generation...')
+    LOGGER.info(f'API_KNOWLEDGE: {api_knowledge}')
+    LOGGER.info(f'APP_KNOWLEDGE: {app_knowledge}')
+
     Agent.cinit(user_api_set, api_knowledge, app_knowledge)
     algorithm.entity.api.save_apis_to_json(user_api_set)
 

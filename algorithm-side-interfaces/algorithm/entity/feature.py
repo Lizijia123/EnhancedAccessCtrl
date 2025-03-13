@@ -94,21 +94,18 @@ class SeqOccurTimeFeature(Feature):
 
     @overrides
     def get_val(self, data_seq):
-        def count_valid_subsets(df, string_list):
-            count = 0
-            for subset_indexes in combinations(df.index, len(string_list)):
-                subset = df.loc[list(subset_indexes)]
-                subset_urls = subset['url'].tolist()
-                is_valid = True
-                for i in range(len(string_list)):
-                    if string_list[i] not in subset_urls[i]:
-                        is_valid = False
-                        break
-                if is_valid:
-                    count = count + 1
-            return count
-
-        return count_valid_subsets(data_seq, self.keyword_list)
+        count = 0
+        for subset_indexes in combinations(data_seq.index, len(self.keyword_list)):
+            subset = data_seq.loc[list(subset_indexes)]
+            subset_urls = subset['url'].tolist()
+            is_valid = True
+            for i in range(len(self.keyword_list)):
+                if self.keyword_list[i] not in subset_urls[i]:
+                    is_valid = False
+                    break
+            if is_valid:
+                count = count + 1
+        return count
 
 
 BASIC_FEATURES = {

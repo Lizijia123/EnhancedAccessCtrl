@@ -1,18 +1,20 @@
 [
     {
-        "title": "API_1591",
+        "title": "API_2073",
         "description": "",
         "method": "DELETE",
         "path": "/api/v1/resource/16",
         "variable_indexes": [
             3
         ],
-        "query_params": [],
+        "query_params": [
+            "abc"
+        ],
         "sample_body": {},
         "sample_headers": "{'Host': '47.97.114.24:5230', 'Accept': 'application/json, text/plain, */*', 'Accept-Language': 'zh-CN', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.6533.100 Safari/537.36', 'Origin': 'http://47.97.114.24:5230', 'Referer': 'http://47.97.114.24:5230/resources', 'Accept-Encoding': 'gzip, deflate, br', 'Cookie': 'nc_sameSiteCookielax=true; nc_sameSiteCookiestrict=true; memos.access-token=eyJhbGciOiJIUzI1NiIsImtpZCI6InYxIiwidHlwIjoiSldUIn0.eyJuYW1lIjoidXNlckEiLCJpc3MiOiJtZW1vcyIsInN1YiI6IjIiLCJhdWQiOlsidXNlci5hY2Nlc3MtdG9rZW4iXSwiZXhwIjoxNzM4MjQzMTE5LCJpYXQiOjE3Mzc2MzgzMTl9.dTULMgW2srCHR5epcY4zrXDTusBxphM8NGGibCrKB0w', 'Connection': 'keep-alive'}"
     },
     {
-        "title": "API_1592",
+        "title": "API_2074",
         "description": "",
         "method": "DELETE",
         "path": "/api/v1/memo/21",

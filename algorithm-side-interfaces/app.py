@@ -188,6 +188,13 @@ def auto_api_discovery():
     thread.start()
     return jsonify({"message": "Auto API discovery started successfully"}), 200
 
+@app.route('/api_discovery/manual/status', methods=['GET'])
+def get_maual_api_discovery_status():
+    global MANUAL_API_DISCOVERY_STARTED_AT, MANUAL_API_DISCOVERY_ENDED_AT
+    if MANUAL_API_DISCOVERY_STARTED_AT is not None:
+        return jsonify({'status': 'ON_GOING'}), 200
+    else:
+        return jsonify({'status': 'AVAILABLE'}), 200
 
 @app.route('/api_discovery/start', methods=['POST'])
 def start_manual_api_discovery():
@@ -595,6 +602,9 @@ def start_mitmproxy():
 # mitmproxy_thread = threading.Thread(target=start_mitmproxy)
 # mitmproxy_thread.start()
 
+@app.route('/check_deployment', methods=['GET'])
+def check_deployment():
+    return jsonify({"message": "RUNNING"}), 200
 
 def load_target_app():
     app_id = read_app_id()
@@ -614,7 +624,8 @@ def load_target_app():
         enhanced_detector.write_detection_status('ON' if detect_state == 'STARTED' else 'OFF')
 
         combined_data_duration = target_app.get('combined_data_duration')
-        write_detection_duration(int(combined_data_duration))
+        LOGGER.info(f"Loading App: {target_app}")
+        write_detection_duration(int(combined_data_duration if combined_data_duration else 300))
 
         detection_feature_list = data.get('detection_feature_list')
         features = []
@@ -645,7 +656,7 @@ if __name__ == '__main__':
 # sudo netfilter-persistent save
 
 # redis-server
-# celery -A traffic_collector.celery worker --loglevel=info
-# /bin/python3 ./app.py
+# nohup celery -A traffic_collector.celery worker --loglevel=info &
+# nohup /bin/python3 ./app.py &
 
 # sudo docker run -d --name memos -p 5230:5230 -v ~/.memos/:/var/opt/memos neosmemo/memos:stable

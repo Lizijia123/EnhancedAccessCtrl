@@ -1,6 +1,6 @@
 # views.py
 from typing import List, Dict
-
+import logging
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.hashers import make_password
 from django.db import transaction
@@ -21,6 +21,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.response import Response
 from django.contrib.auth.models import User
+logger = logging.getLogger(__name__)
 
 @api_view(['GET'])
 @authentication_classes([TokenAuthentication])
@@ -142,7 +143,7 @@ def target_app_model_to_view(target_app):
             '%Y-%m-%d %H:%M:%S') if target_app.last_model_construction_at else None,
         'login_credentials': login_credentials,
         'detect_state': target_app.detect_state,
-        'model_report': target_app.model_report,
+        'model_report': compile_report(target_app.model_report),
         'enhanced_detection_enabled': target_app.enhanced_detection_enabled,
         'combined_data_duration': target_app.combined_data_duration
     }
@@ -169,6 +170,45 @@ def get_target_app_list(request):
             'code': 500,
             'error': str(e)
         }, status=500)
+
+from rest_framework.pagination import PageNumberPagination
+from django.core.paginator import Paginator, EmptyPage
+class CustomPagination(PageNumberPagination):
+    page_size = 10  # 每页显示的记录数
+    page_size_query_param = 'page_size'  # 允许客户端通过该参数指定每页记录数
+    max_page_size = 100  # 最大每页记录数
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_target_app_list_pagely(request):
+    try:
+        user = request.user
+        target_apps = TargetApplication.objects.filter(user=user).order_by('-created_at')
+
+        # 创建分页器实例
+        paginator = CustomPagination()
+        # 对查询集进行分页
+        page = paginator.paginate_queryset(target_apps, request)
+
+        return JsonResponse({
+            'code': 200,
+            'data': {
+                'traffic_data_list': [target_app_model_to_view(target_app) 
+                                    for target_app in (page if page else target_apps)],
+                'total': paginator.page.paginator.count if page else len(target_apps),
+                'next': paginator.get_next_link() if page else None,
+                'previous': paginator.get_previous_link() if page else None
+            }
+        }, safe=False, status=200)
+    
+    except EmptyPage as e:
+        return JsonResponse({
+            'code': 400,
+            'error': str(e)
+        }, status=400)
+
+
+
 
 
 def setup_basic_features(target_app):
@@ -443,9 +483,17 @@ def target_app(request):
     }, status=405)
 
 
+
+
+
 def API_list_model_to_view(api_list_field):
     API_list = []
-    for api in api_list_field.all():
+    # 判断 api_list_field 是否为查询集
+    if hasattr(api_list_field, 'all'):
+        api_list = api_list_field.all()
+    else:
+        api_list = api_list_field
+    for api in api_list:
         path_segment_list = []
         for segment in api.path_segment_list.all():
             path_segment_list.append({
@@ -473,11 +521,11 @@ def API_list_model_to_view(api_list_field):
             'permission_info': api.permission_info,
             'path_segment_list': path_segment_list,
             'request_param_list': request_param_list,
-            'request_data_fields': request_data_fields
+            'request_data_fields': request_data_fields,
+            'role_list': api.role_list
         }
         API_list.append(api_info)
     return API_list
-
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
@@ -507,6 +555,63 @@ def get_api_lists(request):
             'error': 'Target application not found or you do not have permission'
         }, status=404)
 
+class APIPagination(PageNumberPagination):
+    page_size = 10  # 每页显示的记录数
+    page_size_query_param = 'page_size'  # 允许客户端通过该参数指定每页记录数
+    max_page_size = 100  # 最大每页记录数
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_api_lists_pagely(request):
+    app_id = request.query_params.get('app_id')
+    if not app_id:
+        return JsonResponse({
+            'code': 400,
+            'error': 'Missing target application ID'
+        }, status=400)
+    try:
+        target_app = TargetApplication.objects.get(id=app_id, user=request.user)
+
+        # 初始化分页器
+        DALpaginator = APIPagination()
+        UALpaginator = APIPagination()
+
+        # 对 discovered_API_list 进行分页
+        discovered_api_list_page = DALpaginator.paginate_queryset(target_app.discovered_API_list.all().order_by('id'), request)
+        discovered_API_list = API_list_model_to_view(discovered_api_list_page)
+
+        # 对 user_API_list 进行分页
+        user_api_list_page = UALpaginator.paginate_queryset(target_app.user_API_list.all().order_by('id'), request)
+        user_API_list = API_list_model_to_view(user_api_list_page)
+
+        return JsonResponse({
+            'code': 200,
+            'data': {
+                'discovered_API_list': discovered_API_list,
+                'discovered_API_list_total': DALpaginator.page.paginator.count if discovered_api_list_page else len(discovered_API_list),
+                'discovered_API_list_next': DALpaginator.get_next_link() if discovered_api_list_page else None,
+                'discovered_API_list_previous': DALpaginator.get_previous_link() if discovered_api_list_page else None,
+                'user_API_list': user_API_list,
+                'user_API_list_total': UALpaginator.page.paginator.count if user_api_list_page else len(user_API_list),
+                'user_API_list_next': UALpaginator.get_next_link() if user_api_list_page else None,
+                'user_API_list_previous': UALpaginator.get_previous_link() if user_api_list_page else None
+            }
+        }, status=200)
+    except EmptyPage as e:
+        return JsonResponse({
+            'code': 404,
+            'error': str(e)
+        }, status=404)
+    except TargetApplication.DoesNotExist:
+        return JsonResponse({
+            'code': 404,
+            'error': 'Target application not found or you do not have permission'
+        }, status=404)
+
+
+
+
+
 
 def validate_api(api_data):
     function_description = api_data.get('function_description')
@@ -520,13 +625,17 @@ def validate_api(api_data):
     sample_url = api_data.get('sample_url')
     sample_request_data = api_data.get('sample_request_data')
     request_method = api_data.get('request_method')
+    role_list = api_data.get('role_list')
+    if not role_list:
+        role_list = []
 
     api = API(
         sample_url=sample_url,
         sample_request_data=sample_request_data,
         request_method=request_method,
         function_description=function_description,
-        permission_info=permission_info
+        permission_info=permission_info,
+        role_list=role_list
     )
     try:
         api.full_clean()
@@ -956,9 +1065,13 @@ def start_api_discovery(request):
 def save_api_list(target_app, api_list_field_name, api_list_data):
     valid_api_items: List[Dict] = []
     for api_data in api_list_data:
+        if api_data.get('request_method') not in ('POST', 'GET', 'PUT', 'DELETE'):
+            continue
+        # print(api_data)
         result = validate_api(api_data)
         if isinstance(result, JsonResponse):
-            return result
+            # print(result)
+            return result.content
         valid_api_items.append(result)
 
     with transaction.atomic():
@@ -969,6 +1082,8 @@ def save_api_list(target_app, api_list_field_name, api_list_data):
             api.request_data_fields.all().delete()
             api.delete()
         api_list.clear()
+
+        print(f"Saving!!!{len(valid_api_items)}")
 
         for valid_api_item in valid_api_items:
             valid_api_item['api'].save()
@@ -1024,7 +1139,13 @@ def finish_api_discovery(request):
         response = requests.get(f'http://{sfwap_address}/api_discovery/finish')
 
         discovered_api_list_data = response.json().get('discovered_API_list', [])
-        save_api_list(target_app, api_list_field_name='discovered_API_list', api_list_data=discovered_api_list_data)
+
+        print(f"Saving API list: {len(discovered_api_list_data)}")
+        res = save_api_list(target_app, api_list_field_name='discovered_API_list', api_list_data=[
+            api for api in discovered_api_list_data if api.get('request_method') in ('POST', 'GET', 'PUT', 'DELETE')
+        ])
+        if res:
+            print(res.content)
         if target_app.detect_state == 'API_LIST_TO_DISCOVER':
             target_app.detect_state = 'API_LIST_TO_IMPROVE'
             target_app.save(update_fields=['detect_state'])
@@ -1110,8 +1231,8 @@ def api_discovery_notification(request):
         }, status=400)
     # try:
     discovery_data = request.data
-    print(discovery_data)
-    handle_api_discovery_notification.delay(app_id, discovery_data)
+    # print(discovery_data)
+    handle_api_discovery_notification(app_id, discovery_data)
     return JsonResponse({
         'code': 200,
         'message': 'Notification received and processing started'
@@ -1283,6 +1404,32 @@ def get_data_collection_status(request):
             'error': 'Invalid JSON response from SFWAP-Detector'
         }, status=500)
     
+def compile_report(report):
+    if not report:
+        return None
+    # 按行分割报告内容
+    lines = report.strip().split('\n')
+    # 去除空行
+    valid_lines = [line for line in lines if line.strip()]
+    # 跳过表头
+    valid_lines = valid_lines[1:]
+
+    result = []
+    for line in valid_lines:
+        # 分割每行数据
+        parts = line.split()
+        # 去除行名（如果是数字开头的行）
+        if parts[0].isdigit():
+            parts = parts[1:]
+        # 尝试将每个部分转换为浮点数并添加到结果列表
+        for part in parts:
+            try:
+                num = float(part)
+                result.append(num)
+            except ValueError:
+                continue
+
+    return result
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
@@ -1359,7 +1506,7 @@ def construct_model(request):
             'code': 200,
             'message': 'Model construction successful', 
             'data': {
-                'report': report, 
+                'report': compile_report(report), 
                 'error_API_list': error_API_list
             }
         }, status=200)
@@ -1566,9 +1713,301 @@ def pause_detection(request):
         }, status=500)
 
 
+def update_detection_records(target_app):
+    # 发起 HTTP 请求获取检测记录
+    records_url = f'http://{target_app.SFWAP_address}/detection/records'
+    try:
+        response = requests.get(records_url)
+        records_data = response.json().get('records')
+        error = response.json().get('error')
+        if error:
+            return JsonResponse({
+                'code': 500,
+                'error': error
+            }, status=500)
+    except requests.RequestException as e:
+        return JsonResponse({
+            'code': 500,
+            'error': f'Error fetching detection records: {str(e)}'
+        }, status=500)
+    except ValueError:
+        return JsonResponse({
+            'code': 500,
+            'error': 'Invalid JSON response from SFWAP-Detector'
+        }, status=500)
+
+    # 检查并添加不重复的检测记录和流量数据
+    # [{'detection_result':'','started_at':'','ended_at':''
+    #   'traffic_data_list':[{...,'API':{'id':}}]}]
+    for record_data in records_data:
+        detection_result = record_data.get('detection_result')
+        started_at = record_data.get('started_at')
+        ended_at = record_data.get('ended_at')
+
+        # 检查数据库中是否已存在相同的检测记录
+        existing_record = DetectionRecord.objects.filter(
+            app=target_app,
+            detection_result=detection_result,
+            started_at=started_at,
+            ended_at=ended_at
+        ).first()
+
+        if existing_record:
+            continue
+
+        # 创建新的检测记录
+        detection_record = DetectionRecord.objects.create(
+            app=target_app,
+            detection_result=detection_result,
+            started_at=started_at,
+            ended_at=ended_at
+        )
+
+        # 处理流量数据
+        traffic_data_list = record_data.get('traffic_data_list', [])
+        for traffic_data_info in traffic_data_list:
+            accessed_at = traffic_data_info.get('accessed_at')
+            method = traffic_data_info.get('method')
+            url = traffic_data_info.get('url')
+            header = traffic_data_info.get('header')
+            data = traffic_data_info.get('data')
+            status_code = traffic_data_info.get('status_code')
+            api_info = traffic_data_info.get('API')
+            data_detection_result = traffic_data_info.get('detection_result')
+
+            api = None
+            if api_info:
+                api_id = api_info.get('id')
+                if api_id:
+                    try:
+                        api = API.objects.get(id=int(api_id))
+                    except API.DoesNotExist:
+                        pass
+
+            # # 检查数据库中是否已存在相同的流量数据
+            # existing_traffic_data = TrafficData.objects.filter(
+            #     method=method,
+            #     header=header,
+            #     url=url,
+            #     data=data,
+            #     status_code=status_code,
+            #     accessed_at=accessed_at
+            # ).first()
+
+            # if existing_traffic_data:
+            #     traffic_data = existing_traffic_data
+            # else:
+            traffic_data = TrafficData.objects.create(
+                method=method,
+                header=header,
+                url=url,
+                data=data,
+                status_code=status_code,
+                accessed_at=accessed_at,
+                API=api,
+                detection_result=data_detection_result,
+            )
+
+            detection_record.traffic_data_list.add(traffic_data)
+
+
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def get_detection_records_by_combination(request):
+def get_detection_records(request):
+    app_id = request.query_params.get('app_id')
+    if not app_id:
+        return JsonResponse({
+            'code': 400,
+            'error': 'Missing target application ID'
+        }, status=400)
+    try:
+        target_app = TargetApplication.objects.get(id=app_id, user=request.user)
+    except TargetApplication.DoesNotExist:
+        return JsonResponse({
+            'code': 404,
+            'error': 'Target application not found or you do not have permission'
+        }, status=404)
+
+    update_detection_records(target_app)
+
+    # 查询并返回数据库中的检测记录
+    detection_records = DetectionRecord.objects.filter(app=target_app).order_by('-ended_at')
+    records_data = []
+
+    for record in detection_records:
+        traffic_data_list = []
+        for traffic_data in record.traffic_data_list.all():
+            traffic_data_info = {
+                'accessed_at': traffic_data.accessed_at,
+                'method': traffic_data.method,
+                'url': traffic_data.url,
+                'header': traffic_data.header,
+                'data': traffic_data.data,
+                'status_code': traffic_data.status_code,
+                'detection_result': traffic_data.detection_result,
+            }
+            traffic_data_list.append(traffic_data_info)
+
+        record_info = {
+            'id': record.id,
+            'detection_result': record.detection_result,
+            'started_at': record.started_at,
+            'ended_at': record.ended_at,
+            'traffic_data_list': traffic_data_list
+        }
+        records_data.append(record_info)
+    
+    return JsonResponse({
+        'code': 200,
+        'data': {
+            'detection_records': records_data,
+            'total': len(records_data)
+        }
+    }, safe=False, status=200)
+
+
+
+TIME_WINDOWS = {
+    'TenMinutes': timezone.timedelta(minutes=10),
+    'AnHour': timezone.timedelta(hours=1),
+    'SixHours': timezone.timedelta(hours=6),
+    'OneDay': timezone.timedelta(days=1),
+    'ThreeDays': timezone.timedelta(days=3),
+    'OneWeek': timezone.timedelta(weeks=1),
+    'OneMonth': timezone.timedelta(days=30)
+}
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_detection_records_v1(request):
+    app_id = request.query_params.get('app_id')
+    if not app_id:
+        return JsonResponse({
+            'code': 400,
+            'error': 'Missing target application ID'
+        }, status=400)
+    try:
+        target_app = TargetApplication.objects.get(id=app_id, user=request.user)
+    except TargetApplication.DoesNotExist:
+        return JsonResponse({
+            'code': 404,
+            'error': 'Target application not found or you do not have permission'
+        }, status=404)
+
+    update_detection_records(target_app)
+
+    global TIME_WINDOWS
+    time_window = request.query_params.get('time_window')
+    if time_window and (time_window not in TIME_WINDOWS):
+        return JsonResponse({
+            'code': 400,
+            'error': 'Invalid request parameter time_window'
+        }, status=400)
+    detection_result = request.query_params.get('detection_result')
+    if detection_result and (detection_result not in ['ALLOW', 'ALARM', 'INTERCEPTION']):
+        return JsonResponse({
+            'code': 400,
+            'error': 'Invalid request parameter detection_result'
+        }, status=400)
+
+    detection_records = DetectionRecord.objects.filter(app=target_app).order_by('-ended_at')
+    if detection_result:
+        detection_records = detection_records.filter(detection_result=detection_result)
+    if time_window:
+        current_time = timezone.now()
+        start_time = current_time - TIME_WINDOWS[time_window]
+        detection_records = detection_records.filter(started_at__gte=start_time, ended_at__lte=current_time)
+
+    try:
+        paginator = CustomPagination()
+        page = paginator.paginate_queryset(detection_records, request)
+
+
+        return JsonResponse({
+            'code': 200,
+            'data': {
+                'detection_records': [{
+                    'id': record.id,
+                    'detection_result': record.detection_result,
+                    'started_at': record.started_at,
+                    'ended_at': record.ended_at,
+                    'traffic_data_size': len(record.traffic_data_list.all())
+                } for record in (page if page else detection_records)],
+                'total': paginator.page.paginator.count if page else len(detection_records),
+                'next': paginator.get_next_link() if page else None,
+                'previous': paginator.get_previous_link() if page else None
+            }
+        }, safe=False, status=200)
+    except EmptyPage as e:
+        return JsonResponse({
+            'code': 404,
+            'error': str(e)
+        }, status=404)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_traffic_data_list(request):
+    app_id = request.query_params.get('app_id')
+    detection_record_id = request.query_params.get('detection_record_id')
+    if not app_id:
+        return JsonResponse({
+            'code': 400,
+            'error': 'Missing target application ID'
+        }, status=400)
+    if not detection_record_id:
+        return JsonResponse({
+            'code': 400,
+            'error': 'Missing detection record ID'
+        }, status=400)
+    try:
+        target_app = TargetApplication.objects.get(id=app_id, user=request.user)
+    except TargetApplication.DoesNotExist:
+        return JsonResponse({
+            'code': 404,
+            'error': 'Target application not found or you do not have permission'
+        }, status=404)
+
+    try:
+        record = DetectionRecord.objects.get(id=detection_record_id)
+    except DetectionRecord.DoesNotExist:
+        return JsonResponse({
+            'code': 404,
+            'error': 'Detection record not found'
+        }, status=404)
+    
+    try:
+        paginator = CustomPagination()
+        page = paginator.paginate_queryset(record.traffic_data_list.all(), request)
+
+        return JsonResponse({
+            'code': 200,
+            'data': {
+                'traffic_data_list': [{
+                    'accessed_at': traffic_data.accessed_at,
+                    'method': traffic_data.method,
+                    'url': traffic_data.url,
+                    'header': traffic_data.header,
+                    'data': traffic_data.data,
+                    'status_code': traffic_data.status_code,
+                    'detection_result': traffic_data.detection_result,
+                } for traffic_data in (page if page else record.traffic_data_list.all())],
+                'total': paginator.page.paginator.count if page else len(record.traffic_data_list.all()),
+                'next': paginator.get_next_link() if page else None,
+                'previous': paginator.get_previous_link() if page else None
+            }
+        }, safe=False, status=200)
+    except EmptyPage as e:
+        return JsonResponse({
+            'code': 404,
+            'error': str(e)
+        }, status=404)
+
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_detection_report(request):
     app_id = request.query_params.get('app_id')
     if not app_id:
         return JsonResponse({
@@ -1680,54 +2119,31 @@ def get_detection_records_by_combination(request):
 
             detection_record.traffic_data_list.add(traffic_data)
 
-    # 查询并返回数据库中的检测记录
-    detection_records = DetectionRecord.objects.filter(app=target_app).order_by('ended_at')
-    records_data = []
-
-    for record in detection_records:
-        traffic_data_list = []
-        for traffic_data in record.traffic_data_list.all():
-            traffic_data_info = {
-                'accessed_at': traffic_data.accessed_at,
-                'method': traffic_data.method,
-                'url': traffic_data.url,
-                'header': traffic_data.header,
-                'data': traffic_data.data,
-                'status_code': traffic_data.status_code,
-                'detection_result': traffic_data.detection_result,
-            }
-            traffic_data_list.append(traffic_data_info)
-
-        record_info = {
-            'detection_result': record.detection_result,
-            'started_at': record.started_at,
-            'ended_at': record.ended_at,
-            'traffic_data_list': traffic_data_list
-        }
-        records_data.append(record_info)
-
-
-
     from django.db.models import Count
     history_records = DetectionRecord.objects.filter(app=target_app)
     total_record_count = history_records.count()
     result_counts = history_records.values('detection_result').annotate(count=Count('id'))
     history_record_result_percentages = {}
+    history_record_result_ids = {}
     for result in result_counts:
         history_record_result_percentages[result['detection_result']] = (result['count'] / total_record_count) * 100
+        history_record_result_ids[result['detection_result']] = list(history_records.filter(detection_result=result['detection_result'])
+                                                                     .order_by('-ended_at').values_list('id', flat=True))
     current_time = timezone.now()
     time_windows = [
-        ('Ten Minutes', timezone.timedelta(minutes=10)),
-        ('An Hour', timezone.timedelta(hours=1)),
-        ('Six Hours', timezone.timedelta(hours=6)),
-        ('One Day', timezone.timedelta(days=1)),
-        ('Three Days', timezone.timedelta(days=3)),
-        ('One Week', timezone.timedelta(weeks=1)),
-        ('One Month', timezone.timedelta(days=30))
+        ('TenMinutes', timezone.timedelta(minutes=10)),
+        ('AnHour', timezone.timedelta(hours=1)),
+        ('SixHours', timezone.timedelta(hours=6)),
+        ('OneDay', timezone.timedelta(days=1)),
+        ('ThreeDays', timezone.timedelta(days=3)),
+        ('OneWeek', timezone.timedelta(weeks=1)),
+        ('OneMonth', timezone.timedelta(days=30))
     ]
     time_window_record_result_percentages = {}
+    time_window_record_result_ids = {}
     for window_name, window_duration in time_windows:
         time_window_record_result_percentages[window_name] = {}
+        time_window_record_result_ids[window_name] = {}
         start_time = current_time - window_duration
         filtered_records = DetectionRecord.objects.filter(started_at__gte=start_time, ended_at__lte=current_time)
         window_total_count = filtered_records.count()
@@ -1740,6 +2156,8 @@ def get_detection_records_by_combination(request):
         for result in result_counts:
             percentages[result['detection_result']] = (result['count'] / window_total_count) * 100
             counts[result['detection_result']] = result['count']
+            time_window_record_result_ids[window_name][result['detection_result']] = list(filtered_records
+                .filter(detection_result=result['detection_result']).order_by('-ended_at').values_list('id', flat=True))
         time_window_record_result_percentages[window_name]['percentages'] = percentages
         time_window_record_result_percentages[window_name]['counts'] = counts
     
@@ -1806,14 +2224,188 @@ def get_detection_records_by_combination(request):
             'report': {
                 'total_detection_record_count': total_record_count,
                 'history_record_result_percentages': history_record_result_percentages,
+                'history_record_result_ids': history_record_result_ids,
                 'time_window_record_result_percentages': time_window_record_result_percentages,
+                'time_window_record_result_ids': time_window_record_result_ids,
                 'total_traffic_data_count': total_traffic_data_count,
                 'history_traffic_data_result_percentages': history_traffic_data_result_percentages,
                 'time_window_traffic_data_result_percentages': time_window_traffic_data_result_percentages,
                 'API_report': API_report
-            },
-            'detection_records': records_data,
-            'total': len(records_data)
+            }
+        }
+    }, safe=False, status=200)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_detection_report_v1(request):
+    app_id = request.query_params.get('app_id')
+    if not app_id:
+        return JsonResponse({
+            'code': 400,
+            'error': 'Missing target application ID'
+        }, status=400)
+
+    try:
+        target_app = TargetApplication.objects.get(id=app_id, user=request.user)
+    except TargetApplication.DoesNotExist:
+        return JsonResponse({
+            'code': 404,
+            'error': 'Target application not found or you do not have permission'
+        }, status=404)
+
+    update_detection_records(target_app)
+
+    from django.db.models import Count
+    current_time = timezone.now()
+    time_windows = [
+        ('History', timezone.timedelta(days=5000)),
+        ('TenMinutes', timezone.timedelta(minutes=10)),
+        ('AnHour', timezone.timedelta(hours=1)),
+        ('SixHours', timezone.timedelta(hours=6)),
+        ('OneDay', timezone.timedelta(days=1)),
+        ('ThreeDays', timezone.timedelta(days=3)),
+        ('OneWeek', timezone.timedelta(weeks=1)),
+        ('OneMonth', timezone.timedelta(days=30))
+    ]
+    time_window_record_result_percentages = {}
+    time_window_record_result_ids = {}
+    history_records = DetectionRecord.objects.filter(app=target_app)
+    result_counts = history_records.values('detection_result').annotate(count=Count('id'))
+
+
+    for window_name, window_duration in time_windows:
+        time_window_record_result_percentages[window_name] = {}
+        time_window_record_result_ids[window_name] = {}
+        start_time = current_time - window_duration
+        filtered_records = DetectionRecord.objects.filter(started_at__gte=start_time, ended_at__lte=current_time)
+        window_total_count = filtered_records.count()
+        time_window_record_result_percentages[window_name]['total'] = window_total_count
+        if window_total_count == 0:
+            continue
+        result_counts = filtered_records.values('detection_result').annotate(count=Count('id'))
+        percentages = {}
+        counts = {}
+        for result in result_counts:
+            percentages[result['detection_result']] = (result['count'] / window_total_count) * 100
+            counts[result['detection_result']] = result['count']
+            time_window_record_result_ids[window_name][result['detection_result']] = list(filtered_records
+                .filter(detection_result=result['detection_result']).order_by('-ended_at').values_list('id', flat=True))
+        time_window_record_result_percentages[window_name]['percentages'] = percentages
+        time_window_record_result_percentages[window_name]['counts'] = counts
+    
+    # history_traffic_datas = TrafficData.objects.filter(detectionrecord__in=history_records).order_by('-accessed_at')
+    # total_traffic_data_count = history_traffic_datas.count()
+    # result_counts = history_traffic_datas.values('detection_result').annotate(count=Count('id'))
+    # history_traffic_data_result_percentages = {}
+    # for result in result_counts:
+    #     history_traffic_data_result_percentages[result['detection_result']] = (result['count'] / total_traffic_data_count) * 100
+    time_window_traffic_data_result_percentages = {}
+    for window_name, window_duration in time_windows:
+        time_window_traffic_data_result_percentages[window_name] = {}
+        start_time = current_time - window_duration
+        filtered_records = TrafficData.objects.filter(accessed_at__gte=start_time)
+        window_total_count = filtered_records.count()
+        time_window_traffic_data_result_percentages[window_name]['total'] = window_total_count
+        if window_total_count == 0:
+            continue
+        result_counts = filtered_records.values('detection_result').annotate(count=Count('id'))
+        percentages = {}
+        counts = {}
+        for result in result_counts:
+            percentages[result['detection_result']] = (result['count'] / window_total_count) * 100
+            counts[result['detection_result']] = result['count']
+        time_window_traffic_data_result_percentages[window_name]['percentages'] = percentages
+        time_window_traffic_data_result_percentages[window_name]['counts'] = counts
+
+    API_report = []
+    user_API_list = target_app.user_API_list.all()
+    for api in user_API_list:
+        API_traffic_datas = TrafficData.objects.filter(API=api)
+        API_traffic_data_count = API_traffic_datas.count()
+        result_counts = API_traffic_datas.values('detection_result').annotate(count=Count('id'))
+        API_traffic_data_result_percentages = {}
+        for result in result_counts:
+            API_traffic_data_result_percentages[result['detection_result']] = (result['count'] / API_traffic_data_count) * 100
+        time_window_API_traffic_data_result_percentages = {}
+        detection_record_ids = {}
+        for window_name, window_duration in time_windows:
+            time_window_API_traffic_data_result_percentages[window_name] = {}
+            detection_record_ids[window_name] = {}
+            start_time = current_time - window_duration
+            filtered_records = TrafficData.objects.filter(accessed_at__gte=start_time, API=api)
+            window_total_count = filtered_records.count()
+            time_window_API_traffic_data_result_percentages[window_name]['total'] = window_total_count
+            if window_total_count == 0:
+                continue
+            result_counts = filtered_records.values('detection_result').annotate(count=Count('id'))
+            percentages = {}
+            counts = {}
+            for result in result_counts:
+                percentages[result['detection_result']] = (result['count'] / window_total_count) * 100
+                counts[result['detection_result']] = result['count']
+                detection_record_ids[window_name][result['detection_result']] = [(DetectionRecord.objects.filter(traffic_data_list=data))[0].id 
+                                                                                 for data in filtered_records.filter(detection_result=result['detection_result'])
+                                                                                 .order_by('-accessed_at')]
+            time_window_API_traffic_data_result_percentages[window_name]['percentages'] = percentages
+            time_window_API_traffic_data_result_percentages[window_name]['counts'] = counts
+        API_report.append({
+            'API_id': api.id,
+            'method': api.request_method,
+            'sample_url': api.sample_url,
+            'traffic_data_percentages': time_window_API_traffic_data_result_percentages,
+            'detection_record_ids': detection_record_ids
+        })
+
+    return JsonResponse({
+        'code': 200,
+        'data': {
+            'report': {
+                'record_percentages': time_window_record_result_percentages,
+                'record_ids': time_window_record_result_ids,
+                'traffic_data_percentages': time_window_traffic_data_result_percentages,
+                'API_report': API_report
+            }
+        }
+    }, safe=False, status=200)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def get_detection_records_by_ids(request):
+    app_id = request.query_params.get('app_id')
+    if not app_id:
+        return JsonResponse({
+            'code': 400,
+            'error': 'Missing target application ID'
+        }, status=400)
+
+    try:
+        target_app = TargetApplication.objects.get(id=app_id, user=request.user)
+    except TargetApplication.DoesNotExist:
+        return JsonResponse({
+            'code': 404,
+            'error': 'Target application not found or you do not have permission'
+        }, status=404)
+    
+    ids = json.loads(request.body).get("record_id_list")
+    
+    if not ids or not (isinstance(ids, list)):
+        return JsonResponse({
+            'code': 400,
+            'error': 'Invalid record_id_list'
+        }, status=400)
+    detection_records = [DetectionRecord.objects.get(id=_id) for _id in ids]
+    return JsonResponse({
+        'code': 200,
+        'data': {
+            'detection_records': [{
+                'id': record.id,
+                'detection_result': record.detection_result,
+                'started_at': record.started_at,
+                'ended_at': record.ended_at,
+                'traffic_data_size': len(record.traffic_data_list.all())
+            } for record in detection_records]
         }
     }, safe=False, status=200)
 
@@ -1919,7 +2511,13 @@ def get_manual_API_discovery_status(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def check_deployment(request):
-    SFWAP_address = json.loads(request.body)
+    SFWAP_address = json.loads(request.body).get("address")
+    if not SFWAP_address:
+        return JsonResponse({
+            'code': 400,
+            'error': 'Missing SFWAP address'
+        }, status=400)
+
     check_url = f'http://{SFWAP_address}/check_deployment'
     try:
         response = requests.get(check_url)
@@ -1934,24 +2532,21 @@ def check_deployment(request):
     except Exception as e:
         return JsonResponse({
             'code': 200,
-            'error': 'The deployment has problems',
+            'error': 'The deployment has problems or the SFWAP_address is incorrect',
             'data': {
                 'status': 'FAIL'
             }
         }, status=200)
 
 
-import logging
-from celery import shared_task
+# from celery import shared_task
 
 from .models import TargetApplication
 from django.utils import timezone
 from typing import Dict, List
 
-logger = logging.getLogger(__name__)
 
 
-@shared_task
 def handle_api_discovery_notification(app_id, discovery_data):
     try:
         print("=============================================================================")
@@ -1964,7 +2559,7 @@ def handle_api_discovery_notification(app_id, discovery_data):
         # 更新 discovered_API_list
         error_response = save_api_list(target_app, 'discovered_API_list', discovered_api_list)
         if error_response:
-            return {'errror': error_response.content}
+            return {'error': error_response.content}
 
         # 更新 user_API_list
         if len(list(target_app.user_API_list.all())) == 0:
@@ -1979,7 +2574,7 @@ def handle_api_discovery_notification(app_id, discovery_data):
         target_app.last_API_discovery_at = timezone.now()
         target_app.save(update_fields=['last_API_discovery_at'])
 
-        print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+target_app.discovered_API_list)
+        print(f"size: {len(list(target_app.discovered_API_list.all()))}")
 
         return {'message': 'API discovery and update successful'}
     except TargetApplication.DoesNotExist:

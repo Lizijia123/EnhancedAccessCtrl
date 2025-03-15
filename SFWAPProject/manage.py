@@ -22,5 +22,4 @@ if __name__ == '__main__':
     main()
 
 # cd 当前目录
-# nohup celery -A SFWAPProject worker --loglevel=info &
 # nohup /bin/python3 manage.py runserver 0.0.0.0:8000 &

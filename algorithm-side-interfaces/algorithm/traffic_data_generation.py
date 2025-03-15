@@ -157,41 +157,26 @@ def param_injection_for_api_seq(api_title_seq, uname, unlogged, action_type_seq,
     # LOGGER.info(api_title_info_map)
     api_seq = [(api_title_info_map[title] if title in api_title_info_map else api_title_info_map[random.choice(list(api_title_info_map.keys()))]) for title in api_title_seq]
 
+    error_apis = []
     traffic_data_seq = []
     seq_valid = True
     for i in range(len(api_title_seq)):
-        try_time = 0
-        data_valid = False
-        calling_info = {}
-        while try_time < config.basic.PARAM_INJECTION_MAX_RETRY:
-            url, req_data = param_injection_for_api(api_seq[i])
-            calling_info = call_api(api_seq[i], url, req_data, cookie_list)
-            data_valid = INTERACTION_JUDGEMENT(action_type_seq[i], calling_info, uname)
-            if data_valid:
-                break
-            try_time += 1
-        if not data_valid:
-            seq_valid = False
+        try:
+            try_time = 0
+            data_valid = False
+            calling_info = {}
+            while try_time < config.basic.PARAM_INJECTION_MAX_RETRY:
+                url, req_data = param_injection_for_api(api_seq[i])
+                calling_info = call_api(api_seq[i], url, req_data, cookie_list)
+                data_valid = INTERACTION_JUDGEMENT(action_type_seq[i], calling_info, uname)
+                if data_valid:
+                    break
+                try_time += 1
+            if not data_valid:
+                seq_valid = False
 
-        LOGGER.info(f'Param injection attempting time：{try_time}；Single traffic data valid：{data_valid}；Traffic data combination valid：{seq_valid}')
-
-        # calling_info = {
-        #     'timestamp': timestamp,
-        #     'api_endpoint': api_endpoint,
-        #     'http_method': method,
-        #     'request_body_size': request_body_size,
-        #     'response_body_size': response_body_size,
-        #     'response_status': response.status_code,
-        #     'execution_time': execution_time,
-        #     'status_code': response.status_code,
-        #     'method': response.request.method,
-        #     'url': response.request.url,
-        #     'header': response.request.headers,
-        #     'data': None if len(data) == 0 else data,
-        #     # 'response': response.text
-        # }
-
-        traffic_data_seq.append([
+            LOGGER.info(f'Param injection attempting time：{try_time}；Single traffic data valid：{data_valid}；Traffic data combination valid：{seq_valid}')
+            traffic_data_seq.append([
             calling_info['timestamp'],
             calling_info['http_method'].upper(),
             calling_info['url'],
@@ -204,9 +189,12 @@ def param_injection_for_api_seq(api_title_seq, uname, unlogged, action_type_seq,
             calling_info['execution_time'],
             data_valid
         ])
-
+        except Exception:
+            LOGGER.info(f"Error when injecting params for {api_title_seq[i]}")
+            error_apis.append(str(api_seq[i].index))
     param_cache.clear()
-    return traffic_data_seq, seq_valid
+    LOGGER.info(f"error_apis: {error_apis}")
+    return traffic_data_seq, seq_valid, error_apis
 
 
 def param_injection_for_api(api):
@@ -309,16 +297,21 @@ def gen_data_set(user_api_set, api_knowledge, app_knowledge):
 
     LOGGER.info("Generating simulated traffic data set...")
     users = load_agents_from_file(file_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'serialized_llm_agents.json'))
+    all_error_apis = []
     for user in users:
         if STOP_FLAG.is_set():
             return
-        user_data, seq_valid = param_injection_for_api_seq(
+        user_data, seq_valid, error_apis = param_injection_for_api_seq(
             api_title_seq=user.api_sequence,
             uname=user.uname,
             unlogged=user.unlogged,
             action_type_seq=user.action_type_seq,
             malicious=user.malicious
         )
+        for error_api in error_apis:
+            if error_api not in all_error_apis:
+                all_error_apis.append(error_api)
+        
         for i in range(len(user_data)):
             # method, url, header, data, data_valid
             user_data[i].append(seq_valid)  # seq_valid
@@ -341,3 +334,4 @@ def gen_data_set(user_api_set, api_knowledge, app_knowledge):
              'data_valid', 'seq_valid']]
     df.to_csv(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'simulated_traffic_data.csv'))
     LOGGER.info(f"All simulated traffic data collected：{os.path.join(os.path.dirname(os.path.abspath(__file__)), 'simulated_traffic_data.csv')}")
+    return all_error_apis

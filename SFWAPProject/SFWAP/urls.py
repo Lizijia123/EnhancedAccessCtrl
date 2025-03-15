@@ -10,9 +10,11 @@ urlpatterns = [
     path('logout/', user_logout, name='logout'),
 
     path('target-app-list/', get_target_app_list, name='get_target_app_list'),
+    path('v1/target-app-list/', get_target_app_list_pagely, name='get_target_app_list_pagely'),
     path('target-app/', target_app, name='target_app'),
 
     path('api-lists/', get_api_lists, name='get_api_lists'),
+    path('v1/api-lists/', get_api_lists_pagely, name='get_api_lists_pagely'),
     path('user-api-list/', update_user_api_list, name='update_user_api_list'),
     path('v1/user-api-list/', update_user_api_list_v1, name='update_user_api_list_v1'),
 
@@ -31,8 +33,17 @@ urlpatterns = [
     path('detection/start/', start_detection, name='start_detection'),
     path('detection/pause/', pause_detection, name='pause_detection'),
 
-    path('detection/record/combination/', get_detection_records_by_combination, name='get_detection_records_by_combination'),
+    path('detection/report/', get_detection_report, name='get_detection_report'),
+    path('v1/detection/report/', get_detection_report_v1, name='get_detection_report_v1'),
+    path('detection/records/', get_detection_records, name='get_detection_records'),
+    path('detection/records/byIds/', get_detection_records_by_ids, name='get_detection_records_by_ids'),
+    path('v1/detection/records/', get_detection_records_v1, name='get_detection_records_v1'),
+    path('detection/traffic-data-list/', get_traffic_data_list, name='get_traffic_data_list'),
+
+
     path('detection/record/api/', get_detection_records_by_api, name='get_detection_records_by_api'),
 
     path('load_target_app/', load_target_app, name='load_target_app'),
+
+    path('check-deployment/', check_deployment, name='check_deployment'),
 ]

@@ -1,0 +1,22 @@
+[
+    {
+        "title": "API_2949",
+        "description": "",
+        "method": "POST",
+        "path": "/memos.api.v1.UserService/CreateUserAccessToken",
+        "variable_indexes": [],
+        "query_params": [],
+        "sample_body": {},
+        "sample_headers": "{'Host': '49.234.6.241:5230', 'Connection': 'keep-alive', 'Content-Length': '32', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 Edg/134.0.0.0', 'content-type': 'application/grpc-web+proto', 'x-grpc-web': '1', 'Accept': '*/*', 'Origin': 'http://49.234.6.241:5230', 'Referer': 'http://49.234.6.241:5230/setting', 'Accept-Encoding': 'gzip, deflate', 'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6', 'Cookie': 'memos.access-token=eyJhbGciOiJIUzI1NiIsImtpZCI6InYxIiwidHlwIjoiSldUIn0.eyJuYW1lIjoiIiwiaXNzIjoibWVtb3MiLCJzdWIiOiIzIiwiYXVkIjpbInVzZXIuYWNjZXNzLXRva2VuIl0sImV4cCI6NDg5NDg1NTM4MCwiaWF0IjoxNzQxMjU1MzgwfQ.FZwIMsYUVAGDmCtPud8t22UszW8uCoLzpNmG47AUsxk', 'X-Mitmproxy-Processed': 'true'}"
+    },
+    {
+        "title": "API_2950",
+        "description": "",
+        "method": "POST",
+        "path": "/memos.api.v1.MemoService/CreateMemo",
+        "variable_indexes": [],
+        "query_params": [],
+        "sample_body": {},
+        "sample_headers": "{'Host': '49.234.6.241:5230', 'Connection': 'keep-alive', 'Content-Length': '14', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 Edg/134.0.0.0', 'content-type': 'application/grpc-web+proto', 'x-grpc-web': '1', 'Accept': '*/*', 'Origin': 'http://49.234.6.241:5230', 'Referer': 'http://49.234.6.241:5230/', 'Accept-Encoding': 'gzip, deflate', 'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6', 'Cookie': 'memos.access-token=eyJhbGciOiJIUzI1NiIsImtpZCI6InYxIiwidHlwIjoiSldUIn0.eyJuYW1lIjoiIiwiaXNzIjoibWVtb3MiLCJzdWIiOiIzIiwiYXVkIjpbInVzZXIuYWNjZXNzLXRva2VuIl0sImV4cCI6NDg5NDg1NTM4MCwiaWF0IjoxNzQxMjU1MzgwfQ.FZwIMsYUVAGDmCtPud8t22UszW8uCoLzpNmG47AUsxk', 'X-Mitmproxy-Processed': 'true'}"
+    }
+]

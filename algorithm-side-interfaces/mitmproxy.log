@@ -1,0 +1,8 @@
+Error logged during startup, exiting...
+[21:16:32.463] Loading script traffic_collector.py
+[21:16:34.283] 
+def consume_traffic_periodically():
+    return 1
+
+[21:16:34.284] [Errno 98] HTTP(S) proxy failed to listen on 0.0.0.0:8888 with [Errno 98] error while attempting to bind on address ('0.0.0.0', 8888): address already in use
+Try specifying a different port by using `--mode regular@8890`.

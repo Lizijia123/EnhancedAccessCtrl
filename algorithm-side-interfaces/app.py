@@ -26,6 +26,8 @@ from algorithm.model_training import *
 from config.log import LOGGER
 import pandas as pd
 
+import config.role
+
 
 app = Flask(__name__)
 
@@ -426,6 +428,13 @@ def async_data_collect(data):
         config.basic.LOGIN_CREDENTIALS = target_app.get('login_credentials')
         config.basic.ACTION_STEP = target_app.get('user_behavior_cycle')
 
+        config.role.APIS_OF_USER_ROLES = {
+            'unlogged_in_user': [],
+            'ordinary_user': [],
+            'admin': []
+        }
+
+
         user_configured_api_list = data.get('API_list')
         # LOGGER.info(str(user_configured_api_list))
         api_log = algorithm.api_discovery.extract_api_log_to_csv()
@@ -436,12 +445,22 @@ def async_data_collect(data):
             if traffic_data_generation.STOP_FLAG.is_set():
                 break
             user_configured_api_info = user_configured_api_list[i]
+            role_list = user_configured_api_info.get('role_list')
+            for role in role_list:
+                api_title = 'API_' +str(user_configured_api_info.get('id'))
+                if role not in config.role.APIS_OF_USER_ROLES:
+                    config.role.APIS_OF_USER_ROLES[role] = [api_title]
+                else:
+                    config.role.APIS_OF_USER_ROLES[role].append(api_title)
+
+
             request_method = user_configured_api_info.get('request_method')
             path_segments = user_configured_api_info.get('path_segment_list')
             sample_traffic_data = next(
                 (row for index, row in api_log.iterrows() if api_log_matches_user_configured_api_info(user_configured_api_info, row)), None)
             if sample_traffic_data is None:
-                ERROR_APIS.append(user_configured_api_info)
+                if str(user_configured_api_info.get('id')) not in ERROR_APIS:
+                    ERROR_APIS.append(str(user_configured_api_info.get('id')))
                 continue
 
             path = urlparse(sample_traffic_data['url']).path
@@ -525,7 +544,9 @@ def async_data_collect(data):
             }
 
             # LOGGER.info(str([api.index for api in user_api_set])+ str(api_knowledge)+str(app_knowledge))
-            traffic_data_generation.gen_data_set(user_api_set, api_knowledge, app_knowledge)
+            error_apis = traffic_data_generation.gen_data_set(user_api_set, api_knowledge, app_knowledge)
+            ERROR_APIS.extend(error_apis)
+            LOGGER.info(f"error_apis: {error_apis}")
 
         if traffic_data_generation.STOP_FLAG.is_set():
             DATA_COLLECTION_STATUS = "TERMINATED"
@@ -599,8 +620,8 @@ def start_mitmproxy():
     except Exception as e:
         LOGGER.info(f"Error starting mitmproxy: {e}")
 
-# mitmproxy_thread = threading.Thread(target=start_mitmproxy)
-# mitmproxy_thread.start()
+mitmproxy_thread = threading.Thread(target=start_mitmproxy)
+mitmproxy_thread.start()
 
 @app.route('/check_deployment', methods=['GET'])
 def check_deployment():
@@ -652,7 +673,7 @@ if __name__ == '__main__':
 # cd 当前目录
 # sudo iptables -t nat -F
 # sudo iptables -t nat -A PREROUTING ! -s 49.234.6.241 -p tcp --dport 5230 -j REDIRECT --to-port 8888
-# sudo iptables -t nat -A OUTPUT ! -s 49.234.6.241 -p tcp -d 127.0.0.1 --dport 5230 -j REDIRECT --to-port 8888
+# sudo iptables -t nat -A PREROUTING ! -s 49.234.6.241 -p tcp --dport 5230 -j REDIRECT --to-port 8888
 # sudo netfilter-persistent save
 
 # redis-server

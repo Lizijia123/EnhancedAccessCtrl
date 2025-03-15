@@ -60,6 +60,7 @@ class API(models.Model):
     path_segment_list = models.ManyToManyField(PathSegment)
     request_param_list = models.ManyToManyField(RequestParam)
     request_data_fields = models.ManyToManyField(RequestDataField)
+    role_list = models.JSONField(default=list, blank=True)
 
     def __str__(self):
         return f"API - {self.request_method} {self.sample_url}"

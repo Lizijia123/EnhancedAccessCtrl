@@ -4,7 +4,6 @@ import config.basic
 
 from algorithm.brain import Brain
 from config.log import LOGGER
-from config.role import APIS_OF_USER_ROLES
 
 
 class Agent:
@@ -43,12 +42,13 @@ class Agent:
     def exec(self):
         self.api_sequence.clear()
         self._gen_api_seq()
+        LOGGER.info(f"User configured API_ROLE:{config.role.APIS_OF_USER_ROLES}")
 
         for index in range(len(self.api_sequence)):
             if self.api_malicious_seq[index] == 0:
                 self.action_type_seq.append(config.basic.NORMAL)
             else:
-                if self.api_sequence[index] in APIS_OF_USER_ROLES[self.role]:
+                if self.api_sequence[index] in config.role.APIS_OF_USER_ROLES[self.role]:
                     self.action_type_seq.append(config.basic.VERTICAL_AUTH_OVERREACH)
                 else:
                     self.action_type_seq.append(config.basic.HORIZONTAL_AUTH_OVERREACH)

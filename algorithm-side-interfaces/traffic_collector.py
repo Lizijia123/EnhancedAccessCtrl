@@ -13,7 +13,21 @@ import os
 from celery import Celery
 import redis
 import requests
-from enhanced_detector import read_detection_status
+
+def read_detection_status():
+    """
+    从文件中读取检测状态
+    :return: 检测状态，如 'ON' 或 'OFF'，如果读取失败返回 'OFF'
+    """
+    try:
+        with open('detection_status.txt', 'r') as file:
+            return file.read().strip()
+    except FileNotFoundError:
+        # 如果文件不存在，默认检测状态为 OFF
+        return 'OFF'
+    except Exception as e:
+        print(f"Error reading detection status from file: {e}")
+        return 'OFF'
 
 # 初始化 Celery 实例，指定 Redis 作为消息队列
 celery = Celery('tasks', broker='redis://localhost:6379/0')

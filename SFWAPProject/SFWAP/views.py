@@ -20,7 +20,7 @@ from rest_framework.decorators import api_view, authentication_classes, permissi
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.response import Response
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 logger = logging.getLogger(__name__)
 
 @api_view(['GET'])
@@ -35,6 +35,8 @@ def get_user_info(request):
     }
     return Response(user_info)
 
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 @csrf_exempt
 def register(request):
@@ -103,9 +105,14 @@ def user_login(request):
     }, status=405)
 
 
-@csrf_exempt
+from rest_framework.authtoken.models import Token
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def user_logout(request):
     if request.method == 'POST':
+        token = Token.objects.get(user=request.user)
+        token.delete()
         logout(request)
         return JsonResponse({
             'code': 200,
@@ -218,6 +225,10 @@ def setup_basic_features(target_app):
         response = requests.get(get_basic_feature_url)
         result = response.json()
 
+        for feature in target_app.detect_feature_list.all():
+            feature.delete()
+        target_app.detect_feature_list.clear()
+
 
         basic_feature_list = result.get('basic_feature_list')
         for basic_feature_info in basic_feature_list:
@@ -256,6 +267,7 @@ def target_app(request):
             }, status=400)
         try:
             target_app = TargetApplication.objects.get(id=app_id, user=request.user)
+            # setup_basic_features(target_app)
             return JsonResponse({
                 'code': 200,
                 'data': target_app_model_to_view(target_app)
@@ -1431,6 +1443,7 @@ def compile_report(report):
 
     return result
 
+
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def construct_model(request):
@@ -1642,9 +1655,9 @@ def start_detection(request):
         error = result.get('error')
         if response.status_code != 200:
             return JsonResponse({
-                'code': 500,
+                'code': 409,
                 'error': 'Detection start failed: ' + error
-            }, status=500)
+            }, status=409)
         else:
             target_app.detect_state = 'STARTED'
             target_app.save(update_fields=['detect_state'])
@@ -1691,9 +1704,9 @@ def pause_detection(request):
         error = result.get('error')
         if response.status_code != 200:
             return JsonResponse({
-                'code': 500,
+                'code': 409,
                 'error': 'Detection pause failed: ' + error
-            }, status=500)
+            }, status=409)
         else:
             target_app.detect_state = 'PAUSED'
             target_app.save(update_fields=['detect_state'])

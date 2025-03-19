@@ -14,6 +14,7 @@ APP_DESCRIPTION = ''
 ACTION_STEP = 15
 
 # 算法基础配置
+DETECTION_MODEL_NAME = 'Ganomaly'
 NORMAL = 0
 VERTICAL_AUTH_OVERREACH = 1
 HORIZONTAL_AUTH_OVERREACH = 2
@@ -68,5 +69,4 @@ def memos(action_type, info, uname):
         return (info['status_code'] in [401, 403, 404] or
                 str(info['status_code']).startswith('5') or
                 str(info['status_code']).startswith('3'))
-
 

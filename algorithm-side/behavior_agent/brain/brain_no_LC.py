@@ -88,6 +88,8 @@ class Brain:
         """构造上下文提示"""
         return (
             f"Imagine a web application with the following functionality:\n{self.func_description}\n"
+            f"The following is the API documentation of this application, "
+            f"which contains the functional description information and permission information for each API:\n{self.documents}\n"
             f"The application has basic permission control mechanisms. Below are some examples of user behaviors:\n"
             f"Normal user behavior examples: {self.normal_seqs}\n"
             f"Malicious privilege escalation behavior examples: {self.malicious_seqs}\n"

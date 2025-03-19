@@ -33,9 +33,9 @@ urlpatterns = [
     path('detection/start/', start_detection, name='start_detection'),
     path('detection/pause/', pause_detection, name='pause_detection'),
 
-    path('detection/report/', get_detection_report, name='get_detection_report'),
+    path('detection/report/', get_detection_report, name='get_detection_report'), # 废弃接口，后续需要迁移
     path('v1/detection/report/', get_detection_report_v1, name='get_detection_report_v1'),
-    path('detection/records/', get_detection_records, name='get_detection_records'),
+    path('detection/records/', get_detection_records, name='get_detection_records'), # 废弃接口，后续需要迁移
     path('detection/records/byIds/', get_detection_records_by_ids, name='get_detection_records_by_ids'),
     path('v1/detection/records/', get_detection_records_v1, name='get_detection_records_v1'),
     path('detection/traffic-data-list/', get_traffic_data_list, name='get_traffic_data_list'),

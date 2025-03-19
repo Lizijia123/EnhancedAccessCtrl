@@ -340,13 +340,7 @@ def construct_model():
                 test_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'algorithm', 'data', 'test.xlsx')
             )
             algorithm.entity.feature.APP_FEATURES = features
-            report = train_and_save_xgboost_model(
-                features=features,
-                train_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'algorithm', 'data', 'train.xlsx'),
-                test_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'algorithm', 'data', 'test.xlsx'),
-                model_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'algorithm', 'model', 'model.pkl'),
-                scaler_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'algorithm', 'model', 'scaler.pkl')
-            )
+            report = train_and_save_model(features=features)
             return jsonify({"report": report, "error_API_list": ERROR_APIS}), 200
     except Exception as e:
         traceback.print_exc()

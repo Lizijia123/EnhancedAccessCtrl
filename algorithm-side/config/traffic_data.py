@@ -10,8 +10,8 @@ ACTION_STEP = {
 """
 NORMAL_USER_NUM = {
     'humhub': {
-        'admin': 1,#18,
-        'ordinary_user': 1,#162,
+        'admin': 2*2,
+        'ordinary_user': 4*2,
         'unlogged_in_user': 0
     },
     'memos': {
@@ -30,8 +30,8 @@ NORMAL_USER_NUM = {
 MALICIOUS_USER_NUM = {
     'humhub': {
         'admin': 0,
-        'ordinary_user': 1,#17,
-        'unlogged_in_user': 1,#3
+        'ordinary_user': 3*2,
+        'unlogged_in_user': 1*2
     },
     'memos': {
         'admin': 0,

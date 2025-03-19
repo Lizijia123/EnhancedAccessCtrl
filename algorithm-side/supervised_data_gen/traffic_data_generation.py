@@ -26,30 +26,30 @@ def gen_data_set():
     """
     生成流量数据集并保存到文件
     """
-    # users = []
-    # for role in NORMAL_USER_NUM[CURR_APP_NAME]:
-    #     unlogged = True if role == 'unlogged_in_user' else False
-    #     for i in range(NORMAL_USER_NUM[CURR_APP_NAME][role]):
-    #         users.append(Agent(role=role, action_step=ACTION_STEP[CURR_APP_NAME], malicious=False, unlogged=unlogged))
-    # for role in MALICIOUS_USER_NUM[CURR_APP_NAME]:
-    #     unlogged = True if role == 'unlogged_in_user' else False
-    #     for i in range(MALICIOUS_USER_NUM[CURR_APP_NAME][role]):
-    #         users.append(Agent(role=role, action_step=ACTION_STEP[CURR_APP_NAME], malicious=True, unlogged=unlogged))
-    # random.shuffle(users)
+    users = []
+    for role in NORMAL_USER_NUM[CURR_APP_NAME]:
+        unlogged = True if role == 'unlogged_in_user' else False
+        for i in range(NORMAL_USER_NUM[CURR_APP_NAME][role]):
+            users.append(Agent(role=role, action_step=ACTION_STEP[CURR_APP_NAME], malicious=False, unlogged=unlogged))
+    for role in MALICIOUS_USER_NUM[CURR_APP_NAME]:
+        unlogged = True if role == 'unlogged_in_user' else False
+        for i in range(MALICIOUS_USER_NUM[CURR_APP_NAME][role]):
+            users.append(Agent(role=role, action_step=ACTION_STEP[CURR_APP_NAME], malicious=True, unlogged=unlogged))
+    random.shuffle(users)
 
     final_data_set = []
     user_index = 0
     data_index = 0
 
-    # LOGGER.info('开始生成API序列...')
-    # seq_index = 0
-    # for user in users:
-    #     seq_index += 1
-    #     user.exec()
-    #     LOGGER.info(f'已生成{seq_index}/{len(users)}个API序列')
+    LOGGER.info('开始生成API序列...')
+    seq_index = 0
+    for user in users:
+        seq_index += 1
+        user.exec()
+        LOGGER.info(f'已生成{seq_index}/{len(users)}个API序列')
 
-    # save_agents_to_file(users, file_path=f'{dirname(__file__)}/serialized_llm_agents/{CURR_APP_NAME}.json')
-    # LOGGER.info(f'已将{CURR_APP_NAME}的Agents(包含API序列)序列化至{dirname(__file__)}/serialized_llm_agents/{CURR_APP_NAME}.json')
+    save_agents_to_file(users, file_path=f'{dirname(__file__)}/serialized_llm_agents/{CURR_APP_NAME}.json')
+    LOGGER.info(f'已将{CURR_APP_NAME}的Agents(包含API序列)序列化至{dirname(__file__)}/serialized_llm_agents/{CURR_APP_NAME}.json')
 
     users = load_agents_from_file(file_path=f'{dirname(__file__)}/serialized_llm_agents/{CURR_APP_NAME}.json')
     for user in users:
@@ -148,6 +148,6 @@ if __name__ == '__main__':
     ori_data = gen_data_set()
 
     # # 筛选出一倍用户量的数据集，优先筛选更合法的流量序列，且保持筛选前后各种类型用户的流量序列数的比例不变
-    # final_data = filter_data_sequences(ori_data, ratio=0.5)
+    final_data = filter_data_sequences(ori_data, ratio=0.5)
 
 

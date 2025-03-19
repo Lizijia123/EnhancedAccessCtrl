@@ -45,33 +45,44 @@ def extract_feats_and_labels(user_data_path, features):
     return feats, labels
 
 
-def train_and_save_xgboost_model(train_path, test_path, model_path, scaler_path, features):
+def train_and_save_model(features):
+    from algorithm.detection_model import DETECTION_MODELS
+    from config.basic import DETECTION_MODEL_NAME
+    model = DETECTION_MODELS[DETECTION_MODEL_NAME]
+    report = model.train_and_save_model(features)
     import config.log
-    config.log.LOGGER.info(f"Training model... Size of feature_list: {str(len(features))}")
-    # 读取测试数据并提取特征
-    X_train, y_train = extract_feats_and_labels(train_path, features=features)
-
-    # 标准化特征
-    scaler = StandardScaler()
-    X_train_scaled = scaler.fit_transform(X_train)
-
-    # 训练模型
-    model = XGBClassifier(use_label_encoder=False, eval_metric='logloss')
-    model.fit(X_train_scaled, y_train)
-
-    # 保存模型
-    model.get_booster().dump_model(model_path)
-    joblib.dump(model, model_path)
-    joblib.dump(scaler, scaler_path)
-
-    # 预测并评估模型
-    X_test, y_test = extract_feats_and_labels(user_data_path=test_path, features=features)
-    X_test_scaled = scaler.fit_transform(X_test)
-    y_pred = model.predict(X_test_scaled)
-    # accuracy = accuracy_score(y_test, y_pred)
-    report = classification_report(y_test, y_pred)
     config.log.LOGGER.info("Model constructed.")
     return report
+
+
+
+# def train_and_save_xgboost_model(train_path, test_path, model_path, scaler_path, features):
+#     import config.log
+#     config.log.LOGGER.info(f"Training model... Size of feature_list: {str(len(features))}")
+#     # 读取测试数据并提取特征
+#     X_train, y_train = extract_feats_and_labels(train_path, features=features)
+
+#     # 标准化特征
+#     scaler = StandardScaler()
+#     X_train_scaled = scaler.fit_transform(X_train)
+
+#     # 训练模型
+#     model = XGBClassifier(use_label_encoder=False, eval_metric='logloss')
+#     model.fit(X_train_scaled, y_train)
+
+#     # 保存模型
+#     model.get_booster().dump_model(model_path)
+#     joblib.dump(model, model_path)
+#     joblib.dump(scaler, scaler_path)
+
+#     # 预测并评估模型
+#     X_test, y_test = extract_feats_and_labels(user_data_path=test_path, features=features)
+#     X_test_scaled = scaler.fit_transform(X_test)
+#     y_pred = model.predict(X_test_scaled)
+#     # accuracy = accuracy_score(y_test, y_pred)
+#     report = classification_report(y_test, y_pred)
+#     config.log.LOGGER.info("Model constructed.")
+#     return report
 
 
 def data_splitting(simulated_data_path, train_path, test_path):

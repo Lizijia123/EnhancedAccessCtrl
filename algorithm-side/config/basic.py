@@ -3,7 +3,7 @@ from urllib.parse import unquote
 
 CURR_APP_NAME = 'humhub'
 model_names = ["gpt-4o-mini", "qwen-max", "deepseek-r1", "llama3.3-70b-instruct"]
-LLM_MODEL_NAME = "llama3.3-70b-instruct"
+LLM_MODEL_NAME = "qwen-max"
 
 ROOT_URL = {
     'humhub': 'http://111.229.33.190:8081',
@@ -100,3 +100,5 @@ NECESSARY_HEADERS = {
 
     }
 }
+
+DETECTION_MODEL_NAME = 'XGBoost'

@@ -177,18 +177,18 @@ def param_injection_for_api_seq(api_title_seq, uname, unlogged, action_type_seq,
 
             LOGGER.info(f'Param injection attempting time：{try_time}；Single traffic data valid：{data_valid}；Traffic data combination valid：{seq_valid}')
             traffic_data_seq.append([
-            calling_info['timestamp'],
-            calling_info['http_method'].upper(),
-            calling_info['url'],
-            calling_info['api_endpoint'],
-            calling_info['header'],
-            calling_info['data'],
-            calling_info['request_body_size'],
-            calling_info['response_body_size'],
-            calling_info['response_status'],
-            calling_info['execution_time'],
-            data_valid
-        ])
+                calling_info['timestamp'],
+                calling_info['http_method'].upper(),
+                calling_info['url'],
+                calling_info['api_endpoint'],
+                calling_info['header'],
+                calling_info['data'],
+                calling_info['request_body_size'],
+                calling_info['response_body_size'],
+                calling_info['response_status'],
+                calling_info['execution_time'],
+                data_valid
+            ])
         except Exception:
             LOGGER.info(f"Error when injecting params for {api_title_seq[i]}")
             error_apis.append(str(api_seq[i].index))

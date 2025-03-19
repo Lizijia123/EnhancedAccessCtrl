@@ -7,6 +7,7 @@ import joblib
 import pandas as pd
 from datetime import datetime
 
+import algorithm.detection_model
 import algorithm.entity.feature
 from config.log import LOGGER
 from algorithm.api_discovery import recognize_api
@@ -112,11 +113,21 @@ def anomaly_detection(window_data):
     LOGGER.info(f"Detecting for a new traffic data sequence; Detect Feature Size: " + str(len(algorithm.entity.feature.APP_FEATURES)))
 
     df = pd.DataFrame(window_data)
-    detection_result = xgboost_user_classification(
-        model_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'algorithm', 'model', 'model.pkl'),
-        scaler_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'algorithm', 'model', 'scaler.pkl'),
-        real_data=pd.DataFrame(window_data)
-    )
+    df['user_index'] = 0
+    df['original_status'] = df['status_code']
+    df['user_type'] = 0
+
+    from config.basic import DETECTION_MODEL_NAME
+    from algorithm.Dynamtic_Feature_Extraction import FeatureExtractor
+    model = algorithm.detection_model.DETECTION_MODELS[DETECTION_MODEL_NAME]
+    extracted_data, _ = FeatureExtractor(real_data=df).get_features()
+    LOGGER.info(f"extracted_data: {extracted_data}")
+    detection_result = (model.predict(extracted_data))[0]
+    # detection_result = xgboost_user_classification(
+    #     model_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'algorithm', 'model', 'model.pkl'),
+    #     scaler_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'algorithm', 'model', 'scaler.pkl'),
+    #     real_data=pd.DataFrame(window_data)
+    # )
     detection_record = {
         "detection_result": "ALLOW" if detection_result == 0 else 'INTERCEPTION',
         "started_at": df['request_time'].min(),
